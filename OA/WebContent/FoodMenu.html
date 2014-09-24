@@ -1,0 +1,570 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>每日菜谱</title>
+<link href="Style/css.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.STYLE1 {
+	color: #006699;
+	font-size: 14px;
+	font-weight: bold;
+}
+.STYLE2 {
+	color: #006699;
+	font-weight: bold;
+	font-size: 12px;
+}
+.STYLE5 {color: #006699; font-size: 12px; }
+.STYLE6 {font-size: 12px}
+.STYLE7 {
+	color: #FF3300;
+	font-weight: bold;
+}
+.STYLE8 {
+	color: #FF3300;
+	font-size: 12px;
+	font-weight: bold;
+}
+.STYLE11 {font-size: 14px}
+.STYLE14 {color: #006633}
+-->
+</style>
+<SCRIPT language=JavaScript>
+var OutPlace;
+function ClearCalender()
+{
+	for(i=0;i<=5;i++)
+	{
+	CmdStr = "window.Sun"+i+".innerText = '-'";
+	eval(CmdStr);
+
+	CmdStr = "window.Mon"+i+".innerText = '-'";
+	eval(CmdStr);
+
+	CmdStr = "window.Tue"+i+".innerText = '-'";
+	eval(CmdStr);
+
+	CmdStr = "window.Wed"+i+".innerText = '-'";
+	eval(CmdStr);
+
+	CmdStr = "window.Thu"+i+".innerText = '-'";
+	eval(CmdStr);
+
+	CmdStr = "window.Fri"+i+".innerText = '-'";
+	eval(CmdStr);
+
+	CmdStr = "window.Sat"+i+".innerText = '-'";
+	eval(CmdStr);
+	}
+}
+
+function ShowPrevNext(year,month)
+{
+	if (month == 1)
+	{
+	prevyear = year -1;
+	prevmonth = 12;
+	}
+	else
+	{
+	prevyear = year;
+	prevmonth = parseInt(month) - 1;	
+	}
+	
+	if (month == 12)
+	{
+	nextyear = year + 1;
+	nextmonth = 1;
+	}
+	else
+	{
+	nextyear = year;
+	nextmonth = parseInt(month) + 1;
+	}
+
+	window.PreMon .innerHTML = "<INPUT type=image src='images/dateback.bmp' id=prev name=prev onclick=SetCalender("+prevyear+","+prevmonth+")>";
+	window.ThisMon .innerHTML = "<font color=#FFFFFF>"+year +", "+month+"</font>";
+	window.NextMon .innerHTML = "<INPUT type=image src='images/datefwd.bmp' id=next name=next onclick=SetCalender("+nextyear+","+nextmonth+")>";
+
+}
+
+function SetCalender(year,month)
+{
+alert("setcalender");
+ClearCalender();
+ShowPrevNext(year,month);
+window.mForm.inyear.value = year;
+//alert(year);
+window.mForm.inmonth .value = month;
+
+var Mydate = new Date(year,month-1,1);
+FirstDayInWeek = Mydate.getDay();
+
+var Mydate1 = new Date(year,month,0)
+DaysNumber = Mydate1.getDate();
+
+AddValue = FirstDayInWeek;
+	for(i=1;i<=DaysNumber;i++)
+	{
+		Temp = i - 1 + AddValue;
+		WeekRow = Math.round (Temp/7-0.5);
+		WeekColumn = Temp
+		while (WeekColumn >= 7)
+		{
+		WeekColumn = WeekColumn - 7;
+		}
+
+		switch (WeekColumn)
+		{
+		case 0:
+			RowName = "Sun";
+			break;
+		case 1:
+			RowName = "Mon";
+			break;
+		case 2:
+			RowName = "Tue";
+			break;
+		case 3:
+			RowName = "Wed";
+			break;
+		case 4:
+			RowName = "Thu";
+			break;
+		case 5:
+			RowName = "Fri";
+			break;
+		case 6:
+			RowName = "Sat";
+			break;
+		}
+		
+		if(month<10) month = "0"+parseInt(month);
+		var datex=year+"-"+month+"-"+i;
+		
+	//CmdStr = "window.mForm."+RowName+WeekRow+".innerHTML = '<a href=javascript:GoToDate("+year+","+month+","+i+")>"+i+"</a>'";
+	
+		CmdStr = "window."+RowName+WeekRow+".innerHTML = '<a href=\"CalendarChoiceMemoServlet?date="+datex+"\" >"+i+"</a>'";
+		eval(CmdStr);
+
+		var d;
+		d=new Date();
+		var today=d.getDate();
+		
+		if(today == i){
+			CmdStr = "window."+RowName+WeekRow+".innerHTML = '<a href=\"CalendarChoiceMemoServlet?date="+datex+"\" ><font color=\\\'#FF0000\\\'>"+today+"</font></a>'";
+			//CmdStr = "window.mForm."+RowName+WeekRow+".color=\"#FF0000\"";
+			//alert(CmdStr);
+			eval(CmdStr);
+			
+		}
+       	
+		
+	}
+
+	
+}
+
+
+function JumpToDate(){ //v3.0
+	year = window.mForm.inyear.options[window.mForm.inyear.selectedIndex].value;
+	month = window.mForm.inmonth .options[window.mForm.inmonth.selectedIndex].value;
+	SetCalender(year,month);
+
+}
+
+function GoToDate(year,month,day)
+{
+dateValue = year*10000+month*100+day;
+OutStr = "window.parent."+OutPlace+".value = '"+dateValue+"'";
+eval(OutStr);
+window.parent .hideLayer();
+}
+
+function ShowCalendar(OutPlaceStr)
+{
+	var datenow = new Date();
+	year = datenow.getYear();
+	month = datenow.getMonth() + 1;
+	SetCalender(year,month);
+	OutPlace = OutPlaceStr;
+	
+}
+		
+</SCRIPT>
+
+</head>
+
+<body>
+<form name="frm">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+<tr><td width="60%" rowspan="2" align="left" valign="top">
+<table width="89%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td colspan="10" align="center" class="yellowred-32">2008年1月22日（星期二）食谱</td>
+  </tr>
+  <tr>
+    <td height="10">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">&nbsp;</td>
+    <td width="600" align="center" valign="top"><table width="551" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+        <tr>
+          <td height="18" colspan="4" align="right"><span class="black-12"><img src="images/icon_tuijian1.gif" width="20" height="20" /></span><span class="green-12-b">推荐菜</span> <img src="images/icon_new.gif" width="22" height="7" /> <span class="green-12-b">新菜</span></td>
+        </tr>
+        <tr>
+          <td height="18" colspan="4" align="left"><span class="STYLE1">综合楼一层餐厅</span></td>
+        </tr>
+        <tr>
+          <td width="75%" height="1" bgcolor="#FF0000" ></td>
+          <td width="10%" align="center" bgcolor="#FF0000" ></td>
+          <td width="15%" bgcolor="#FF0000"></td>
+          <td width="0%" align="center" bgcolor="#FF0000" ></td>
+        </tr>
+        <tr>
+        	<td colspan="3" align="center">
+            <table width="531">
+            	<tr>
+                  <td width="94" rowspan="2" align="right" valign="middle" bgcolor="#FFFFFF" class="black-12"><span class="STYLE11">厨艺展示窗口</span></td>
+                  <td width="210" height="26" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">孜盐羊肉</span> 8元 口味：咸、鲜 <img src="images/icon_new.gif" /></td>
+                  <td width="211" height="26" colspan="2" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">红烧鲫鱼</span> 6元 口味：鲜</td>
+            	</tr>
+                <tr>
+                  <td height="26" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">粉蒸鸡块</span> 7元 口味：鲜、微辣</td>
+                  <td height="26" colspan="2" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">红焖鸡块</span> 8元 口味：鲜、咸 <img src="images/icon_tuijian1.gif" width="20" height="20" /></td>
+                </tr>
+          	</table>
+            <hr width=550 size=1 color=#00ffff style="border:1;double;color:#00FF66">            </td>
+        </tr>
+        
+        
+        <tr>
+        	<td colspan="3" align="center">
+            <table width="533">
+            	<tr>
+                  <td width="94" rowspan="2" align="right" valign="middle" bgcolor="#FFFFFF" class="black-12"><span class="STYLE11">橄榄油窗口</span></td>
+                  <td width="213" height="26" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">孜盐羊肉</span> 8元 口味：咸、鲜 <img src="images/icon_tuijian1.gif" width="20" height="20" /><img src="images/icon_new.gif" width="22" height="7" /></td>
+                  <td width="210" height="26" colspan="2" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">红烧鲫鱼</span> 6元 口味：鲜</td>
+            	</tr>
+                <tr>
+                  <td height="26" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">粉蒸鸡块</span> 7元 口味：鲜、微辣</td>
+                  <td height="26" colspan="2" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">红焖鸡块</span> 8元 口味：鲜、咸</td>
+                </tr>
+          	</table>
+            <hr width=550 size=1 color=#00ffff style="border:1;double;color:#00FF66">            </td>
+        </tr>
+        
+        
+        <tr>
+        	<td colspan="3" align="center">
+            <table width="530">
+            	<tr>
+                  <td width="96" rowspan="2" align="right" valign="middle" bgcolor="#FFFFFF" class="black-12"><span class="STYLE11">半份菜窗口</span></td>
+                  <td width="210" height="26" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">孜盐羊肉</span> 8元 口味：咸、鲜 </td>
+                  <td width="208" height="26" colspan="2" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">红烧鲫鱼</span> 6元 口味：鲜</td>
+            	</tr>
+                <tr>
+                  <td height="26" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">粉蒸鸡块</span> 7元 口味：鲜、微辣</td>
+                  <td height="26" colspan="2" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">红焖鸡块</span> 8元 口味：鲜、咸</td>
+                </tr>
+          	</table>
+            <hr width=550 size=1 color=#00ffff style="border:1;double;color:#00FF66">            </td>
+        </tr>
+        
+    </table></td>
+  </tr>
+  <tr>
+    <td height="10">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">&nbsp;</td>
+    <td valign="top" align="center"><table width="549" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+        <tr>
+          <td height="18" colspan="4" align="left"><span class="STYLE1">综合楼二层</span></td>
+        </tr>
+        <tr>
+          <td width="25%" height="1" bgcolor="#FF0000" ></td>
+          <td width="25%" align="center" bgcolor="#FF0000" ></td>
+          <td width="25%" bgcolor="#FF0000"></td>
+          <td width="25%" align="center" bgcolor="#FF0000" ></td>
+        </tr>
+        <tr>
+          <td height="34" colspan="4" align="center" valign="bottom" bgcolor="#FFFFFF" class="black-12">
+          <table width="521">
+            	<tr>
+                  <td width="216" height="26" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">孜盐羊肉</span> 8元 口味：咸、鲜 </td>
+                  <td width="260" height="26" colspan="2" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">红烧鲫鱼</span> 6元 口味：鲜</td>
+            	</tr>
+                <tr>
+                  <td height="26" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">粉蒸鸡块</span> 7元 口味：鲜、微辣</td>
+                  <td height="26" colspan="2" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">红焖鸡块</span> 8元 口味：鲜、咸</td>
+                </tr>
+          	</table>
+            
+          </td>
+        </tr>
+        <tr>
+          <td height="14" colspan="4" align="left" valign="bottom" bgcolor="#FFFFFF">&nbsp;</td>
+        </tr>
+    </table></td>
+  </tr>
+  
+  
+  <tr>
+    <td bgcolor="#FFFFFF">&nbsp;</td>
+    <td valign="top" align="center"><table width="553" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+        <tr>
+          <td height="18" colspan="4" align="left"><span class="STYLE1">综合楼三层自助</span></td>
+        </tr>
+        <tr>
+          <td width="25%" height="1" bgcolor="#FF0000" ></td>
+          <td width="25%" align="center" bgcolor="#FF0000" ></td>
+          <td width="25%" bgcolor="#FF0000"></td>
+          <td width="25%" align="center" bgcolor="#FF0000" ></td>
+        </tr>
+        <tr>
+          <td height="34" colspan="4" align="center" valign="bottom" bgcolor="#FFFFFF" class="black-12">
+          <table width="525">
+            	<tr>
+                  <td width="167" height="26" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">孜盐羊肉</span> 口味：咸、鲜 </td>
+                  <td width="190" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">宫爆鸡丁</span> 口味：微辣</td>
+                  <td width="174" height="26" colspan="2" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">红烧鲫鱼</span>  口味：鲜</td>
+            	</tr>
+                <tr>
+                  <td height="26" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">粉蒸鸡块</span>  口味：鲜、微辣</td>
+                  <td align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">红烧狮子头</span> 口味：鲜 <img src="images/icon_tuijian1.gif" width="20" height="20" /></td>
+                  <td height="26" colspan="2" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12"><span class="red2-12-b">红焖鸡块</span>  口味：鲜、咸</td>
+                </tr>
+          	</table>
+            
+          </td>
+        </tr>
+        <tr>
+          <td height="34" colspan="4" align="left" valign="bottom" bgcolor="#FFFFFF" class="black-12">&nbsp;</td>
+        </tr>
+    </table></td>
+  </tr>
+  
+  
+  
+  
+  <tr>
+    <td width="11" bgcolor="#FFFFFF"><img src="images/kongbai.jpg" width="11" height="11" /></td>
+    <td valign="top"><div align="left"></div></td>
+    <td width="11"><img src="images/kongbai.jpg" width="11" height="11" /></td>
+  </tr>
+
+</table></td>
+    <td width="40%" height="82" align="center" valign="top">
+    
+<DIV align=left>
+                  <TABLE height="100%" cellSpacing=0 cellPadding=0 width="100%" 
+                  border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD height=0 colspan="2" bgColor=#FFFFFF></TD></TR>
+                    <TR bgColor=#FFFFFF height="100%">
+                      <TD width="50%" height="100%" align=left vAlign=middle>
+                      <span class="red3-12">说明:点击日期查看当日菜谱</span><br />
+                        <TABLE id=Table1 cellSpacing=2 cellPadding=0 border=0>
+                          <TBODY>
+                          <TR>
+                            <TD width="206">
+                              <TABLE id=Table2 cellSpacing=0 cellPadding=0 
+                              width=180 border=0>
+                                <TBODY>
+                                <TR bgColor=#ffae00>
+                                <TD id=PreMon align=left width=20><INPUT 
+                                id=prev222 onclick=PrevMonth(2001,1) type=image 
+                                height=18 width=20 
+                                src="images/dateback.bmp" 
+                                name=prev22></TD>
+                                <TD width=142 align=middle 
+                                bgColor=#ffae00 class="STYLE2" id=ThisMon>2008年1月</TD>
+                                <TD id=NextMon align=right width=18><INPUT 
+                                id=next222 onclick=NextMonth(2001,1) type=image 
+                                height=18 width=18 
+                                src="images/datefwd.bmp" 
+                                name=next22></TD></TR>
+                                <TR>
+                                <TD vAlign=center colSpan=3>
+                                <TABLE id=CalenderTable cellSpacing=0 
+                                borderColorDark=#ffffff cellPadding=0 
+                                width="100%" bgColor=#ffebc0 
+                                borderColorLight=#000000 border=1>
+                                <TBODY>
+                                <TR>
+                                <TD align=middle><span class="STYLE5">日</span></TD>
+                                <TD align=middle><span class="STYLE5">一</span></TD>
+                                <TD align=middle><span class="STYLE5">二</span></TD>
+                                <TD align=middle><span class="STYLE5">三</span></TD>
+                                <TD align=middle><span class="STYLE5">四</span></TD>
+                                <TD align=middle><span class="STYLE5">五</span></TD>
+                                <TD align=middle><span class="STYLE5">六</span></TD>
+                                </TR>
+                                <TR>
+                                <TD align=middle class="STYLE5" id=Sun0>&nbsp;</TD>
+                                <TD align=middle class="STYLE5" id=Mon0>&nbsp;</TD>
+                                <TD align=middle class="STYLE5" id=Tue0><a href="FoodMenu.html">1</a></TD>
+                                <TD align=middle class="STYLE5" id=Wed0><a href="FoodMenu.html">2</a></TD>
+                                <TD align=middle class="STYLE5" id=Thu0><a href="FoodMenu.html">3</a></TD>
+                                <TD align=middle class="STYLE5" id=Fri0><a href="FoodMenu.html">4</a></TD>
+                                <TD align=middle class="STYLE5" id=Sat0><a href="FoodMenu.html">5</a></TD>
+                                </TR>
+                                <TR>
+                                <TD align=middle class="STYLE5" id=Sun1><a href="FoodMenu.html">6</a></TD>
+                                <TD align=middle class="STYLE5" id=Mon1><a href="FoodMenu.html">7</a></TD>
+                                <TD align=middle class="STYLE5" id=Tue1><a href="FoodMenu.html">8</a></TD>
+                                <TD align=middle class="STYLE5" id=Wed1><a href="FoodMenu.html">9</a></TD>
+                                <TD align=middle class="STYLE5" id=Thu1><a href="FoodMenu.html">10</a></TD>
+                                <TD align=middle class="STYLE5" id=Fri1><a href="FoodMenu.html">11</a></TD>
+                                <TD align=middle class="STYLE5" id=Sat1><a href="FoodMenu.html">12</a></TD>
+                                </TR>
+                                <TR>
+                                <TD align=middle class="STYLE5" id=Sun2><a href="FoodMenu.html">13</a></TD>
+                                <TD align=middle class="STYLE5" id=Mon2><a href="FoodMenu.html">14</a></TD>
+                                <TD align=middle class="STYLE5" id=Tue2><a href="FoodMenu.html">15</a></TD>
+                                <TD align=middle class="STYLE5" id=Wed2><a href="FoodMenu.html">16</a></TD>
+                                <TD align=middle class="STYLE5" id=Thu2><a href="FoodMenu.html">17</a></TD>
+                                <TD align=middle class="STYLE5" id=Fri2><a href="FoodMenu.html">18</a></TD>
+                                <TD align=middle class="STYLE5" id=Sat2><a href="FoodMenu.html">19</a></TD>
+                                </TR>
+                                <TR>
+                                <TD align=middle class="STYLE5" id=Sun3><a href="FoodMenu.html">20</a></TD>
+                                <TD align=middle class="STYLE5" id=Mon3><a href="FoodMenu.html">21</a></TD>
+                                <TD align=middle class="STYLE5" id=Tue3><a href="FoodMenu.html" class="STYLE7">22</a></TD>
+                                <TD align=middle class="STYLE5" id=Wed3><a href="FoodMenu.html">23</a></TD>
+                                <TD align=middle class="STYLE5" id=Thu3><a href="FoodMenu.html">24</a></TD>
+                                <TD align=middle class="STYLE5" id=Fri3><a href="FoodMenu.html">25</a></TD>
+                                <TD align=middle class="STYLE5" id=Sat3><a href="FoodMenu.html">26</a></TD>
+                                </TR>
+                                <TR>
+                                <TD align=middle class="STYLE5" id=Sun4>27</TD>
+                                <TD align=middle class="STYLE5" id=Mon4>28</TD>
+                                <TD align=middle class="STYLE5" id=Tue4>29</TD>
+                                <TD align=middle class="STYLE5" id=Wed4>30</TD>
+                                <TD align=middle class="STYLE5" id=Thu4>31</TD>
+                                <TD align=middle class="STYLE5" id=Fri4>&nbsp;</TD>
+                                <TD align=middle class="STYLE5" id=Sat4>&nbsp;</TD>
+                                </TR>
+                                </TBODY></TABLE></TD></TR>
+                                <TR bgColor=#e19831>
+                                <TD align=middle colSpan=3><SELECT id=inyear 
+                                style="FONT-SIZE: 9pt; HEIGHT: 18px" 
+                                onchange=JumpToDate(this,0) name=inyear>
+                                <OPTION 
+                                value=2007>2007</OPTION> <OPTION 
+                                value=2008>2008</OPTION> <OPTION 
+                                value=2009>2009</OPTION></SELECT> <span class="STYLE6">年</span> 
+                                <SELECT 
+                                id=inmonth style="FONT-SIZE: 9pt; HEIGHT: 18px" 
+                                onchange=JumpToDate(this,0) name=inmonth> 
+                                <OPTION value=1 selected>1</OPTION> <OPTION 
+                                value=2>2</OPTION> <OPTION value=3>3</OPTION> 
+                                <OPTION value=4>4</OPTION> <OPTION 
+                                value=5>5</OPTION> <OPTION value=6>6</OPTION> 
+                                <OPTION value=7>7</OPTION> <OPTION 
+                                value=8>8</OPTION> <OPTION value=9>9</OPTION> 
+                            <OPTION value=10>10</OPTION> <OPTION 
+                                value=11>11</OPTION> <OPTION 
+                                value=12>12</OPTION></SELECT> 
+                                <span class="STYLE6">月</span> </TD>
+                                </TR></TBODY></TABLE></TD>
+                      </TR></TBODY></TABLE></TD>
+                      <TD width="52%" align=left vAlign=top class="blue4-12">
+                      餐饮信息&nbsp;&gt;&gt;<br />
+                      <table>
+                      	<tr><td><img src="images/icon_read.gif" /></td><td><span class="STYLE14">北戴河疗养所特色饺子</span></td>
+                      	</tr>
+                        <tr><td><img src="images/icon_read.gif" /></td><td><span class="STYLE14">新食堂于2008年2月22日运营
+</span></td>
+                      	</tr>
+                        
+                      </table>
+                      <br />
+                      膳食指南&nbsp;&gt;&gt;<br />
+                      <table>
+                      	<tr><td><img src="images/icon_read.gif" /></td><td><span class="STYLE14">中国：各种食物营养成分表</span></td>
+                      	</tr>
+                        <tr><td><img src="images/icon_read.gif" /></td><td><span class="STYLE14">知道怎样自测营养素缺乏吗？
+</span></td>
+                      	</tr>
+                        <tr><td><img src="images/icon_read.gif" /></td><td><span class="STYLE14">妙用枸杞：养发护发还补肾</span></td>
+                      	</tr>
+                        <tr><td><img src="images/icon_read.gif" /></td><td><span class="STYLE14">推荐“养眼”的食疗药膳</span></td></tr>
+                      </table>
+                      </TD>
+                    </TR></TBODY></TABLE>
+</DIV>
+    
+    </td>
+</tr>
+  <tr>
+  	<td align="left" valign="top">
+  	<table width="349">
+    	<tr><td height="26" colspan="2" align="left" valign="bottom" class="green-12-b">特色菜推荐</td>
+    	</tr>
+    	<tr>
+    	  <td width="129"><img src="images/shijiacai_1.jpg" width="127" height="93" /></td>
+    	  <td width="208" align="left"><span class="STYLE7 STYLE6">红烧肘子</span><br />
+            <span class="STYLE6">主料：肘子<br />
+          做法：红烧<br />
+          推介理由：肥而不腻，鲜嫩可口<br />
+          窗口：厨艺展示窗口（一层）
+          </span></td>
+    	</tr>
+        <tr>
+        <td><img src="images/shijiacai_2.jpg" width="128" height="87" /></td>
+        <td align="left"><span class="STYLE8">炸虾饭</span>
+        <br />
+        <span class="STYLE6">主料：鲜虾<br />
+        做法：油炸<br />
+        推介理由：鲜酥松脆，色香味俱佳<br />
+        窗口：橄榄油窗口（一层）</span><br />
+        </td>
+        </tr>
+        <tr>
+        <td><img src="images/shijiacai_3.jpg" width="128" height="95" /></td>
+        <td align="left"><span class="STYLE8">铁板香糯饭</span>
+        <br />
+        <span class="STYLE6">主料：泰国香糯<br />
+        做法：铁板<br />
+        推介理由：鲜酥松脆，色香味俱佳<br />
+        窗口：橄榄油窗口（一层）</span><br />
+        </td>
+        </tr>
+        <tr>
+        <td><img src="images/shijiacai_5.jpg" width="129" height="100" /></td>
+        <td align="left"><span class="STYLE8">糟溜鱼片</span>
+        <br />
+        <span class="STYLE6">主料：草鱼<br />
+        做法：糟溜<br />
+        推介理由：鲜酥松脆，色香味俱佳<br />
+        窗口：橄榄油窗口（一层）</span><br />
+        </td>
+        </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+<map name="Map" id="Map">
+  <area shape="rect" coords="380,1,426,24" href="#" />
+  <area shape="rect" coords="319,0,365,23" href="#" />
+  <area shape="rect" coords="332,48,421,78" href="#" />
+  <area shape="rect" coords="236,49,325,79" href="#" />
+<area shape="rect" coords="140,51,229,81" href="#" /><area shape="rect" coords="44,50,133,80" href="#" /><area shape="rect" coords="257,0,303,23" href="#" /></map>
+
+<SCRIPT language="JavaScript">
+		var d;
+		d=new Date();
+		var iyear=d.getYear();
+		var imonth=d.getMonth();
+		
+       //SetCalender(iyear,imonth+1);
+</SCRIPT>
+</form>
+</body>
+</html>

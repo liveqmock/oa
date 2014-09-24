@@ -1,0 +1,273 @@
+<%@ page contentType="text/html; charset=GBK" %>
+
+
+<%@ page import="java.util.*" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="com.icss.oa.zbs.xtsduty.vo.TbXtsWorkinfomainVO" %>
+<%@ page import="com.icss.oa.phonebook.handler.PhoneHandler" %>
+<%@ page import="com.icss.common.log.ConnLog" %>
+<%@ page import="com.icss.j2ee.services.DBConnectionLocator" %>
+<%@ page import="com.icss.j2ee.services.DBConnectionLocatorException" %>
+<%@ page import="com.icss.j2ee.util.Globals" %>
+
+<%
+
+List mainDutyList = (List) request.getAttribute("mainDutyList") == null ? new ArrayList() : (List) request.getAttribute("mainDutyList");
+System.err.println("mainDutyList=" + mainDutyList.size());
+String userId = (String) request.getAttribute("userId") == null ? "" : (String) request.getAttribute("userId");
+Connection conn = null;
+try {
+	conn = DBConnectionLocator.getInstance().getConnection(Globals.DATASOURCEJNDI);
+	ConnLog.open("dutyList.jsp");
+	PhoneHandler handler = new PhoneHandler(conn);
+%>
+<html>
+<head>
+<title>工作日志记录</title>
+<link href="<%=request.getContextPath()%>/Style/css.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/Style/css_grey.css" id="homepagestyle" rel="stylesheet" type="text/css" />
+<style type="text/css">
+</style>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/zbs/include/judge.js"></script>
+<SCRIPT src="<%=request.getContextPath()%>/zbs/include/js/common.js"></SCRIPT>
+<script language="JavaScript"
+	src="<%=request.getContextPath()%>/zbs/include/formVerify.js"></script>
+<script language="JavaScript"
+	src="<%=request.getContextPath()%>/zbs/include/runFormVerify.js"></script>
+<script language="JavaScript"
+	src="<%=request.getContextPath()%>/zbs/include/extendString.js"></script>
+<script language="JavaScript"
+	src="<%=request.getContextPath()%>/zbs/include/js/calendar.js"></script>
+<script language="javascript">
+   function newDuty(){
+   		document.form1.action="<%=request.getContextPath()%>/servlet/XtsMainDutyAddServlet";
+		document.form1.submit();
+   }
+   function _dutysearch(){
+   		document.form1.action="<%=request.getContextPath()%>/servlet/XtsMainDutyListServlet?SearchFlag=1";
+		document.form1.submit();	
+   }
+   function _viewDuty(id){
+   		document.form1.action="<%=request.getContextPath()%>/servlet/XtsMainDutyViewServlet?wimid="+id;
+		document.form1.submit();   		
+   }
+   function _search2(){
+   		document.form1.action="<%=request.getContextPath()%>/servlet/XtsDutySearchServlet";
+		document.form1.submit();
+   }   
+
+   function fPopUpCalendarDlg(ctrlobj){
+	showx = event.screenX - event.offsetX +4 ; // + deltaX;
+	showy = event.screenY - event.offsetY + 18; // + deltaY;
+	newWINwidth = 210 + 4 + 18;
+	retval = window.showModalDialog("<%=request.getContextPath()%>/zbs/include/date.htm", "", "dialogWidth:197px; dialogHeight:210px; dialogLeft:"+showx+"px; dialogTop:"+showy+"px; status:no; directories:yes;scrollbars:no;Resizable=no; "  );
+	if( retval != null ){
+		ctrlobj.value = retval;
+	}
+  }
+</script>
+
+
+
+<style type="text/css">
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+</style>
+</head>
+<BODY text="#000000" leftMargin="0" topMargin="10">
+<form name=form1 method="post">
+<jsp:include page= "/include/top.jsp" />
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+	<tr>
+		<td bgcolor="#FFFFFF">&nbsp;</td>
+		<td valign="top">
+		<table border="0" align="left" cellpadding="0" cellspacing="0">
+
+			<tr>
+				<td width="37">
+				<div align="right"></div>
+			  </td>
+				<td width="750" class="black-12">
+				<table border="0" align="left" cellpadding="0" cellspacing="3">
+					<tr>
+						<td class="black-12">
+						<div align="right" class="grap2-12">业务管理中心值班时间(可不填)</div>
+						</td>
+						<td colspan="5">
+						<table border="0" cellspacing="2" cellpadding="0">
+							<tr>
+								<td class="grap2-12">从</td>
+								<td><input name="fromdate" type="text" class="biankuang-blue"
+									value="" onClick="fPopUpCalendarDlg(fromdate)" size="12"
+									readonly /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/images/calendar_view_day.gif"
+									width="16" height="16" alt="点击弹出日历"
+									onClick="fPopUpCalendarDlg(fromdate)" /></td>
+								<td class="grap2-12">&nbsp;到</td>
+								<td><input name="todate" type="text" class="biankuang-blue"
+									value="" onClick="fPopUpCalendarDlg(todate)" size="12" readonly /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/images/calendar_view_day.gif"
+									width="16" height="16" alt="点击弹出日历"
+									onClick="fPopUpCalendarDlg(todate)" /></td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td class="black-12">
+				<table border="0" align="left" cellpadding="0" cellspacing="3">
+					<tr>
+						
+						<td class="grap2-12">
+						<div align="right">值班领导</div>
+						</td>
+						<td><input name="dutyName" type="text" class="biankuang-blue"
+							size="22" /></td>
+						<td>
+						<div align="right" class="grap2-12">&nbsp;&nbsp;</div>
+						</td>
+						<td>&nbsp;<img
+							src="<%=request.getContextPath()%>/images/search.jpg" width="59"
+							height="19" hspace="10" onClick="javascript:_dutysearch()" />&nbsp;</td>
+						<td><a href="#" onClick="_search2()" style="text-decoration: none"><span
+							class="green-12-b">&gt;&gt;&nbsp;高级检索</span></a></td>
+							
+						
+					</tr>
+				</table>
+				</td>
+				<td align="center">
+						<img src='<%=request.getContextPath()%>/images/newduty.gif' alt="新建值班记录" onClick="javascrpit:newDuty()" style="cursor:hand"/>
+				</td>
+			</tr>
+		</table>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">&nbsp;</td>
+		<td valign="top">
+		<table width="100%" border="0" cellpadding="0" cellspacing="1" class="table_bgcolor">
+			<tr>
+				<td width="5%" height="24" class="block_title"><div align="center">序号</div>
+				</td>
+				<td width="20%" class="block_title">
+				<div align="center">日期</div>
+				</td>
+				<td width="45%" class="block_title">
+				<div align="center">当日值班领导</div>
+				</td>				
+				<td width="15%" class="block_title">
+				<div align="center">值班登记人</div>
+				</td>
+				<td width="10%" class="block_title">
+				<div align="center">详细</div>
+				</td>
+			</tr>
+			<%for (int i = 0; i < mainDutyList.size(); i++) {
+	TbXtsWorkinfomainVO vo = (TbXtsWorkinfomainVO) mainDutyList.get(i);
+	boolean isManager = false;
+	
+	Timestamp time = (Timestamp) vo.getWitDate();
+	System.err.println("Timestamp=" + time);
+	String timestr = "";
+	if (time != null) {
+		timestr = time.toString().substring(0, 10);
+	}
+	String leader = vo.getWitLeader();
+	
+	String secret = vo.getWitSecret();
+	
+	String creator = vo.getWitCreater();
+	if(creator.equals(userId)){
+		isManager =true;
+	}
+	String type = vo.getWitClass();
+	String type1 = "日志";
+	%>
+			<tr>
+				<!-- 序号 -->
+				<td height="26" bgcolor="#FFFFFF">
+				<div align="center" class="blue3-12"><%=i + 1%></div>
+				</td>
+				<!--<td bgcolor="#FFFFFF"><div align="center"><img src="<%=request.getContextPath()%>/images/email.gif" width="16" height="16" hspace="3" vspace="3" /></div></td>-->
+				
+				<!-- 日期 -->
+				<td bgcolor="#FFFFFF" class="blue3-12">
+				<div align="center"><%=timestr%>&nbsp; <%=type1%></div>
+				</td>
+								
+				<!-- 当日值班领导 -->
+				<td bgcolor="#FFFFFF" class="blue3-12"><a href="#"
+					onclick="javascrpit:_viewDuty('<%=vo.getWimId()%>')"  style="text-decoration: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;白班：<%=leader%><%if(leader.length()==2){ %>&nbsp;&nbsp;<%}%>&nbsp;&nbsp;&nbsp;&nbsp;夜班：<%=secret %></a>
+				</td>
+											
+				<!-- 值班登记人 -->
+				<td bgcolor="#FFFFFF" class="blue3-12">
+				<div align="center"><%=handler.getUserName(creator)%></div>
+				</td>
+				
+				<td bgcolor="#FFFFFF">
+				<table border="0" align="center" cellpadding="0" cellspacing="0">
+					<tr>
+						<td class="blue3-12"><a href="#"
+							onclick="javascrpit:_viewDuty('<%=vo.getWimId()%>')"
+							style="text-decoration: none"><%if(isManager){%>编辑<%}else{%>查看<%}%></a></td>
+						<td><!--<img src="<%=request.getContextPath()%>/images/icon_attachment.gif" width="16" height="16" hspace="5" />--></td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<%}%>
+			
+		</table>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#FFFFFF">
+        	<tr>
+				<td height="30" colspan="6">&nbsp;<%@ include file= "/include/defaultPageScrollBar.jsp" %>&nbsp;
+				</td>
+			</tr>
+        </table>
+   
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="11" bgcolor="#FFFFFF"><img
+			src="<%=request.getContextPath()%>/images/kongbai.jpg" width="11"
+			height="11" /></td>
+		<td valign="top">
+		<div align="left"></div>
+		</td>
+		<td width="11"><img
+			src="<%=request.getContextPath()%>/images/kongbai.jpg" width="11"
+			height="11" /></td>
+	</tr>
+</table>
+</form>
+</body>
+</html>
+<%} catch (DBConnectionLocatorException e) {
+	e.printStackTrace();
+
+} finally {
+	try {
+		if (conn != null) {
+			conn.close();
+			ConnLog.close("dutyList.jsp");
+		}
+	} catch (Exception e) {
+	}
+}
+%>

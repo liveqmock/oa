@@ -1,0 +1,17 @@
+/* Fvalidate Styles */
+.inp-focus {
+	border: 1px solid #73AAD2;
+}
+
+.inp-error {
+	border: solid 1px #CC6666;
+	background-color: #FFF2F2;
+}
+
+.err-msg {
+	display: none;
+	font-size: 0.85em;
+	margin: 4px;
+	color: #C66;
+	font-weight: bold;
+}

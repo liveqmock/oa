@@ -1,0 +1,8 @@
+邮件页面及删除后翻页问题修改
+jsp:   	filetransfer/messageList.jsp
+	filetransfer/messageShow.jsp
+	filetransfer/sendFile.jsp
+	address/pubaddress/selectPersonFrame.jsp
+
+servlet:   com.icss.oa.filetransfer.admin.DelMailServlet
+           com.icss.oa.filetransfer.admin.ShowFileServletn"}

@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+
+<frameset cols="280,*" frameborder="NO" border="0" framespacing="0">
+  <frame src="left.jsp" name="leftFrame" scrolling="NO" noresize>
+	<frameset rows="400,*" cols="*" frameborder="NO" border="1" framespacing="0">
+	 <frame src="<%=request.getContextPath()%> /servlet/SelectPersonServlet" name="mainFrame">
+	 <frame src="" name="listFrame">
+	</frameset>
+</frameset>
+<noframes><body>
+</body></noframes>
+</html>

@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Fvalidate is a web 2.0 HTML form validation plugin for jQuery 1.3x" />
+<meta name="keyword" content="jquery plugin,html,form validation,javascript,HTML forms,jQuery,input validation,web 2.0 forms" />
+<title>Fvalidate Demo - A web2.0 form validation plugin for jQuery-Modified by liuyong</title>
+<script type="text/javascript" src="jquery.js" ></script>
+<script type="text/javascript" src="Fvalidate.js" ></script>
+<link type="text/css" rel="stylesheet" href="style.css" />
+</head>
+<style>
+/* Fvalidate Styles */
+.inp-focus {
+        border: 1px solid #73AAD2;
+        }
+.inp-error {
+        border: solid 1px #CC6666;
+		background-color: #FFF2F2;
+        }
+.err-msg {
+        display: none;
+        font-size: 0.85em;
+		margin:4px;
+		color:#C66;
+		font-weight:bold;
+        }
+</style>
+
+<body>
+<div id="header">
+    <nav style="float:right;font-size:1.2em;">
+    <a href="index.html">Home</a>
+    <a href="http://code.google.com/p/fvalidate/downloads/list">Downloads</a>
+    <a href="http://code.google.com/p/fvalidate/w/list">Wiki</a>
+    <a href="demo.html">Demo</a>
+    </nav><h1>Fvalidate<small style="display:block;font-size:0.4em;color:#777;">A web2.0 form validation plugin for jQuery.</small></h1>
+</div>
+<div id="page">
+
+<div id="box">
+    <h2>内置的校验规则</h2>
+    <form id="myform1" name="myform1" method="get"> 
+        <label>字母示例: <small>(rule="alpha" && required)</small></label><input id="xx" name="1" type="text" rule="alpha" error="请输入正确的字母组合" label="字母示例" required/>
+        <label>数字示例: <small>(rule="number")</small></label><input name="2"  id="yy" type="text" rule="number" error="请输入数字组合" label="数字示例"/>
+        <label>浮点数示例: <small>(rule="float")</small></label><input name="3" type="text" rule="float" error="请输入浮点数" label="浮点数示例"/>
+        <label>字母和数字示例: <small>(rule="alphaAndNumber")</small></label><input name="4" type="text" rule="alphaAndNumber" error="请输入字母+数字" label="字母和数字示例"/>
+        <label>Email示例: <small>(rule="email")</small></label><input name="6" type="text" rule="email" error="请输入正确的email地址" label="Email示例"/>
+        <label>非特殊字符:<small>(rule="safeWord")</small></label><input name="7" type="text" rule="safeWord" error="请输入正确的非特殊字符" label="非特殊字符"/>
+        <label>URL:<small>(rule="url")</small></label><input name="8" type="text" rule="url" error="请输入正确URL" label="URL"/>
+        <label>ip:<small>(rule="ip")</small></label><input name="9" type="text" rule="ip" error="请输入正确ip" label="ip"/>
+        <input type="button" value="校验吧" class="submit"  onclick="verify();"/>
+    </form>
+     <script type="text/javascript">
+		$(document).ready(function(){
+			$("#myform1").Fvalidate({live:true});
+		});
+		function verify(){
+			$("#myform1").Fvalidate();
+		}
+    </script>
+</div>
+<h3>Javascript</h3>
+<XMP>$("#myform1").Fvalidate();</XMP>
+
+<div id="box">
+    	<h2>Confirm Field</h2>
+        <form id="myform2" name="myform2" method="get">
+        <label>UserId:</label><input name="userid" type="text" required="yes" label="用户名"/>
+
+        <label>Comfirm UserId:</label><input name="conf-userid" type="text" required="yes" label="用户名"/><br /><span class="err-msg">Userid doesn't match</span>
+        <input type="submit" value="Submit" class="submit" />
+        </form>
+		 <script type="text/javascript">
+			$(document).ready(function(){
+				$("#myform2").Fvalidate();
+					// this will attach the confirm validation to both the fields
+				$("input[name=conf-userid]").sameAs($("input[name=userid]"));
+			});
+        </script>
+</div>
+<h3>Javascript</h3>
+<XMP>$("#myform2").Fvalidate();
+  // this will attach the confirm validation to both the fields
+$("input[name=conf-userid]").sameAs($("input[name=userid]"));
+</XMP>
+
+<div id="box">
+    	<h2>Length Check</h2>
+        <form id="myform3" name="myform3" method="get">
+         <label>Username: <small>(minimum="6" maximum="12")</small></label><input name="username" type="text" required="yes" minlength="6" maxlength="12" label="用户名"/>
+       	 <label>Password: <small>(required="yes")</small></label><input name="password" type="text" required="yes" label="密码"/>
+         <input type="submit" value="Submit" class="submit" />
+        </form>
+		 <script type="text/javascript">
+			$(document).ready(function(){
+				$("#myform3").Fvalidate();
+			});
+        </script>
+</div>
+<h3>Javascript</h3>
+<XMP>$("#myform3").Fvalidate();
+</XMP>
+
+<div id="box">
+    	<h2>Radio &amp; Checkbox</h2>
+        <form id="myform4" name="myform4" method="get">
+
+       	 <input name="Checkbox1" type="checkbox" required="yes" label="第一个复选框"/> Checkbox1 (required)
+       	 <input name="Checkbox2" type="checkbox" /> Checkbox2<br />
+         <input type="radio" name="Radio1" required="yes" label="第一个单选框"/> Radio1 (required)
+         <input type="radio" name="Radio2" /> Radio2
+         <input type="submit" value="Submit" class="submit" />
+        </form>
+		 <script type="text/javascript">
+			$(document).ready(function(){
+				$("#myform4").Fvalidate();
+			});
+        </script>
+</div>
+<h3>Javascript</h3>
+<XMP>$("#myform4").Fvalidate();
+</XMP>
+
+<div id="box">
+    	<h2>Regex Rules</h2>
+        <form id="myform5" name="myform5" method="get">
+        <label>Address:</label><input name="address" type="text" label="地址" error="无效值"/>
+        <label>City:</label><input name="city" type="text"  label="城市" error="无效值"/>
+
+        <input type="submit" value="Submit" class="submit" />
+        </form>
+		 <script type="text/javascript">
+			$(document).ready(function(){
+				$("#myform5").Fvalidate();
+					// define your custom regex rules to jquery element(s)
+				$("input[name=address]").rule(/^[a-z0-9-\.\s]*$/);
+				$("input[name=city]").rule(/^[a-zA-Z\.\s]*$/);
+			});
+        </script>
+</div>
+<h3>Javascript</h3>
+<XMP>$("#myform5").Fvalidate();
+  // define your custom regex rules to the fields
+$("input[name=address]").rule(/^[a-z0-9-\s]*$/);
+$("input[name=city]").rule(/^[a-zA-Z\.\s]*$/);
+</XMP>
+
+<div id="box">
+    	<h2>Attach to Events</h2>
+        <form id="myform6" name="myform6" method="get">
+        <label>Name:</label><input name="event-username" type="text" required="yes"  label="用户名"/><br />
+        <a href="#" id="confirm">Confirm</a> | <a href="#" id="setError">Set Error</a> | <a href="#" id="removeError">Remove Error</a> | <a href="#" id="countError">Count Errors</a>
+        </form>
+		 <script type="text/javascript">
+			$(document).ready(function(){
+				$("#myform6").Fvalidate({submitButton: $("#confirm")});
+				$("a#setError").click(function(){
+					$("input[name=event-username]").setError('Hmmmm..');
+					return false;
+				});
+				$("a#removeError").click(function(){
+					$("input[name=event-username]").removeError();
+					return false;
+				});
+				$("a#countError").click(function(){
+					var count = $("#myform6").countErrors();
+					alert(count);
+					return false;
+				});
+			});
+        </script>
+</div>
+<h3>Javascript</h3>
+<XMP>$("#myform6").Fvalidate({submitButton: $("#confirm")});
+$("a#setError").click(function(){
+    $("input[name=event-username]").setError('Hmmmm..');
+    return false;
+});
+$("a#removeError").click(function(){
+    $("input[name=event-username]").removeError();
+    return false;
+});
+$("a#countError").click(function(){
+    var count = $("#myform6").countErrors();
+    alert(count);
+    return false;
+});
+</XMP>
+</div>
+<div id="footer">License: <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License v3</a> | Author: <a href="http://hasanhk.6te.net/" title="Visit Author Blog">Hasan Hameed</a> | For Advertisement or to report bug: <a href="mailto:theculpritz@hotmail.com" title="Email Me">Contact Me</a></div>
+
+<noscript>
+
+<!-- Free Web Hosting Area Start -->
+<br><center><a target="_blank" href="http://www.freewebhostingarea.com"><img src="http://users.freewebhostingarea.com/i/freehosting.png" border="0" width="88" height="15" alt="Free Web Hosting"></a></center>
+<script type="text/javascript" src="http://users.freewebhostingarea.com/a/l2.js"></script>
+<noscript><br><center><font color='#000000' face='Verdana' style='font-size: 11px; background-color:#FFFFFF'><a target='_blank' href='http://www.freewebhostingarea.com'><font color='#000000'>Free Web Hosting</font></a></font></center></noscript>
+<!-- Free Web Hosting Area End -->
+</body>
+</html>

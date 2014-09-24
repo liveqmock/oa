@@ -1,0 +1,116 @@
+/*
+ * Created on 2005-1-26
+ *
+ * 
+ */
+package com.icss.oa.address.vo;
+
+import com.icss.j2ee.vo.ValueObject;
+
+/**
+ *
+ * TODO To change the template for this generated type comment go to
+ * Window - Preferences - Java - Code Style - Code Templates
+ */
+public class AddressCommongroupAddressGrouprightVO extends ValueObject {
+
+	private Integer id;
+
+	private String groupname;
+
+	private String groupdes;
+
+	private String needaccredit;
+
+	private String owner;
+
+	private Integer levels;
+
+	private Integer rootid;
+
+	private Integer parentid;
+
+	private String userid;
+
+	private Integer groupid;
+
+	public void setId(Integer _id) {
+		id = _id;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setGroupname(String _groupname) {
+		groupname = _groupname;
+	}
+
+	public String getGroupname() {
+		return groupname;
+	}
+
+	public void setGroupdes(String _groupdes) {
+		groupdes = _groupdes;
+	}
+
+	public String getGroupdes() {
+		return groupdes;
+	}
+
+	public void setNeedaccredit(String _needaccredit) {
+		needaccredit = _needaccredit;
+	}
+
+	public String getNeedaccredit() {
+		return needaccredit;
+	}
+
+	public void setOwner(String _owner) {
+		owner = _owner;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setLevels(Integer _levels) {
+		levels = _levels;
+	}
+
+	public Integer getLevels() {
+		return levels;
+	}
+
+	public void setRootid(Integer _rootid) {
+		rootid = _rootid;
+	}
+
+	public Integer getRootid() {
+		return rootid;
+	}
+
+	public void setParentid(Integer _parentid) {
+		parentid = _parentid;
+	}
+
+	public Integer getParentid() {
+		return parentid;
+	}
+
+	public void setUserid(String _userid) {
+		userid = _userid;
+	}
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setGroupid(Integer _groupid) {
+		groupid = _groupid;
+	}
+
+	public Integer getGroupid() {
+		return groupid;
+	}
+}

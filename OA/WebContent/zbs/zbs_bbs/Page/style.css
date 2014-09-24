@@ -1,0 +1,228 @@
+.menu_text1 {
+	FONT-SIZE: 12px; FILTER: DropShadow(Color=white,OffX=1,OffY=1); FONT-FAMILY: "verdana"
+}
+.bount {
+	BORDER-RIGHT: #333333 1px solid; BORDER-TOP: #333333 1px solid; FONT-SIZE: 12px; VERTICAL-ALIGN: middle; BORDER-LEFT: #333333 1px solid; COLOR: #000000; BORDER-BOTTOM: #333333 1px solid; FONT-FAMILY: "Arial", "Helvetica", "sans-serif"; BACKGROUND-COLOR: #acdeff; TEXT-ALIGN: center
+}
+INPUT {
+	FONT-SIZE: 12px
+}
+INPUT.bt1 {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND-IMAGE: none; BORDER-LEFT: #999999 1px solid; CURSOR: hand; BORDER-BOTTOM: #999999 1px solid; BACKGROUND-REPEAT: repeat; FONT-FAMILY: 宋体, Arial; BACKGROUND-COLOR: #f7f5ee
+}
+INPUT.bt2 {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #999999 1px solid; CURSOR: hand; COLOR: #000000; PADDING-TOP: 2px; BORDER-BOTTOM: #999999 1px solid; HEIGHT: 22px; BACKGROUND-COLOR: #eeeeee
+}
+INPUT.txt1 {
+	BORDER-RIGHT: whitesmoke 1px solid; BORDER-TOP: whitesmoke 1px solid; FONT-SIZE: 12px; BORDER-LEFT: whitesmoke 1px solid; COLOR: #000000; BORDER-BOTTOM: #999999 1px solid; HEIGHT: 22px; BACKGROUND-COLOR: whitesmoke
+}
+INPUT.txt2 {
+	BORDER-RIGHT: #356b97 1px solid; BORDER-TOP: #356b97 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #356b97 1px solid; COLOR: #356b97; BORDER-BOTTOM: #356b97 1px solid; HEIGHT: 20px
+}
+INPUT.txt3 {
+	BORDER-RIGHT: #356b97 1px solid; BORDER-TOP: #356b97 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #356b97 1px solid; COLOR: #356b97; BORDER-BOTTOM: #356b97 1px solid; HEIGHT: 16px
+}
+SELECT {
+	FONT-SIZE: 12px
+}
+.a15 {
+	LINE-HEIGHT: 160%; LETTER-SPACING: 0.03em
+}
+.none {
+	BORDER-RIGHT: 0px solid; BORDER-TOP: 0px solid; FONT-SIZE: 12px; BORDER-LEFT: 0px solid; BORDER-BOTTOM: 0px solid; BACKGROUND-COLOR: #99cc00
+}
+.topic {
+	FONT: 12px/13pt "宋体"; COLOR: #003366
+}
+.cn {
+	FONT: 14px/20px 宋体
+}
+.en {
+	FONT-SIZE: 9pt; COLOR: #ff6600; FONT-FAMILY: Arial
+}
+.fl {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ff9933; FONT-FAMILY: 宋体
+}
+A:link {
+	COLOR: #003366; FONT-FAMILY: 宋体; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #003366; FONT-FAMILY: 宋体; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #336699; FONT-FAMILY: 宋体; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.1:link {
+	COLOR: #003399; FONT-FAMILY: 宋体; TEXT-DECORATION: underline
+}
+A.1:visited {
+	COLOR: #003399; FONT-FAMILY: 宋体; TEXT-DECORATION: underline
+}
+A.1:active {
+	COLOR: #ff66ff; FONT-FAMILY: 宋体; TEXT-DECORATION: none
+}
+A.1:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.6:link {
+	FONT-WEIGHT: bold; COLOR: #993300; FONT-FAMILY: Arial; TEXT-DECORATION: underline
+}
+A.6:visited {
+	FONT-WEIGHT: bold; COLOR: #993300; FONT-FAMILY: Arial; TEXT-DECORATION: underline
+}
+A.6:active {
+	FONT-WEIGHT: bold; COLOR: #ff66ff; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+A.6:hover {
+	FONT-WEIGHT: bold; COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.2:link {
+	COLOR: #006699; FONT-FAMILY: Arial; TEXT-DECORATION: underline
+}
+A.2:visited {
+	COLOR: #006699; FONT-FAMILY: Arial; TEXT-DECORATION: underline
+}
+A.2:active {
+	COLOR: #ff66ff; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+A.2:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.3:link {
+	COLOR: #ffffff; FONT-FAMILY: 宋体; TEXT-DECORATION: none
+}
+A.3:visited {
+	COLOR: #ffffff; FONT-FAMILY: 宋体; TEXT-DECORATION: none
+}
+A.3:active {
+	COLOR: #ff66ff; FONT-FAMILY: 宋体; TEXT-DECORATION: none
+}
+A.3:unknown {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.4:link {
+	COLOR: #0066cc; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+A.4:visited {
+	COLOR: #0066cc; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+A.4:active {
+	COLOR: #ff66ff; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+A.4:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.5:link {
+	COLOR: #003399; FONT-FAMILY: 宋体; TEXT-DECORATION: none
+}
+A.5:visited {
+	COLOR: #003399; FONT-FAMILY: 宋体; TEXT-DECORATION: none
+}
+A.5:active {
+	COLOR: #ff66ff; FONT-FAMILY: 宋体; TEXT-DECORATION: none
+}
+A.5:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.7:link {
+	COLOR: #006666; FONT-FAMILY: 宋体; TEXT-DECORATION: underline
+}
+A.7:visited {
+	COLOR: #006666; FONT-FAMILY: 宋体; TEXT-DECORATION: underline
+}
+A.7:active {
+	COLOR: #ff66ff; FONT-FAMILY: 宋体; TEXT-DECORATION: underline
+}
+A.7:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+BODY {
+	FONT-SIZE: 9pt
+}
+TH {
+	FONT-SIZE: 9pt
+}
+TD {
+	FONT-SIZE: 12px; COLOR: #0055a2
+}
+.biaodan {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; MARGIN-TOP: 1px; BORDER-LEFT: #000000 1px solid; COLOR: #000099; PADDING-TOP: 1px; BORDER-BOTTOM: #000000 1px solid
+}
+.xian {
+	BORDER-RIGHT: #333333 1px solid; BORDER-TOP: #333333 1px solid; BORDER-LEFT: #333333 1px solid; BORDER-BOTTOM: #333333 1px solid; BACKGROUND-COLOR: #ffffff
+}
+THEAD {
+	BORDER-RIGHT: #333333 thin dotted; PADDING-RIGHT: 1px; BORDER-TOP: #333333 thin dotted; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; MARGIN: 1px; BORDER-LEFT: #333333 thin dotted; PADDING-TOP: 1px; BORDER-BOTTOM: #333333 thin dotted
+}
+.biaoge {
+	BORDER-RIGHT: #999999 1px; BORDER-TOP: #999999 1px; BORDER-LEFT: #999999 1px; CLIP: rect(auto auto auto 1px); BOTTOM: 1px; BORDER-BOTTOM: #999999 1px dotted
+}
+.beijing {
+	BACKGROUND: url(../images/in-center-bj.gif) #e9f3ff repeat-y right bottom
+}
+.flatbox2 {
+	BORDER-RIGHT: 1px solid; BORDER-TOP: 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: 1px solid; BACKGROUND-COLOR: #eef4ff; TEXT-ALIGN: right
+}
+.css {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #ffffff
+}
+.text {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; FILTER: shadow(color=white,direction=135,strength=0)
+	font-size: 12px; COLOR: #318ecb
+}
+.text-01 {
+	FONT-SIZE: 12px; COLOR: #0055a2
+}
+.title-01 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; FILTER: shadow(color=white,direction=135,strength=0)
+	font-size: 12px; COLOR: #f7701f
+}
+.title-02 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #024c7b
+}
+.title-03 {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #024c7b; FONT-FAMILY: "Wingdings 3"
+}
+.title-04 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #0055a2
+}
+.title-05 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; FILTER: shadow(color=black,direction=0,strength=10)
+	font-size: 12px; COLOR: #ffffff
+}
+.lineheight {
+	FONT-SIZE: 12px; COLOR: #0055a2; LINE-HEIGHT: 18px
+}
+.text-06 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #0055a2
+}
+.dot-border {
+	BORDER-RIGHT: #0055a2 1px solid; BORDER-TOP: #0055a2 1px solid; BORDER-LEFT: #0055a2 1px solid; BORDER-BOTTOM: #0055a2 1px
+}
+.dot-border2 {
+	BORDER-RIGHT: #0055a2 1px solid; BORDER-TOP: #0055a2 1px solid; BORDER-LEFT: #0055a2 1px solid; BORDER-BOTTOM: #0055a2 1px solid
+}
+.dot {
+	BORDER-RIGHT: #0055a2 1px solid; BORDER-TOP: #0055a2 1px; BORDER-LEFT: #0055a2 1px; BORDER-BOTTOM: #0055a2 1px dotted
+}
+.dot-side {
+	BORDER-RIGHT: #0055a2 1px solid; BORDER-TOP: #0055a2 1px; BORDER-LEFT: #0055a2 1px solid; BORDER-BOTTOM: #0055a2 1px
+}
+.dot2 {
+	BORDER-RIGHT: #0055a2 1px solid; BORDER-TOP: #0055a2 1px; BORDER-LEFT: #0055a2 1px; BORDER-BOTTOM: #0055a2 1px
+}
+.dot-right {
+	BORDER-RIGHT: #0055a2 1px; BORDER-TOP: #0055a2 1px; BORDER-LEFT: #0055a2 1px; BORDER-BOTTOM: #0055a2 1px dotted
+}
+.dot-none {
+	BORDER-RIGHT: #0055a2 1px; BORDER-TOP: #0055a2 1px; BORDER-LEFT: #0055a2 1px; BORDER-BOTTOM: #0055a2 1px
+}
+.dot-bottom {
+	BORDER-RIGHT: #0055a2 1px; BORDER-TOP: #0055a2 1px; BORDER-LEFT: #0055a2 1px; BORDER-BOTTOM: #0055a2 1px dotted
+}
+.dot-top {
+	BORDER-RIGHT: #0055a2 1px solid; BORDER-TOP: #0055a2 1px; BORDER-LEFT: #0055a2 1px; BORDER-BOTTOM: #0055a2 1px
+}

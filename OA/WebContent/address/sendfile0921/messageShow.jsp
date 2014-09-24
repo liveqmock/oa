@@ -1,0 +1,313 @@
+<%@ page contentType="text/html; charset=gb2312" %>
+
+<%
+response.setHeader("Pragma", "No-cache");
+response.setHeader("Cache-Control", "no-cache");
+response.setDateHeader("Expires", 0);
+%>
+<%@page import="java.util.*"%>
+<%@page import="javax.mail.Message"%>
+<%@page import="javax.mail.internet.MimeMessage"%>
+<%@page import="com.icss.oa.filetransfer.handler.AttachFileBean"%>
+<%@page import="com.icss.oa.filetransfer.handler.AttachHelper"%>
+<%@page import="javax.mail.internet.MimeUtility"%>
+<%
+
+MimeMessage fileMessage = (MimeMessage)request.getAttribute("fileMsg");
+String folder = (String)request.getAttribute("folder");
+String content = (String)request.getAttribute("content");
+String type = (String)request.getAttribute("type");
+String mailName = (String)request.getAttribute("mailName");
+
+List tolist = (List)request.getAttribute("tolist");
+List cclist = (List)request.getAttribute("cclist");
+//阅读记录的人中文名
+List readPersonlist = (List)request.getAttribute("readPersonlist");
+//保存的邮件的接收人
+String recePerson = (String)request.getAttribute("recePerson");
+
+String _curPageNum = request.getParameter("curPageNum");
+//排序字段名 默认按时间字段 0:按照时间排序 1:按照大小排序
+String sortname = request.getParameter("sortname");
+//排序方式 默认为倒序
+String sorttype = request.getParameter("sorttype");
+
+%>
+<HTML><HEAD><TITLE>文件内容</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<LINK href="<%=request.getContextPath()%>/include/style.css" rel=stylesheet>
+<SCRIPT language=JavaScript src="<%=request.getContextPath()%>/include/common.js"></SCRIPT>
+<Script Language=javascript> 
+function _pbLeftClick(){ 
+    if(event.button==0){
+        alert ("请点击右键，选择'目标另存为'。");
+        return false;
+    }
+}
+
+function _changeRece(){
+	if(rece1.style.display=="none"){
+ 		rece1.style.display = "block";
+ 		rece2.style.display = "block";
+ 	}else{
+ 	 	rece1.style.display = "none";
+ 		rece2.style.display = "none";
+ 	}
+}
+
+function _changeCc(){
+	if(cc1.style.display=="none"){
+ 		cc1.style.display = "block";
+ 		cc2.style.display = "block";
+ 	}else{
+ 	 	cc1.style.display = "none";
+ 		cc2.style.display = "none";
+ 	}
+}
+</Script> 
+</head>
+<BODY leftmargin="10" background="<%=request.getContextPath()%>/images/bg-08.gif">
+
+<form name="printheader" method="post" action="">
+<input type="hidden" name="folder" value="<%=folder%>">
+<table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="2%" background="<%=request.getContextPath()%>/images/bg-12.gif"><img src="<%=request.getContextPath()%>/images/bg-10.gif" width="14" height="22"></td>
+      <td background="<%=request.getContextPath()%>/images/bg-12.gif" class="title-05">阅读文件</td>
+      <td width="1%"><div align="right"><img src="<%=request.getContextPath()%>/images/bg-11.gif" width="20" height="22"></div></td>
+    </tr>
+</table>
+  <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="1" background="<%=request.getContextPath()%>/images/bg-21.gif"><img src="<%=request.getContextPath()%>/images/bg-21.gif" width="1" height="4"></td>
+      <td width="100%">
+      <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td>
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <tr>
+                <td class="tblnormalcellbg" width="100%">
+                    <table width="100%"  border="0" cellpadding="0" cellspacing="0">
+                    <input type="hidden" name="subject" value="<%=fileMessage.getSubject()%>">
+					<input type="hidden" name="folder" value="<%=folder%>">
+					<input type="hidden" name="mailName" value="<%=mailName%>">
+					<input type="hidden" name="messageid" value="<%=mailName%>">
+					<input type="hidden" name="content" value="<%=content%>">
+					<input type="hidden" name="from" value="<%=MimeUtility.decodeText(fileMessage.getFrom()[0].toString())%>">
+					<input type="hidden" name="type" value="<%=type%>">
+                      <tr>
+                        <td width="15%" height="22" bgcolor="D8EAF8" class="text-01"><div align="right" class="title-04"> <strong>发件人： </strong> </div></td>
+                        <td width="2" rowspan="18" valign="top" background="<%=request.getContextPath()%>/images/bg-18.gif"><img src="../userweb/images/bg-18.gif" width="2" height="2"></td>
+                        <td width="85%" height="22" bgcolor="F2F9FF" class="text-01">&nbsp;&nbsp;
+                            <%=(String)request.getAttribute("sendMan")%>
+                            <!--<img align="middle" src="<%=request.getContextPath()%>/images/filetransfer/addusergroup.gif" border="0" style="cursor:hand" alt="加入个人分组" onclick="window.open('<%=request.getContextPath()%>/servlet/GetIndiGroupServlet?from=<%=fileMessage.getFrom()[0].toString()%>','','width=400,height=250,toolbar=0,directories=0,status=0,menu=0,scrollbars=yes,resizable=yes,copyhistory=no,left=170,top=150')">-->
+                            <img id="addUserGroup" align="middle" src="<%=request.getContextPath()%>/images/filetransfer/addusergroup.gif" border="0" style="cursor:hand" alt="加入个人分组" onclick="_openPage('<%=request.getContextPath()%>/servlet/GetIndiGroupServlet?from=<%=fileMessage.getFrom()[0].toString()%>')">
+						    &nbsp;&nbsp;<img align="absmiddle" src="<%=request.getContextPath()%>/images/personinf.gif" border="0" style="cursor:hand" alt="查看发信人详细信息" onclick="window.open('<%=request.getContextPath()%>/servlet/GetPersonInfoServlet?from=<%=fileMessage.getFrom()[0].toString()%>','','width=500,height=200,toolbar=0,directories=0,status=0,menu=0,scrollbars=no,resizable=yes,copyhistory=no,left=170,top=110')">
+						    <input type="checkbox" name="rece" onclick="javascript:_changeRece()"> 显示收件人
+							<%
+                      			if(fileMessage.getRecipients(Message.RecipientType.CC)!=null){
+                      		%>
+							<input type="checkbox" name="cc" onclick="javascript:_changeCc()"> 显示抄送人
+							<%
+								}
+							%>
+						</td>
+                      </tr>
+                      <tr>
+                        <td height="2" background="<%=request.getContextPath()%>/images/bg-13.gif" class="text-01"></td>
+                        <td background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                      </tr>
+                      <tr id="rece1" style="display:none">
+                        <td height="22" bgcolor="D8EAF8" class="text-01"><div align="right" class="title-04"> <strong>收件人： </strong> </div></td>
+                        <td bgcolor="F2F9FF" class="text-01">&nbsp;&nbsp;
+                        <%
+                        	if(!("".equals(recePerson))){
+                        		out.print(recePerson);
+                        	}else{
+                            	if(tolist!=null||tolist.size()!=0){
+                            		for(int i = 0; i < tolist.size(); i ++){
+                            	    	if(i!=0) out.print(",");
+	                            		out.print(tolist.get(i));
+                            		}
+                            	}
+                            }
+                        %>
+                        </td>
+                      </tr>
+                      <tr id="rece2" style="display:none">
+                        <td height="2" background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                        <td background="<%=request.getContextPath()%>/images/bg-13.gif" bgcolor="F2F9FF" class="text-01"></td>
+                      </tr>
+                      <%
+                      if(fileMessage.getRecipients(Message.RecipientType.CC)!=null){
+                      %>
+                      <tr id="cc1" style="display:none">
+                        <td height="22" bgcolor="D8EAF8" class="text-01"><div align="right" class="title-04"> <strong>抄送： </strong> </div></td>
+                        <td bgcolor="F2F9FF" class="text-01">&nbsp;&nbsp;
+                        <%
+                            if(cclist!=null||cclist.size()!=0){
+                            	for(int i = 0; i < cclist.size(); i ++){
+                            		if(i!=0) out.print(",");
+	                            	out.print(cclist.get(i));
+                            	}
+                            }
+                        %>
+                        </td>
+                      </tr>
+                      <tr id="cc2" style="display:none">
+                        <td height="2" background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                        <td background="<%=request.getContextPath()%>/images/bg-13.gif" bgcolor="F2F9FF" class="text-01"></td>
+                      </tr>
+                      <%}%>
+                      <tr>
+                        <td height="22" bgcolor="D8EAF8">
+                          <div align="right" class="title-04"><strong>文件标题：</strong> </div></td>
+                        <td bgcolor="F2F9FF" >&nbsp;&nbsp;<%=fileMessage.getSubject().substring(0,fileMessage.getSubject().length()-13)%></td>
+                      </tr>
+                      <tr>
+                        <td height="2" background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                        <td background="<%=request.getContextPath()%>/images/bg-13.gif" bgcolor="F2F9FF" class="text-01"></td>
+                      </tr>
+                      <tr>
+                        <td height="22" bgcolor="D8EAF8">
+                          <div align="right" class="title-04"><strong>发件日期：</strong> </div></td>
+                        <td bgcolor="F2F9FF" class="text-01">&nbsp;&nbsp;<%=com.icss.oa.util.CommUtil.getTime(fileMessage.getSentDate().getTime())%></td>
+                      </tr>
+                      <tr>
+                        <td height="2" background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                        <td background="<%=request.getContextPath()%>/images/bg-13.gif" bgcolor="F2F9FF" class="text-01"></td>
+                      </tr>
+                	  <tr>
+                  		<td colspan="3" valign="top"  align="center" bgcolor="white">
+                  			<table width="90%"  border="0" cellspacing="0" cellpadding="5" >
+                    		<tr>
+                      			<td> <%=request.getAttribute("content")%> </td>
+                    		</tr>
+                    		</table>
+                    	</td>
+                      </tr>
+                	  <tr>
+                  		<td colspan="3" valign="top"  align="center" bgcolor="white">
+                  			<table width="90%"  border="0" cellspacing="0" cellpadding="5" >
+                    		<tr>
+                      			<td> 
+                    <%
+ArrayList fileList = (ArrayList)request.getAttribute("attachList");
+if(fileList != null && fileList.size() > 0){ //附件存在
+%>附件:<br> <%
+	for(int i = 0; i < fileList.size(); i ++){	
+		AttachFileBean attachFileBean = (AttachFileBean)fileList.get(i);
+%>
+       <a href="<%=request.getContextPath()%>/servlet/DownloadAttachServlet?url=<%=attachFileBean.getDownloadUrl()%>&filename=<%=attachFileBean.getFileOriginName()%>" target="<%= attachFileBean.getFileOriginName()%>"><font color="red"><b>点击下载&nbsp;<%=attachFileBean.getFileOriginName()%>(<%=AttachHelper.getFileSize(attachFileBean.getFilesize())%>)</font></a>&nbsp;&nbsp;
+       <a href="#" onclick="window.open('<%=request.getContextPath()%>/servlet/SaveAccessServlet?url=<%=attachFileBean.getDownloadUrl()%>&filename=<%=attachFileBean.getFileOriginName()%>','','width=500,height=300,toolbar=0,directories=0,status=0,menu=0,scrollbars=yes,resizable=yes,copyhistory=no,left=252,top=110')" title="[点击后选择要保存到网络文件夹中的位置。确定则保存,取消则放弃。]"><b>添加到网络文件夹</a><br>
+<%
+	}//end for
+}//end if
+%>                        	    </td>
+                    		</tr>
+                    		</table>
+                    	</td>
+                      </tr>
+                      <tr>
+                        <td height="2" background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                        <td background="<%=request.getContextPath()%>/images/bg-13.gif" bgcolor="F2F9FF" class="text-01"></td>
+                      </tr>                      
+<%
+if(readPersonlist!=null&&readPersonlist.size()>0){
+%>
+                  	  <tr>
+                   		<td width="15%" height="22" bgcolor="D8EAF8">
+                   		<div align="right" class="title-04"><strong>已阅人员：</strong> </div>
+                   		</td>                   		
+                   		<td width="85%" bgcolor="F2F9FF" class="text-01">&nbsp;&nbsp;
+<%                   		
+    Iterator personItr = readPersonlist.iterator();
+    int num = 0;
+    while(personItr.hasNext()){
+        if(num!=0)  out.print(",");
+        out.print(personItr.next());
+        num++;
+    }
+%>    
+                   		</td>
+                  	   </tr>
+                      <tr>
+                        <td height="2" background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                        <td background="<%=request.getContextPath()%>/images/bg-13.gif" bgcolor="F2F9FF" class="text-01"></td>
+                      </tr>
+<%                        
+} //if
+%>                	                                                                      
+                    </table>
+                   </td>
+              </tr>
+      </table></td>
+    </tr>
+    </table> </td>      
+      <td width="1" background="<%=request.getContextPath()%>/images/bg-22.gif"><img src="<%=request.getContextPath()%>/images/bg-22.gif" width="1" height="4"></td>
+    </tr>
+</table> 
+	<table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="1%"><img src="<%=request.getContextPath()%>/images/bg-21.jpg" width="10" height="21"></td>
+          <td width="48%" background="<%=request.getContextPath()%>/images/bg-23.jpg" class="text-01">&nbsp;</td>
+          <td width="49%" background="<%=request.getContextPath()%>/images/bg-23.jpg" class="text-01"><div align="right"></div></td>
+          <td width="2%" background="<%=request.getContextPath()%>/images/bg-23.jpg"><div align="right"><img src="<%=request.getContextPath()%>/images/bg-22.jpg" width="11" height="21"></div></td>
+        </tr>
+    </table>
+    </form>  
+            <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+                 <tr align="center">
+                     <td width="100%">
+						<a href="javascript:reply()"><img src="<%=request.getContextPath()%>/images/botton-reply.gif" width="70" height="22" hspace="10"  border=0></a>
+						<a href="javascript:transmit()"><img src="<%=request.getContextPath()%>/images/botton-transmit.gif" width="70" height="22" hspace="10"  border="0"></a>
+						<a href="javascript:_Delete()"><img src="<%=request.getContextPath()%>/images/botton-delete.gif" width="70" height="22" hspace="10"  border="0" ></a>
+						<a href="javascript:_goback('<%=type%>')"><img src="<%=request.getContextPath()%>/images/botton-return.gif" width="70" height="22" hspace="10"  border="0" ></a>
+                     </td>
+                 </tr>
+			 </table>
+</body>
+<script>
+//回复
+function reply(){
+	document.printheader.action="<%=request.getContextPath()%>/servlet/BuildReplyServlet?curPageNum=<%=_curPageNum%>&sortname=<%=sortname%>&sorttype=<%=sorttype%>";
+	document.printheader.submit();
+}
+
+//转发
+function transmit(){
+	document.printheader.action="<%=request.getContextPath()%>/servlet/SendFileBuildTransmitServlet";
+	document.printheader.submit();
+}
+
+//返回
+function _goback(type){
+    if(type=="searchmail"){
+	    document.location.href="<%=request.getContextPath()%>/servlet/SearchMailServlet";
+	}else if(type=="noread"){
+	    document.location.href="<%=request.getContextPath()%>/servlet/ShowNoReadServlet";
+	}else{
+	    document.location.href="<%=request.getContextPath()%>/servlet/MessageListServlet?type="+type+"&folder=<%=folder%>&curPageNum=<%=_curPageNum%>&sortname=<%=sortname%>&sorttype=<%=sorttype%>";
+	}
+}
+
+//下载附件
+function _downloadattach(uploadurl,filename){
+    document.location.href = "<%=request.getContextPath()%>/servlet/DownloadAttachServlet?url="+uploadurl+"&filename="+filename;
+    //window.location.reload();
+}
+
+//删除
+function _Delete()
+{
+     if(confirm("您要选择永久删除这些文件吗？")){
+     document.printheader.action="<%=request.getContextPath()%>/servlet/DelMailServlet?curPageNum=<%=_curPageNum%>&sortname=<%=sortname%>&sorttype=<%=sorttype%>";
+     document.printheader.submit();
+     return true;
+    }else{
+     // return false;
+    }
+}
+
+</script>
+</html>

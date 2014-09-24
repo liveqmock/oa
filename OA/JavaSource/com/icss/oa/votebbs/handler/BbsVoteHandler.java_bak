@@ -1,0 +1,134 @@
+/*
+ * 创建日期 2007-3-6
+ *
+ * 更改所生成文件模板为
+ * 窗口 > 首选项 > Java > 代码生成 > 代码和注释
+ */
+package com.icss.oa.votebbs.handler;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.icss.j2ee.dao.DAOException;
+import com.icss.j2ee.dao.DAOFactory;
+import com.icss.oa.log.dao.LogMsgDAO;
+import com.icss.oa.log.dao.LogSysDAO;
+import com.icss.oa.log.vo.LogMsgVO;
+import com.icss.oa.votebbs.dao.BbsMainarticleDAO;
+import com.icss.oa.votebbs.dao.BbsOptionsDAO;
+import com.icss.oa.votebbs.dao.BbsReplyDAO;
+import com.icss.oa.votebbs.vo.BbsMainarticleVO;
+import com.icss.oa.votebbs.vo.BbsOptionsVO;
+import com.icss.oa.votebbs.vo.BbsReplyVO;
+
+/**
+ * @author 王苏
+ *
+ * 更改所生成类型注释的模板为
+ * 窗口 > 首选项 > Java > 代码生成 > 代码和注释
+ */
+public class BbsVoteHandler {
+	Connection conn = null;
+	/**
+	 * 
+	 * 构造函数
+	 * @param _conn
+	 */
+	public BbsVoteHandler(Connection _conn) {
+		this.conn = _conn;
+	}
+	
+	/**
+	 * 
+	 * @param whereClause
+	 * @return
+	 */
+	public List getReplyListByClause(String whereClause) {
+		
+		List result = new ArrayList();
+		
+		try{
+			DAOFactory factory = new DAOFactory(conn);
+			BbsReplyDAO replydao = new BbsReplyDAO();
+			factory.setDAO(replydao);
+			replydao.setWhereClause(whereClause);
+			result = factory.find(new BbsReplyVO());
+			return result;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+/**
+ * 在管理页面中取得文章列表
+ * @return
+ */
+	public List getArticalManagerList() {
+		BbsMainarticleDAO dao = new BbsMainarticleDAO();
+		DAOFactory factory = new DAOFactory(conn);
+		dao.addOrderBy("logTime",false);
+		factory.setDAO(dao);
+		
+		List list = null;
+		try {
+			list = factory.find(new BbsMainarticleVO());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+/**
+ * 增加文章
+ * @param articalvo
+ */
+public void addArtical(BbsMainarticleVO vo) {
+	BbsMainarticleDAO dao = new BbsMainarticleDAO();
+	dao.setValueObject(vo);
+	dao.setConnection(conn);
+	try {
+		dao.create();
+	} catch (DAOException e) {
+		e.printStackTrace();
+	}
+	
+}
+/**
+ * 在管理页面中取得选项的列表
+ * @param mainid
+ * @return
+ */
+public List getarticalOptionList(Integer mainid) {
+	BbsOptionsDAO dao = new BbsOptionsDAO();
+	DAOFactory factory = new DAOFactory(conn);
+	dao.addOrderBy("opOrder",false);
+	factory.setDAO(dao);
+	
+	List list = null;
+	try {
+		list = factory.find(new BbsOptionsVO());
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return list;
+}
+/**
+ * 增加文章选项
+ * @param vo
+ */
+public void addOption(BbsOptionsVO vo) {
+	BbsOptionsDAO dao = new BbsOptionsDAO();
+	dao.setValueObject(vo);
+	dao.setConnection(conn);
+	try {
+		dao.create();
+	} catch (DAOException e) {
+		e.printStackTrace();
+	}
+	
+}
+	
+	
+}

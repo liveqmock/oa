@@ -1,0 +1,321 @@
+<%@ page contentType="text/html; charset=GBK" %>
+
+<%
+response.setHeader("Pragma", "No-cache");
+response.setHeader("Cache-Control", "no-cache");
+response.setDateHeader("Expires", 0);
+%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.icss.oa.intendwork.vo.OfficePendingVO"%>
+<%@ page import="com.icss.oa.config.IntendWorkConfig"%>
+<%@ page import="com.icss.oa.util.CommUtil"%>
+<%@ page import="com.icss.oa.util.ParamUtils"%>
+<%@ page import="com.icss.oa.intendwork.helper.*"%>
+
+<%--*******************以下代码是站点统计的扩展标记/Start****************************--%>
+<%@ page import="com.icss.oa.util.*" %>
+<%@ taglib uri="/WEB-INF/stat.tld" prefix="stat" %>    
+<%
+		
+		if(("1").equals(StatSiteControl.geSwitch())){
+		String modulename = StatPropertyManager.getString("stat_module15");   
+		String ip=request.getRemoteAddr();		  
+%>
+< stat:stat modulename="<%=modulename%>" ip="<%=ip%>" /><%}%>
+<%--*******************站点统计的扩展标记到此结束/End****************************--%>
+
+<%
+Collection workListCollection = (Collection)request.getAttribute("workList");
+
+Iterator workListGroupIterator = workListCollection.iterator();
+
+String flag = ParamUtils.getParameter(request, "flag", false);
+if(flag == null ){
+	flag = "0" ;
+}
+else if (flag.equals(IntendWorkConfig.WORKFLAG_HASDONE))
+	flag = "1";
+else if (flag.equals(IntendWorkConfig.WORKFLAG_NOTDO))
+	flag = "2";
+
+%>
+<HTML><HEAD><TITLE>待办工作</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<LINK href="<%=request.getContextPath()%>/include/style.css" rel=stylesheet>
+<SCRIPT LANGUAGE="JavaScript" src="<%=request.getContextPath()%>/include/calendar.js"></SCRIPT>
+<SCRIPT language=JavaScript>
+writeDIV();//启动日历javascript
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+function CheckAll()
+ {
+   for (var i=0;i<document.workForm.elements.length;i++)
+   {
+     var e = document.workForm.elements[i];
+	  if (e.name == 'workid')
+		 e.checked = document.workForm.allbox.checked;
+   }
+ }
+ 
+
+function search(path){
+	document.workForm.action = path + "/servlet/IntendWorkListServlet";
+	document.workForm.submit();
+}
+
+function setSelect(){
+	var selectid = 0;
+	
+	document.workForm.flag.selectedIndex = <%=flag%>;
+	
+}
+
+function _delete(){
+	if(check()){
+		document.workForm.action = "<%=request.getContextPath()%>/servlet/DeleteWorkServlet";
+		document.workForm.submit();
+	}
+	else{
+		alert("请选择要删除的工作！");
+	}
+}
+
+function check(){
+	for (var i=0;i<document.workForm.elements.length;i++)
+   {
+     var e = document.workForm.elements[i];
+	  if (e.name == 'workid' && e.checked){
+		 return true;
+		}
+   }
+   return false;
+}
+
+function _dowork(workid,url,navigate,type){
+	var funnav;
+	if ((navigate == "null")||(navigate == "#")){
+		window.top._funNav(4);
+	}else{
+		window.top._funNav(2);
+	}
+//	alert(type);
+	if ((type == "11")||(type == "12")){	//弹出显示
+		window.open("<%=request.getContextPath()%>/servlet/DoWorkServlet?workid="+workid+"&url=" + url,"","width=660,height=240,toolbar=0,directories=0,status=0,menu=0,scrollbars=yes,resizable=yes,copyhistory=no,left=170,top=110");
+	}else{									//本页显示
+		window.top.leftFrame.location = navigate;
+		window.top.mainFrame.location = "<%=request.getContextPath()%>/servlet/DoWorkServlet?workid="+workid+"&url=" + url;
+	}
+	
+}
+
+function fPopUpCalendarDlg(ctrlobj){
+<!--
+	showx = event.screenX - event.offsetX +4 ; // + deltaX;
+	showy = event.screenY - event.offsetY + 18; // + deltaY;
+	newWINwidth = 210 + 4 + 18;
+	retval = window.showModalDialog("<%=request.getContextPath()%>/include/date.htm", "", "dialogWidth:197px; dialogHeight:210px; dialogLeft:"+showx+"px; dialogTop:"+showy+"px; status:no; directories:yes;scrollbars:no;Resizable=no; "  );
+	if( retval != null ){
+		ctrlobj.value = retval;
+	}
+//-->
+}
+</SCRIPT>
+</head>
+
+<body  background="<%=request.getContextPath()%>/images/bg-08.gif">
+<form name="workForm" method="post" action="">
+  <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="2%" background="<%=request.getContextPath()%>/images/bg-12.gif"><img src="<%=request.getContextPath()%>/images/bg-10.gif" width="14" height="22"></td>
+      <td background="<%=request.getContextPath()%>/images/bg-12.gif" class="title-05">待办工作搜索</td>
+      <td width="1%"><div align="right"><img src="<%=request.getContextPath()%>/images/bg-11.gif" width="20" height="22"></div></td>
+    </tr>
+  </table>
+  <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="1" background="<%=request.getContextPath()%>/images/bg-21.gif"><img src="<%=request.getContextPath()%>/images/bg-21.gif" width="1" height="4"></td>
+      <td width="100%"><table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td background="<%=request.getContextPath()%>/images/bg-09.jpg"><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="26%" height="22" class="text-01"><div align="right">标题：</div></td>
+                  <td width="2" rowspan="6" valign="top" background="<%=request.getContextPath()%>/images/bg-18.gif"></td>
+                  <td bgcolor="F2F9FF" class="text-01"> <input name="topic" type="text" size="47" class="txt2"></td>
+                </tr>
+                <tr>
+                  <td height="2" background="<%=request.getContextPath()%>/images/bg-13.gif" class="text-01"></td>
+                  <td background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                </tr>
+                <tr>
+                  <td height="22" class="text-01"><div align="right">加入时间：</div></td>
+                  <td bgcolor="F2F9FF" class="text-01">从 
+                      <input type="text" name="startTime" size="16" class="txt2" readonly style="cursor:hand;" onclick="fPopUpCalendarDlg(startTime)"> 
+                    <img src="<%=request.getContextPath()%>/images/calendar.gif" style="cursor:hand;" border=0 align="absmiddle" alt="点击 弹出日历" onclick="fPopUpCalendarDlg(startTime)">
+                  到 
+                      <input type="text" name="endTime" size="16" class="txt2" readonly style="cursor:hand;" onclick="fPopUpCalendarDlg(endTime)"> 
+                    <img src="<%=request.getContextPath()%>/images/calendar.gif" style="cursor:hand;" border=0 align="absmiddle" alt="点击 弹出日历" onclick="fPopUpCalendarDlg(endTime)">
+                  </td>
+                </tr>
+                <tr>
+                  <td height="2" background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                  <td background="<%=request.getContextPath()%>/images/bg-13.gif" bgcolor="F2F9FF" class="text-01"></td>
+                </tr>
+                <!--<tr>
+                  <td height="11"><div align="right" class="text-01">是否已处理：</div></td>
+                  <td bgcolor="F2F9FF" class="text-01"><select name="flag" >
+                  	  <option value="<%=IntendWorkConfig.WORKFLAG_ALL%>" selected>全部</option>
+                      <option value="<%=IntendWorkConfig.WORKFLAG_HASDONE%>">已处理</option>
+                      <option value="<%=IntendWorkConfig.WORKFLAG_NOTDO%>" >未处理</option>
+                  </select></td>
+                </tr>
+                <tr>
+                  <td height="2" background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                  <td background="<%=request.getContextPath()%>/images/bg-13.gif" bgcolor="F2F9FF" class="text-01"></td>
+                </tr>-->
+            </table></td>
+          </tr>
+      </table></td>
+      <td width="1" background="<%=request.getContextPath()%>/images/bg-22.gif"><img src="<%=request.getContextPath()%>/images/bg-22.gif" width="1" height="4"></td>
+    </tr>
+  </table>
+  <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="1%"><img src="<%=request.getContextPath()%>/images/bg-21.jpg" width="10" height="21"></td>
+      <td width="97%" background="<%=request.getContextPath()%>/images/bg-23.jpg" class="text-01" align="center"><img src="<%=request.getContextPath()%>/images/botton-search_in.gif" style="cursor:hand" onclick="javascript:search('<%=request.getContextPath()%>')" ></td>
+      <td width="2%" background="<%=request.getContextPath()%>/images/bg-23.jpg"><div align="right"><img src="<%=request.getContextPath()%>/images/bg-22.jpg" width="11" height="21"></div></td>
+    </tr>
+  </table>
+  <p></p>
+  <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="2%" background="<%=request.getContextPath()%>/images/bg-12.gif"><img src="<%=request.getContextPath()%>/images/bg-10.gif" width="14" height="22"></td>
+      <td background="<%=request.getContextPath()%>/images/bg-12.gif"  class="title-05">待办工作列表</td>
+      <td width="1%"><div align="right"><img src="<%=request.getContextPath()%>/images/bg-11.gif" width="20" height="22"></div></td>
+    </tr>
+  </table>
+  <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="1" background="<%=request.getContextPath()%>/images/bg-21.gif"><img src="<%=request.getContextPath()%>/images/bg-21.gif" width="1" height="4"></td>
+      <td width="100%"><table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td background="<%=request.getContextPath()%>/images/bg-09.jpg"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr  bgcolor="#FFFBEF">
+                  <td width="5%" height="22">
+                    <div align="center"> </div></td>
+                  <td width="2" rowspan="100"  valign="top" background="<%=request.getContextPath()%>/images/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bg-24.gif" width="2" height="2"></td>
+                  <td width="5%" ><div align="center" class="title-04">编号</div></td>
+                  <td width="2" rowspan="100"  valign="top" background="<%=request.getContextPath()%>/images/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bg-24.gif" width="2" height="2"></td>
+                  <td width="50%" ><div align="center" class="title-04">标题</div></td>
+                  <td width="2" rowspan="100"  valign="top" background="<%=request.getContextPath()%>/images/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bg-24.gif" width="2" height="2"></td>
+                  <td width="25%" ><div align="center" class="title-04">加入时间</div></td>
+                  <!--<td width="2" rowspan="100"   valign="top" background="<%=request.getContextPath()%>/images/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bg-24.gif" width="2" height="2"></td>
+                  <td width="15%" ><div align="center" class="title-04">处理时间</div></td>-->
+                  <td width="2" rowspan="100"   valign="top" background="<%=request.getContextPath()%>/images/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bg-24.gif" width="2" height="2"></td>
+                  <td width="20%" ><div align="center" class="title-04">来源</div></td>
+                  <!--<td width="2" rowspan="100"   valign="top" background="<%=request.getContextPath()%>/images/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bg-24.gif" width="2" height="2"></td>
+                  <td width="10%" height="22"><div align="center" class="title-04">是否处理</div></td>-->
+                </tr>
+                <tr>
+                  <td height="1" background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                  <td background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                  <td background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                  <td background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                  <td background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                </tr>
+<%
+if(!workListGroupIterator.hasNext()){
+%>
+<tr bgColor='#D8EAF8'>
+   <td height="52" class="text-01" colspan=15><div align="center">
+                <br><br>没有信息！<br><br>
+                        </div></td>
+                       
+                      </tr>
+                      
+                      <tr>
+                        <td colspan=15 height="2" background="<%=request.getContextPath()%>/images/bg-13.gif" class="text-01"></td>
+                        
+                      </tr>
+<%
+}
+int index = 0;
+while(workListGroupIterator.hasNext()){
+	OfficePendingVO officePendingVO = (OfficePendingVO)workListGroupIterator.next();
+	long modify = officePendingVO.getOpModify().longValue();
+
+	
+	CommUtil.getTime(officePendingVO.getOpModify().longValue(),com.icss.oa.config.Config.ALL_TYPE);
+	index ++;
+	String color = "#F2F9FF";
+	if(index % 2 == 1)
+		color = "#D8EAF8";
+%>
+              <tr bgcolor=<%=color%> onMouseOut="this.bgColor='<%=color%>';" onMouseOver="this.bgColor='#8CC0E8';">     
+                 <td height="22" class="text-01"><div align="center">
+                      <input type="checkbox" name="workid" value="<%=officePendingVO.getOpId()%>">
+                  </div></td>
+                  <td  class="text-01"><div align="center"><%=index%></div></td>
+                  <td  class="text-01"><div align="left"><a href="#" onclick="javascript:_dowork('<%=officePendingVO.getOpId()%>','<%=java.net.URLEncoder.encode(officePendingVO.getOpUrl())%>','<%=officePendingVO.getOpNavigate()%>','<%=officePendingVO.getOpType()%>')" > <%=officePendingVO.getOpTopic()%></a></div></td>
+                  <td  class="text-01"><div align="center"><%=CommUtil.getTime(officePendingVO.getOpDate().longValue(),com.icss.oa.config.Config.ALL_TYPE)%></div></td>
+                  <!--<td  class="text-01"><div align="center"><%=ShowWorkHelper.showWorkModify(officePendingVO.getOpFlag(),officePendingVO.getOpModify())%></div></td>-->
+                  <td  class="text-01"><div align="left"><%=officePendingVO.getOpSource()%></div></td>
+                  <!--<td height="22"><div align="center" class="text-01"><%=ShowWorkHelper.showWorkFlag(officePendingVO.getOpFlag())%></div></td>-->
+                </tr>
+                <tr>
+                 <td height="1" background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                  <td background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                  <td background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                  <td background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                  <td background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                  <td background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                  <td background="<%=request.getContextPath()%>/images/bg-13.gif"></td>
+                </tr>
+<%
+}//end while
+%>          
+            </table></td>
+          </tr>
+      </table></td>
+      <td width="1" background="<%=request.getContextPath()%>/images/bg-22.gif"><img src="<%=request.getContextPath()%>/images/bg-22.gif" width="1" height="4"></td>
+    </tr>
+  </table>
+  <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="1%"><img src="<%=request.getContextPath()%>/images/bg-21.jpg" width="10" height="21"></td>
+              <td width="97%" background="<%=request.getContextPath()%>/images/bg-23.jpg" class="text-01">
+              <%@ include file="../../include/defaultPageScrollBar.jsp"%>
+              </td> 
+              <td width="2%" background="<%=request.getContextPath()%>/images/bg-23.jpg"><div align="right"><img src="<%=request.getContextPath()%>/images/bg-22.jpg" width="11" height="21"></div></td>
+            </tr> 
+          </table>
+  <table border="0" cellpadding="0" cellspacing="0" width="69%" id="AutoNumber2" height="65" align="center">
+    <tr>
+      <td width="25%" align="center" class="text-01"><input type="checkbox" name="allbox" value="Check All" onClick="CheckAll();">
+          <label for="allbox"><a href="javascript:CheckAll();" onClick="allbox.checked=!allbox.checked;">全选</a></label>
+      </td>
+      <td width="" align="center"></td>
+      <td align="center">
+      <img src="<%=request.getContextPath()%>/images/botton-delete.gif" width="70" style="cursor:hand" height="22" hspace="10" onclick="javascript:_delete()">
+      <img src="<%=request.getContextPath()%>/images/botton-return.gif" width="70" height="22" hspace="10"  border=0 onclick="javascript:flesh()" style="cursor:hand" alt="返回信息首页"></td>
+    </tr>
+  </table>
+</form>
+<SCRIPT language=JavaScript>
+//setSelect()
+</script>
+
+<SCRIPT language="JavaScript">
+
+function flesh(){
+
+   window.top.mainFrame.location  = "/infopub/servlet/FrontPageServlet";
+   window.top.leftFrame.location  = "/application/common/Left.jsp";
+   
+}
+
+</SCRIPT>
+</body>
+
+</html>

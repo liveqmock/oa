@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>全文检索</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style>
+<link href="Style/css_grey.css" rel="stylesheet" type="text/css" />
+<script language="javascript">
+function _showcondition(){
+	document.frm.all("condition1").style.display="block";
+	document.frm.all("condition2").style.display="block";
+}
+</script>
+<style type="text/css">
+<!--
+.STYLE1 {color: #FF0000}
+.STYLE2 {font-size: 14px}
+-->
+</style>
+</head>
+
+<body>
+<form name="frm">
+
+<table width="1003" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+  	<td width="10">&nbsp;</td>
+    <td width="983">
+    <table border="0" cellpadding="0" cellspacing="0" class="top_back">
+    <tr>
+    <td width="537" class="top_logo" height="85"></td>
+    <td class="top_back" height="85" width="121">&nbsp;</td>
+    <td width="325" class="top_back">
+    	<table border="0" cellpadding="0" cellspacing="0">
+        	<tr>
+        	  <td class="top_function" width="390" height="31"></td>
+        	</tr>
+            <tr>
+              <td class="top_left" width="390" height="54" valign="bottom" align="right">
+              	<table border="0" cellpadding="0" cellspacing="0">
+                	<tr>
+                	  <td height="42"><a href="/cms/cms/website/index.html" style="text-decoration:none" class="table_title"><img src="images/home.gif" width="16" height="16" border="0"></a></td>
+                	  <td class="message_title_bold"><a href="/cms/cms/website/index.html" style="text-decoration:none" class="message_title_bold">首页</a></td>
+                	  <td>&nbsp;</td>
+                	</tr>
+                </table>
+              </td>
+            </tr>
+        </table>    
+    </td>
+    </tr>
+    </table>
+    </td>
+    <td width="10" >&nbsp;</td>
+  </tr>
+</table>
+
+<table width="1003" height="29" border="0" cellpadding="0" align="center" cellspacing="0">
+	<tr>
+    	<td width="10"></td>
+        <td>
+        	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="top_back">
+            	<tr>
+                	<td width="134" class="top_left_buttom" height="29"></td>
+                  <td width="60%" class="top_back_buttom">
+               	  <table width="98%">
+                        <tr>
+                            <td width="34%" height="20" class="message_zhuanti">2008年3月3日 星期一</td>
+                          <td width="42%" align="right" class="content"><input name="searchfield2" type="text" class="biankuang" size="26" value="请输入检索关键字"/></td>
+                          <td width="9%" class="message_zhuanti" style="cursor:hand">&gt;&gt;检索</td>
+                          <td width="15%" class="content"><a href="searchList.html" target="_blank" class="message_zhuanti" style="text-decoration:none">&gt;&gt; 高级检索</a></td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td width="6%" class="top_back_buttom_right"></td>
+                  <td width="21%" align="right" bgcolor="#FFFFFF">
+                  <table border="0" cellpadding="0" cellspacing="0" align="right" title="点击选择页面色彩！" bgcolor="#FFFFFF">
+                      <tr>
+                        <td width="30"></td>
+                        <td><table border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td width="15" height="15" bgcolor="red" style="cursor:hand;" onClick="changeStyle('red')"></td>
+                            </tr>
+                        </table></td>
+                        <td width="10"></td>
+                        <td><table border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td width="15" height="15" bgcolor="#d0e9cb" style="cursor:hand;" onClick="changeStyle('lake')"></td>
+                            </tr>
+                        </table></td>
+                        <td width="10"></td>
+                        <td><table border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td width="15" height="15" bgcolor="#ffd4ad" onClick="changeStyle('orange')" style="cursor:hand;"></td>
+                            </tr>
+                        </table></td>
+                        <td width="10"></td>
+                        <td><table border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td width="15" height="15" bgcolor="#ddc99d" onClick="changeStyle('brown')" style="cursor:hand;"></td>
+                            </tr>
+                        </table></td>
+                        <td width="10"></td>
+                        <td><table border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td width="15" height="15" bgcolor="#afd5ae" onClick="changeStyle('green')" style="cursor:hand;"></td>
+                            </tr>
+                        </table></td>
+                        <td width="10"></td>
+                        <td><table border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td width="15" height="15" bgcolor="#CCCCCC" onClick="changeStyle('grey')" style="cursor:hand;"></td>
+                            </tr>
+                        </table></td>
+                        <td width="10"></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+          </table>
+        </td>
+        <td width="10"></td>
+    </tr>
+</table>
+
+<table width="1003" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="11" bgcolor="#FFFFFF"><img src="images/kongbai.jpg" width="11" height="11" /></td>
+    <td valign="top"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0"><tr><td colspan="2" class="blue3-12-b" height="30"><div align="right">
+      <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="30%" height="30" align="right"><span class="blue4-12">全文检索</span>&nbsp; </td>
+          <td width="25%" align="left"><input name="searchfield" type="text" class="biankuang-blue" size="30" /></td>
+          <td width="8%" style="cursor:hand"><img src="images/search.jpg" width="59" height="19" hspace="6" /></td>
+          <td width="37%">&nbsp;<a href="#" onclick="_showcondition()" style="text-decoration:none"><span class="green-12-b">&gt;&gt;&nbsp;高级检索</span></a></td>
+        </tr>
+        <tr id="condition1" style="display:none">
+          <td height="30" align="right"><span class="blue4-12">主题词</span>&nbsp;</td>
+          <td height="30" align="left"><input name="searchfield" type="text" class="biankuang-blue" size="30" /></td>
+          <td colspan="2" class="red2-12-b">&nbsp;支持关键字、主题词模糊查询。</td>
+        </tr>
+        <tr id="condition2" style="display:none">
+          <td height="30" align="right"><span class="blue4-12">发布时间</span>&nbsp;</td>
+          <td height="30" align="left"><input name="searchfield" type="text" class="biankuang-blue" size="12" />
+              <span class="blue4-12">至</span>
+              <input name="searchfield22" type="text" class="biankuang-blue" size="12" /></td>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="1" colspan="4"><hr/></td>
+        </tr>
+        <tr>
+          <td align="center" class="foot_message" colspan="4"><div align="left"><b><a href="info.html" target="_blank" class="blue3-12-b STYLE2">关于嫦娥一号探月新闻报道和联合国气候变化大会新闻报道的表扬通报</a></b></div></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="left"><div align="left" class="foot_message">...据初步统计，截至12月12日，<span class="STYLE1">对内</span>对外共播发相关稿件近1600条，《嫦娥一号卫星19日起逐步打开科学探测仪器》等多篇稿件采用家次达400家，图表漫画的平均采用超过50家...</div></td>
+        </tr>
+        <tr>
+          <td height="10" colspan="4" align="left" class="message_title_bold">内设机构&gt;&gt;新华社总编室&gt;&gt;总编室通报 2008-01-11 </td>
+        </tr>
+        <tr>
+          <td class="black-14" colspan="4" height="10"></td>
+        </tr>
+        <tr>
+          <td align="center" colspan="4"><div align="left"><b><a href="info.html" target="_blank" class="blue3-12-b STYLE2">关于新华社三种形式报道与中国政府网加强互动和资源共享的意见</a></b></div></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="left"><div align="left" class="foot_message">...传统形式报道、社办报刊、新形式报道部门要充分利用新华网协办中国政务网的优势，努力实现线索资源共享、采访资源共享，使新华社在新形式下更好的履行“授权发布”的职能。1、继续贯彻落实<span class="STYLE1">对内</span>报道...</div></td>
+        </tr>
+        <tr>
+          <td height="10" colspan="4" align="left" class="message_title_bold">内设机构&gt;&gt;新华社总编室&gt;&gt;总编室通报 2008-01-11 </td>
+        </tr>
+        <tr>
+          <td class="black-14" colspan="4" height="10"></td>
+        </tr>
+        <tr>
+          <td align="center" colspan="4"><div align="left"><b><a href="info.html" target="_blank" class="blue3-12-b STYLE2">国内部每周报通报第2期（总第397期 2008年1月11日）</a></b></div></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="left"><div align="left" class="foot_message"> ...本周国内部通稿新闻线路共发稿738条，社文专线共发稿309条，服务专线共发稿265条，财经专线共发稿283条，财经专线共发稿283条。国内部自采<span class="STYLE1">对内</span>稿362条，对外中文303条，英文56条。期间各线路共发改稿24条。...</div></td>
+        </tr>
+        <tr>
+          <td height="10" colspan="4" align="left" class="message_title_bold">内设机构&gt;&gt;国内部&gt;&gt;国内部每周通报 2008-01-11 </td>
+        </tr>
+        <tr>
+          <td class="black-14" colspan="4" height="10"></td>
+        </tr>
+        <tr>
+          <td align="center" colspan="4"><div align="left"><b><a href="info.html" target="_blank" class="blue3-12-b STYLE2">财经组关于税制改革报道策划方案 中央新闻策划与反馈第185期（2008年1月。。。</a></b></div></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="left"><div align="left" class="foot_message"> ...财经组将抓住相关热点问题，以税制改革为由头，重点介绍去年税收情况、资源税改革、物业税等热点税种开征动向，着重分析如何看待税收增长远超全年GDP，以及今年两税合一的意义和影响，从<span class="STYLE1">对内</span>、对外、新华08、音像等多种形式，对...</div></td>
+        </tr>
+        <tr>
+          <td height="10" colspan="4" align="left" class="message_title_bold">内设机构&gt;&gt;国内部&gt;&gt;中央新闻采访中心 2008-01-11 </td>
+        </tr>
+        <tr>
+          <td class="black-14" colspan="4" height="10"></td>
+        </tr>
+        <tr>
+          <td class="black-14" colspan="4" height="10"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="blue3-12-b" height="30"><div align="right">[1] [2] [3] [4] 下一页</div></td>
+        </tr>
+      </table>
+    </div></td>
+        </tr>
+    </table></td>
+    <td width="11"><img src="images/kongbai.jpg" width="11" height="11" /></td>
+  </tr>
+</table>
+<table width="1003" border="0" cellspacing="0" cellpadding="0">
+  
+  <tr>
+    <td height="48" bgcolor="#EFEFEF"><div align="center" class="message_date">Tel:010-63072715 Copyright (C) 2008 版权所有　　<br />
+制作单位：新华社技术局　（浏览本网主页，建议将电脑显示屏的分辨率调为1024*768）<br />
+    </div></td>
+  </tr>
+</table>
+
+<map name="Map" id="Map">
+  <area shape="rect" coords="380,1,426,24" href="#" />
+  <area shape="rect" coords="319,0,365,23" href="#" />
+  <area shape="rect" coords="332,48,421,78" href="#" />
+  <area shape="rect" coords="236,49,325,79" href="#" />
+<area shape="rect" coords="140,51,229,81" href="#" /><area shape="rect" coords="44,50,133,80" href="#" /><area shape="rect" coords="257,0,303,23" href="#" /></map>
+</table>
+</form>
+</body>
+</html>

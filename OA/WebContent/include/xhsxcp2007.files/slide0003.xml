@@ -1,0 +1,506 @@
+<xml xmlns:v="urn:schemas-microsoft-com:vml"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:p="urn:schemas-microsoft-com:office:powerpoint">
+ <p:slidetransition advancetime="2000" effect="random" direction="transition"
+  flag="1"/>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="4"/>
+  <o:regrouptable v:ext="edit">
+   <o:entry new="1" old="0"/>
+   <o:entry new="2" old="0"/>
+   <o:entry new="3" old="0"/>
+   <o:entry new="4" old="0"/>
+   <o:entry new="5" old="0"/>
+   <o:entry new="6" old="0"/>
+   <o:entry new="7" old="0"/>
+   <o:entry new="8" old="0"/>
+   <o:entry new="9" old="0"/>
+   <o:entry new="10" old="0"/>
+   <o:entry new="11" old="0"/>
+   <o:entry new="12" old="0"/>
+   <o:entry new="13" old="0"/>
+   <o:entry new="14" old="0"/>
+   <o:entry new="15" old="0"/>
+   <o:entry new="16" old="0"/>
+   <o:entry new="18" old="0"/>
+   <o:entry new="19" old="0"/>
+   <o:entry new="20" old="0"/>
+   <o:entry new="21" old="0"/>
+  </o:regrouptable>
+ </o:shapelayout><p:shaperange id="_x0000_s4099">
+  <v:rect id="_x0000_s4099" style='position:absolute;left:303.75pt;top:228pt;
+   width:10in;height:0' filled="f" fillcolor="#0c9 [4]" stroked="f"
+   strokecolor="black [1]">
+   <v:fill color2="white [0]" o:detectmouseclick="t"/>
+   <v:shadow color="gray [2]"/>
+   <v:textbox style='mso-fit-shape-to-text:t'/>
+   <p:onmouseclick hyperlinktype="slideNumber" location="一、U盘115元、钢笔70元"/>
+  </v:rect><v:rect id="_x0000_s4101" style='position:absolute;left:303.75pt;
+   top:228pt;width:10in;height:0' filled="f" fillcolor="#0c9 [4]" stroked="f"
+   strokecolor="black [1]">
+   <v:fill color2="white [0]" o:detectmouseclick="t"/>
+   <v:shadow color="gray [2]"/>
+   <v:textbox style='mso-fit-shape-to-text:t'/>
+   <p:onmouseclick hyperlinktype="slideNumber" location="二、笔筒125元"/>
+  </v:rect><v:rect id="_x0000_s4105" style='position:absolute;left:303.75pt;
+   top:228pt;width:10in;height:0' filled="f" fillcolor="#0c9 [4]" stroked="f"
+   strokecolor="black [1]">
+   <v:fill color2="white [0]" o:detectmouseclick="t"/>
+   <v:shadow color="gray [2]"/>
+   <v:textbox style='mso-fit-shape-to-text:t'/>
+   <p:onmouseclick hyperlinktype="slideNumber" location="四、大瓷碗220元"/>
+  </v:rect><v:rect id="_x0000_s4107" style='position:absolute;left:303.75pt;
+   top:228pt;width:10in;height:0' filled="f" fillcolor="#0c9 [4]" stroked="f"
+   strokecolor="black [1]">
+   <v:fill color2="white [0]" o:detectmouseclick="t"/>
+   <v:shadow color="gray [2]"/>
+   <v:textbox style='mso-fit-shape-to-text:t'/>
+   <p:onmouseclick hyperlinktype="slideNumber" location="五、发报机564元"/>
+  </v:rect><v:rect id="_x0000_s4109" style='position:absolute;left:303.75pt;
+   top:228pt;width:10in;height:0' filled="f" fillcolor="#0c9 [4]" stroked="f"
+   strokecolor="black [1]">
+   <v:fill color2="white [0]" o:detectmouseclick="t"/>
+   <v:shadow color="gray [2]"/>
+   <v:textbox style='mso-fit-shape-to-text:t'/>
+   <p:onmouseclick hyperlinktype="slideNumber" location="六、方鼎245元"/>
+  </v:rect></p:shaperange>
+ <p:shaperange id="_x0000_s4219">
+  <v:shapetype id="_x0000_t202" coordsize="21600,21600" o:spt="202" path="m0,0l0,21600,21600,21600,21600,0xe">
+   <v:stroke joinstyle="miter"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+  </v:shapetype><v:shape id="_x0000_s4219" type="#_x0000_t202" style='position:absolute;
+   left:246.625pt;top:-7.25pt;width:232.5pt;height:50.5pt' filled="f"
+   fillcolor="#0c9 [4]" stroked="f" strokecolor="black [1]">
+   <v:fill color2="white [0]"/>
+   <v:shadow color="gray [2]"/>
+   <v:textbox style='mso-fit-shape-to-text:t'/>
+   <p:animation number="2" delay="0" type="object" flag="1028"/>
+  </v:shape></p:shaperange>
+ <p:shaperange id="_x0000_s4232">
+  <v:group id="_x0000_s4232" style='position:absolute;left:36.875pt;top:43.25pt;
+   width:136.25pt;height:119pt' coordorigin="307,755" coordsize="1090,952">
+   <v:group id="_x0000_s4129" style='position:absolute;left:307;top:755;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952"
+    o:regroupid="5">
+    <v:shapetype id="_x0000_t84" coordsize="21600,21600" o:spt="84" adj="2700"
+     path="m0,0l0,21600,21600,21600,21600,0xem@0@0nfl@0@2@1@2@1@0xem0,0nfl@0@0em0,21600nfl@0@2em21600,21600nfl@1@2em21600,0nfl@1@0e">
+     <v:stroke joinstyle="miter"/>
+     <v:formulas>
+      <v:f eqn="val #0"/>
+      <v:f eqn="sum width 0 #0"/>
+      <v:f eqn="sum height 0 #0"/>
+      <v:f eqn="prod width 1 2"/>
+      <v:f eqn="prod height 1 2"/>
+      <v:f eqn="prod #0 1 2"/>
+      <v:f eqn="prod #0 3 2"/>
+      <v:f eqn="sum @1 @5 0"/>
+      <v:f eqn="sum @2 @5 0"/>
+     </v:formulas>
+     <v:path o:extrusionok="f" limo="10800,10800" o:connecttype="custom"
+      o:connectlocs="0,@4;@0,@4;@3,21600;@3,@2;21600,@4;@1,@4;@3,0;@3,@0"
+      textboxrect="@0,@0,@1,@2"/>
+     <v:handles>
+      <v:h position="#0,topLeft" switch="" xrange="0,10800"/>
+     </v:handles>
+     <o:complex v:ext="view"/>
+    </v:shapetype><v:shape id="_x0000_s4130" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shapetype id="_x0000_t7" coordsize="21600,21600" o:spt="7"
+     adj="5400" path="m@0,0l0,21600@1,21600,21600,0xe">
+     <v:stroke joinstyle="miter"/>
+     <v:formulas>
+      <v:f eqn="val #0"/>
+      <v:f eqn="sum width 0 #0"/>
+      <v:f eqn="prod #0 1 2"/>
+      <v:f eqn="sum width 0 @2"/>
+      <v:f eqn="mid #0 width"/>
+      <v:f eqn="mid @1 0"/>
+      <v:f eqn="prod height width #0"/>
+      <v:f eqn="prod @6 1 2"/>
+      <v:f eqn="sum height 0 @7"/>
+      <v:f eqn="prod width 1 2"/>
+      <v:f eqn="sum #0 0 @9"/>
+      <v:f eqn="if @10 @8 0"/>
+      <v:f eqn="if @10 @7 height"/>
+     </v:formulas>
+     <v:path gradientshapeok="t" o:connecttype="custom" o:connectlocs="@4,0;10800,@11;@3,10800;@5,21600;10800,@12;@2,10800"
+      textboxrect="1800,1800,19800,19800;8100,8100,13500,13500;10800,10800,10800,10800"/>
+     <v:handles>
+      <v:h position="#0,topLeft" xrange="0,21600"/>
+     </v:handles>
+    </v:shapetype><v:shape id="_x0000_s4131" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4221" type="#_x0000_t75"
+    href="javascript:parent.GoToSld('slide0005.htm');" style='position:absolute;
+    left:340;top:799;width:1012;height:681'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image005.jpg" o:title="1-1"/>
+    <o:lock v:ext="edit" aspectratio="f"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="260,3,幻灯片 3"/>
+   </v:shape></v:group><v:group id="_x0000_s4233" style='position:absolute;
+   left:373.75pt;top:42.5pt;width:136.25pt;height:119pt' coordorigin="1648,755"
+   coordsize="1090,952">
+   <v:group id="_x0000_s4132" style='position:absolute;left:1648;top:755;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952"
+    o:regroupid="6">
+    <v:shape id="_x0000_s4133" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shape id="_x0000_s4134" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4222" type="#_x0000_t75"
+    href="javascript:parent.GoToSld('slide0006.htm');" style='position:absolute;
+    left:1701;top:799;width:998;height:684'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image006.jpg" o:title="2"/>
+    <o:lock v:ext="edit" aspectratio="f"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="261,4,幻灯片 4"/>
+   </v:shape></v:group><v:group id="_x0000_s4234" style='position:absolute;
+   left:541.5pt;top:42.625pt;width:136.25pt;height:119pt' coordorigin="2990,755"
+   coordsize="1090,952">
+   <v:group id="_x0000_s4140" style='position:absolute;left:2990;top:755;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952"
+    o:regroupid="7">
+    <v:shape id="_x0000_s4141" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shape id="_x0000_s4142" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4223" type="#_x0000_t75"
+    href="javascript:parent.GoToSld('slide0007.htm');" style='position:absolute;
+    left:3032;top:799;width:1006;height:684'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image007.jpg" o:title="3"/>
+    <o:lock v:ext="edit" aspectratio="f"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="262,5,幻灯片 5"/>
+   </v:shape></v:group></p:shaperange>
+ <p:shaperange id="_x0000_s4235">
+  <v:group id="_x0000_s4235" style='position:absolute;left:36.875pt;top:165.75pt;
+   width:136.25pt;height:119pt' coordorigin="4332,755" coordsize="1090,952">
+   <v:group id="_x0000_s4154" style='position:absolute;left:4332;top:755;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952"
+    o:regroupid="8">
+    <v:shape id="_x0000_s4155" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shape id="_x0000_s4156" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4225" type="#_x0000_t75"
+    href="javascript:parent.GoToSld('slide0008.htm');" style='position:absolute;
+    left:4377;top:799;width:998;height:686'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image009.jpg" o:title="DSC_0009"/>
+    <o:lock v:ext="edit" aspectratio="f"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="263,6,幻灯片 6"/>
+   </v:shape></v:group><v:group id="_x0000_s4236" style='position:absolute;
+   left:205pt;top:165.75pt;width:136.25pt;height:119pt' coordorigin="303,1934"
+   coordsize="1090,952">
+   <v:group id="_x0000_s4160" style='position:absolute;left:303;top:1934;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952"
+    o:regroupid="9">
+    <v:shape id="_x0000_s4161" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shape id="_x0000_s4162" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4226" type="#_x0000_t75"
+    href="javascript:parent.GoToSld('slide0010.htm');" style='position:absolute;
+    left:340;top:1979;width:1006;height:694'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image010.jpg" o:title="DSC_0010"/>
+    <o:lock v:ext="edit" aspectratio="f"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="265,7,幻灯片 7"/>
+   </v:shape></v:group><v:group id="_x0000_s4237" style='position:absolute;
+   left:373.125pt;top:165.75pt;width:136.25pt;height:119pt' coordorigin="1646,1934"
+   coordsize="1090,952">
+   <v:group id="_x0000_s4157" style='position:absolute;left:1646;top:1934;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952"
+    o:regroupid="10">
+    <v:shape id="_x0000_s4158" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shape id="_x0000_s4159" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4227" type="#_x0000_t75"
+    href="javascript:parent.GoToSld('slide0009.htm');" style='position:absolute;
+    left:1701;top:1979;width:998;height:688'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image011.jpg" o:title="6-1"/>
+    <o:lock v:ext="edit" aspectratio="f"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="264,8,幻灯片 8"/>
+   </v:shape></v:group><v:group id="_x0000_s4238" style='position:absolute;
+   left:541.25pt;top:165.625pt;width:136.25pt;height:119pt' coordorigin="2989,1934"
+   coordsize="1090,952">
+   <v:group id="_x0000_s4137" style='position:absolute;left:2989;top:1934;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952"
+    o:regroupid="11">
+    <v:shape id="_x0000_s4138" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shape id="_x0000_s4139" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4228" type="#_x0000_t75"
+    href="javascript:parent.GoToSld('slide0011.htm');" style='position:absolute;
+    left:3061;top:1979;width:979;height:689'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image012.jpg" o:title="7-1"/>
+    <o:lock v:ext="edit" aspectratio="f"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="266,9,幻灯片 9"/>
+   </v:shape></v:group><v:group id="_x0000_s4239" style='position:absolute;
+   left:36.875pt;top:289.25pt;width:136.25pt;height:119pt' coordorigin="4332,1934"
+   coordsize="1090,952">
+   <v:group id="_x0000_s4212" style='position:absolute;left:4332;top:1934;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952"
+    o:regroupid="14">
+    <v:shape id="_x0000_s4213" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shape id="_x0000_s4214" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4229" type="#_x0000_t75"
+    href="javascript:parent.GoToSld('slide0004.htm');" style='position:absolute;
+    left:4377;top:1979;width:998;height:684'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image013.jpg" o:title="8-1"/>
+    <o:lock v:ext="edit" aspectratio="f"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="259,10,幻灯片 10"/>
+   </v:shape></v:group><v:group id="_x0000_s4241" style='position:absolute;
+   left:374pt;top:289.375pt;width:136.25pt;height:119pt' coordorigin="2991,3113"
+   coordsize="1090,952">
+   <v:group id="_x0000_s4168" style='position:absolute;left:2991;top:3113;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952"
+    o:regroupid="13">
+    <v:shape id="_x0000_s4169" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shape id="_x0000_s4170" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4231" type="#_x0000_t75"
+    href="javascript:parent.GoToSld('slide0013.htm');" style='position:absolute;
+    left:3053;top:3166;width:961;height:672'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image014.jpg" o:title="10"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="268,12,幻灯片 12"/>
+   </v:shape></v:group><v:group id="_x0000_s4247" style='position:absolute;
+   left:542.625pt;top:289.25pt;width:136.25pt;height:119pt' coordorigin="7779,799"
+   coordsize="1090,952">
+   <v:group id="_x0000_s4248" style='position:absolute;left:7779;top:799;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952">
+    <v:shape id="_x0000_s4249" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shape id="_x0000_s4250" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4251" type="#_x0000_t75" alt=""
+    href="javascript:parent.GoToSld('slide0025.htm');" style='position:absolute;
+    left:7824;top:845;width:998;height:681'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image015.jpg" o:title="爵265元（仿古茶具）"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="280,14,幻灯片 14"/>
+   </v:shape></v:group><v:group id="_x0000_s4283" style='position:absolute;
+   left:36.875pt;top:414pt;width:136.25pt;height:119pt' coordorigin="295,3312"
+   coordsize="1090,952">
+   <v:group id="_x0000_s4253" style='position:absolute;left:295;top:3312;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952"
+    o:regroupid="15">
+    <v:shape id="_x0000_s4254" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shape id="_x0000_s4255" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4273" type="#_x0000_t75"
+    href="javascript:parent.GoToSld('slide0028.htm');" style='position:absolute;
+    left:340;top:3339;width:998;height:702'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image016.jpg" o:title="钢笔"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="283,15,幻灯片 15"/>
+   </v:shape></v:group><v:group id="_x0000_s4284" style='position:absolute;
+   left:205.375pt;top:289.375pt;width:136.25pt;height:119pt' coordorigin="1643,2315"
+   coordsize="1090,952">
+   <v:group id="_x0000_s4144" style='position:absolute;left:1643;top:2315;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952"
+    o:regroupid="20">
+    <v:shape id="_x0000_s4145" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shape id="_x0000_s4146" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4274" type="#_x0000_t75"
+    href="javascript:parent.GoToSld('slide0012.htm');" style='position:absolute;
+    left:1692;top:2360;width:998;height:693'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image017.jpg" o:title="SSL21587"/>
+    <o:lock v:ext="edit" aspectratio="f"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="267,12,幻灯片 12"/>
+   </v:shape></v:group></p:shaperange>
+ <p:shaperange id="_x0000_s4276">
+  <v:group id="_x0000_s4276" style='position:absolute;left:206pt;top:42.5pt;
+   width:136.25pt;height:119pt' coordorigin="1648,340" coordsize="1090,952">
+   <v:group id="_x0000_s4243" style='position:absolute;left:1648;top:340;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952"
+    o:regroupid="21">
+    <v:shape id="_x0000_s4244" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shape id="_x0000_s4245" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4275" type="#_x0000_t75"
+    href="javascript:parent.GoToSld('slide0024.htm');" style='position:absolute;
+    left:1984;top:391;width:415;height:680'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image019.jpg" o:title="多想-1"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="279,4,幻灯片 4"/>
+   </v:shape></v:group></p:shaperange>
+ <p:shaperange id="_x0000_s4278">
+  <v:group id="_x0000_s4278" style='position:absolute;left:374pt;top:414.125pt;
+   width:136.25pt;height:119pt' coordorigin="2992,3313" coordsize="1090,952">
+   <v:group id="_x0000_s4263" style='position:absolute;left:2992;top:3313;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952"
+    o:regroupid="19">
+    <v:shape id="_x0000_s4264" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shape id="_x0000_s4265" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4277" type="#_x0000_t75"
+    href="javascript:parent.GoToSld('slide0026.htm');" style='position:absolute;
+    left:3043;top:3367;width:1007;height:672'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image021.jpg" o:title="仕女图-1"/>
+    <o:lock v:ext="edit" aspectratio="f"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="281,15,幻灯片 15"/>
+   </v:shape></v:group><v:group id="_x0000_s4280" style='position:absolute;
+   left:205.375pt;top:414.125pt;width:136.25pt;height:119pt' coordorigin="1643,3313"
+   coordsize="1090,952">
+   <v:group id="_x0000_s4258" style='position:absolute;left:1643;top:3313;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952"
+    o:regroupid="16">
+    <v:shape id="_x0000_s4259" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shape id="_x0000_s4260" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4279" type="#_x0000_t75"
+    href="javascript:parent.GoToSld('slide0029.htm');" style='position:absolute;
+    left:1799;top:3358;width:763;height:683'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image022.jpg" o:title="皮影1111"/>
+    <o:lock v:ext="edit" aspectratio="f"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="284,16,幻灯片 16"/>
+   </v:shape></v:group><v:group id="_x0000_s4282" style='position:absolute;
+   left:542.625pt;top:414pt;width:136.25pt;height:119pt' coordorigin="4341,3312"
+   coordsize="1090,952">
+   <v:group id="_x0000_s4268" style='position:absolute;left:4341;top:3312;
+    width:1090;height:952' coordorigin="975,300" coordsize="1090,952"
+    o:regroupid="18">
+    <v:shape id="_x0000_s4269" type="#_x0000_t84" style='position:absolute;
+     left:975;top:300;width:1089;height:771;mso-wrap-style:none;
+     v-text-anchor:middle' adj="1048" fillcolor="#f93" strokecolor="#fc0">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+    </v:shape><v:shape id="_x0000_s4270" type="#_x0000_t7" style='position:absolute;
+     left:975;top:1071;width:1090;height:181;mso-wrap-style:none;
+     v-text-anchor:middle' adj="0" fillcolor="#f93" strokecolor="#f60">
+     <v:fill color2="white [0]"/>
+     <v:shadow color="gray [2]"/>
+     <v:textbox inset="0,0,0,0"/>
+    </v:shape></v:group><v:shape id="_x0000_s4281" type="#_x0000_t75"
+    href="javascript:parent.GoToSld('slide0027.htm');" style='position:absolute;
+    left:4413;top:3348;width:953;height:706'>
+    <v:fill o:detectmouseclick="t"/>
+    <v:imagedata src="slide0003_image023.jpg" o:title="兵马俑－1"/>
+    <o:lock v:ext="edit" aspectratio="f"/>
+    <p:onmouseclick hyperlinktype="slideNumber" location="282,18,幻灯片 18"/>
+   </v:shape></v:group></p:shaperange>
+</xml>

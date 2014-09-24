@@ -1,0 +1,1494 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>应用主菜单框架</TITLE>
+<SCRIPT language=JavaScript>	
+function _pop(){
+}
+</SCRIPT>
+
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE type=text/css>BODY {
+	MARGIN: 0px
+}
+.title-01 {
+	FONT-SIZE: 12px; COLOR: #ffffff
+}
+.title-02 {
+	FONT-SIZE: 12px; COLOR: #000000
+}
+</STYLE>
+<LINK href="topframe/style.css" rel=stylesheet><LINK 
+href="topframe/top_css.css" rel=stylesheet>
+<SCRIPT language=javascript>
+		
+		function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+		if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+		document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+		else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+		}
+		
+		MM_reloadPage(true);
+		
+		function MM_findObj(n, d) { //v4.01
+		var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+		d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+		if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+		for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+		if(!x && d.getElementById) x=d.getElementById(n); return x;
+		}
+		function MM_showHideLayers() { //v6.0
+		var i,p,v,obj,args=MM_showHideLayers.arguments;
+		for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+		if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+		obj.visibility=v; }
+		}
+		previous_index=0;
+		previous_src=0;
+		m_previous_index=0;
+		m_previous_src=0;
+
+		function over_change(index,src,clrOver){
+		
+		if(previous_index!=parseInt(index))
+			if (!src.contains(event.fromElement))
+			{
+			src.background="top_images/bg-02.gif";//lichg
+			src.style.cssText= "cursor:hand; filter:shadow(color=white,direction=135,strength=0);font-size: 12px;color: #F7701F;font-weight: bold;font-size: 12px;";//lichg
+			}
+		}
+
+		function out_change(index,src,clrIn){
+			if(previous_index!=index)
+			if (!src.contains(event.toElement))
+			{
+			src.background="top_images/bg-03.gif";//lichg
+			src.style.cssText= "cursor:hand;filter: shadow(color=white,direction=135,strength=0);font-size: 12px;color: #318ECB;font-weight: bold;font-size: 12px;";//lichg
+			}
+		}
+		
+		function click_change(index,src,clrIn){
+			if(previous_src.contains)
+			{
+				if (!previous_src.contains(event.toElement))
+				{
+					previous_src.background="top_images/bg-03.gif";//lichg
+					previous_src.style.cssText= "cursor:hand;filter:shadow(color=white,direction=135,strength=0);font-size: 12px;	color: #318ECB;font-weight: bold;font-size: 12px;";//lichg
+				}
+			}
+			if (!src.contains(event.toElement))
+			{
+				src.style.cursor = 'default';
+				src.background="top_images/bg-03.gif";//lichg
+				src.style.cssText= " filter:shadow(color=white,direction=135,strength=0);font-size: 12px;color: #F7701F;font-weight: bold;font-size: 12px;";//lichg
+			}
+			previous_index=index;
+			previous_src=src;
+		}
+		function onerror(aa,bb,cc)
+		{
+		alert(aa+"\n"+bb+"\n"+cc);
+		}
+		function mOvr(src,clrOver) {
+		if (!src.contains(event.fromElement)) {
+		//src.style.cursor = 'hand'; 
+		//src.bgColor = clrOver;
+		}
+		}
+		function mOut(src,clrIn)
+		{
+		if (!src.contains(event.toElement))
+		{
+		//src.style.cursor = 'default'; 
+		//src.bgColor = clrIn;
+		}
+		}
+		function mClk(src)
+		{
+		if(event.srcElement.tagName=='TD')
+		{
+		;
+		}
+		}
+function ModuleChange(index,src,clrclick,ModuleURL,ModuleNavURL,LeftFrameEnabled,Muuid,leftfirst)
+{
+	window.top._funNav(LeftFrameEnabled)
+	if((ModuleNavURL==null)||(ModuleNavURL=="")||(ModuleNavURL=="#")){
+		window.top.leftFrame.location="";
+	}
+	else{
+		window.top.leftFrame.location= ModuleNavURL;
+	}
+	if(ModuleURL!=""){
+		window.top.mainFrame.location = ModuleURL;
+	}
+	if(m_previous_src.contains)
+	{
+		if (!m_previous_src.contains(event.toElement))
+		{
+		  m_previous_src.bgColor = "";
+		  m_previous_src.style.cssText="font-size: 12px;color: #024C7B;cursor:hand";
+		  
+		}
+	}
+  m_previous_index=index;
+	oPopup.hide();
+//	alert("3");
+//	if (!src.contains(event.toElement))
+//	{
+//		src.style.cursor = 'default';
+//		  src.bgColor = clrclick;
+//		  src.style.cssText = "font-size: 12px;	color: #FFFFFF;";
+//	}
+//	m_previous_src=src;
+}
+		function ModuleOver(index,src,clrover)
+		{
+		if(m_previous_index!=parseInt(index))
+		if (!src.contains(event.fromElement))
+		{
+		src.style.cursor = 'hand';
+		src.bgColor = clrover;
+		src.style.cssText = "font-size: 12px;	color: #EEEEEE;cursor:hand";
+		}
+		}
+		function ModuleOut(index,src,clrout)
+		{
+		if(m_previous_index!=index)
+		if (!src.contains(event.toElement))
+		{
+		src.style.cursor = 'default';
+		src.bgColor = clrout;
+		src.style.cssText="font-size: 12px;color: #024C7B;cursor:hand";
+		}
+		}
+		function changeToolUrl(url){
+		window.top.mainFrame.location.href = url
+		}
+		function resetUserCustomize(){
+		ok = confirm("该操作将恢复您的个性化设置为缺省设置,您确定吗?")
+		if(ok){
+		}
+		else{
+		return false;
+		}
+		}
+		function saveMenu(){
+		ok = confirm("该操作将保存您当前的菜单状态,下次登录将再现,确定吗?")
+		if(ok){
+		}
+		else{
+		return false;
+		}
+		}
+		function showonline(){
+		}
+		function _changeModuleMenu(_moduleindex)
+		{
+  		eval("document.all(\""+_moduleindex+"\").click()");
+		}
+		function _changeModuleGroupMenu(_mpindex)
+		{
+		
+		eval("document.all."+ _mpindex +".click()");
+		
+		}
+		function _changeMenu(_mpindex,_moduleindex){
+		  
+		  //alert("当前模块"+_moduleindex);
+		  //alert(eval("document.all(\""+_moduleindex+"\")"));
+		//if(_mpindex!="_mp0"){
+		//setTimeout("javascript:_changeModuleGroupMenu('"+_mpindex+"')",1000);
+		//}
+		  //alert(_moduleindex);
+		  if(!eval("document.all(\""+_moduleindex+"\")") || _moduleindex=="_cmodule0"){
+		    //setTimeout("javascript:_changeModuleMenu('_cmodule0_1')",1000);
+		  }else{
+		    setTimeout("javascript:_changeModuleMenu('"+_moduleindex+"')",1000);
+		  }
+		}
+		
+		function _showhelp(){
+			//lizb add
+			if ("全社考核" == "全社考核"){
+				window.open("/examine/help/index.htm", "examineHelp", "top=0px, left=0px, scrollbars=no, resizable=yes,location=no, width=" + (window.screen.width - 10) + "px, height=" + (window.screen.height - 55) + "px");
+	
+			}else{
+				_url="/resourceone/help/sitemap.jsp";
+				window.open(_url,"","toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,width=800,screenX="+screen.width/2+",screenY="+screen.height/2);
+			}
+		}
+		function _addFavorite(){
+		url = "http://wangsu:9080";
+		title = "ICSS ResourceOne资源整合平台";
+		window.external.AddFavorite(url,title);
+		}
+		</SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript>
+		
+		<!-- //
+		var oPopup = window.createPopup();
+		function ShowMenu(WhichOne,Ypos,Height,width) {
+		Xpos = document.body.scrollLeft + event.clientX - event.offsetX -3;
+		Ypos = document.body.scrollTop + event.clientY - event.offsetY + Ypos;
+		//oPopup.document.body.style.backgroundColor = "#D9E6FF";
+		oPopup.document.body.innerHTML = "<div style=\"position:absolute; width:100%; height:"+Height+"px; display:block;\" onmouseout=\"parent._doOut()\" onmouseover=\"parent._doOver()\">"+WhichOne.innerHTML+"</div>";
+		oPopup.show(Xpos,Ypos,width,Height,document.body);
+		}
+		// -->
+		
+		function changeAppGroup(appgrpid)
+		{
+		}
+		
+		function appgrpover(src){
+		
+		src.style.cursor = 'hand';
+		
+		}
+		
+		function _logout(){
+		
+		// window.location.href="/resourceone/common/Logout.jsp";
+		}
+function MM_preloadImages() { //v3.0
+	
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function flesh(){
+
+   window.top.mainFrame.location  = "";
+   //window.top.leftFrame.location  = "/infopub/servlet/MsgViewTreeServlet";
+   window.top.leftFrame.location  = "";
+   
+}
+function _loadimg(img,long,high){
+	var width =	window.screen.width;
+	var height = window.screen.height;
+	var scale = width/1024;
+	if(width!=1024){
+		img.width = long*scale;
+		img.height = high;
+		//img.height = high*scale;
+	}else{
+		img.width = long;
+		img.height = high;
+	}
+}
+function _loadhigh(img,high){
+	var width =	window.screen.width;
+	var height = window.screen.height;
+	var scale = width/1024;
+	if(width!=1024){
+		//img.height = high*scale;
+		img.height = high;
+	}else{
+		img.height = high;
+	}
+}
+function _loadtd(long){
+	var width =	window.screen.width;
+	var scale = width/1024;
+	if(width!=1024){
+		var td = document.getElementById('intendwork');
+		td.style.width = long;
+		//td.style.width = long*scale;
+	}else{
+		var td = document.getElementById('intendwork');
+		td.style.width = long;
+	}
+}
+
+	</SCRIPT>
+
+<META content="MSHTML 6.00.6000.16587" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff 
+onload="_loadtd(500);MM_preloadImages('images/top_r2_c10_01.gif','images/top_r2_c6_01.gif','images/top_r2_c8_01.gif','images/top_r2_c12_01.gif','top_images/bg-right1.gif');">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><!--lichg start -->
+  <TBODY>
+  <TR>
+    <TD><IMG alt="" src="topframe/top_r1_c1.gif" 
+      onload=_loadimg(this,68,8) border=0 name=top_r1_c1></TD>
+    <TD><IMG alt="" src="topframe/top_r1_c2.gif" 
+      onload=_loadimg(this,135,8) border=0 name=top_r1_c2></TD>
+    <TD><IMG alt="" src="topframe/top_r1_c3.gif" 
+      onload=_loadimg(this,182,8) border=0 name=top_r1_c3></TD>
+    <TD id=intendwork align=middle background=topframe/bg.gif 
+    rowSpan=2></TD><!--
+   <td><img name="top_r1_c5" src="top_images/top_r1_c5.gif" width="22" height="8" border="0" alt=""></td>
+   <td><img name="top_r1_c6" src="top_images/top_r1_c6.gif" width="40" height="8" border="0" alt=""></td>
+   <td><img name="top_r1_c7" src="top_images/top_r1_c7.gif" width="22" height="8" border="0" alt=""></td>
+   <td><img name="top_r1_c8" src="top_images/top_r1_c8.gif" width="42" height="8" border="0" alt=""></td>
+   <td><img name="top_r1_c9" src="top_images/top_r1_c9.gif" width="20" height="8" border="0" alt=""></td>
+   <td><img name="top_r1_c10" src="top_images/top_r1_c10.gif" width="45" height="8" border="0" alt=""></td>
+   <td><img name="top_r1_c11" src="top_images/top_r1_c11.gif" width="23" height="8" border="0" alt=""></td>
+   <td><img name="top_r1_c12" src="top_images/top_r1_c12.gif" width="41" height="8" border="0" alt=""></td>
+   <td><img name="top_r1_c13" src="top_images/top_r1_c13.gif" width="15" height="8" border="0" alt=""></td>
+   <td><img name="top_r1_c14" src="top_images/top_r1_c14.gif" width="9" height="8" border="0" alt=""></td>
+   -->
+    <TD background=topframe/top_r1_c14.gif height=8></TD></TR>
+  <TR>
+    <TD><IMG alt="" src="topframe/top_r2_c1.gif" 
+      onload=_loadimg(this,68,33) border=0 name=top_r2_c1></TD>
+    <TD><IMG alt="" src="topframe/top_r2_c2.gif" 
+      onload=_loadimg(this,135,33) border=0 name=top_r2_c2></TD>
+    <TD><IMG alt="" src="topframe/top_r2_c3.gif" 
+      onload=_loadimg(this,182,33) border=0 name=top_r2_c3></TD>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD><IMG alt="" src="topframe/top_r2_c5.gif" 
+            onload=_loadhigh(this,33) border=0 name=top_r2_c5></TD>
+          <TD><INPUT 
+            onmouseover="" 
+            onclick=""
+            onmouseout=MM_swapImgRestore() type=image alt="刷新 " 
+            src="topframe/top_r2_c6.gif" onload=""
+            border=0 name=Image31></TD>
+          <TD><INPUT type=image alt=工具 
+            src="topframe/top_r2_c8.gif" onload=""
+            border=0 name=Image32></TD>
+          <TD><INPUT 
+            onmouseover="" 
+            onclick=""
+            type=image alt=帮助 src="topframe/top_r2_c10.gif" 
+            onload="" border=0 name=Image30></TD>
+          <TD><INPUT 
+            onmouseover="" 
+            onclick="javascript:window.close();"
+            onmouseout="" type=image alt=退出 
+            src="topframe/top_r2_c12.gif" onload=""
+            border=0 name=Image33></TD>
+          <TD><IMG alt="javascript:window.close();" src="topframe/top_r2_c13.gif" 
+            onload="" border=0 
+      name=top_r2_c13></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD><IMG alt="" src="topframe/top_r3_c1.gif" 
+      onload=_loadimg(this,68,22) border=0 name=top_r3_c1></TD>
+    <TD><IMG alt="" src="topframe/top_r3_c2.gif" 
+      onload=_loadimg(this,135,22) border=0 name=top_r3_c2></TD>
+    <TD><IMG alt="" src="topframe/top_r3_c3.gif" 
+      onload=_loadimg(this,182,22) border=0 name=top_r3_c3></TD>
+    <TD align=right background=topframe/top_r3_c13.gif colSpan=2>
+      <TABLE height="100%" cellSpacing=0 cellPadding=0 background="" border=0>
+        <TBODY>
+        <TR><!-- lichg end -->
+          <TD align=middle><A onclick=javascript:flesh(); 
+            ><IMG 
+            src="topframe/left_home.gif" align=absMiddle 
+            border=0>总编室&nbsp;&nbsp;&nbsp;</A> </TD>
+          <TD class=css align=right><FONT 
+          color=white>总编室相关</FONT>&nbsp;&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<DIV id=alertbox 
+style="Z-INDEX: 1; LEFT: 400px; VISIBILITY: hidden; WIDTH: 196px; POSITION: absolute; TOP: 40px; HEIGHT: 24px">
+<TABLE cellSpacing=1 cellPadding=0 width="100%" bgColor=#000000 border=0>
+  <TBODY>
+  <TR bgColor=#eefff7>
+    <TD align=middle height=25>正在加载数据，请稍等...</TD></TR></TBODY></TABLE></DIV>
+<DIV id=menutool style="DISPLAY: none; POSITION: absolute">
+<TABLE 
+style="BORDER-RIGHT: #918e82 1px solid; BORDER-TOP: #918e82 1px solid; BORDER-LEFT: #918e82 1px solid; BORDER-BOTTOM: #918e82 1px solid" 
+cellSpacing=0 cellPadding=0 width="100%" bgColor=#ffffff border=0>
+  <TBODY>
+  <TR>
+    <TD 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE'; this.style.font = '8pt Tahoma'; this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="BORDER-RIGHT: #f3f3ee 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #f3f3ee 1px solid; PADDING-LEFT: 8px; FONT: 8pt Tahoma; BORDER-LEFT: #f3f3ee 1px solid; CURSOR: hand; COLOR: #282211; BORDER-BOTTOM: #f3f3ee 1px solid" 
+    onclick='parent.changeToolUrl("/servlet/EnterPasswordModifyServlet");' 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8';this.style.font = '8pt Tahoma'; this.style.color = '#282211'; this.style.cursor = 'hand';" 
+    height=20><IMG src="topframe/module.gif" border=0>&nbsp;个人密码设置 </TD></TR>
+  <TR>
+    <TD 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE'; this.style.font = '8pt Tahoma'; this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="BORDER-RIGHT: #f3f3ee 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #f3f3ee 1px solid; PADDING-LEFT: 8px; FONT: 8pt Tahoma; BORDER-LEFT: #f3f3ee 1px solid; CURSOR: hand; COLOR: #282211; BORDER-BOTTOM: #f3f3ee 1px solid" 
+    onclick=parent._addFavorite(); 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8';this.style.font = '8pt Tahoma'; this.style.color = '#282211'; this.style.cursor = 'hand';" 
+    height=20><IMG src="topframe/module.gif" border=0>&nbsp;添加到收藏夹 </TD></TR>
+  <TR>
+    <TD 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE'; this.style.font = '8pt Tahoma'; this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="BORDER-RIGHT: #f3f3ee 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #f3f3ee 1px solid; PADDING-LEFT: 8px; FONT: 8pt Tahoma; BORDER-LEFT: #f3f3ee 1px solid; CURSOR: hand; COLOR: #282211; BORDER-BOTTOM: #f3f3ee 1px solid" 
+    onclick="var strHref=window.location.href;this.style.behavior='url(#default#homepage)';this.setHomePage('http://wangsu:9080');" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8';this.style.font = '8pt Tahoma'; this.style.color = '#282211'; this.style.cursor = 'hand';" 
+    height=20><IMG src="topframe/module.gif" border=0>&nbsp;设为IE主页 </TD></TR><!--<tr>
+											<td height="20" onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE'; this.style.font = '8pt Tahoma'; this.style.color = '#295E8C'; this.style.cursor = 'hand';"  style="BORDER-RIGHT: #f3f3ee 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #f3f3ee 1px solid; PADDING-LEFT: 8px; FONT: 8pt Tahoma; BORDER-LEFT: #f3f3ee 1px solid; CURSOR: hand; COLOR: #282211; BORDER-BOTTOM: #f3f3ee 1px solid" onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8';this.style.font = '8pt Tahoma'; this.style.color = '#282211'; this.style.cursor = 'hand';" onclick="parent.saveMenu();">
+												<img src="/resourceone/images/module.gif" border=0>&nbsp;设为首页
+											</td>
+										</tr>-->
+  <TR>
+    <TD 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE'; this.style.font = '8pt Tahoma'; this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="BORDER-RIGHT: #f3f3ee 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #f3f3ee 1px solid; PADDING-LEFT: 8px; FONT: 8pt Tahoma; BORDER-LEFT: #f3f3ee 1px solid; CURSOR: hand; COLOR: #282211; BORDER-BOTTOM: #f3f3ee 1px solid" 
+    onclick=parent._pop(); 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8';this.style.font = '8pt Tahoma'; this.style.color = '#282211'; this.style.cursor = 'hand';" 
+    height=20><IMG src="topframe/module.gif" border=0>&nbsp;每日一帖 </TD></TR>
+  <TR>
+    <TD 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE'; this.style.font = '8pt Tahoma'; this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="BORDER-RIGHT: #f3f3ee 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #f3f3ee 1px solid; PADDING-LEFT: 8px; FONT: 8pt Tahoma; BORDER-LEFT: #f3f3ee 1px solid; CURSOR: hand; COLOR: #282211; BORDER-BOTTOM: #f3f3ee 1px solid" 
+    onclick='parent.changeToolUrl("/servlet/CustomizeListServlet");' 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8';this.style.font = '8pt Tahoma'; this.style.color = '#282211'; this.style.cursor = 'hand';" 
+    height=20><IMG src="topframe/module.gif" border=0>&nbsp;个性化设置 </TD></TR>
+  <TR>
+    <TD 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE'; this.style.font = '8pt Tahoma'; this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="BORDER-RIGHT: #f3f3ee 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #f3f3ee 1px solid; PADDING-LEFT: 8px; FONT: 8pt Tahoma; BORDER-LEFT: #f3f3ee 1px solid; CURSOR: hand; COLOR: #282211; BORDER-BOTTOM: #f3f3ee 1px solid" 
+    onclick=parent.resetUserCustomize(); 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8';this.style.font = '8pt Tahoma'; this.style.color = '#282211'; this.style.cursor = 'hand';" 
+    height=20><IMG src="topframe/module.gif" border=0>&nbsp;回到默认设置 </TD></TR>
+  <TR>
+    <TD 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE'; this.style.font = '8pt Tahoma'; this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="BORDER-RIGHT: #f3f3ee 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #f3f3ee 1px solid; PADDING-LEFT: 8px; FONT: 8pt Tahoma; BORDER-LEFT: #f3f3ee 1px solid; CURSOR: hand; COLOR: #282211; BORDER-BOTTOM: #f3f3ee 1px solid" 
+    onclick=parent.showonline(); 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8';this.style.font = '8pt Tahoma'; this.style.color = '#282211'; this.style.cursor = 'hand';" 
+    height=20><IMG src="topframe/module.gif" border=0>&nbsp;谁与我同在 
+  </TD></TR></TBODY></TABLE></DIV><!------------模块组及子系统产生--------------->
+<SCRIPT language=JavaScript>
+<!--
+//direction 移动方向
+//0:向左 1:向右
+//scrollWidth 可滚动的宽度
+//scrollLeft 左边的滚动长度
+//滚动单元
+scrollUnit = 94;
+function _move(direction,view){
+	canMoveDiv = document.all.canMove;
+
+	_scrollWidth = canMoveDiv.scrollWidth;
+	_scrollLeft = canMoveDiv.scrollLeft;
+	_scrollLen = 0;
+	if(direction == 0){
+		_scrollLen = -(_scrollLeft > scrollUnit?scrollUnit:_scrollLeft);
+		if(_scrollLen>=0){
+			document.all.moveLeftImg.src = "topframe/m_lefta.gif";
+		}else{
+			canMoveDiv.scrollLeft += _scrollLen;
+			document.all.moveRightImg.src = "topframe/m_rightb.gif";
+		}
+	}else{
+		_scrollLen = (_scrollWidth-view-_scrollLeft) > scrollUnit?scrollUnit:(_scrollWidth-view-_scrollLeft);
+		if(_scrollLen<=0){
+			document.all.moveRightImg.src = "topframe/m_righta.gif";
+		}else{
+			canMoveDiv.scrollLeft += _scrollLen;
+			document.all.moveLeftImg.src = "topframe/m_leftb.gif";
+		}
+	}
+}
+function _moveMouseOver(direction,view){
+	canMoveDiv = document.all.canMove;
+
+	_scrollWidth = canMoveDiv.scrollWidth;
+	_scrollLeft = canMoveDiv.scrollLeft;
+	_scrollLen = 0;
+	if(direction == 0){
+		_scrollLen = -(_scrollLeft > scrollUnit?scrollUnit:_scrollLeft);
+		if(_scrollLen>=0){
+			document.all.moveLeft.title = "左边已经没有菜单了";
+			document.all.moveLeftImg.src = "topframe/m_lefta.gif";
+		}else{
+			document.all.moveLeft.title = "点击将菜单栏左边的内容显示出来";
+			document.all.moveLeftImg.src = "topframe/m_leftb.gif";
+		}
+	}else{
+		_scrollLen = (_scrollWidth-view-_scrollLeft) > scrollUnit?scrollUnit:(_scrollWidth-view-_scrollLeft);
+		if(_scrollLen<=0){
+			document.all.moveRight.title = "右边已经没有菜单了";
+			document.all.moveRightImg.src = "topframe/m_righta.gif";
+		}else{
+			document.all.moveRight.title = "点击将菜单栏右边的内容显示出来";
+			document.all.moveRightImg.src = "topframe/m_rightb.gif";
+		}
+	}
+}
+function _moveMouseOut(direction,view){
+	canMoveDiv = document.all.canMove;
+
+	_scrollWidth = canMoveDiv.scrollWidth;
+	_scrollLeft = canMoveDiv.scrollLeft;
+	_scrollLen = 0;
+	if(direction == 0){
+		_scrollLen = -(_scrollLeft > scrollUnit?scrollUnit:_scrollLeft);
+		if(_scrollLen==0){
+		}else{
+		}
+	}else{
+		_scrollLen = (_scrollWidth-view-_scrollLeft) > scrollUnit?scrollUnit:(_scrollWidth-view-_scrollLeft);
+		if(_scrollLen==0){
+		}else{
+		}
+	}
+}
+//-->
+</SCRIPT>
+
+<TABLE cellSpacing=0 cellPadding=0 width="100%" 
+background=topframe/bg-03.gif border=0>
+  <TBODY>
+  <TR>
+    <TD id=moveLeft onmouseover=_moveMouseOver(0,865) onclick=_move(0,865) 
+    onmouseout=_moveMouseOut(0,865) vAlign=top><IMG id=moveLeftImg 
+      style="CURSOR: hand" src="topframe/m_lefta.gif"></TD>
+    <TD width=865>
+      <DIV id=canMove style="OVERFLOW: hidden; WIDTH: 865px">
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD noWrap width=94>
+            <TABLE class=title-00 id=_mp1 
+            onmouseover='over_change(1,this,"#3366cc");MpChangeMouseOver_dely("_mp1");' 
+            onclick='over_change(1,this,"#3366cc");MpChangeMouseOver("Mp1");' 
+            onmouseout='out_change(1,this,"#cccccc");MpChangeMouseOut("_mp1")' 
+            height=21 cellSpacing=0 cellPadding=0 width="100%" border=0 
+            vAlign="top">
+              <TBODY>
+              <TR>
+                <TD vAlign=top width=2 height=25><IMG 
+                  src="topframe/bg-04.gif" border=0> </TD>
+                <TD title=值班信息 noWrap align=middle width=94 height=25><A 
+                  style="CURSOR: hand">值班信息</A></TD></TR></TBODY></TABLE></TD>
+          <TD noWrap width=94>
+            <TABLE class=title-00 id=_mp2 
+            onmouseover='over_change(2,this,"#3366cc");MpChangeMouseOver_dely("_mp2");' 
+            onclick='over_change(2,this,"#3366cc");MpChangeMouseOver("Mp2");' 
+            onmouseout='out_change(2,this,"#cccccc");MpChangeMouseOut("_mp2")' 
+            height=21 cellSpacing=0 cellPadding=0 width="100%" border=0 
+            vAlign="top">
+              <TBODY>
+              <TR>
+                <TD vAlign=top width=2 height=25><IMG 
+                  src="topframe/bg-04.gif" border=0> </TD>
+                <TD title=文件资料 noWrap align=middle width=94 height=25><A 
+                  style="CURSOR: hand">文件资料</A></TD></TR></TBODY></TABLE></TD>
+          <TD noWrap width=94>
+            <TABLE class=title-00 id=_mp3 
+            onmouseover='over_change(3,this,"#3366cc");MpChangeMouseOver_dely("_mp3");' 
+            onclick='over_change(3,this,"#3366cc");MpChangeMouseOver("Mp3");' 
+            onmouseout='out_change(3,this,"#cccccc");MpChangeMouseOut("_mp3")' 
+            height=21 cellSpacing=0 cellPadding=0 width="100%" border=0 
+            vAlign="top">
+              <TBODY>
+              <TR>
+                <TD vAlign=top width=2 height=25><IMG 
+                  src="topframe/bg-04.gif" border=0> </TD>
+                <TD title=交流园地 noWrap align=middle width=94 height=25><A 
+                  style="CURSOR: hand">交流园地</A></TD></TR></TBODY></TABLE></TD>
+          <!--<TD noWrap width=94>
+            <TABLE class=title-00 id=_mp4 
+            onmouseover='over_change(4,this,"#3366cc");MpChangeMouseOver_dely("_mp4");' 
+            onclick='over_change(4,this,"#3366cc");MpChangeMouseOver("Mp4");' 
+            onmouseout='out_change(4,this,"#cccccc");MpChangeMouseOut("_mp4")' 
+            height=21 cellSpacing=0 cellPadding=0 width="100%" border=0 
+            vAlign="top">
+              <TBODY>
+              <TR>
+                <TD vAlign=top width=2 height=25><IMG 
+                  src="应用主菜单框架_files/bg-04.gif" border=0> </TD>
+                <TD title=考核工作 noWrap align=middle width=94 height=25><A 
+                  style="CURSOR: hand">考核工作</A></TD></TR></TBODY></TABLE></TD>
+          <TD noWrap width=94>
+            <TABLE class=title-00 id=_mp5 
+            onmouseover='over_change(5,this,"#3366cc");MpChangeMouseOver_dely("_mp5");' 
+            onclick='over_change(5,this,"#3366cc");MpChangeMouseOver("Mp5");' 
+            onmouseout='out_change(5,this,"#cccccc");MpChangeMouseOut("_mp5")' 
+            height=21 cellSpacing=0 cellPadding=0 width="100%" border=0 
+            vAlign="top">
+              <TBODY>
+              <TR>
+                <TD vAlign=top width=2 height=25><IMG 
+                  src="应用主菜单框架_files/bg-04.gif" border=0> </TD>
+                <TD title=考核信息 noWrap align=middle width=94 height=25><A 
+                  style="CURSOR: hand">考核信息</A></TD></TR></TBODY></TABLE></TD>
+          <TD noWrap width=94>
+            <TABLE class=title-00 id=_mp6 
+            onmouseover='over_change(6,this,"#3366cc");MpChangeMouseOver_dely("_mp6");' 
+            onclick='over_change(6,this,"#3366cc");MpChangeMouseOver("Mp6");' 
+            onmouseout='out_change(6,this,"#cccccc");MpChangeMouseOut("_mp6")' 
+            height=21 cellSpacing=0 cellPadding=0 width="100%" border=0 
+            vAlign="top">
+              <TBODY>
+              <TR>
+                <TD vAlign=top width=2 height=25><IMG 
+                  src="应用主菜单框架_files/bg-04.gif" border=0> </TD>
+                <TD title=考核数据 noWrap align=middle width=94 height=25><A 
+                  style="CURSOR: hand">考核数据</A></TD></TR></TBODY></TABLE></TD>
+          <TD noWrap width=94>
+            <TABLE class=title-00 id=_mp7 
+            onmouseover='over_change(7,this,"#3366cc");MpChangeMouseOver_dely("_mp7");' 
+            onclick='over_change(7,this,"#3366cc");MpChangeMouseOver("Mp7");' 
+            onmouseout='out_change(7,this,"#cccccc");MpChangeMouseOut("_mp7")' 
+            height=21 cellSpacing=0 cellPadding=0 width="100%" border=0 
+            vAlign="top">
+              <TBODY>
+              <TR>
+                <TD vAlign=top width=2 height=25><IMG 
+                  src="应用主菜单框架_files/bg-04.gif" border=0> </TD>
+                <TD title=民主测评 noWrap align=middle width=94 height=25><A 
+                  style="CURSOR: hand">民主测评</A></TD></TR></TBODY></TABLE></TD>
+          <TD noWrap width=94>
+            <TABLE class=title-00 id=_mp8 
+            onmouseover='over_change(8,this,"#3366cc");MpChangeMouseOver_dely("_mp8");' 
+            onclick='over_change(8,this,"#3366cc");MpChangeMouseOver("Mp8");' 
+            onmouseout='out_change(8,this,"#cccccc");MpChangeMouseOut("_mp8")' 
+            height=21 cellSpacing=0 cellPadding=0 width="100%" border=0 
+            vAlign="top">
+              <TBODY>
+              <TR>
+                <TD vAlign=top width=2 height=25><IMG 
+                  src="应用主菜单框架_files/bg-04.gif" border=0> </TD>
+                <TD title=数据采集 noWrap align=middle width=94 height=25><A 
+                  style="CURSOR: hand">数据采集</A></TD></TR></TBODY></TABLE></TD>
+          <TD noWrap width=94>
+            <TABLE class=title-00 id=_mp9 
+            onmouseover='over_change(9,this,"#3366cc");MpChangeMouseOver_dely("_mp9");' 
+            onclick='over_change(9,this,"#3366cc");MpChangeMouseOver("Mp9");' 
+            onmouseout='out_change(9,this,"#cccccc");MpChangeMouseOut("_mp9")' 
+            height=21 cellSpacing=0 cellPadding=0 width="100%" border=0 
+            vAlign="top">
+              <TBODY>
+              <TR>
+                <TD vAlign=top width=2 height=25><IMG 
+                  src="应用主菜单框架_files/bg-04.gif" border=0> </TD>
+                <TD title=系统设置 noWrap align=middle width=94 height=25><A 
+                  style="CURSOR: hand">系统设置</A></TD></TR></TBODY></TABLE></TD>
+          <TD noWrap width=94>
+            <TABLE class=title-00 id=_mp10 
+            onmouseover='over_change(10,this,"#3366cc");MpChangeMouseOver_dely("_mp10");' 
+            onclick='over_change(10,this,"#3366cc");MpChangeMouseOver("Mp10");' 
+            onmouseout='out_change(10,this,"#cccccc");MpChangeMouseOut("_mp10")' 
+            height=21 cellSpacing=0 cellPadding=0 width="100%" border=0 
+            vAlign="top">
+              <TBODY>
+              <TR>
+                <TD vAlign=top width=2 height=25><IMG 
+                  src="应用主菜单框架_files/bg-04.gif" border=0> </TD>
+                <TD title=帮助 noWrap align=middle width=94 height=25><A 
+                  style="CURSOR: hand">帮助</A></TD></TR></TBODY></TABLE></TD>
+          <TD noWrap width=94>
+            <TABLE class=title-00 id=_mp11 
+            onmouseover='over_change(11,this,"#3366cc");MpChangeMouseOver_dely("_mp11");' 
+            onclick='over_change(11,this,"#3366cc");MpChangeMouseOver("Mp11");' 
+            onmouseout='out_change(11,this,"#cccccc");MpChangeMouseOut("_mp11")' 
+            height=21 cellSpacing=0 cellPadding=0 width="100%" border=0 
+            vAlign="top">
+              <TBODY>
+              <TR>
+                <TD vAlign=top width=2 height=25><IMG 
+                  src="应用主菜单框架_files/bg-04.gif" border=0> </TD>
+                <TD title=首页 noWrap align=middle width=94 height=25><A 
+                  style="CURSOR: hand">首页</A></TD></TR></TBODY></TABLE></TD><!--<TD  width=10 nowrap>
+					<TABLE width=100% border=0 cellPadding=0 cellSpacing=0 onclick='javascript:ShowMenu(MenuModuleGroup,20,0,150);'>
+						<TR>
+							<TD valign="top"><IMG border=0 src="top_images/bg-04.gif"> </TD>
+							<TD align="center" valign="top" title="点击列出剩余列表">
+								<a href=# style='cursor:hand;'><img src="/resourceone/images/arrow.jpg" border=0></a>
+							</TD>
+						</TR>
+					</TABLE>
+				</TD>--></TR></TBODY></TABLE>
+      <DIV></DIV></DIV></TD>
+    <TD vAlign=top><IMG src="topframe/bg-04.gif"></TD>
+    <TD id=moveRight onmouseover=_moveMouseOver(1,895) onclick=_move(1,895) 
+    onmouseout=_moveMouseOut(1,895) vAlign=top><IMG id=moveRightImg 
+      style="CURSOR: hand" src="topframe/m_righta.gif"></TD>
+    <TD vAlign=top align=right width="100%">
+      <SCRIPT language=javascript>
+function MpChange(MpID,MpURL,NavURL,LeftFrameEnabled)
+{
+	//for(i=1;i <= 11; i++)
+	//{
+		//eval("document.all.Mp"+i).style.display = "none";
+		//原来就没有eval('document.all.Mp' + i).style.display ="none";
+	//}
+	//var MpObj = eval("document.all('"+MpID+"')");
+	//if(MpObj.style.display== "none")
+		//MpObj.style.display = "block";
+		
+		
+	window.top._funNav(LeftFrameEnabled)
+	if((NavURL==null)||(NavURL=="")||(NavURL=="#")){
+		// window.top.leftFrame.location="Left.jsp?
+	}else{
+		window.top.leftFrame.location="";
+	}
+	if((MpURL!="")&&(MpURL!="#")){
+		window.top.mainFrame.location = MpURL;
+	}
+}
+
+var modulesdely;
+
+function MpChangeMouseOver_dely(MpID){
+  modulesdely = setTimeout("MpChangeMouseOver2(\""+MpID+"\")",200);
+  //MpChangeMouseOver(MpID)
+}
+function MpChangeMouseOut(MpID){
+  clearTimeout(modulesdely);
+}
+function MpChangeMouseOver2(MpID){
+//  alert("do click"+MpID);
+  eval("document.all('"+MpID+"').click()");
+}
+function MpChangeMouseOver(MpID){
+	//-----------------------------------------------------------------------------------
+	//修改开始
+	//-----------------------------------------------------------------------------------	
+  //增加菜单显示延时后加入
+	clearTimeout(modulesdely);
+	var CMpObj = eval("document.all('C"+MpID+"')");
+	
+	var h = CMpObj.style.height;
+	h = h.substr(0,h.length-2);
+	
+	//显示一个层
+	//左上角X坐标
+	Xpos = document.body.scrollLeft + event.clientX - event.offsetX + 1;
+	//左上角Y坐标
+	Ypos = document.body.scrollTop + event.clientY - event.offsetY + 24;
+
+	//内部代码
+	oPopup.document.body.innerHTML = "<div style=\"position:absolute; width:100%; height:"+h+"px; display:block;\" onmouseout=\"parent._doOut()\" onmouseover=\"parent._doOver()\">"+CMpObj.innerHTML+"</div>";
+	oPopup.show(Xpos,Ypos,150, h,document.body);
+	//-----------------------------------------------------------------------------------
+	//修改结束
+	//-----------------------------------------------------------------------------------		
+}
+var time_num;
+function _doOut(){
+	time_num = setTimeout("oPopup.hide()",600);
+}
+function _doOver(){
+	clearTimeout(time_num);
+}
+</SCRIPT>
+
+      <TABLE height=22 cellSpacing=0 cellPadding=0 border=0 vAlign="top">
+        <TBODY>
+        <TR>
+          <TD align=right height=22><A 
+            style="CURSOR: hand" 
+            onclick=""
+            onmouseout=""
+            ><IMG 
+            src="topframe/bg-right.gif" width=99 border=0 name=Image34></A> 
+
+            <DIV id=MenuModuleGroup style="DISPLAY: none; POSITION: absolute">
+            <TABLE cellSpacing=1 cellPadding=0 width="100%" bgColor=#98c1dd 
+            border=0>
+              <TBODY></TBODY></TABLE></DIV><!--用户可以访问的子系统列表 start-->
+            <DIV id=MenuPullNew style="DISPLAY: none; POSITION: absolute">
+            <SCRIPT language=javascript>
+                    function gotoSystem(sysid,url)
+                    {
+	                    MM_showHideLayers('alertbox','','show');
+	                    document.all("url").value = url;
+	                    var tourl = "";
+	                    var f = document.myForm;
+	                    f.target="_top";
+	                    f.action = tourl;
+	                    f.submit();
+	                    //window.top.location=tourl;
+                    }
+                    function changeSystem(sysid)
+                    {
+                    MM_showHideLayers('alertbox','','show');
+                    window.top.location="";
+                    }
+                  </SCRIPT>
+
+            <TABLE 
+            style="BORDER-RIGHT: #918e82 1px solid; BORDER-TOP: #918e82 1px solid; BORDER-LEFT: #918e82 1px solid; BORDER-BOTTOM: #918e82 1px solid" 
+            cellSpacing=0 cellPadding=0 width="100%" bgColor=#ffffff border=0>
+              <TBODY>
+              <TR bgColor=#ffeaaa>
+                <TD 
+                onmouseover="" 
+                style="BORDER-RIGHT: #f3f3ee 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #f3f3ee 1px solid; PADDING-LEFT: 8px; FONT: 8pt Tahoma; BORDER-LEFT: #f3f3ee 1px solid; CURSOR: hand; COLOR: #282211; BORDER-BOTTOM: #f3f3ee 1px solid" 
+                onclick='' 
+                onmouseout="" 
+                height=20><IMG src="topframe/app.gif" 
+                  border=0>&nbsp;全社考核子系统 </TD></TR>
+              <TR>
+                <TD 
+                onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE'; this.style.font = '8pt Tahoma'; this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+                style="BORDER-RIGHT: #f3f3ee 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #f3f3ee 1px solid; PADDING-LEFT: 8px; FONT: 8pt Tahoma; BORDER-LEFT: #f3f3ee 1px solid; CURSOR: hand; COLOR: #282211; BORDER-BOTTOM: #f3f3ee 1px solid" 
+                onclick='' 
+                onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8';this.style.font = '8pt Tahoma'; this.style.color = '#282211'; this.style.cursor = 'hand';" 
+                height=20><IMG src="topframe/app.gif" 
+                  border=0>&nbsp;资产子系统 </TD></TR></TBODY></TABLE></DIV><!--用户可以访问的子系统列表 end--></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<DIV id=App00 
+style="DISPLAY: block; Z-INDEX: 6; LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 88px; HEIGHT: 22px; BACKGROUND-COLOR: #3366dd; layer-background-color: #FD7648">
+<TABLE height=22 cellSpacing=0 cellPadding=0 width="100%" bgColor=#227baf 
+border=0>
+  <TBODY>
+  <TR>
+    <TD align=right>
+      <MARQUEE scrollAmount=1><FONT 
+color=#ffffff></FONT></MARQUEE></TD></TR></TBODY></TABLE></DIV><!------------------------------------------------------修改开始--------------------------------------------------------><!-- 产生模块的集合对象 --><!-- 循环生成DIV层，每个DIV用于显示一个模块组下的模块菜单 -->
+<DIV id=CMp1 style="DISPLAY: none; POSITION: absolute; HEIGHT: 46px">
+<TABLE 
+style="BORDER-RIGHT: #918e82 1px solid; BORDER-TOP: #918e82 1px solid; BORDER-LEFT: #918e82 1px solid; BORDER-BOTTOM: #918e82 1px solid" 
+cellSpacing=0 cellPadding=0 width="100%" border=0><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TBODY>
+  <TR height=22>
+    <TD id=_cmodule0_1 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('0_2',this,'#A7A7A7','zbs_duty_0106/dutyList.html','#',4,'1f4ca871-10233b1b893-f528764d624db129b32c21fbca0cb8d6','0');}else{parent.ModuleChange('0_2',this,'#A7A7A7','zbs_duty_0106/dutyList.html','#',4,'1f4ca871-10233b1b893-f528764d624db129b32c21fbca0cb8d6','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;值班信息维护&nbsp;&nbsp;&nbsp;</A> </TD></TR>
+  <TR height=22>
+    <TD id=_cmodule0_2 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('0_2',this,'#A7A7A7','zbs_duty_0106/dutySearch.html','#',4,'1f4ca871-10233b1b893-f528764d624db129b32c21fbca0cb8d6','0');}else{parent.ModuleChange('0_2',this,'#A7A7A7','zbs_duty_0106/dutySearch.html','#',4,'1f4ca871-10233b1b893-f528764d624db129b32c21fbca0cb8d6','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;值班信息检索&nbsp;&nbsp;&nbsp;</A> </TD></TR>
+  <!--<TR height=22>
+    <TD id=_cmodule0_2 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('0_2',this,'#A7A7A7','zbs_duty/dutyManageList.html','/examine/servlet/ItemDefineTypeTreeServlet',4,'1f4ca871-10233b1b893-f528764d624db129b32c21fbca0cb8d6','0');}else{parent.ModuleChange('0_2',this,'#A7A7A7','zbs_duty/dutyManageList.html','/examine/servlet/ItemDefineTypeTreeServlet',4,'1f4ca871-10233b1b893-f528764d624db129b32c21fbca0cb8d6','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="应用主菜单框架_files/menuarrow.gif" 
+      align=middle>&nbsp;值班信息管理&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <!--<TR height=22>
+    <TD id=_cmodule0_3 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('0_3',this,'#A7A7A7','/examine/servlet/ItemStructureListServlet?resUUID=5410635-10791776d6f-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/ItemStructureTreeServlet',2,'5410635-1078d61e8a3-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}else{parent.ModuleChange('0_3',this,'#A7A7A7','/examine/servlet/ItemStructureListServlet?resUUID=5410635-10791776d6f-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/ItemStructureTreeServlet',2,'5410635-1078d61e8a3-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="应用主菜单框架_files/menuarrow.gif" 
+      align=middle>&nbsp;指标信息&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <!--<TR height=22>
+    <TD id=_cmodule0_4 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('0_4',this,'#A7A7A7','/examine/servlet/LevelListServlet?resUUID=7b8a4514-10407ea6471-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/LevelTreeServlet',2,'5f04ba0c-103fe70ad98-fbae402534d30a12ebdd8049c56747d3','0');}else{parent.ModuleChange('0_4',this,'#A7A7A7','/examine/servlet/LevelListServlet?resUUID=7b8a4514-10407ea6471-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/LevelTreeServlet',2,'5f04ba0c-103fe70ad98-fbae402534d30a12ebdd8049c56747d3','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="应用主菜单框架_files/menuarrow.gif" 
+      align=middle>&nbsp;考核等次&nbsp;&nbsp;&nbsp;</A> </TD></TR>--></TBODY></TABLE></DIV>
+<DIV id=CMp2 style="DISPLAY: none; POSITION: absolute; HEIGHT: 23px">
+<TABLE 
+style="BORDER-RIGHT: #918e82 1px solid; BORDER-TOP: #918e82 1px solid; BORDER-LEFT: #918e82 1px solid; BORDER-BOTTOM: #918e82 1px solid" 
+cellSpacing=0 cellPadding=0 width="100%" border=0><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TBODY>
+  <TR height=22>
+    <TD id=_cmodule1_1 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('0_2',this,'#A7A7A7','zbs_file/fileList.html','zbs_file/fileTree.html',2,'1f4ca871-10233b1b893-f528764d624db129b32c21fbca0cb8d6','0');}else{parent.ModuleChange('0_2',this,'#A7A7A7','zbs_file/fileList.html','zbs_file/fileTree.html',2,'1f4ca871-10233b1b893-f528764d624db129b32c21fbca0cb8d6','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;文件资料维护&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <!--<TR height=22>
+    <TD id=_cmodule1_2 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('1_2',this,'#A7A7A7','zbs_file/fileLableList.html','',4,'1f4ca871-10233b3660f-f528764d624db129b32c21fbca0cb8d6','0');}else{parent.ModuleChange('1_2',this,'#A7A7A7','zbs_file/fileLableList.html','',4,'1f4ca871-10233b3660f-f528764d624db129b32c21fbca0cb8d6','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="应用主菜单框架_files/menuarrow.gif" 
+      align=middle>&nbsp;文件资料管理&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <!--<TR height=22>
+    <TD id=_cmodule1_3 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('1_3',this,'#A7A7A7','/examine/servlet/ReportTemplateListServlet?resUUID=7e45eae5-105371a8071-ea2f418677680f266a29b48e7e4447c3','/examine/servlet/ReportTemplateTreeServlet',2,'7e45eae5-105371746d2-ea2f418677680f266a29b48e7e4447c3','0');}else{parent.ModuleChange('1_3',this,'#A7A7A7','/examine/servlet/ReportTemplateListServlet?resUUID=7e45eae5-105371a8071-ea2f418677680f266a29b48e7e4447c3','/examine/servlet/ReportTemplateTreeServlet',2,'7e45eae5-105371746d2-ea2f418677680f266a29b48e7e4447c3','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="应用主菜单框架_files/menuarrow.gif" 
+      align=middle>&nbsp;报表模板&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <!--<TR height=22>
+    <TD id=_cmodule1_4 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('1_4',this,'#A7A7A7','/examine/report/ReportListServlet?reporttype=1&amp;resUUID=62fbd979-1026702d0f8-f528764d624db129b32c21fbca0cb8d6','/examine/project/ProjectTypeTreeServlet?_URL=/report/ReportListServlet?reporttype=1',2,'1f4ca871-10233b2da63-f528764d624db129b32c21fbca0cb8d6','0');}else{parent.ModuleChange('1_4',this,'#A7A7A7','/examine/report/ReportListServlet?reporttype=1&amp;resUUID=62fbd979-1026702d0f8-f528764d624db129b32c21fbca0cb8d6','/examine/project/ProjectTypeTreeServlet?_URL=/report/ReportListServlet?reporttype=1',2,'1f4ca871-10233b2da63-f528764d624db129b32c21fbca0cb8d6','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="应用主菜单框架_files/menuarrow.gif" 
+      align=middle>&nbsp;报表设置&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <!--<TR height=22>
+    <TD id=_cmodule1_5 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('1_5',this,'#A7A7A7','/examine/report/ReportListServlet?reporttype=0&amp;resUUID=62fbd979-1026701aad9-f528764d624db129b32c21fbca0cb8d6','/examine/project/ProjectTypeTreeServlet?_URL=/report/ReportListServlet?reporttype=0',2,'1f4ca871-10233b27b37-f528764d624db129b32c21fbca0cb8d6','0');}else{parent.ModuleChange('1_5',this,'#A7A7A7','/examine/report/ReportListServlet?reporttype=0&amp;resUUID=62fbd979-1026701aad9-f528764d624db129b32c21fbca0cb8d6','/examine/project/ProjectTypeTreeServlet?_URL=/report/ReportListServlet?reporttype=0',2,'1f4ca871-10233b27b37-f528764d624db129b32c21fbca0cb8d6','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="应用主菜单框架_files/menuarrow.gif" 
+      align=middle>&nbsp;填报表设置&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <!--<TR height=22>
+    <TD id=_cmodule1_6 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('1_6',this,'#A7A7A7','/examine/servlet/TemplateListServlet?resUUID=79fa855a-1069fa0c9d0-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/TemplateTreeServlet',2,'79fa855a-1069f9f71f2-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}else{parent.ModuleChange('1_6',this,'#A7A7A7','/examine/servlet/TemplateListServlet?resUUID=79fa855a-1069fa0c9d0-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/TemplateTreeServlet',2,'79fa855a-1069f9f71f2-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="应用主菜单框架_files/menuarrow.gif" 
+      align=middle>&nbsp;Excel模板设置&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <!--<TR height=22>
+    <TD id=_cmodule1_7 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('1_7',this,'#A7A7A7','/examine/servlet/NoticeListServlet?resUUID=10d0e1e-1024822c12a-bb833d86ca3f59d636354b1142d44eb0','/examine/servlet/NoticeTreeServlet',2,'1f4ca871-10233c9f1a2-f528764d624db129b32c21fbca0cb8d6','0');}else{parent.ModuleChange('1_7',this,'#A7A7A7','/examine/servlet/NoticeListServlet?resUUID=10d0e1e-1024822c12a-bb833d86ca3f59d636354b1142d44eb0','/examine/servlet/NoticeTreeServlet',2,'1f4ca871-10233c9f1a2-f528764d624db129b32c21fbca0cb8d6','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="应用主菜单框架_files/menuarrow.gif" 
+      align=middle>&nbsp;考核通知&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <!--<TR height=22>
+    <TD id=_cmodule1_8 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('1_8',this,'#A7A7A7','/examine/servlet/ReportShowListServlet?config=1&amp;resUUID=37438b17-1057c4f0e01-324d083023f7a18b5abd25e6c7ac25b1','/examine/servlet/ReportAdminShowTypeTreeServlet',2,'37438b17-1057c4d032d-324d083023f7a18b5abd25e6c7ac25b1','0');}else{parent.ModuleChange('1_8',this,'#A7A7A7','/examine/servlet/ReportShowListServlet?config=1&amp;resUUID=37438b17-1057c4f0e01-324d083023f7a18b5abd25e6c7ac25b1','/examine/servlet/ReportAdminShowTypeTreeServlet',2,'37438b17-1057c4d032d-324d083023f7a18b5abd25e6c7ac25b1','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="应用主菜单框架_files/menuarrow.gif" 
+      align=middle>&nbsp;报表公示管理&nbsp;&nbsp;&nbsp;</A> </TD></TR>--></TBODY></TABLE></DIV>
+<DIV id=CMp3 style="DISPLAY: none; POSITION: absolute; HEIGHT: 23px">
+<TABLE 
+style="BORDER-RIGHT: #918e82 1px solid; BORDER-TOP: #918e82 1px solid; BORDER-LEFT: #918e82 1px solid; BORDER-BOTTOM: #918e82 1px solid" 
+cellSpacing=0 cellPadding=0 width="100%" border=0><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TBODY>
+  <TR height=22>
+    <TD id=_cmodule2_1 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('2_1',this,'#A7A7A7','zbs_bbs/bbsZoneList.html','#',4,'79fa855a-1069b448565-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}else{parent.ModuleChange('2_1',this,'#A7A7A7','zbs_bbs/bbsZoneList.html','#',4,'79fa855a-1069b448565-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;交流园地&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <!--<TR height=22>
+    <TD id=_cmodule2_2 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('2_2',this,'#A7A7A7','zbs_bbs/bbsZoneManageList.html','/examine/servlet/ModulusManageTreeServlet',4,'79fa855a-1069b46d158-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}else{parent.ModuleChange('2_2',this,'#A7A7A7','zbs_bbs/bbsZoneManageList.html','/examine/servlet/ModulusManageTreeServlet',4,'79fa855a-1069b46d158-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="应用主菜单框架_files/menuarrow.gif" 
+      align=middle>&nbsp;交流园地管理&nbsp;&nbsp;&nbsp;</A> </TD></TR></TBODY></TABLE></DIV>
+<DIV id=CMp4 style="DISPLAY: none; POSITION: absolute; HEIGHT: 222px">
+<TABLE 
+style="BORDER-RIGHT: #918e82 1px solid; BORDER-TOP: #918e82 1px solid; BORDER-LEFT: #918e82 1px solid; BORDER-BOTTOM: #918e82 1px solid" 
+cellSpacing=0 cellPadding=0 width="100%" border=0><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TBODY>
+  <TR height=22>
+    <TD id=_cmodule3_1 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('3_1',this,'#A7A7A7','/examine/servlet/WorkItemsTodoServlet?resUUID=6d680012-102a933e094-ea9522a8479f77c25bb890d760c9df9b','#',3,'6d680012-102a932d952-ea9522a8479f77c25bb890d760c9df9b','0');}else{parent.ModuleChange('3_1',this,'#A7A7A7','/examine/servlet/WorkItemsTodoServlet?resUUID=6d680012-102a933e094-ea9522a8479f77c25bb890d760c9df9b','#',3,'6d680012-102a932d952-ea9522a8479f77c25bb890d760c9df9b','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;待办工作&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule3_2 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('3_2',this,'#A7A7A7','/examine/servlet/WorkItemsDoneServlet?resUUID=1a724f93-102c3dfdd67-f528764d624db129b32c21fbca0cb8d6','#',3,'1a724f93-102c3ded69b-f528764d624db129b32c21fbca0cb8d6','0');}else{parent.ModuleChange('3_2',this,'#A7A7A7','/examine/servlet/WorkItemsDoneServlet?resUUID=1a724f93-102c3dfdd67-f528764d624db129b32c21fbca0cb8d6','#',3,'1a724f93-102c3ded69b-f528764d624db129b32c21fbca0cb8d6','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;已办工作&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule3_3 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('3_3',this,'#A7A7A7','/examine/servlet/DailyRecordListServlet?resUUID=1b629868-1063593d16e-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/DailyRecordTypeTreeServlet',2,'721e223d-103bbb81797-fbae402534d30a12ebdd8049c56747d3','0');}else{parent.ModuleChange('3_3',this,'#A7A7A7','/examine/servlet/DailyRecordListServlet?resUUID=1b629868-1063593d16e-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/DailyRecordTypeTreeServlet',2,'721e223d-103bbb81797-fbae402534d30a12ebdd8049c56747d3','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;日清月结设置&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule3_4 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('3_4',this,'#A7A7A7','/examine/servlet/SummarizeListServlet?roletype=0&amp;resUUID=2a47ed9-1047e9885ac-ba8fa1abd11da14f3a083a2539c06bf9','/examine/servlet/SummarizeTreeServlet?_roletype=0',2,'1a6722fd-102a02f8969-bb833d86ca3f59d636354b1142d44eb0','0');}else{parent.ModuleChange('3_4',this,'#A7A7A7','/examine/servlet/SummarizeListServlet?roletype=0&amp;resUUID=2a47ed9-1047e9885ac-ba8fa1abd11da14f3a083a2539c06bf9','/examine/servlet/SummarizeTreeServlet?_roletype=0',2,'1a6722fd-102a02f8969-bb833d86ca3f59d636354b1142d44eb0','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;日清月结填报&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule3_5 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('3_5',this,'#A7A7A7','/examine/servlet/SummarizeListServlet?roletype=1&amp;resUUID=1ecbd50-104d14f8a4c-ba8fa1abd11da14f3a083a2539c06bf9','/examine/servlet/SummarizeTreeServlet?_roletype=1',2,'7e0520c3-103cb27a696-fbae402534d30a12ebdd8049c56747d3','0');}else{parent.ModuleChange('3_5',this,'#A7A7A7','/examine/servlet/SummarizeListServlet?roletype=1&amp;resUUID=1ecbd50-104d14f8a4c-ba8fa1abd11da14f3a083a2539c06bf9','/examine/servlet/SummarizeTreeServlet?_roletype=1',2,'7e0520c3-103cb27a696-fbae402534d30a12ebdd8049c56747d3','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;日清月结审核&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule3_6 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('3_6',this,'#A7A7A7','/examine/workflow/ShowGuiDangServlet?resUUID=32aa9ace-103da395cce-bb833d86ca3f59d636354b1142d44eb0','#',4,'143bc9f6-103ceef2452-bb833d86ca3f59d636354b1142d44eb0','0');}else{parent.ModuleChange('3_6',this,'#A7A7A7','/examine/workflow/ShowGuiDangServlet?resUUID=32aa9ace-103da395cce-bb833d86ca3f59d636354b1142d44eb0','#',4,'143bc9f6-103ceef2452-bb833d86ca3f59d636354b1142d44eb0','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;查看归档结果&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule3_7 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('3_7',this,'#A7A7A7','/examine/servlet/DocListServlet?resUUID=54541db7-10473436b25-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/DocListServlet',4,'54541db7-104733ffd08-fbae402534d30a12ebdd8049c56747d3','0');}else{parent.ModuleChange('3_7',this,'#A7A7A7','/examine/servlet/DocListServlet?resUUID=54541db7-10473436b25-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/DocListServlet',4,'54541db7-104733ffd08-fbae402534d30a12ebdd8049c56747d3','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;发布考核办法&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule3_8 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('3_8',this,'#A7A7A7','/examine/servlet/SuggestionBoxListServlet?resUUID=441ee635-105a981f8d9-fbae402534d30a12ebdd8049c56747d3','#',4,'441ee635-105a9810f25-fbae402534d30a12ebdd8049c56747d3','0');}else{parent.ModuleChange('3_8',this,'#A7A7A7','/examine/servlet/SuggestionBoxListServlet?resUUID=441ee635-105a981f8d9-fbae402534d30a12ebdd8049c56747d3','#',4,'441ee635-105a9810f25-fbae402534d30a12ebdd8049c56747d3','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;受理考核意见&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule3_9 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('3_9',this,'#A7A7A7','/examine/servlet/SumsubSuggestListServlet?resUUID=54541db7-104737b9198-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/SumsubSuggestTypeTreeServlet',2,'1f22e3d6-1046408bf06-fbae402534d30a12ebdd8049c56747d3','0');}else{parent.ModuleChange('3_9',this,'#A7A7A7','/examine/servlet/SumsubSuggestListServlet?resUUID=54541db7-104737b9198-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/SumsubSuggestTypeTreeServlet',2,'1f22e3d6-1046408bf06-fbae402534d30a12ebdd8049c56747d3','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;加减分意见设置&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule3_10 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('3_10',this,'#A7A7A7','/examine/servlet/DoSugListServlet?resUUID=660504d5-1045f5c2254-ba8fa1abd11da14f3a083a2539c06bf9','#',4,'660504d5-1045f5b1dd6-ba8fa1abd11da14f3a083a2539c06bf9','0');}else{parent.ModuleChange('3_10',this,'#A7A7A7','/examine/servlet/DoSugListServlet?resUUID=660504d5-1045f5c2254-ba8fa1abd11da14f3a083a2539c06bf9','#',4,'660504d5-1045f5b1dd6-ba8fa1abd11da14f3a083a2539c06bf9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;加减分意见受理&nbsp;&nbsp;&nbsp;</A> 
+</TD></TR></TBODY></TABLE></DIV>
+<DIV id=CMp5 style="DISPLAY: none; POSITION: absolute; HEIGHT: 134px">
+<TABLE 
+style="BORDER-RIGHT: #918e82 1px solid; BORDER-TOP: #918e82 1px solid; BORDER-LEFT: #918e82 1px solid; BORDER-BOTTOM: #918e82 1px solid" 
+cellSpacing=0 cellPadding=0 width="100%" border=0><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TBODY>
+  <TR height=22>
+    <TD id=_cmodule4_1 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('4_1',this,'#A7A7A7','/examine/workflow/WfSuggestionBoxListServlet?resUUID=4ec7bdf4-1045eb908a9-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/NoticeTreeServlet',4,'4ec7bdf4-1045eb6994e-fbae402534d30a12ebdd8049c56747d3','0');}else{parent.ModuleChange('4_1',this,'#A7A7A7','/examine/workflow/WfSuggestionBoxListServlet?resUUID=4ec7bdf4-1045eb908a9-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/NoticeTreeServlet',4,'4ec7bdf4-1045eb6994e-fbae402534d30a12ebdd8049c56747d3','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;考核意见箱&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule4_2 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('4_2',this,'#A7A7A7','/examine/servlet/SugContentListServlet?resUUID=660504d5-1045f5e77de-ba8fa1abd11da14f3a083a2539c06bf9','/examine/servlet/SumsubsugEntryTreeServlet',2,'660504d5-1045f5d1ab2-ba8fa1abd11da14f3a083a2539c06bf9','0');}else{parent.ModuleChange('4_2',this,'#A7A7A7','/examine/servlet/SugContentListServlet?resUUID=660504d5-1045f5e77de-ba8fa1abd11da14f3a083a2539c06bf9','/examine/servlet/SumsubsugEntryTreeServlet',2,'660504d5-1045f5d1ab2-ba8fa1abd11da14f3a083a2539c06bf9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;加减分建议&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule4_3 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('4_3',this,'#A7A7A7','/examine/servlet/DocListViewServlet?resUUID=3bf286fe-1047a772316-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/DocListViewServlet',4,'3bf286fe-1047a726910-fbae402534d30a12ebdd8049c56747d3','0');}else{parent.ModuleChange('4_3',this,'#A7A7A7','/examine/servlet/DocListViewServlet?resUUID=3bf286fe-1047a772316-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/DocListViewServlet',4,'3bf286fe-1047a726910-fbae402534d30a12ebdd8049c56747d3','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;考核办法&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule4_4 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('4_4',this,'#A7A7A7','/examine/servlet/ReportShowListServlet?resUUID=43199a19-105773fdc3d-324d083023f7a18b5abd25e6c7ac25b1','/examine/servlet/ReportShowTypeTreeServlet',2,'3679837c-10576dd91e3-324d083023f7a18b5abd25e6c7ac25b1','0');}else{parent.ModuleChange('4_4',this,'#A7A7A7','/examine/servlet/ReportShowListServlet?resUUID=43199a19-105773fdc3d-324d083023f7a18b5abd25e6c7ac25b1','/examine/servlet/ReportShowTypeTreeServlet',2,'3679837c-10576dd91e3-324d083023f7a18b5abd25e6c7ac25b1','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;报表公示&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule4_5 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('4_5',this,'#A7A7A7','/examine/servlet/PlanDefineInstanceListServlet?resUUID=303ffb4d-10579f13b3e-13398de59ff69c7eefc1d1aa342ac72c','/examine/servlet/GuiDangTreeServlet',2,'303ffb4d-10579ee0095-13398de59ff69c7eefc1d1aa342ac72c','0');}else{parent.ModuleChange('4_5',this,'#A7A7A7','/examine/servlet/PlanDefineInstanceListServlet?resUUID=303ffb4d-10579f13b3e-13398de59ff69c7eefc1d1aa342ac72c','/examine/servlet/GuiDangTreeServlet',2,'303ffb4d-10579ee0095-13398de59ff69c7eefc1d1aa342ac72c','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;查看归档列表&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule4_6 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('4_6',this,'#A7A7A7','/examine/servlet/PlanDefineTreeListServlet?resUUID=487f48e9-105c47060ce-13398de59ff69c7eefc1d1aa342ac72c','/examine/servlet/PlanDefineTreeServlet',2,'487f48e9-105c46d5524-13398de59ff69c7eefc1d1aa342ac72c','0');}else{parent.ModuleChange('4_6',this,'#A7A7A7','/examine/servlet/PlanDefineTreeListServlet?resUUID=487f48e9-105c47060ce-13398de59ff69c7eefc1d1aa342ac72c','/examine/servlet/PlanDefineTreeServlet',2,'487f48e9-105c46d5524-13398de59ff69c7eefc1d1aa342ac72c','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;考核历史记录&nbsp;&nbsp;&nbsp;</A> </TD></TR></TBODY></TABLE></DIV>
+<DIV id=CMp6 style="DISPLAY: none; POSITION: absolute; HEIGHT: 112px">
+<TABLE 
+style="BORDER-RIGHT: #918e82 1px solid; BORDER-TOP: #918e82 1px solid; BORDER-LEFT: #918e82 1px solid; BORDER-BOTTOM: #918e82 1px solid" 
+cellSpacing=0 cellPadding=0 width="100%" border=0><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TBODY>
+  <TR height=22>
+    <TD id=_cmodule5_1 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('5_1',this,'#A7A7A7','/examine/servlet/ReportShowListServlet2?resUUID=2527bf6b-10cc342e699-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/ReportShowTypeTreeServlet2',2,'2527bf6b-10cc341db63-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}else{parent.ModuleChange('5_1',this,'#A7A7A7','/examine/servlet/ReportShowListServlet2?resUUID=2527bf6b-10cc342e699-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/ReportShowTypeTreeServlet2',2,'2527bf6b-10cc341db63-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;报表查看&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule5_2 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('5_2',this,'#A7A7A7','/examine/servlet/ReportShowListServlet1?resUUID=2527bf6b-10cc3327f0a-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/ReportShowTypeTreeServlet1',2,'2527bf6b-10cc330829f-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}else{parent.ModuleChange('5_2',this,'#A7A7A7','/examine/servlet/ReportShowListServlet1?resUUID=2527bf6b-10cc3327f0a-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/ReportShowTypeTreeServlet1',2,'2527bf6b-10cc330829f-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;填报数据查看&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule5_3 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('5_3',this,'#A7A7A7','/examine/servlet/CustomizeReportShowPlanServlet?resUUID=4da4bc25-10cf758fa2e-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/CPlanReportTreeServlet',1,'4da4bc25-10cf75747fa-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}else{parent.ModuleChange('5_3',this,'#A7A7A7','/examine/servlet/CustomizeReportShowPlanServlet?resUUID=4da4bc25-10cf758fa2e-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/CPlanReportTreeServlet',1,'4da4bc25-10cf75747fa-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;定制报表&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule5_4 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('5_4',this,'#A7A7A7','/examine/servlet/CReportShowReportListServlet?resUUID=4da4bc25-10cf75a4144-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/CPlanReportViewTreeServlet',1,'4da4bc25-10cf757e265-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}else{parent.ModuleChange('5_4',this,'#A7A7A7','/examine/servlet/CReportShowReportListServlet?resUUID=4da4bc25-10cf75a4144-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/CPlanReportViewTreeServlet',1,'4da4bc25-10cf757e265-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;查看定制报表&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule5_5 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('5_5',this,'#A7A7A7','/examine/servlet/ReportWriteStatusListServlet?resUUID=5e358aa7-114f9ca7935-b6f8b0b9f9be5b8449eb112ce1ef75c9','#',4,'5e358aa7-114f9c88d34-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}else{parent.ModuleChange('5_5',this,'#A7A7A7','/examine/servlet/ReportWriteStatusListServlet?resUUID=5e358aa7-114f9ca7935-b6f8b0b9f9be5b8449eb112ce1ef75c9','#',4,'5e358aa7-114f9c88d34-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;填报开关&nbsp;&nbsp;&nbsp;</A> </TD></TR></TBODY></TABLE></DIV>
+<DIV id=CMp7 style="DISPLAY: none; POSITION: absolute; HEIGHT: 90px">
+<TABLE 
+style="BORDER-RIGHT: #918e82 1px solid; BORDER-TOP: #918e82 1px solid; BORDER-LEFT: #918e82 1px solid; BORDER-BOTTOM: #918e82 1px solid" 
+cellSpacing=0 cellPadding=0 width="100%" border=0><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TBODY>
+  <TR height=22>
+    <TD id=_cmodule6_1 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('6_1',this,'#A7A7A7','/examine/servlet/VoteListServlet?resUUID=883d732-104bc4410b9-6053db3827bf574d3dfc5ee12bbf674d','/examine/servlet/VoteTypeTreeServlet',2,'883d732-104bc3ef4dc-6053db3827bf574d3dfc5ee12bbf674d','0');}else{parent.ModuleChange('6_1',this,'#A7A7A7','/examine/servlet/VoteListServlet?resUUID=883d732-104bc4410b9-6053db3827bf574d3dfc5ee12bbf674d','/examine/servlet/VoteTypeTreeServlet',2,'883d732-104bc3ef4dc-6053db3827bf574d3dfc5ee12bbf674d','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;投票设置&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule6_2 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('6_2',this,'#A7A7A7','/examine/servlet/VoteManageListServlet?resUUID=b337c3f-104c259b1f5-324d083023f7a18b5abd25e6c7ac25b1','/examine/servlet/VoteManageTypeTreeServlet',2,'b337c3f-104c24bb554-324d083023f7a18b5abd25e6c7ac25b1','0');}else{parent.ModuleChange('6_2',this,'#A7A7A7','/examine/servlet/VoteManageListServlet?resUUID=b337c3f-104c259b1f5-324d083023f7a18b5abd25e6c7ac25b1','/examine/servlet/VoteManageTypeTreeServlet',2,'b337c3f-104c24bb554-324d083023f7a18b5abd25e6c7ac25b1','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;投票管理&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule6_3 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('6_3',this,'#A7A7A7','/examine/servlet/ShowFirstPersonGroupServlet_admin?resUUID=ee4fa7e-104d14f5e71-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/UsergroupTreeServlet_admin',1,'ee4fa7e-104d14a2e80-fbae402534d30a12ebdd8049c56747d3','0');}else{parent.ModuleChange('6_3',this,'#A7A7A7','/examine/servlet/ShowFirstPersonGroupServlet_admin?resUUID=ee4fa7e-104d14f5e71-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/UsergroupTreeServlet_admin',1,'ee4fa7e-104d14a2e80-fbae402534d30a12ebdd8049c56747d3','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;用户分组管理&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule6_4 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('6_4',this,'#A7A7A7','/examine/servlet/ShowFirstPersonGroupServlet?resUUID=38fa814f-10488e2a804-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/UsergroupTreeServlet',1,'54541db7-10475060218-fbae402534d30a12ebdd8049c56747d3','0');}else{parent.ModuleChange('6_4',this,'#A7A7A7','/examine/servlet/ShowFirstPersonGroupServlet?resUUID=38fa814f-10488e2a804-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/UsergroupTreeServlet',1,'54541db7-10475060218-fbae402534d30a12ebdd8049c56747d3','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;用户分组设置&nbsp;&nbsp;&nbsp;</A> </TD></TR></TBODY></TABLE></DIV>
+<DIV id=CMp8 style="DISPLAY: none; POSITION: absolute; HEIGHT: 46px">
+<TABLE 
+style="BORDER-RIGHT: #918e82 1px solid; BORDER-TOP: #918e82 1px solid; BORDER-LEFT: #918e82 1px solid; BORDER-BOTTOM: #918e82 1px solid" 
+cellSpacing=0 cellPadding=0 width="100%" border=0><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TBODY>
+  <TR height=22>
+    <TD id=_cmodule7_1 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('7_1',this,'#A7A7A7','/examine/stat/StatList.jsp?resUUID=5410635-1080e403de5-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/stat/StatListTree.jsp',2,'5410635-1080e3eddf8-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}else{parent.ModuleChange('7_1',this,'#A7A7A7','/examine/stat/StatList.jsp?resUUID=5410635-1080e403de5-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/stat/StatListTree.jsp',2,'5410635-1080e3eddf8-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;数据采集汇总&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule7_2 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('7_2',this,'#A7A7A7','/examine/servlet/UnitMapListServlet?resUUID=3e3c317d-107026ee1f3-b6f8b0b9f9be5b8449eb112ce1ef75c9','#',4,'3e3c317d-107026a668f-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}else{parent.ModuleChange('7_2',this,'#A7A7A7','/examine/servlet/UnitMapListServlet?resUUID=3e3c317d-107026ee1f3-b6f8b0b9f9be5b8449eb112ce1ef75c9','#',4,'3e3c317d-107026a668f-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;考核对象映射&nbsp;&nbsp;&nbsp;</A> </TD></TR></TBODY></TABLE></DIV>
+<DIV id=CMp9 style="DISPLAY: none; POSITION: absolute; HEIGHT: 156px">
+<TABLE 
+style="BORDER-RIGHT: #918e82 1px solid; BORDER-TOP: #918e82 1px solid; BORDER-LEFT: #918e82 1px solid; BORDER-BOTTOM: #918e82 1px solid" 
+cellSpacing=0 cellPadding=0 width="100%" border=0><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TBODY>
+  <TR height=22>
+    <TD id=_cmodule8_1 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('8_1',this,'#A7A7A7','/examine/servlet/ItemStructureListServlet?resUUID=5410635-10791776d6f-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/ItemStructureTreeServlet',2,'5410635-1078d61e8a3-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}else{parent.ModuleChange('8_1',this,'#A7A7A7','/examine/servlet/ItemStructureListServlet?resUUID=5410635-10791776d6f-b6f8b0b9f9be5b8449eb112ce1ef75c9','/examine/servlet/ItemStructureTreeServlet',2,'5410635-1078d61e8a3-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;指标信息&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule8_2 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('8_2',this,'#A7A7A7','/examine/servlet/GetTypelistServlet?resUUID=1b6bc626-102421e45f1-ea9522a8479f77c25bb890d760c9df9b','#',3,'1b6bc626-102421cfd2c-ea9522a8479f77c25bb890d760c9df9b','0');}else{parent.ModuleChange('8_2',this,'#A7A7A7','/examine/servlet/GetTypelistServlet?resUUID=1b6bc626-102421e45f1-ea9522a8479f77c25bb890d760c9df9b','#',3,'1b6bc626-102421cfd2c-ea9522a8479f77c25bb890d760c9df9b','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;考核部门设置&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule8_3 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('8_3',this,'#A7A7A7','/examine/servlet/ListUnitgroupServlet?unitId=-1&amp;resUUID=54664384-1023e1e02c3-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/UnitgroupTreeServlet',2,'1f4ca871-10233b088e9-f528764d624db129b32c21fbca0cb8d6','0');}else{parent.ModuleChange('8_3',this,'#A7A7A7','/examine/servlet/ListUnitgroupServlet?unitId=-1&amp;resUUID=54664384-1023e1e02c3-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/UnitgroupTreeServlet',2,'1f4ca871-10233b088e9-f528764d624db129b32c21fbca0cb8d6','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;考核对象分组&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule8_4 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('8_4',this,'#A7A7A7','/examine/servlet/ListUnitServlet?unitGroupId=-1&amp;resUUID=54664384-10242353b43-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/UnitTreeServlet',2,'1f4ca871-10233b0e2d4-f528764d624db129b32c21fbca0cb8d6','0');}else{parent.ModuleChange('8_4',this,'#A7A7A7','/examine/servlet/ListUnitServlet?unitGroupId=-1&amp;resUUID=54664384-10242353b43-fbae402534d30a12ebdd8049c56747d3','/examine/servlet/UnitTreeServlet',2,'1f4ca871-10233b0e2d4-f528764d624db129b32c21fbca0cb8d6','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;考核对象设置&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule8_5 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('8_5',this,'#A7A7A7','/examine/servlet/AuthorizeListServlet?authorizetype=0&amp;resUUID=7e111a39-10475a64ef6-bb833d86ca3f59d636354b1142d44eb0','#',4,'7e111a39-10475a489d6-bb833d86ca3f59d636354b1142d44eb0','0');}else{parent.ModuleChange('8_5',this,'#A7A7A7','/examine/servlet/AuthorizeListServlet?authorizetype=0&amp;resUUID=7e111a39-10475a64ef6-bb833d86ca3f59d636354b1142d44eb0','#',4,'7e111a39-10475a489d6-bb833d86ca3f59d636354b1142d44eb0','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;加减分受理设置&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule8_6 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('8_6',this,'#A7A7A7','/examine/servlet/AuthorizeListServlet?authorizetype=1&amp;resUUID=7e111a39-1047e464ccf-bb833d86ca3f59d636354b1142d44eb0','#',4,'7e111a39-1047e3f8e6e-bb833d86ca3f59d636354b1142d44eb0','0');}else{parent.ModuleChange('8_6',this,'#A7A7A7','/examine/servlet/AuthorizeListServlet?authorizetype=1&amp;resUUID=7e111a39-1047e464ccf-bb833d86ca3f59d636354b1142d44eb0','#',4,'7e111a39-1047e3f8e6e-bb833d86ca3f59d636354b1142d44eb0','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;意见箱受理设置&nbsp;&nbsp;&nbsp;</A> </TD></TR><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TR height=22>
+    <TD id=_cmodule8_7 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('8_7',this,'#A7A7A7','/examine/servlet/OpenWindowListServlet?resUUID=10e9c372-107369ad5b4-b6f8b0b9f9be5b8449eb112ce1ef75c9','#',4,'10e9c372-10736997672-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}else{parent.ModuleChange('8_7',this,'#A7A7A7','/examine/servlet/OpenWindowListServlet?resUUID=10e9c372-107369ad5b4-b6f8b0b9f9be5b8449eb112ce1ef75c9','#',4,'10e9c372-10736997672-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;弹出窗口设置&nbsp;&nbsp;&nbsp;</A> </TD></TR></TBODY></TABLE></DIV>
+<DIV id=CMp10 style="DISPLAY: none; POSITION: absolute; HEIGHT: 24px">
+<TABLE 
+style="BORDER-RIGHT: #918e82 1px solid; BORDER-TOP: #918e82 1px solid; BORDER-LEFT: #918e82 1px solid; BORDER-BOTTOM: #918e82 1px solid" 
+cellSpacing=0 cellPadding=0 width="100%" border=0><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TBODY>
+  <TR height=22>
+    <TD id=_cmodule9_1 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('9_1',this,'#A7A7A7','/examine/help/default.htm?resUUID=ab555c3-105a95ddff2-324d083023f7a18b5abd25e6c7ac25b1','#',4,'310a6be6-105a444702c-324d083023f7a18b5abd25e6c7ac25b1','0');}else{parent.ModuleChange('9_1',this,'#A7A7A7','/examine/help/default.htm?resUUID=ab555c3-105a95ddff2-324d083023f7a18b5abd25e6c7ac25b1','#',4,'310a6be6-105a444702c-324d083023f7a18b5abd25e6c7ac25b1','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;帮助&nbsp;&nbsp;&nbsp;</A> </TD></TR></TBODY></TABLE></DIV>
+<DIV id=CMp11 style="DISPLAY: none; POSITION: absolute; HEIGHT: 24px">
+<TABLE 
+style="BORDER-RIGHT: #918e82 1px solid; BORDER-TOP: #918e82 1px solid; BORDER-LEFT: #918e82 1px solid; BORDER-BOTTOM: #918e82 1px solid" 
+cellSpacing=0 cellPadding=0 width="100%" border=0><!--
+	onmouseover="this.style.backgroundColor = '#A7A7A7';" 
+	onmouseout="this.style.backgroundColor = '#FBFBEE';" 
+-->
+  <TBODY>
+  <TR height=22>
+    <TD id=_cmodule10_1 
+    onmouseover="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #468BC7'; this.style.backgroundColor = '#C0D8EE';  this.style.color = '#295E8C'; this.style.cursor = 'hand';" 
+    style="FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #024c7b; BACKGROUND-COLOR: #fcfcf8" 
+    onclick="if(document.all('CMp1')){ModuleChange('10_1',this,'#A7A7A7','/examine/servlet/NoticeListTest1Servlet?resUUID=33aee4b7-10ec52e0b28-b6f8b0b9f9be5b8449eb112ce1ef75c9','#',3,'33aee4b7-10ec52c42ad-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}else{parent.ModuleChange('10_1',this,'#A7A7A7','/examine/servlet/NoticeListTest1Servlet?resUUID=33aee4b7-10ec52e0b28-b6f8b0b9f9be5b8449eb112ce1ef75c9','#',3,'33aee4b7-10ec52c42ad-b6f8b0b9f9be5b8449eb112ce1ef75c9','0');}" 
+    onmouseout="this.style.paddingleft = '15px'; this.style.paddingright = '5px'; this.style.border = '1px solid #FCFCF8'; this.style.backgroundColor = '#FCFCF8'; this.style.color = '#024C7B'; this.style.cursor = 'hand';" 
+    noWrap align=left><A>&nbsp;<IMG src="topframe/menuarrow.gif" 
+      align=middle>&nbsp;首页&nbsp;&nbsp;&nbsp;</A> </TD></TR></TBODY></TABLE></DIV><!------------------------------------------------------修改结束-------------------------------------------------------->
+<SCRIPT language=javascript>
+	
+	
+	window.status ="您当前所在位置：[全社考核子系统]-->[全社考核]"
+	
+	
+	function SysChange(sysId){
+	window.top.location="/login?userid=dev&personFlag=2&sysId="+sysId+"&Way=login";
+	}
+	
+	
+</SCRIPT>
+<!--iframe id=nframe src="/servlet/GetTopServlet" scrolling="no" width="0" height="0"  marginwidth="0" marginheight="0" frameborder='0'></iframe-->
+<SCRIPT language=JavaScript>
+<!--
+function _dowork(workid,url,navigate,type){
+//	alert(type);
+	if ((type == "11")||(type == "12")){	//弹出显示
+		window.open("/oabase/servlet/DoWorkServlet?workid="+workid+"&url=" + url,"","width=660,height=240,toolbar=0,directories=0,status=0,menu=0,scrollbars=yes,resizable=yes,copyhistory=no,left=170,top=110");
+	}else{									//本页显示
+		var funnav;
+		if ((navigate == "null")||(navigate == "#")){
+			window.top._funNav(4);
+		}else{
+			window.top._funNav(2);
+		}
+		parent.leftFrame.location = navigate;
+		parent.top.mainFrame.location = "/oabase/servlet/DoWorkServlet?workid="+workid+"&url=" + url;
+	}
+}_moveMouseOver(0,895);
+_moveMouseOver(1,895);
+
+//-->
+</SCRIPT>
+</BODY></HTML>

@@ -1,0 +1,36 @@
+
+   
+   1、 在\ResourceOne-3.0-b20040514.war\WEB_INF\目录下建一个 classes\com\icss\oa\intendwork目录，其下有四个文件夹，分别为admin、dao、handler、vo，
+       拷贝oaBase.war\WEB-INF\classes\com\icss\oa\intendwork目录下的admin\GetTopServlet.class、dao\OfficePendingDAO.class、handler\IntendWork.class、vo\OfficePendingVO.class 到相应的目录。
+       
+   2、在\ResourceOne-3.0-b20040514.war下建一个\netoffice\intendWork 目录，将oaBase.war\netoffice\intendWork下的showTop.jsp拷贝到其下
+    
+   3、修改平台的web.xml文件，添加如下注册：
+   
+      <context-param>
+         <param-name>topjndi</param-name>
+         <param-value>jdbc/OA</param-value>
+      </context-param>
+      
+      <servlet>
+         <servlet-name>GetTopServlet</servlet-name>
+         <servlet-class>com.icss.oa.intendwork.admin.GetTopServlet</servlet-class>
+       </servlet>
+
+      <servlet-mapping>  
+         <servlet-name>GetTopServlet</servlet-name>
+         <url-pattern>/servlet/GetTopServlet</url-pattern>
+      </servlet-mapping>
+      
+    4、\ResourceOne-3.0-b20040514.war\application\common\AppTop.jsp的修改：
+       
+       第355行div中修改如下：
+  <div align="right">
+    <table width="200" height="41"  border="0" align="right" cellpadding="0" cellspacing="0">
+       <tr>
+         <td valign="top">
+         <iframe id=nframe name=nframe src="<%=request.getContextPath()%>/servlet/GetTopServlet" scrolling="no" width="100%" height="41"  marginwidth="0" marginheight="0" frameborder='0'></iframe>
+         </td>
+       </tr>
+     </table>
+   </div>

@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>新华通讯社办公信息化管理系统  </title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script language="JavaScript">
+self.moveTo(0,0)
+self.resizeTo(screen.availWidth,screen.availHeight)
+</script>
+<script>
+N=(document.all)? 0:1;
+function _expend(){
+	if(N){
+	    main_frmObj = document.getElementById("main_frm");
+		main_frmObj.cols="192,15,*";
+	}else{
+		main_frm.cols="192,15,*";
+	}
+}
+function _close(typeId){
+	if(N){
+	    main_frmObj = document.getElementById("main_frm");
+	    if (typeId!=null && typeId==4){
+	    	main_frmObj.cols="0,0,*";
+	    }else{
+	   		main_frmObj.cols="0,15,*";
+	    }
+		
+	}else{
+		if (typeId!=null && typeId==4){
+	    	main_frm.cols="0,0,*";
+	    }else{
+	   		main_frm.cols="0,15,*";
+	    }
+	
+	}
+}
+
+mNav=1;//判断leftFrame是否打开的参数（0：关闭；1：打开）
+function _funNav(typeID){
+	//typeID：调用_funNav()的参数（0－按钮调用；菜单调用：1、常开，不能关闭;2、开始显示，但可不显示;3、开始不显示，但可显示;4、常闭，不能打开）
+	if(typeID==0){
+		if(mNav==0){
+			_expend();
+			window.top.navFrame.imgNav.src="images/lefta.gif";
+			window.top.navFrame.divNav.style.display="block";
+			mNav=1;
+		}else{
+			_close();
+			window.top.navFrame.imgNav.src="images/righta.gif";
+			window.top.navFrame.divNav.style.display="block";
+			mNav=0;
+		}
+	}
+	if(typeID==1){
+		_expend();
+		window.top.navFrame.imgNav.src="images/lefta.gif";
+		window.top.navFrame.divNav.style.display="none";
+		mNav=1;
+	}
+	if(typeID==2){
+		_expend();
+		window.top.navFrame.imgNav.src="images/lefta.gif";
+		window.top.navFrame.divNav.style.display="block";
+		mNav=1;
+	}
+	if(typeID==3){
+		_close();
+		window.top.navFrame.imgNav.src="images/righta.gif";
+		window.top.navFrame.divNav.style.display="block";
+		mNav=0;
+	}
+	if(typeID==4){
+		_close(4);
+		window.top.navFrame.imgNav.src="images/righta.gif";
+		window.top.navFrame.divNav.style.display="none";
+		mNav=0;
+	}
+}
+
+//状态1:打开 0:关闭
+//控制
+topState = 1
+function _topControl(){
+	if(topState == 1){
+		_topClose();
+		topState = 0;
+		window.top.midFrame.imgNav.src="images/downa.gif";
+	}else{
+		_topOpen();
+		topState = 1;
+		window.top.midFrame.imgNav.src="images/upa.gif";
+	}
+}
+function _topClose(){
+	    sup_frmObj = document.getElementById("supFrame");
+		sup_frmObj.rows="0,9,*";
+}
+function _topOpen(){
+	    sup_frmObj = document.getElementById("supFrame");
+		sup_frmObj.rows="111,9,*";
+}
+function _logout(){  
+   window.location.href="/resourceone/common/Logout.jsp";
+}
+</script>
+<script language="JavaScript1.2">
+ function _showUrl(){
+   resolve = 0;
+ 
+if (screen.width==800||screen.height==600) //if 800x600
+  {
+    resolve = 0;   
+  }
+ else if (screen.width==640||screen.height==480) //if 640x480
+  {
+    resolve = -1;
+  }
+  else if (screen.width>=1024||screen.height>=768) //if 1024x768
+  {
+    resolve =1;
+  }    
+ 
+   window.top.topFrame.location.href = "topframe2.htm";
+    
+ }
+  function goto(sysid,url){
+  	window.topFrame.gotoSystem(sysid,url);
+  }
+ </script>
+</head>
+
+<frameset id="supFrame" rows="111,9,*" cols="*" frameborder="NO"
+	border="0" framespacing="0">
+	<frame name="topFrame" scrolling="NO" noresize
+		src='javascript:parent._showUrl();'>
+	<frame name="midFrame" scrolling="NO" noresize
+		src='FrameControl2.htm'>
+	<frameset id="main_frm" name="main_frm" cols="0,15,*" frameborder="NO"
+		border="0" framespacing="0">
+		<frame name="leftFrame" noresize scrolling="NO"
+			src="">
+		<frame name="navFrame" borderColor="#ff6600"
+			src="FrameControl.htm" noResize scrolling=no>
+		<frame name="mainFrame" src="">
+	</frameset>
+</frameset>
+<noframes>
+<body bgcolor="#FFFFFF" text="#000000" onunload='_logout();'>
+<IFRAME src="/application/common/refresh.jsp" style="display: none"></IFRAME>
+</body>
+</noframes>
+</html>

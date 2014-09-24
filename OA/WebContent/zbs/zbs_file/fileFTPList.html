@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>文件资料共享管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link href="/OA/Style/css.css" rel="stylesheet" type="text/css" />
+<script language="javascript">
+function _go(){
+	window.open("ftp://admin:1@localhost/");
+}
+function _ReturnRoot(){
+	 document.myContent_name.location ="ftp://admin:1@localhost/";
+}
+function _Search(){
+	window.open("fileSearch.html");
+//	document.form1.submit();
+}
+</script>
+</head>
+<body>
+<form name=form1>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td bgcolor="#FFFFFF">&nbsp;</td>
+		<td valign="top">
+		<TABLE cellpadding="2" cellspacing="1" width="100%" align=center border=0
+			bgcolor="#B9DAF9">
+			<tr><td  bgcolor="#FFFFFF" class="blue3-12-b">
+		<a href="#" onclick="javascript:_Search();" style="text-decoration:none">进入全文检索</a>&nbsp;
+		<a href="#" onclick="javascript:_ReturnRoot();" style="text-decoration:none">返回根目录</a>&nbsp;
+		<a href="#" onclick="javascript:window.close();" style="text-decoration:none">关闭</td></a></tr>
+			<TR>
+				<td height="24" colspan="2" background="/OA/images/2-title-05.jpg" bgcolor="#E0EDF8">
+				<div align="center">
+				<div align="center" class="white2-12-b">文件资料共享管理</div>
+				</div>
+				<div align="center"></div>
+				</td>
+			</TR>
+			<!--<tr>
+				<td bgcolor="#FFFFFF"><div align="center" class="blue2-12">您正在访问文件资料共享文件夹，点击这里返回根目录。</div></td>
+			</tr>ftp://admin:1@localhost/-->
+			<tr>
+				<td><iframe src="ftp://admin:1@localhost/" name="myContent_name" id="myContent_id"
+					scrolling="no" frameborder="0" width="100%"  height="450"> </iframe></td>
+			</tr>
+		</table>
+		</td>
+	<tr>
+</table>
+</form>
+<!--<input type="button" onclick="javascript:_go()" name="aa" value="FTP">-->
+</body>
+</html>

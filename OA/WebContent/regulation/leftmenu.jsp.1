@@ -1,0 +1,277 @@
+<%@ page contentType="text/html; charset=GBK"%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.icss.regulation.handler.RegulationHandler" %>
+<%@ page import="com.icss.oa.address.vo.*"%>
+
+<%
+	List orglist = RegulationHandler.getOrg(3);
+%>
+
+<HTML>
+	<HEAD>
+		<TITLE>left</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=GBK">
+		<link rel="stylesheet" href="include/ingrid.css" type="text/css"  media="all" />
+		<link rel="stylesheet" type="text/css" href="include/flexigrid.css">
+		<SCRIPT type="text/javascript" src="include/date/WdatePicker.js"></SCRIPT>
+		<SCRIPT type="text/javascript" src="include/jquery-1.2.6.pack.js"></SCRIPT>
+		<script type="text/javascript" src="include/ingrid.js"></script>
+		<script type="text/javascript" src="include/flexigrid.pack.js"></script>
+		<STYLE type=text/css>
+		BODY {
+			font-family: 宋体;
+			font-size: 12px;
+			PADDING-RIGHT: 2px;
+			BACKGROUND-POSITION: right 50%;
+			PADDING-LEFT: 2px;
+			BACKGROUND-ATTACHMENT: fixed;
+			BACKGROUND-IMAGE: url(include/frame_bg.gif);
+			PADDING-BOTTOM: 2px;
+			MARGIN: 0px;
+			PADDING-TOP: 2px;
+			BACKGROUND-REPEAT: repeat-y
+		}
+		
+		.AdvSearchArea {
+			margin: 0 0 0 10px;
+			padding: 0;
+		}
+		
+		.AdvElement {
+			color: #444444;
+			display: block;
+			height: 35px;
+			line-height: 35px;
+		}
+		
+		.Text {
+			float: left;
+			text-align: right;
+			width: 85px;
+		}
+		.Text1 {
+			float: left;
+			text-align: right;
+			width: 60px;
+		}
+		
+		.Display {
+			float: left;
+			text-align: center;
+			width: 25px;
+		}
+		
+		.AdvInput {
+			width: 180px;
+		}
+		.TimeSelect{
+			float: left;
+			text-align: right;
+			width: 150px;
+		}
+		
+		</STYLE>
+
+
+
+		<script>
+		function _change(id){
+			top.main.location='content.jsp?id='+id;
+		}
+		
+		$(document).ready(function()
+		{
+			
+		$('#reset').click(function (){ 
+			$('input:text').val('');
+		});
+		
+		$(function (){
+         $('#send_ajax').click(function (){
+         			
+         			var a =$('input[@name=time][@checked]').val();
+         			if( a=='only' ){
+         				if($("#timeo").val()==""){
+         				alert("请选择具体的时间");
+         				return false;
+         				}         				
+         			}	
+         			if( a=='from' ){
+         				if($("#timef").val()=="" | $("#timee").val()==""){
+         				alert("请选择具体的时间段");
+         				return false;
+         				}         				
+         			}	
+         			 $.get('/oabase/servlet/RegulationListServlet',
+                     {key:escape($("#key").val()),org:escape($("#org").val()),time:escape($('input[@name=time][@checked]').val()),timeo:escape($("#timeo").val()),timef:escape($("#timef").val()),timee:escape($("#timee").val()),fanwei:escape($("#fanwei").val()),youxiao:escape($("#youxiao").val())},
+                     function (data){
+                    	var t = new Array();
+                     	eval("json="+unescape(data));
+                     	
+                     	for(i=0;i<json.datas.length;i++){
+                     		s="<tr onclick='_change("+json.datas[i].id+")'><td>"+json.datas[i].id+"</td><td>"+json.datas[i].title+"</td><td>"+json.datas[i].org+"</td></tr>";
+                     		t.push(s);
+                     	}
+                     	result = t.join("");
+                     	$('#tb').html(result);
+                     });
+           });
+		 });
+		 $("#table1").ingrid({ 
+			height: 280,
+			initialLoad: true,
+			colWidths:[30,180,50],
+			rowClasses: ['grid-row-style1','grid-row-style2'],
+			paging:false,
+			sorting:false
+			
+			});
+
+		 
+		
+        //$('#table1').flexigrid();
+	
+		});
+		
+		
+		
+		</script>
+
+	</HEAD>
+	<BODY>
+		<form id="form1" action="" method="post">
+			<div class="AdvSearchArea">
+				<div class="AdvElement">
+					<div class="Text"> 
+						关键字： 
+					</div>
+					<input id='key' class='AdvInput' name="Text1" type="text"
+						class="text" />
+				</div>
+				<div class="AdvElement">
+					<div class="Text">
+						部&nbsp;&nbsp;门：
+					</div>
+					<select name='org' id=org class="AdvInput">
+					<option value=''>全部</option>
+							<%
+								if (orglist != null) {
+										Iterator iter = orglist.iterator();
+										int i = 0;
+										while (iter.hasNext()) {
+											++i;
+											SysOrgVO svo = (SysOrgVO) iter.next();
+							%>
+							<option value="<%=svo.getOrguuid()%>" ><%=svo.getCnname()%>
+							</option>
+
+							<%
+								}
+									}
+							%>
+						</select>
+					</div>
+				<div class="AdvElement">
+					<div class="Text">
+						范围：
+					</div>
+					<select id='fanwei' style="width='50px';;float:left;" name="fanwei">
+						<option value='all'>
+							不限
+						</option>
+						<option value='title'>
+							标题
+						</option>
+						<option value='content'>
+							正文
+						</option>
+					</select>
+				
+					<div class="Text1">
+						有效性：
+					</div>
+										
+					<select id='youxiao' class="width='50px'" name="youxiao" >
+						<option value='all'>
+							不限
+						</option>
+						<option value='yes'>
+							有效
+						</option>
+						<option value='no'>
+							作废
+						</option>
+					</select>
+				</div>
+				<div class="AdvElement">
+					<!--   <div style='text-align: right;width:85px;'>
+						时&nbsp;&nbsp;间：
+					</div>
+					-->
+					<div>
+						<div style='text-align: right;width: 150px;'>
+						<INPUT type=radio name="time" value='all' CHECKED>
+						所有时间
+						</div>
+						
+						<div class='TimeSelect'>
+						<INPUT type=radio name="time" value='only'>
+							精确时间
+						</div>
+						
+							<input id="timeo" class="Wdate" type="text"
+								onfocus="WdatePicker({maxDate:'%y-%M-%d'})" size='13'/>
+						
+						<div style='text-align: right;width:150px;'>
+						<INPUT type=radio name="time" value='from'>
+						时&nbsp;间&nbsp;段
+						</div>
+						
+						<div style='float:left;text-align:right;width:80px;'>
+						从 
+						</div>
+						<input type="text" class="Wdate" id="timef" size='10'
+								onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'timee\',{d:-1});}'})" />
+						到
+						<input type="text" class="Wdate" id="timee" size='10'
+								onFocus="WdatePicker({minDate:'#F{$dp.$D(\'timef\',{d:1});}'})" />
+						
+					</div>
+					</div>
+
+				</div>
+		
+		</form>
+		<div align='center'>
+			<button id="send_ajax">
+				开始查询
+			</button>
+			&nbsp;&nbsp;
+			<button id="reset">
+				重置条件
+			</button>
+		</div>
+		<hr />
+		<div>
+			<div class="AdvElement">
+				<div class='txt'>
+					查询结果：
+				</div>
+
+			<table class="table1" id="table1">
+			<thead>
+    				<tr>
+            			<th width="30">序号</th>
+            			<th width="180">标题</th>
+            			<th width="50">部门</th>
+            			</tr>
+    			</thead>
+				<tbody id='tb'>
+
+				</tbody>
+				</table>
+			</div>
+		</div>
+
+	</BODY>
+</HTML>

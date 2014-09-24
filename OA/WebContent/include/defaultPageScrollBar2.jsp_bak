@@ -1,0 +1,184 @@
+<!%@ page import="com.icss.j2ee.util.PageScrollUtil" %>
+<!--<LINK href="<%=request.getContextPath()%>/include/style.css" rel=stylesheet>-->
+<%
+try{
+	int curPageNum = com.icss.j2ee.util.PageScrollUtil.getPageNum();
+	int pageCount = com.icss.j2ee.util.PageScrollUtil.getPageCount();
+	int tiao  = com.icss.j2ee.util.PageScrollUtil.getRowCount();
+%>
+	<tr>
+		<td width="11" height="34" bgcolor="#FFFFFF" ><img
+			src="../images/kongbai.jpg" width="11" height="11" /></td>
+		<td valign="middle">
+		<table width="117" cellspacing="1" bgcolor="#9999FF">
+			<tr>
+				<td width="50" align="center" bgcolor="#FFFFFF"><span class="STYLE6"><%=tiao%></span></td>
+				<td width="58" align="center" bgcolor="#FFFFFF" class="STYLE6"><%=curPageNum%>/<%=pageCount%></td>
+			</tr>
+		</table>
+		</td>
+		<td width="5" valign="middle" >&nbsp;</td>
+		<%
+				int j=1;
+				int k=9;
+				if(pageCount-curPageNum<9){
+					k=pageCount-1;
+				}else{
+					k=9;
+				}
+							
+				if(curPageNum>5){
+					j = curPageNum-5;
+					if(pageCount-curPageNum<5){
+						j = pageCount -9;
+					}
+				}
+				if(j+k>=pageCount){
+					k = pageCount-j;
+				}
+				if(k>9){
+					k=9;
+				}
+		%>
+		<td <%if(k>=9){%>width="350"<%}%> valign="middle">
+		<table cellspacing="1" bgcolor="#9999FF">
+			<tr>
+				<td width="20" align="center" valign="bottom" bgcolor="#FFFFFF"
+					class="STYLE6"> <a style="text-decoration: none" href="javascript:_toPage(1)">|&lt;</a> </td>
+				<td width="20" align="center" bgcolor="#FFFFFF" class="STYLE6"> <a style="text-decoration: none" href="javascript:_toPage(<%if(curPageNum!=1){%><%=curPageNum-1%><%}else{%><%=curPageNum%><%}%>)">&lt;&lt;</a></td>
+								
+				<%			
+				for(int i=j;i<=j+k;i++){%>
+
+				<%
+					if(i==curPageNum){
+				%>
+				<td width="18" align="center" valign="bottom" bgcolor="#9999FF"
+					class="white2-12-b"><%=i%></td>	
+				<%}else{%>
+				<td width="20" align="center" valign="bottom" bgcolor="#FFFFFF"
+					class="STYLE6"><a style="text-decoration: none" href="javascript:_toPage(<%=i%>)"><%=i%></a></td>
+				<%}}%>
+				<td width="20" align="center" valign="bottom" bgcolor="#FFFFFF"
+					class="STYLE6"><a style="text-decoration: none" href="javascript:_toPage(<%if(curPageNum!=pageCount){%><%=curPageNum+1%><%}else{%><%=curPageNum%><%}%>)">&gt;&gt;</a></td>
+				<td width="20" align="center" bgcolor="#FFFFFF" class="STYLE6"><a style="text-decoration: none" href="javascript:_toPage(<%=pageCount%>)">&gt;|</a></td>
+				
+			<!--
+				<td width="18" align="center" valign="bottom" bgcolor="#9999FF"
+					class="white2-12-b">1</td>
+				<td width="20" align="center" valign="bottom" bgcolor="#FFFFFF"
+					class="STYLE6">2</td>
+				<td width="20" align="center" valign="bottom" bgcolor="#FFFFFF"
+					class="STYLE6">3</td>
+				<td width="20" align="center" valign="bottom" bgcolor="#FFFFFF"
+					class="STYLE6">4</td>
+				<td width="20" align="center" valign="bottom" bgcolor="#FFFFFF"
+					class="STYLE6">5</td>
+				<td width="20" align="center" valign="bottom" bgcolor="#FFFFFF"
+					class="STYLE6">6</td>
+				<td width="20" align="center" valign="bottom" bgcolor="#FFFFFF"
+					class="STYLE6">7</td>
+				<td width="20" align="center" valign="bottom" bgcolor="#FFFFFF"
+					class="STYLE6">8</td>
+				<td width="20" align="center" valign="bottom" bgcolor="#FFFFFF"
+					class="STYLE6">9</td>
+				<td width="20" align="center" valign="bottom" bgcolor="#FFFFFF"
+					class="STYLE6">10</td>
+				<td width="20" align="center" valign="bottom" bgcolor="#FFFFFF"
+					class="STYLE6">>></td>
+				<td width="20" align="center" bgcolor="#FFFFFF" class="STYLE6">>|</td>-->
+			</tr>			
+		</table>
+		</td>
+		<td width="454" valign="middle"><input type="text" size="5" name="page" id="page"
+			style="height: 18"><a href="javascript:_toPage2()" class="STYLE6"
+			style="text-decoration: none">&nbsp;GO</a></td>
+<!--
+<table width="100%"><tr><td width="50%" align="left"> 
+
+<%
+	if(curPageNum != 1 && pageCount > 1){
+%>
+<a href="<%= com.icss.j2ee.util.PageScrollUtil.getFirstPageUrl() %>">首 页</a>&nbsp;&#9474;
+<%
+	}else{
+%>
+首 页&nbsp;&#9474;
+<%
+}
+if(curPageNum > 1){
+%>
+<a href="<%= com.icss.j2ee.util.PageScrollUtil.getPriorPageUrl() %>">上一页</a>&nbsp;&#9474;
+<%
+}else{
+%>
+上一页&nbsp;&#9474;
+<%
+}
+if(curPageNum < pageCount){
+%>
+<a href="<%= com.icss.j2ee.util.PageScrollUtil.getNextPageUrl() %>">下一页</a>&nbsp;&#9474;
+<%
+}else{
+%>
+下一页&nbsp;&#9474;
+<%
+}
+if(curPageNum != pageCount && pageCount > 1){
+%>
+<a href="<%= com.icss.j2ee.util.PageScrollUtil.getLastPageUrl() %>">尾 页</a>
+<%
+}else{ 
+%>
+尾 页
+<%
+}
+%>
+
+</td>
+<td align="right" width="50%">
+<select name ='ee' onChange="javaScript:_toPage(this.value)" style="width:50px;font-size:9.5px">
+    <option value='0'>页 数</option>
+<% for(int _fanyeNo=1;_fanyeNo<=pageCount;++_fanyeNo){%>
+	<option value='<%= _fanyeNo%>'><%= _fanyeNo%></option>
+<%}%>
+</select>
+第&nbsp;<%=curPageNum%>&nbsp;页&nbsp;共&nbsp;<%=pageCount%>&nbsp;页&nbsp;&nbsp;共有<%=tiao%>条记录
+-->
+<SCRIPT language=JavaScript>
+function _toPage(pageno){
+    
+    if(pageno!='0'){
+	    var str = '<%= com.icss.j2ee.util.PageScrollUtil.getLastPageUrl() %>';
+	    var a1=str.lastIndexOf("=");
+	    var a3=str.substr(0,a1);
+	    var a4=a3+'='+pageno;
+		window.top.mainFrame.location.href = a4;}
+}
+function _toPage2(){
+    pageno = document.getElementById("page").value;
+    if(pageno>=<%=pageCount%>){
+    	pageno = <%=pageCount%>;
+    }else if(pageno<1){
+    	pageno = 1;
+    }
+    //alert(pageno);
+    
+    if(pageno!='0'){
+	    var str = '<%= com.icss.j2ee.util.PageScrollUtil.getLastPageUrl() %>';
+	    var a1=str.lastIndexOf("=");
+	    var a3=str.substr(0,a1);
+	    var a4=a3+'='+pageno;
+		window.top.mainFrame.location.href = a4;}
+}
+
+</SCRIPT>
+<%
+
+
+}catch(Exception e){
+%>
+	An error occured, please check you web.xml file.
+<%
+}	
+%>

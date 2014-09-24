@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="GB2312"?>
+<tree>
+	<tree text="名称">
+		<src>fileList.html</src>
+		<action>fileList.html</action>
+		<icon>../alltree/images/close.gif</icon>
+		<openIcon>../images/bbs/tree/area.gif</openIcon>
+	</tree>
+</tree>

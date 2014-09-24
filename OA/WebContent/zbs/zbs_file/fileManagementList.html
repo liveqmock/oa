@@ -1,0 +1,246 @@
+<html>
+<head>
+<title>[总编室目录管理]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<!--<link rel="stylesheet" href="../include/style.css">-->
+<link href="/OA/Style/css.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+</style>
+<script type="text/javascript" src="../include/judge.js"></script>
+<SCRIPT src="../include/js/common.js"></SCRIPT>
+<script language="JavaScript" src="../include/formVerify.js"></script>
+<script language="JavaScript" src="../include/runFormVerify.js"></script>
+<script language="JavaScript" src="../include/extendString.js"></script>
+<script language="JavaScript" src="../include/js/calendar.js"></script>
+<script language="javascript">
+   function newDuty(){
+   		document.form1.action="http://wangsu:9080/OA/servlet/GoJspUrlServlet";
+		document.form1.submit();
+   }
+   function _search(){
+   		
+   }
+   function _search2(){
+   		document.form1.action="dutySearch.html";
+		document.form1.submit();
+   }   
+
+   function fPopUpCalendarDlg(ctrlobj){
+	showx = event.screenX - event.offsetX +4 ; // + deltaX;
+	showy = event.screenY - event.offsetY + 18; // + deltaY;
+	newWINwidth = 210 + 4 + 18;
+	retval = window.showModalDialog("../include/date.htm", "", "dialogWidth:197px; dialogHeight:210px; dialogLeft:"+showx+"px; dialogTop:"+showy+"px; status:no; directories:yes;scrollbars:no;Resizable=no; "  );
+	if( retval != null ){
+		ctrlobj.value = retval;
+	}
+
+  }
+  	function _setPerson(){
+	showx = 100;
+	showy = 200; // + deltaY;
+	//newWINwidth = 210 + 4 + 18;
+	window.showModalDialog("personSet.html", "1", "dialogWidth:540px; dialogHeight:350px; dialogLeft:"+showx+"px; dialogTop:"+showy+"px; status:no; directories:yes;scrollbars:no;Resizable=no;");
+	}
+</script>
+</head>
+<BODY text="#000000" leftMargin="0" topMargin="10">
+<form name=form1 method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td bgcolor="#FFFFFF">&nbsp;</td>
+		<td valign="top">
+		<table width="100%" border="0" cellpadding="3" cellspacing="0">
+			<tr>
+				<td width="3%"><!--<input type="checkbox" name="checkbox10" value="checkbox" />--></td>
+				<td width="6%" class="red-12"><!--选择全部--></td>
+				<td width="55%"><!--<img src="/OA/images/delete.gif" width="90" height="23" />--></td>
+				<td width="36%">
+				<div align="right"><!--<img src="/OA/images/button_zbdj.jpg" width="90" height="23" hspace="0" onclick="javascript:_setPerson()"/>--></div>
+				</td>
+			</tr>
+		</table>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">&nbsp;</td>
+		<td valign="top">
+		<table width="100%" border="0" cellpadding="2" cellspacing="1"
+			bgcolor="#B9DAF9">
+			<tr>
+				<td width="5%" height="24" background="/OA/images/2-title-05.jpg"
+					bgcolor="#E0EDF8">
+				<div align="center" class="white2-12-b">编号</div>
+				</td>
+				<!--<td width="5%" background="/OA/images/2-title-05.jpg" bgcolor="#E0EDF8">&nbsp;</td>-->
+				<td width="15%" background="/OA/images/2-title-05.jpg"
+					bgcolor="#E0EDF8">
+				<div align="center">
+				<div align="center" class="white2-12-b">文件夹目录名</div>
+				</div>
+				</td>
+				<td width="15%" background="/OA/images/2-title-05.jpg"
+					bgcolor="#E0EDF8" class="white2-12-b">
+				<div align="center">分类</div>
+				</td>				
+				<td width="15%" background="/OA/images/2-title-05.jpg"
+					bgcolor="#E0EDF8" class="white2-12-b">
+				<div align="center">权限</div>
+				</td>
+				<td width="55%" background="/OA/images/2-title-05.jpg"
+					bgcolor="#E0EDF8" class="white2-12-b">
+				<div align="center">人员权限设置</div>
+				</td>
+				<!--<td width="15%" background="/OA/images/2-title-05.jpg" bgcolor="#E0EDF8" class="white2-12-b"><div align="center">是否具有子文件夹</div></td>-->
+			</tr>
+			<tr>
+				<td height="26" bgcolor="#FFFFFF" rowspan=6>
+				<div align="center" class="blue3-12">1</div>
+				</td>
+				<!--<td bgcolor="#FFFFFF"><div align="center"><img src="/OA/images/email.gif" width="16" height="16" hspace="3" vspace="3" /></div></td>-->
+				<td bgcolor="#FFFFFF" class="blue3-12" rowspan=6 align="center">日常值班与业务交流板块</td>
+				<td bgcolor="#FFFFFF" class="blue3-12" rowspan=3 align="center">文件夹</td>
+				<td bgcolor="#FFFFFF" class="blue3-12" align="center">读取</td>
+				<td bgcolor="#FFFFFF" class="blue3-12">
+				<div align="left">&nbsp;&nbsp;&nbsp;赵 ;钱 ;孙 ;李 ;周 ;吴 ;郑 ;王 ;冯 ;陈 ;褚
+				;卫 ;蒋 ;沈 ;韩 ;杨 ;...<a href="#" onclick="javascript:_setPerson()"
+					style="text-decoration: none">人员设置</a></div>
+				</td>
+			</tr>
+			<!--<tr><td bgcolor="#FFFFFF" class="blue3-12">文件夹创建</td></tr>-->
+			<tr>
+				<td bgcolor="#FFFFFF" class="blue3-12" align="center">创建</td>
+				<td bgcolor="#FFFFFF" class="blue3-12">
+				<div align="left">&nbsp;&nbsp;&nbsp;赵 ;钱 ;孙 ;李 ;周 ;吴 ;郑 ;王 ;冯 ;陈 ;褚
+				;卫 ;蒋 ;沈 ;韩 ;杨 ;...<a href="#" onclick="javascript:_setPerson()"
+					style="text-decoration: none">人员设置</a></div>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#FFFFFF" class="blue3-12" align="center">删除</td>
+				<td bgcolor="#FFFFFF" class="blue3-12">
+				<div align="left">&nbsp;&nbsp;&nbsp;赵 ;钱 ;孙 ;李 ;周 ;吴 ;郑 ;王 ;冯 ;陈 ;褚
+				;卫 ;蒋 ;沈 ;韩 ;杨 ;...<a href="#" onclick="javascript:_setPerson()"
+					style="text-decoration: none">人员设置</a></div>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#FFFFFF" class="blue3-12" rowspan=3 align="center">文件</td>			
+				<td bgcolor="#FFFFFF" class="blue3-12" align="center">读取</td>
+				<td bgcolor="#FFFFFF" class="blue3-12">
+				<div align="left">&nbsp;&nbsp;&nbsp;赵 ;钱 ;孙 ;李 ;周 ;吴 ;郑 ;王 ;冯 ;陈 ;褚
+				;卫 ;蒋 ;沈 ;韩 ;杨 ;...<a href="#" onclick="javascript:_setPerson()"
+					style="text-decoration: none">人员设置</a></div>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#FFFFFF" class="blue3-12" align="center">上传</td>
+				<td bgcolor="#FFFFFF" class="blue3-12">
+				<div align="left">&nbsp;&nbsp;&nbsp;赵 ;钱 ;孙 ;李 ;周 ;吴 ;郑 ;王 ;冯 ;陈 ;褚
+				;卫 ;蒋 ;沈 ;韩 ;杨 ;...<a href="#" onclick="javascript:_setPerson()"
+					style="text-decoration: none">人员设置</a></div>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#FFFFFF" class="blue3-12" align="center">删除</td>
+				<td bgcolor="#FFFFFF" class="blue3-12">
+				<div align="left">&nbsp;&nbsp;&nbsp;赵 ;钱 ;孙 ;李 ;周 ;吴 ;郑 ;王 ;冯 ;陈 ;褚
+				;卫 ;蒋 ;沈 ;韩 ;杨 ;...<a href="#" onclick="javascript:_setPerson()"
+					style="text-decoration: none">人员设置</a></div>
+				</td>
+			</tr>
+			<tr>
+				<td height="26" bgcolor="#FFFFFF" rowspan=6>
+				<div align="center" class="blue3-12">2</div>
+				</td>
+				<!--<td bgcolor="#FFFFFF"><div align="center"><img src="/OA/images/email.gif" width="16" height="16" hspace="3" vspace="3" /></div></td>-->
+				<td bgcolor="#FFFFFF" rowspan=6>
+				<div align="center" class="blue3-12">重要文件资料板块</div>
+				</td>
+				<td bgcolor="#FFFFFF" rowspan=3>
+				<div align="center" class="blue3-12">文件夹</div>
+				</td>				
+				<td bgcolor="#FFFFFF">
+				<div align="center" class="blue3-12">查看</div>
+				</td>
+				<td bgcolor="#FFFFFF">
+				<div align="left" class="blue3-12">
+				<div align="left">&nbsp;&nbsp;&nbsp;赵 ;钱 ;孙 ;李 ;周 ;吴 ;郑 ;王 ;冯 ;陈 ;褚
+				;卫 ;蒋 ;沈 ;韩 ;杨 ;...<a href="#" onclick="javascript:_setPerson()"
+					style="text-decoration: none">人员设置</a></div>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#FFFFFF" class="blue3-12" align="center">创建</td>
+				<td bgcolor="#FFFFFF" class="blue3-12">
+				<div align="left">&nbsp;&nbsp;&nbsp;赵 ;钱 ;孙 ;李 ;周 ;吴 ;郑 ;王 ;冯 ;陈 ;褚
+				;卫 ;蒋 ;沈 ;韩 ;杨 ;...<a href="#" onclick="javascript:_setPerson()"
+					style="text-decoration: none">人员设置</a></div>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#FFFFFF" class="blue3-12" align="center">删除</td>
+				<td bgcolor="#FFFFFF" class="blue3-12">
+				<div align="left">&nbsp;&nbsp;&nbsp;赵 ;钱 ;孙 ;李 ;周 ;吴 ;郑 ;王 ;冯 ;陈 ;褚
+				;卫 ;蒋 ;沈 ;韩 ;杨 ;...<a href="#" onclick="javascript:_setPerson()"
+					style="text-decoration: none">人员设置</a></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td bgcolor="#FFFFFF" rowspan=3>
+				<div align="center" class="blue3-12">文件</div>
+				</td>			
+				<td bgcolor="#FFFFFF" class="blue3-12" align="center">读取</td>
+				<td bgcolor="#FFFFFF" class="blue3-12">
+				<div align="left">&nbsp;&nbsp;&nbsp;赵 ;钱 ;孙 ;李 ;周 ;吴 ;郑 ;王 ;冯 ;陈 ;褚
+				;卫 ;蒋 ;沈 ;韩 ;杨 ;...<a href="#" onclick="javascript:_setPerson()"
+					style="text-decoration: none">人员设置</a></div>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#FFFFFF" class="blue3-12" align="center">上传</td>
+				<td bgcolor="#FFFFFF" class="blue3-12">
+				<div align="left">&nbsp;&nbsp;&nbsp;赵 ;钱 ;孙 ;李 ;周 ;吴 ;郑 ;王 ;冯 ;陈 ;褚
+				;卫 ;蒋 ;沈 ;韩 ;杨 ;...<a href="#" onclick="javascript:_setPerson()"
+					style="text-decoration: none">人员设置</a></div>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#FFFFFF" class="blue3-12" align="center">删除</td>
+				<td bgcolor="#FFFFFF" class="blue3-12">
+				<div align="left">&nbsp;&nbsp;&nbsp;赵 ;钱 ;孙 ;李 ;周 ;吴 ;郑 ;王 ;冯 ;陈 ;褚
+				;卫 ;蒋 ;沈 ;韩 ;杨 ;...<a href="#" onclick="javascript:_setPerson()"
+					style="text-decoration: none">人员设置</a></div>
+				</td>
+			</tr>
+			<tr>
+				<td height="26" colspan="6" bgcolor="#E0EDF8">
+				<table width="100%" border="0" cellspacing="2" cellpadding="0">
+					<tr>
+						<td>
+						<div align="left" class="black-12"><!--第 1 页 共 15 页  共有191条记录--></div>
+						</td>
+						<td>
+						<div align="right" class="black-12"><!--首 页│上一页│下一页│尾 页--></div>
+						</td>
+					</tr>
+				</table>
+				</td>
+			</tr></table>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="11" bgcolor="#FFFFFF"><img src="/OA/images/kongbai.jpg"
+			width="11" height="11" /></td>
+		<td valign="top">
+		<div align="left"></div>
+		</td>
+		<td width="11"><img src="/OA/images/kongbai.jpg" width="11"
+			height="11" /></td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

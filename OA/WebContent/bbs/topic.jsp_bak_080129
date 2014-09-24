@@ -1,0 +1,442 @@
+<%@ page contentType="text/html; charset=gb2312" %>
+
+
+<%
+response.setHeader("Pragma", "No-cache");
+response.setHeader("Cache-Control", "no-cache");
+response.setDateHeader("Expires", 0);
+%>
+<%@ page import="java.util.*" %>
+<%@ page import="java.sql.Connection" %>
+
+<%@ page import="com.icss.j2ee.services.DBConnectionLocator" %>
+<%@ page import="com.icss.j2ee.services.DBConnectionLocatorException" %>
+<%@ page import="com.icss.j2ee.util.Globals" %>
+<%@ page import="com.icss.oa.bbs.handler.BBSHandler" %>
+<%@ page import="com.icss.oa.bbs.vo.*" %>
+<%@ page import="com.icss.oa.util.*" %>
+<%@ page import="com.icss.common.log.ConnLog" %>
+<%
+//用于下端刷新后下拉列表中的选择不变
+String articleMsg = request.getParameter("articleMsg");
+String order = request.getParameter("order");
+String _time = request.getParameter("_time");
+
+Collection scollection = (Collection)request.getAttribute("topicList");
+
+List noticeList = (List)request.getAttribute("noticeList");
+Iterator noticeItr = noticeList.iterator();
+BbsNoticeVO noticeVO = null;
+if(noticeItr.hasNext()){
+	noticeVO = (BbsNoticeVO)noticeItr.next();
+}
+
+BbsBoardVO boardVO = (BbsBoardVO)request.getAttribute("boardVO");
+String boardId = boardVO.getBoardid().toString();
+BbsUserinfoVO userVO = (BbsUserinfoVO)request.getAttribute("userVO");
+List managerList = (List)request.getAttribute("managerList");
+//out.print(managerList);
+List rightList =(List)request.getAttribute("rightList");
+//out.print(rightList);
+//out.print(userVO.getUserid());
+//out.print(boardVO);
+List boardList = null;
+Connection conn = null;
+	try {
+		conn = DBConnectionLocator.getInstance().getConnection(Globals.DATASOURCEJNDI);
+	ConnLog.open("topic.jsp");
+
+	BBSHandler handler = new BBSHandler(conn);
+	boardList = handler.getBoardList();
+	//out.print(boardList);
+	Iterator Itr = boardList.iterator();
+
+%>
+<HTML><HEAD><TITLE>新华社论坛</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<link href="<%=request.getContextPath()%>/include/bbscss.css" rel="stylesheet" type="text/css">
+
+
+
+</head>
+
+<body background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-08.gif">
+<form name="form1" method="post" action="">
+  <p></p>
+<DIV align=center>
+  <div align="center">
+    <TABLE width="95%" border=0 cellPadding=1 cellSpacing=1 bgcolor="#62a1c2" class="text-01">
+      <TBODY>
+        <TR> 
+          <TD width="41%" height=23 align=left bgColor=#f7f7f7 class="text-01">
+              <img src="<%=request.getContextPath()%>/images/bbs/bbshome.gif" style="cursor:hand" onclick="javascript:_gohome('<%=request.getContextPath()%>');" title="到论坛首页">
+              <a href="<%=request.getContextPath()%>/servlet/ShowIndexServlet" title="到论坛首页">论坛首页</A> ==&gt; 
+            <%=boardVO.getBoardname()%> ==&gt; <A class="text-01" href="#"onClick="javascript:_primeTopic('<%=request.getContextPath()%>','<%=boardVO.getBoardid().toString()%>')">本版精华</A> 
+          </TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+				<br>
+    <TABLE width="95%" border=0 cellPadding=0 cellspacing="0" class=tb1>
+      <TR> 
+        <TD class="text-01" bgColor=#f7f7f7 height=22 background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-12.gif" ><img src="<%=request.getContextPath()%>/images/bbs/newbbs/bg-10.gif" width="14" height="22"></TD>
+        <TD class="text-01" bgColor=#f7f7f7 height=22 background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-12.gif" ></TD>
+        <TD class="text-01" bgColor=#f7f7f7 height=22 background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-12.gif" >
+			<A  class="title-05"   href="#"onClick="javascript:_manage('<%=request.getContextPath()%>','<%=boardId%>')"> <div align="center">
+		  <%
+			 int boardManageFlag = 0;		 
+			 Iterator managerIterator = managerList.iterator();
+		  
+		  ManagerUserinfoVO managerVO = null;
+while(managerIterator.hasNext()){ 
+	 managerVO = (ManagerUserinfoVO)managerIterator.next();
+	if(managerVO.getUserid().equals(userVO.getUserid()))
+	{
+		boardManageFlag = 1;
+		break;
+	}
+}
+	if(boardManageFlag == 1){%>
+           <font color=white>板块管理</font>
+            <%}%>
+            </div> </A></TD>
+        <TD class="text-01" bgColor=#f7f7f7 height=22 background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-12.gif" ><div align="right"><img src="<%=request.getContextPath()%>/images/bbs/newbbs/bg-11.gif" width="20" height="22"></div></TD>
+      </TR>
+      <TR> 
+        <TD width="13%" bgColor=#f7f7f7><A 
+      href="<%=request.getContextPath()%>/bbs/newArticle.jsp?boardId=<%=boardId%>&boardName=<%=boardVO.getBoardname()%>&auditFlag=<%=boardVO.getIsaudit()%>"><IMG alt=发表新主题 
+      src="<%=request.getContextPath()%>/images/bbs/postnew.gif" border=0></A></TD>
+        <TD width="13%" bgColor=#f7f7f7><!--<A 
+      href="#"><IMG 
+      alt=发起新投票 src="<%=request.getContextPath()%>/images/bbs/postvote.gif" border=0></A>--></TD>
+        <TD class="text-01" vAlign=center align=middle width="50%" bgColor=#f7f7f7> 
+          <TABLE width=400 align=center border=0>
+            <TBODY>
+              <TR> 
+                <TD class=tdc width="100%"> <MARQUEE onmouseover=this.stop() onmouseout=this.start() 
+            scrollAmount=3>
+                  <%if(noticeVO != null){%>
+                  <B><A class="text-01" href="#"onClick="javascript:_showNotice('<%=request.getContextPath()%>/servlet/ShowNoticeServlet?boardId=<%=boardId%>')"><%=noticeVO.getTitle()%> 
+                  </A></B><A class="text-01">(<%=CommUtil.getTime(noticeVO.getNoticedate().longValue())%>)</a>
+                  <%}else{%>
+                  <B><A href="#" class="text-01">本版面目前没有公告</A></B>
+                  <%}%>
+                  </MARQUEE></TD>
+              </TR>
+            </TBODY>
+          </TABLE></TD>
+        <TD align=right bgColor=#f7f7f7 class="text-01">本版版主:
+         <%
+			 boardManageFlag = 0 ;		 
+			 Iterator managerIt = managerList.iterator();
+		  
+		while(managerIt.hasNext()){ 
+	 managerVO = (ManagerUserinfoVO)managerIt.next();
+	if(managerVO.getBoardid().equals(boardVO.getBoardid()))
+	{
+		boardManageFlag = 1;
+		%>	  
+					  <A title=查看版主“<%=managerVO.getTruename()%>”的资料 
+      href="#"onClick="javascript:_openUserMsg('<%=request.getContextPath()%>/servlet/ShowUserMsgServlet?userId=<%=managerVO.getUserid().toString()%>&currUserId=<%=userVO.getUserid()%>')"  class="text-01"><%=managerVO.getTruename()%></a>
+							<%}
+							}%>
+		<%if(boardManageFlag == 0){%>
+							待定..
+								<%}%>
+							</div>
+        </TD>
+      </TR>
+    </TABLE>
+<br>
+  </div>
+  <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="2%" background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-12.gif"><img src="<%=request.getContextPath()%>/images/bbs/newbbs/bg-10.gif" width="14" height="22"></td>
+      <td background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-12.gif"  class="title-05">主题列表</td>
+      <td width="1%"><div align="right"><img src="<%=request.getContextPath()%>/images/bbs/newbbs/bg-11.gif" width="20" height="22"></div></td>
+    </tr>
+  </table>
+  <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="1" background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-21.gif"><img src="<%=request.getContextPath()%>/images/bbs/newbbs/bg-21.gif" width="1" height="4"></td>
+      <td width="100%"><table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td  background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-09.jpg"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+              <tr  bgcolor="#FFFBEF">
+                <td width="5%" height="22">
+                  <div align="center"> <span class="title-04">状态</span></div></td>
+                <td width="2" rowspan="100" valign="top" background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bbs/newbbs/bg-24.gif" width="2" height="2"></td>
+                <td width="5%" ><div align="center" class="title-04">图标</div></td>
+                <td width="2" rowspan="100" valign="top" background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bbs/newbbs/bg-24.gif" width="2" height="2"></td>
+                <td width="30%" ><div align="center" class="title-04">主题</div></td>
+                <td width="2" rowspan="100" valign="top" background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bbs/newbbs/bg-24.gif" width="2" height="2"></td>
+                <td width="15%" ><div align="center" class="title-04">话题发起</div></td>
+                <td width="2" rowspan="100" valign="top" background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bbs/newbbs/bg-24.gif" width="2" height="2"></td>
+                <td width="10%" ><div align="center" class="title-04">点击</div></td>
+                <td width="2" rowspan="100" valign="top" background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bbs/newbbs/bg-24.gif" width="2" height="2"></td>
+                <td width="10%" ><div align="center" class="title-04">回复</div></td>
+                <td width="2" rowspan="100" valign="top" background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bbs/newbbs/bg-24.gif" width="2" height="2"></td>
+                <td width="25%" height="22"><div align="center" class="title-04">最后发表</div></td>
+              </tr>
+			 <%
+if(scollection != null){
+int showFlag = 1;
+Iterator Iterator = scollection.iterator();
+while(Iterator.hasNext()){
+	ArticleUserinfoVO vo = (ArticleUserinfoVO)Iterator.next();
+	 
+%>
+              <tr>
+                <td height="2"  background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-13.gif"></td>
+	           <td height="2"  background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-13.gif"></td>
+                <td height="2"  background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-13.gif"></td>
+           	 <td height="2"  background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-13.gif"></td>
+	       <td height="2"  background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-13.gif"></td>
+	        <td height="2"  background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-13.gif"></td>
+	         <td height="2"  background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-13.gif"></td>
+             </tr>
+	<% showFlag ++;%>
+             <%if(showFlag%2==1){%>
+                <tr bgcolor="#F2F9FF" onMouseOut="this.bgColor='#F2F9FF';" onMouseOver="this.bgColor='#8CC0E8';" > 
+<%}else{%>
+<tr bgcolor="#D8EAF8" onMouseOut="this.bgColor='#D8EAF8';" onMouseOver="this.bgColor='#8CC0E8';" >
+	<%}%>
+                <td height="22" class="text-01"><div align="center"><%if(vo.getTop().equals("1")){%><IMG alt=固顶贴 src="<%=request.getContextPath()%>/images/bbs/locktop.gif">
+		<%} else if(vo.getArticlelock().equals("1")){%><IMG alt=主题已关闭 src="<%=request.getContextPath()%>/images/bbs/lock.gif">	
+		<%} else if(vo.getHitnum().intValue() <= 30){%>
+		<IMG alt=普通贴 src="<%=request.getContextPath()%>/images/bbs/closed.gif">
+		<%} else if(vo.getHitnum().intValue() > 30){%><IMG alt=热帖 src="<%=request.getContextPath()%>/images/bbs/hotclosed.gif"><%}%></div></td>
+                <td  class="text-01"><div align="center"><A 
+            href=#><IMG  src="<%=request.getContextPath()%>/images/bbs/reArticle/<%=vo.getFace()%>" 
+          border=0></A></div></td>
+                <td  class="text-01"><div align="left">  <%if(vo.getPrime().equals("1")){%>
+                    <img alt=精华 
+            src="<%=request.getContextPath()%>/images/bbs/jh.gif"> 
+                    <%}%>
+                    <A     class="text-01"     title="主题：<%=vo.getArticlename()%>！&#13;&#10;观看：<%=vo.getHitnum()%>次&#13;&#10;回复：<%=vo.getRenum()%>篇&#13;&#10;发起人：<%=vo.getTurename()%>&#13;&#10;发起时间：<%=CommUtil.getTime(vo.getEmittime().longValue())%>&#13;&#10;最后回复：<% if(vo.getReuserid() != null ){%><%=vo.getReusername()%><%}%>	&#13;&#10;最后回复时间：<% if(vo.getRetime() != null)
+						{
+					out.print(CommUtil.getTime(vo.getRetime().longValue()));
+						}%> &#13;&#10;主题内容大小：122字节" 
+             href="#"onClick="javascript:_article('<%=request.getContextPath()%>','<%=vo.getArticleid().toString()%>','<%=boardId%>')"><%=vo.getArticlename()%> 
+                    </A> </div></td>
+                <td  class="text-01"><div align="center"><A class="text-01"
+           href="#"onClick="javascript:_openUserMsg('<%=request.getContextPath()%>/servlet/ShowUserMsgServlet?userId=<%=vo.getUserid()%>&currUserId=<%=userVO.getUserid()%>')"><%=vo.getTurename()%></A>　</div></td>
+                <td  class="text-01"><div align="center"><%=vo.getHitnum()%></div></td>
+                <td  class="text-01"><div align="center"><%=vo.getRenum()%></div></td>
+                <td height="22"><div align="center" class="text-01"><% if(vo.getReuserid() != null ){%>	
+			<A class="text-01"
+            href="#"onClick="javascript:_openUserMsg('<%=request.getContextPath()%>/servlet/ShowUserMsgServlet?userId=<%=vo.getReuserid()%>&currUserId=<%=userVO.getUserid()%>')"><%=vo.getReusername()%></A>|<%}%>
+			<% if(vo.getRetime() != null)
+			{
+					out.print(CommUtil.getTime(vo.getRetime().longValue()));
+				}           %> </div></td>  
+              </tr>
+             
+			  		  <%
+}//while		
+  }//if
+%>
+			 <tr>
+               <td height="2"  background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-13.gif"></td>
+	           <td height="2"  background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-13.gif"></td>
+                <td height="2"  background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-13.gif"></td>
+           	 <td height="2"  background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-13.gif"></td>
+	       <td height="2"  background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-13.gif"></td>
+	        <td height="2"  background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-13.gif"></td>
+	         <td height="2"  background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-13.gif"></td>
+              </tr>            
+</table></td>
+          </tr>
+      </table></td>
+      <td width="1" background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-22.gif"><img src="<%=request.getContextPath()%>/images/bbs/newbbs/bg-22.gif" width="1" height="4"></td>
+    </tr>
+  </table>
+  <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="1%"><img src="<%=request.getContextPath()%>/images/bbs/newbbs/bg-21.jpg" width="10" height="21"></td>
+      <td width="80%" background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-23.jpg" class="text-01">
+	     <%@ include file= "/include/defaultPageScrollBar.jsp" %>
+	  </td>
+      <td width="17%" background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-23.jpg" class="text-01"><div align="right"> </div></td>
+      <td width="2%" background="<%=request.getContextPath()%>/images/bbs/newbbs/bg-23.jpg"><div align="right"><img src="<%=request.getContextPath()%>/images/bbs/newbbs/bg-22.jpg" width="11" height="21"></div></td>
+    </tr>
+  </table>
+</form>
+<center></center>
+
+<TABLE width="95%" align=center cellPadding=0 cellSpacing=0 class="text-01" height=46>
+  <TBODY>
+    <TR class="text-01" bgColor="#f7f7f7"> 
+    <FORM name="form2" action="<%=request.getContextPath()%>/servlet/SearchServlet"  method="post">
+    <TD colspan="3" width="100%" height="32">按照 
+    <SELECT  class="text-01" name="articleMsg">
+	<OPTION value="retime" <%if("retime".equals(articleMsg)){%>selected<%}%>>最后发表时间</OPTION> 
+	<OPTION value="renum" <%if("renum".equals(articleMsg)){%>selected<%}%>>回复数量</OPTION> 
+	<OPTION value="emittime" <%if("emittime".equals(articleMsg)||articleMsg==null){%>selected<%}%>>发表时间</OPTION>
+	</SELECT>
+
+	
+	以&nbsp; <SELECT  class="text-01" name=order> 
+	  <OPTION value=asc <%if("asc".equals(order)){%>selected<%}%>>升序</OPTION> 
+	  <OPTION value=desc <%if("desc".equals(order)||order==null){%>selected<%}%>>降序</OPTION></SELECT>
+	  &nbsp; 排列, 显示 <SELECT  class="text-01" name=_time> 
+        <OPTION value=0 <%if("0".equals(_time)||_time==null){%>selected<%}%>>论坛全部主题
+		<OPTION value=1 <%if("1".equals(_time)){%>selected<%}%>>一天内的主题
+		<OPTION value=2 <%if("2".equals(_time)){%>selected<%}%>>两天内的主题
+		<OPTION value=7 <%if("7".equals(_time)){%>selected<%}%>>一星期内的主题
+		<OPTION value=15 <%if("15".equals(_time)){%>selected<%}%>>半个月内的主题
+		<OPTION value=30 <%if("30".equals(_time)){%>selected<%}%>>一个月内的主题
+		<OPTION value=60 <%if("60".equals(_time)){%>selected<%}%>>两个月内的主题
+		<OPTION value=180 <%if("180".equals(_time)){%>selected<%}%>>半年内的主题
+		<OPTION value=365 <%if("365".equals(_time)){%>selected<%}%>>一年内的主题</OPTION></SELECT>
+		<input type="hidden" name="boardId" value="<%=boardVO.getBoardid()%>">
+        <input type="hidden" name="primeFlag" value="0">
+		<img src="<%=request.getContextPath()%>/images/bbs/button-confirm.gif" name="confirmbut" onclick="javascript:document.form2.submit();">
+		</TD>
+		</FORM>
+	</TR>
+	<TR><TD colspan="3" width="100%" height="8"></TD></TR>
+	<TR class="text-01" bgColor="#f7f7f7">
+      <FORM name="form3" method="post" action="<%=request.getContextPath()%>/servlet/SearchArticleServlet?boardId=<%=boardVO.getBoardid()%>&quickSearchFlag=1">
+        <TD width="60%" height="32" align="left" class="text-01">版内搜索(帖子名称)
+          <input  name=articleName> &nbsp; 
+          <img src="<%=request.getContextPath()%>/images/bbs/bbsSearch.gif" name="bbssearch" onclick="javascript:document.form3.submit();">
+        </TD>
+      </FORM>
+      <TD width="20%"  class="text-01"> <div align="right">跳转到: </div></TD>
+      <TD width="20%"  class="text-01"> <div align="left">
+          <SELECT class="text-01" onchange="_showTopic('<%=request.getContextPath()%>')" name=boardTopic>
+            <%
+		while(Itr.hasNext()){
+			BbsBoardVO bvo = (BbsBoardVO)Itr.next();
+			String rightflag = "";
+  if(bvo.getPermit().equals("1"))
+	 {
+		rightflag = "0";
+	 }
+	else
+	 {
+		rightflag = "1";
+	 }
+	
+	   if(bvo.getIslimited().equals("0")||rightList.size() == 0){
+		 if(bvo.getPermit().equals("1"))
+				{
+					rightflag = "0";
+				}//if
+			else{
+			        rightflag = "1";
+			}//else
+		}//if
+		else{
+		
+		for(int i=0;i<rightList.size();i++){
+			BbsBoardaccVO accvo = (BbsBoardaccVO)rightList.get(i);
+			if(userVO.getUserid().equals(accvo.getUserid())){
+			if(bvo.getPermit().equals("1"))
+				{
+					rightflag = "1";
+				}//if
+			else{
+			        rightflag = "0";
+			}//else
+			break;
+		  }//if
+		 }//for
+		}//else
+		if(rightflag.equals("1")){
+	  %>
+            <option value="<%=bvo.getBoardid()%>" <%if(bvo.getBoardid().toString().equals(boardVO.getBoardid().toString())){%>selected<%}%>><%=bvo.getBoardname()%></option>
+            <%}
+	}%>
+          </SELECT>
+        </div></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+</body>
+
+</html>
+		<%
+	} catch (DBConnectionLocatorException e) {
+		e.printStackTrace();
+		
+	} finally {
+			try {
+				if (conn != null){
+					conn.close();
+					ConnLog.close("topic.jsp");
+					}
+			} catch (Exception e) {
+		}
+	}
+%>
+
+<script language="JavaScript">
+function _gohome(url){
+  document.location.href = url+"/servlet/ShowIndexServlet";
+}
+
+function _openUserMsg(url){
+window.open(url,"","");
+}
+
+function _newNotice(url){
+window.open(url,"","width=550,height=210,scrollbars=yes");
+}
+
+function _showTopic(url){
+	boardId = boardTopic.value;
+	document.form1.action=url+"/servlet/ShowTopicServlet?boardId="+boardId+"&primeFlag=0";
+    document.form1.submit();
+ }
+
+function _showNotice(url){
+window.open(url,"","");
+}
+
+function _article(url,topicId,boardId){
+	document.form1.action=url+"/servlet/ShowArticleServlet?topicId="+topicId+"&boardId="+boardId+"&hitFlag=1";
+    document.form1.submit();
+ }
+
+
+ function _setPrime(url,boardId,topicId,prime){
+	document.form1.action=url+"/servlet/SetPrimeServlet?boardId="+boardId+"&topicId="+topicId+"&prime="+prime;
+    document.form1.submit();
+ }
+
+   function _setTop(url,boardId,topicId,top){
+	document.form1.action=url+"/servlet/SetTopServlet?boardId="+boardId+"&topicId="+topicId+"&top="+top;
+    document.form1.submit();
+ }
+
+   function _setLock(url,boardId,topicId,lock){
+	document.form1.action=url+"/servlet/SetLockServlet?boardId="+boardId+"&topicId="+topicId+"&lock="+lock;
+    document.form1.submit();
+ }
+  function _delArticle(url,articleId,boardId,topicId){
+	document.form1.action=url+"/servlet/DelArticleServlet?boardId="+boardId+"&articleId="+articleId+"&topicId="+topicId+"&topicFlag=1";
+    document.form1.submit();
+ }
+
+ function _primeTopic(url,boardId){
+
+	
+	document.form1.action=url+"/servlet/ShowTopicServlet?boardId="+boardId+"&primeFlag=1";
+    document.form1.submit();
+	
+	
+ }
+
+function _manage(url,boardId){
+
+	
+	document.form1.action=url+"/servlet/ShowTopicServlet?boardId="+boardId+"&primeFlag=0"+"&manageFlag=1";
+    document.form1.submit();
+	
+	
+ }
+ 
+</script>

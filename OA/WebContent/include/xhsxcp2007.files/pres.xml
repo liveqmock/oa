@@ -1,0 +1,105 @@
+<xml xmlns:v="urn:schemas-microsoft-com:vml"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:p="urn:schemas-microsoft-com:office:powerpoint">
+ <p:presentation>
+  <p:master id="3" type="main" href="master03.htm" xmlhref="master03.xml"
+   template="默认设计模板" layout="title_body"
+   slots="title,body,dateTime,footer,slideNumber">
+   <p:schemes>
+    <p:colorscheme
+     colors="#0000FF,#FFFFFF,#000000,#FFFF00,#FF9900,#00FFFF,#FF0000,#969696"/>
+    <p:colorscheme
+     colors="#FFFFFF,#000000,#808080,#000000,#00CC99,#3333CC,#CCCCFF,#B2B2B2"/>
+    <p:colorscheme
+     colors="#FFFFFF,#000000,#333333,#000000,#DDDDDD,#808080,#4D4D4D,#EAEAEA"/>
+    <p:colorscheme
+     colors="#FFFFCC,#000000,#666633,#808000,#339933,#800000,#0033CC,#FFCC66"/>
+    <p:colorscheme
+     colors="#FFFFFF,#000000,#808080,#000000,#FFCC66,#0000FF,#CC00CC,#C0C0C0"/>
+    <p:colorscheme
+     colors="#FFFFFF,#000000,#808080,#000000,#C0C0C0,#0066FF,#FF0000,#009900"/>
+    <p:colorscheme
+     colors="#FFFFFF,#000000,#808080,#000000,#3399FF,#99FFCC,#CC00CC,#B2B2B2"/>
+   </p:schemes>
+  </p:master>
+  <p:master id="1" type="notes" href="master01.htm" layout="notes"
+   slots="header,dateTime,slideImage,body,footer,slideNumber">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="0"/>
+  </p:master>
+  <p:slide id="1" href="slide0001.htm">
+   <p:tag name="___PPT10" type="binary" datasize="2587" dataoffset="1"/>
+  </p:slide>
+  <p:slide id="3" href="slide0003.htm" xmlhref="slide0003.xml"
+   omitmastershapes="t">
+   <p:tag name="___PPT10" type="binary" datasize="1146" dataoffset="2"/>
+  </p:slide>
+  <p:slide id="5" href="slide0005.htm">
+   <p:tag name="___PPT10" type="binary" datasize="3832" dataoffset="3"/>
+  </p:slide>
+  <p:slide id="24" href="slide0024.htm">
+   <p:tag name="___PPT10" type="binary" datasize="2260" dataoffset="4"/>
+  </p:slide>
+  <p:slide id="6" href="slide0006.htm">
+   <p:tag name="___PPT10" type="binary" datasize="2190" dataoffset="5"/>
+  </p:slide>
+  <p:slide id="7" href="slide0007.htm">
+   <p:tag name="___PPT10" type="binary" datasize="2190" dataoffset="6"/>
+  </p:slide>
+  <p:slide id="8" href="slide0008.htm">
+   <p:tag name="___PPT10" type="binary" datasize="2190" dataoffset="7"/>
+  </p:slide>
+  <p:slide id="10" href="slide0010.htm">
+   <p:tag name="___PPT10" type="binary" datasize="2847" dataoffset="8"/>
+  </p:slide>
+  <p:slide id="9" href="slide0009.htm">
+   <p:tag name="___PPT10" type="binary" datasize="2759" dataoffset="9"/>
+  </p:slide>
+  <p:slide id="11" href="slide0011.htm">
+   <p:tag name="___PPT10" type="binary" datasize="2121" dataoffset="10"/>
+  </p:slide>
+  <p:slide id="4" href="slide0004.htm">
+   <p:tag name="___PPT10" type="binary" datasize="2190" dataoffset="11"/>
+  </p:slide>
+  <p:slide id="12" href="slide0012.htm">
+   <p:tag name="___PPT10" type="binary" datasize="2102" dataoffset="12"/>
+  </p:slide>
+  <p:slide id="13" href="slide0013.htm">
+   <p:tag name="___PPT10" type="binary" datasize="2102" dataoffset="13"/>
+  </p:slide>
+  <p:slide id="25" href="slide0025.htm">
+   <p:tag name="___PPT10" type="binary" datasize="2102" dataoffset="14"/>
+  </p:slide>
+  <p:slide id="28" href="slide0028.htm">
+   <p:tag name="___PPT10" type="binary" datasize="2112" dataoffset="15"/>
+  </p:slide>
+  <p:slide id="29" href="slide0029.htm">
+   <p:tag name="___PPT10" type="binary" datasize="2128" dataoffset="16"/>
+  </p:slide>
+  <p:slide id="26" href="slide0026.htm">
+   <p:tag name="___PPT10" type="binary" datasize="2104" dataoffset="17"/>
+  </p:slide>
+  <p:slide id="27" href="slide0027.htm">
+   <p:tag name="___PPT10" type="binary" datasize="3252" dataoffset="18"/>
+  </p:slide>
+  <p:slide id="23" href="slide0023.htm" xmlhref="slide0023.xml">
+   <p:tag name="___PPT10" type="binary" datasize="1089" dataoffset="19"/>
+  </p:slide>
+  <p:viewstate type="slideView" restoredleft="176" restoredtop="946"
+   vertbarstate="0" horizbarstate="2" manualadjustleft="t" manualadjusttop="t"/>
+  <p:tag name="___PPT10" type="binary" datasize="176" dataoffset="20"/>
+  <p:font name="Times New Roman" charset="0" type="4"/>
+  <p:font name="宋体" charset="134" type="4" family="2"/>
+  <p:font name="黑体" charset="134" type="4" family="2"/>
+  <p:font name="隶书" charset="134" type="4" family="49"/>
+  <p:font name="仿宋_GB2312" charset="134" type="4" family="49"/>
+  <p:font name="华文中宋" charset="134" type="4" family="2"/>
+  <p:font name="Arial" charset="0" type="4"/>
+  <p:headersfooters formatid="13" noheader="t"/>
+  <p:pptdocumentsettings framecolors="WhiteTextOnBlack" hideslideanimation="t"/>
+  <p:htmlpublishsettings browsersupport="v4"
+   href="C:\Documents and Settings\bgt\桌面\新华社宣传品.htm" noloadinbrowser="t"/>
+ </p:presentation>
+ <o:shapedefaults v:ext="edit" spidmax="54274">
+  <o:colormru v:ext="edit" colors="#f30,red,blue,#33f,#030,#630,#606,#fc0"/>
+  <o:colormenu v:ext="edit" fillcolor="#f93" strokecolor="#f60"/>
+ </o:shapedefaults></xml>

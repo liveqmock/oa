@@ -1,0 +1,42 @@
+<HTML><HEAD><TITLE>上下控制</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<LINK href="left.files/style.css" rel=stylesheet>
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY text=#eeeeee  leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+
+<table width="100%" height="9" border="0" cellpadding="0" cellspacing="0" background="images/ctrl_bg.gif">
+  <tr width="100%">
+    <td  width="100%" align="center" valign="top"><div id="divNav" style="display:block" align="center" valign="top"><img id="imgNav" src="images/upa.gif" border="0" style="cursor:hand" onmouseover='javascript:_ArrowOver();' onmouseout='javascript:_ArrowOut();' onClick="window.top._topControl()"></div></td>
+  </tr>
+</table>
+<script language="JavaScript">
+function _ArrowOver()
+{
+ _src = document.all.imgNav.src;
+ if(_src.indexOf("upa")>0)
+{
+ document.all.imgNav.src = "images/upb.gif";
+ document.all.imgNav.alt = "点击收起上边的菜单栏";
+}
+if(_src.indexOf("downa")>0)
+{
+ document.all.imgNav.src="images/downb.gif";
+ document.all.imgNav.alt = "点击展开上边的菜单栏";
+}
+
+}
+
+function _ArrowOut()
+{
+ _src = document.all.imgNav.src;
+if(_src.indexOf("upb")>0)
+{
+ document.all.imgNav.src="images/upa.gif";
+}
+if(_src.indexOf("downb")>0)
+{
+ document.all.imgNav.src="images/downa.gif";
+}
+}
+</script>
+</BODY></HTML>

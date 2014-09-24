@@ -1,0 +1,144 @@
+<%@ page contentType="text/html; charset=gb2312" %>
+<html>
+<head>
+<title>请选择人员</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<SCRIPT language=JavaScript src="../include/formverify/extendString.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../include/formverify/formVerify.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../include/formverify/runFormVerify.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../gatherplan/js/common.js"></SCRIPT>
+<!--<link rel="stylesheet" href="../include/style.css">-->
+<link href="/OA/Style/css.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.style1 {
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+
+
+.style2 {
+	color: #FFFFFF
+}
+-->
+</style>
+
+<script language="javascript">
+function changeSelect(obj,name) {
+	var checkValue = false;
+	if (obj.checked){
+		checkValue = true;
+	}
+	var selElements = document.getElementsByName(name);
+	for (var i = 0; i < selElements.length; i++) {
+		if (selElements[i].tagName.toLowerCase() == "input") {
+			if (selElements[i].type.toLowerCase() == "checkbox" || selElements[i].type.toLowerCase() == "radio") {
+				if (selElements[i].disabled || selElements[i].readOnly){
+					selElements[i].checked =false;
+				}else{
+					selElements[i].checked = checkValue;
+				}
+			}
+		}
+	}
+	return false;
+}
+</script>
+</head>
+
+<BODY text="#000000" leftMargin="0" topMargin="10">
+<form action="" name="form1">
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td bgcolor="#FFFFFF">&nbsp;</td>
+		<td valign="top">
+		<table width="100%" border="0" cellpadding="3" cellspacing="0">
+			<tr>
+				<td width="10%" class="blue2-12" nowrap="nowrap"><input type="checkbox" name="checkbox10"
+					value="checkbox" onclick="changeSelect(this,'name1')" />全选</td>
+				<td width="6%" class="red-12"><!--选择全部--></td>
+				<td width="40%"><!--<img src="/OA/images/delete.gif" width="90" height="23" />--></td>
+				<td width="36%">
+				<div align="right"><img src="/OA/images/button_baocun.jpg"
+					width="90" height="23" hspace="0"
+					onclick="javascript:window.close()" /><img
+					src="/OA/images/button_fanhui.jpg" width="90" height="23"
+					hspace="0" onclick="javascript:window.close()" /></div>
+				</td>
+			</tr>
+		</table>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp;</td>
+		<td valign="top">
+		<TABLE cellpadding="2" cellspacing="1" width="100%" align=center
+			border=0 bgcolor="#B9DAF9">
+			<TR>
+				<td height="24" colspan="5" background="/OA/images/2-title-05.jpg"
+					bgcolor="#E0EDF8">
+				<div align="center" class="white2-12-b">人员设置</div>
+				</td>
+			</TR>
+			<TR>
+				<td width="20%" height="22" align="center" nowrap class="blue2-12"
+					bgcolor="#FFFFFF"><input type="checkbox" name="name1">张三</td>
+				<td width="20%" height="22" align="center" nowrap class="blue2-12"
+					bgcolor="#FFFFFF"><input type="checkbox" name="name1">张三</td>
+				<td width="20%" height="22" align="center" nowrap class="blue2-12"
+					bgcolor="#FFFFFF"><input type="checkbox" name="name1">张三</td>
+				<td width="20%" height="22" align="center" nowrap class="blue2-12"
+					bgcolor="#FFFFFF"><input type="checkbox" name="name1">张三</td>
+				<td width="20%" height="22" align="center" nowrap class="blue2-12"
+					bgcolor="#FFFFFF"><input type="checkbox" name="name1">张三</td>
+			</TR>
+			<TR>
+				<td width="20%" height="22" align="center" nowrap class="blue2-12"
+					bgcolor="#FFFFFF"><input type="checkbox" name="name1">张三</td>
+				<td width="20%" height="22" align="center" nowrap class="blue2-12"
+					bgcolor="#FFFFFF"><input type="checkbox" name="name1">张三</td>
+				<td width="20%" height="22" align="center" nowrap class="blue2-12"
+					bgcolor="#FFFFFF"><input type="checkbox" name="name1">张三</td>
+				<td width="20%" height="22" align="center" nowrap class="blue2-12"
+					bgcolor="#FFFFFF"><input type="checkbox" name="name1">张三</td>
+				<td width="20%" height="22" align="center" nowrap class="blue2-12"
+					bgcolor="#FFFFFF"><input type="checkbox" name="name1">张三</td>
+			</TR>
+			<TR>
+				<td width="20%" height="22" align="center" nowrap class="blue2-12"
+					bgcolor="#FFFFFF"><input type="checkbox" name="name1">张三</td>
+				<td width="20%" height="22" align="center" nowrap class="blue2-12"
+					bgcolor="#FFFFFF"><input type="checkbox" name="name1">张三</td>
+				<td width="20%" height="22" align="center" nowrap class="blue2-12"
+					bgcolor="#FFFFFF"><input type="checkbox" name="name1">张三</td>
+				<td width="20%" height="22" align="center" nowrap class="blue2-12"
+					bgcolor="#FFFFFF"><input type="checkbox" name="name1">张三</td>
+				<td width="20%" height="22" align="center" nowrap class="blue2-12"
+					bgcolor="#FFFFFF"><input type="checkbox" name="name1">张三</td>
+			</TR>
+			<tr>
+				<td height="26" colspan="6" bgcolor="#E0EDF8">
+				<table width="100%" border="0" cellspacing="2" cellpadding="0">
+					<tr>
+						<td>
+						<div align="left" class="black-12"><!--第 1 页 共 15 页 共有191条记录--></div>
+						</td>
+						<td>
+						<div align="right" class="black-12"><!--首 页│上一页│下一页│尾 页--></div>
+						</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+
+</form>
+`
+</BODY>
+</HTML>

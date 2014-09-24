@@ -1,0 +1,67 @@
+<%@ page contentType="text/html; charset=GBK" language="java"
+	errorPage=""%>
+<%@ page import="com.icss.oa.tq.Webservice.TQUser"%>
+<%@ page import="java.sql.Connection"%>
+<%@ page import="java.sql.PreparedStatement"%>
+<%@ page import="com.icss.j2ee.services.DBConnectionLocator"%>
+<%@ page import="com.icss.j2ee.services.DBConnectionLocatorException"%>
+<%@ page import="com.icss.j2ee.util.Globals"%>
+<%@page import="java.sql.ResultSet"%>
+<html>
+<head>
+<title>添加新华通人员</title>
+</head>
+<body>
+<%
+	Connection conn = null;
+	PreparedStatement pst = null;
+	ResultSet rs = null;
+	String uin = "";
+	String userid = request.getParameter("userid");
+	try {
+		if (userid != null && !"".equals(userid.trim())) {
+			out.println("+++++"+userid);
+
+			conn = DBConnectionLocator.getInstance().getConnection("jdbc/ROEEE");
+			pst = conn
+					.prepareStatement("select userid,password,sex,cnname from ro_person ,ro_personaccount where ro_person.personuuid=ro_personaccount.personuuid and ro_person.tqid is null and ro_personaccount.userid=?");
+			pst.setString(1, userid);
+
+			rs = pst.executeQuery();
+			
+			while (rs.next()) {
+				TQUser tquser = new TQUser();
+				out.println("在while循环中");
+				uin = tquser.oneUserRegister(rs.getString(1), rs
+						.getString(2), rs.getString(3),
+						rs.getString(4), "", "", "2", "");
+				out.println("addUser.jsp中，uin="+uin);
+			}
+			if (uin.length() < 7) {
+				out.println("错误代码="+uin);
+			} else {
+				out.println(uin);
+				pst = conn
+						.prepareStatement("update ro_person set tqid=? where personuuid=(select personuuid from ro_personaccount where userid =?)");
+				pst.setInt(1, Integer.valueOf(uin).intValue());
+				pst.setString(2, userid);
+				out.println(pst.executeUpdate());
+				out.println("添加成功!"+uin);
+			}
+		} else {
+			out.println("请在链接后面加上userid<br/>");
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+
+		if (rs != null)
+			rs.close();
+		if (pst != null)
+			pst.close();
+		if (conn != null)
+			conn.close();
+	}
+%>
+</body>
+</html>

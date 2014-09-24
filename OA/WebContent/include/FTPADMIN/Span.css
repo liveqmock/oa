@@ -1,0 +1,19 @@
+
+.unselect {
+
+	color: black;
+	border-color: white;
+	border-width: 1px;
+	border-style:solid;
+	cursor: hand;
+	font-size: 10pt;
+	text-align:center;
+	word-break:break-all;
+}
+
+.select{
+	background:#FFFFFF;
+	border-color:#356b97;
+	border-style:solid;
+}
+

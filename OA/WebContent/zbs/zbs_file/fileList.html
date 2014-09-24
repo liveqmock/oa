@@ -1,0 +1,280 @@
+<html>
+<head>
+<title>[文件资料列表]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<link rel="stylesheet" href="../include/style.css">
+<style type="text/css">
+</style>
+<script type="text/javascript" src="../include/judge.js"></script>
+<SCRIPT src="../include/js/common.js"></SCRIPT>
+<script language="JavaScript" src="../include/formVerify.js"></script>
+<script language="JavaScript" src="../include/runFormVerify.js"></script>
+<script language="JavaScript" src="../include/extendString.js"></script>
+<script language="javascript">
+function _addFile(){
+	window.open("fileAdd.html");
+}
+function _editFile(){
+	window.open("fileEdit.html");
+}
+   function fPopUpCalendarDlg(ctrlobj){
+	showx = event.screenX - event.offsetX +4 ; // + deltaX;
+	showy = event.screenY - event.offsetY + 18; // + deltaY;
+	newWINwidth = 210 + 4 + 18;
+	retval = window.showModalDialog("../include/date.htm", "", "dialogWidth:197px; dialogHeight:210px; dialogLeft:"+showx+"px; dialogTop:"+showy+"px; status:no; directories:yes;scrollbars:no;Resizable=no; "  );
+	if( retval != null ){
+		ctrlobj.value = retval;
+	}
+  }
+</script>
+</head>
+<BODY text="#000000" leftMargin="0" topMargin="10">
+<table width="80%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <form name="form1" method="post" action="">
+    <tr>
+      <td>
+        <TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+          <TR>
+            <TD width="2%" background='../images/bg-12.gif'><IMG height=22
+					src="../images/bg-10.gif" width=14></TD>
+            <TD class=title-05 background='../images/bg-12.gif'>[查询]</TD>
+            <TD width="1%" align="right"><IMG height=22
+					src="../images/bg-11.gif" width=20></TD>
+          </TR>
+      </TABLE></td>
+    </tr>
+    <tr>
+      <td class="dot-border">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr bgcolor="#f2f9ff" class="title-04">
+          <td width="28%"><!--日期&nbsp;<input name="date" value="" readonly><img onclick="javascript:getDate('date')" src="../images/datetime.gif" border="0" alt="选择" style="cursor:hand">-->          
+          日期&nbsp;<input name="date" type="text" class="txt2" id="date" style="cursor:hand" value="" onclick="fPopUpCalendarDlg(date)" size="12" readonly>
+          <img src="../images/calendar.gif" style="cursor:hand;" border=0 align="absmiddle" alt="点击弹出日历" onclick="fPopUpCalendarDlg(date)">
+          </td>
+          <td width="30%">文件名&nbsp;<input name="name" value=""></td>
+          <td width="30%">创建人&nbsp;<input name="name1" value=""></td>           
+           <td width="12%"><input name="search" type="submit" class="word4" value="查询" onclick="javascript:_search()" ></td>
+          </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td>
+        <TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+          <TR>
+            <TD width="1%" background="../images/bg-23.jpg"><IMG height=21
+					src="../images/bg-21.jpg" width=10></TD>
+            <TD class=text-01 width="97%" background="../images/bg-23.jpg">
+            </TD>
+            <TD width="2%" background="../images/bg-23.jpg" align="right"><IMG
+					height=21 src="../images/bg-22.jpg" width=11></TD>
+          </TR>
+      </TABLE></td>
+    </tr>
+  </form>
+</table>
+<form name="myForm" method="post">
+  <table width="80%" border="0" align="center" cellpadding="0" cellspacing="0" class="text">
+    <tr>
+      <TD width="53%"><TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+          <TR>
+            <TD width="2%" background=../images/bg-12.gif><IMG height=22 src="../images/bg-10.gif" width=14></TD>
+            <TD class=title-05 background=../images/bg-12.gif><div align="center" class="style1">
+                <div align="left">文件资料列表</div>
+              </div></TD>
+            <TD width="1%"><DIV align=right><IMG height=22 src="../images/bg-11.gif" width=20></DIV></TD>
+          </TR>
+        </TABLE>
+        <TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+          <TBODY>
+            <TR>
+              <TD width="100%"><TABLE cellSpacing=0 cellPadding=0 width="100%" align=center 
+            border=0>
+                  <TBODY>
+                    <TR>
+                      <TD background=../images/bg-09.jpg class="dot-border"><TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                          <TR class=title-04>
+                            <TD width="5%" height="22" align=center valign="middle" noWrap bgColor=#fffbef class=dot>选择</TD>
+                            <TD width="5%" height="22" align=center valign="middle" noWrap bgColor=#fffbef class=dot>序号</TD>
+                            <TD width="10%" align=center valign="middle" noWrap bgColor=#fffbef class=dot>文件名称</TD>
+                            <TD width="8%" align=center valign="middle" noWrap bgColor=#fffbef class=dot>创建人</TD>
+                            <TD width="10%" align=center valign="middle" noWrap bgColor=#fffbef class=dot>创建时间</TD>
+                            <TD width="15%" align=center valign="middle" noWrap bgColor=#fffbef class=dot>所属版块</TD>
+                            <TD width="10%" align=center valign="middle" noWrap bgColor=#fffbef class=dot>下载</TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#f2f9ff';" onMouseOut="this.bgColor='#f2f9ff';" bgColor="#f2f9ff" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>1</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件一</TD>
+                            <TD  height="22" align=center noWrap class=dot>张三</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#8CC0E8';" onMouseOut="this.bgColor='#d6e7f7';" bgColor="#d6e7f7" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>2</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件二</TD>
+                            <TD  height="22" align=center noWrap class=dot>李四</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#f2f9ff';" onMouseOut="this.bgColor='#f2f9ff';" bgColor="#f2f9ff" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>3</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件三</TD>
+                            <TD  height="22" align=center noWrap class=dot>李四</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#8CC0E8';" onMouseOut="this.bgColor='#d6e7f7';" bgColor="#d6e7f7" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>4</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件五</TD>
+                            <TD  height="22" align=center noWrap class=dot>李四</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#f2f9ff';" onMouseOut="this.bgColor='#f2f9ff';" bgColor="#f2f9ff" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>5</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件六</TD>
+                            <TD  height="22" align=center noWrap class=dot>张三</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#8CC0E8';" onMouseOut="this.bgColor='#d6e7f7';" bgColor="#d6e7f7" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>6</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件七</TD>
+                            <TD  height="22" align=center noWrap class=dot>李四</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#f2f9ff';" onMouseOut="this.bgColor='#f2f9ff';" bgColor="#f2f9ff" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>7</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件八</TD>
+                            <TD  height="22" align=center noWrap class=dot>张三</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#8CC0E8';" onMouseOut="this.bgColor='#d6e7f7';" bgColor="#d6e7f7" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>8</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件九</TD>
+                            <TD  height="22" align=center noWrap class=dot>李四</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#f2f9ff';" onMouseOut="this.bgColor='#f2f9ff';" bgColor="#f2f9ff" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>9</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件十</TD>
+                            <TD  height="22" align=center noWrap class=dot>张三</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#8CC0E8';" onMouseOut="this.bgColor='#d6e7f7';" bgColor="#d6e7f7" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>10</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件十一</TD>
+                            <TD  height="22" align=center noWrap class=dot>李四</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#f2f9ff';" onMouseOut="this.bgColor='#f2f9ff';" bgColor="#f2f9ff" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>11</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件十二</TD>
+                            <TD  height="22" align=center noWrap class=dot>张三</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#8CC0E8';" onMouseOut="this.bgColor='#d6e7f7';" bgColor="#d6e7f7" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>12</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件十二</TD>
+                            <TD  height="22" align=center noWrap class=dot>李四</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#f2f9ff';" onMouseOut="this.bgColor='#f2f9ff';" bgColor="#f2f9ff" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>13</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件十三</TD>
+                            <TD  height="22" align=center noWrap class=dot>张三</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#8CC0E8';" onMouseOut="this.bgColor='#d6e7f7';" bgColor="#d6e7f7" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>14</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件十四</TD>
+                            <TD  height="22" align=center noWrap class=dot>李四</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#f2f9ff';" onMouseOut="this.bgColor='#f2f9ff';" bgColor="#f2f9ff" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>15</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件十五</TD>
+                            <TD  height="22" align=center noWrap class=dot>张三</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                          <TR onMouseOver="this.bgColor='#8CC0E8';" onMouseOut="this.bgColor='#d6e7f7';" bgColor="#d6e7f7" >
+                            <TD  height=22 align=center valign="middle" noWrap class=dot><input type="radio" name="plandefid" onClick="" value=""></TD>
+                            <TD  height=22 align=center valign="middle" noWrap class=dot>16</TD>
+                            <TD  height="22" align=center noWrap class=dot>文件十六</TD>
+                            <TD  height="22" align=center noWrap class=dot>李四</TD>
+                            <TD  height="22" align=center noWrap class=dot>2007年9月28日</TD>
+                            <TD  height="22" align=center noWrap class=dot>日常值班与业务交流板块</TD>
+                            <TD  height="22" align=center noWrap class=dot-right><a href="新建文档.doc">下载</a></TD>
+                          </TR>
+                        </TABLE></TD>
+                    </TR>
+                  </TBODY>
+                </TABLE></TD>
+            </TR>
+          </TBODY>
+        </TABLE>
+        <TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+          <TR>
+            <TD width="1%" background=../images/bg-23.jpg><IMG height=21 src="../images/bg-21.jpg" width=10></TD>
+            <TD class=text-01 width="97%" background=../images/bg-23.jpg></TD>
+            <TD width="2%" background=../images/bg-23.jpg><DIV align=right><IMG height=21 src="../images/bg-22.jpg" width=11></DIV></TD>
+          </TR>
+        </TABLE></TD>
+    </tr>
+  </TABLE>
+  </td>
+  </tr>
+  </table>
+  <table width="100%" height="50"  border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td height="50" align="center"><table width="400" height="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr align="center">
+            <td width="33%"><input name="Submit" type="button" class="word5" value="添加" onClick="javascript:_addFile()"></td>
+            <td width="33%"><input name="Submit2" type="button" class="word5" value="修改" onClick="javascript:_editFile()"></td>
+            <td width="33%"><input name="Submit3" type="button" class="word5" value="删除" onClick=""></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

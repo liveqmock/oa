@@ -1,0 +1,156 @@
+.table_bgcolor{
+	background:#DDDDDD;
+}
+.title_mainmessage{
+	background-image:url('images/title_head_00.jpg');
+	background-repeat:no-repeat;
+}
+.title_mainmessage0{
+	background-image:url('images/title_head_00.jpg');
+	background-repeat:no-repeat;
+}
+.title_mainmessage1{
+	background-image:url('images/title_head_01.jpg');
+	background-repeat:no-repeat;
+}
+.title_mainmessage2{
+	background-image:url('images/title_head_02.jpg');
+	background-repeat:no-repeat;
+}
+.block_title_blank{
+	background-image:url('images/mid_01.jpg');
+}
+.block_title{
+	background-image:url('images/mid_01.jpg');
+	font-size: 12px;
+	color: #006699;
+	line-height: 24px;
+	font-weight: bold;
+}
+.title_light_01{
+	background-image:url('images/title_light_01.jpg');
+	font-size: 12px;
+	color: #dc0100;
+	line-height: 16px;
+	font-weight: bold;
+}
+.title_light_02{
+	background-image:url('images/title_light_02.jpg');
+	font-size: 12px;
+	color: #dc0100;
+	line-height: 16px;
+	font-weight: bold;
+}
+.title_dark_01{
+	background-image:url('images/title_back_02.jpg');
+	font-size: 12px;
+	color: #dc0100;
+	line-height: 16px;
+}
+.title_dark_02{
+	background-image:url('images/title_back_03.jpg');
+	font-size: 12px;
+	color: #dc0100;
+	line-height: 16px;
+}
+.title_back_buttom{
+	background-image:url('images/title_back_buttom.jpg');
+	font-size: 12px;
+	color: #dc0100;
+	line-height: 16px;
+}
+.table_title{
+	font-size: 12px;
+	color: #006699;
+	line-height: 24px;
+	font-weight: bold;
+}
+.message_title_bold{
+	font-size: 12px;
+	color: #006699;
+	line-height: 24px;
+	font-weight: bold;
+}
+
+.message_title{
+	font-size: 12px;
+	font-weight: normal;
+	color: #004466;
+	line-height: 20px;
+}
+.message_date{
+	font-size: 12px;
+	line-height: 22px;
+	font-weight: normal;
+	color: #ADADAD;
+}
+.right_bgcolor{
+	background:#a4b9c8;
+}
+.message_channel{
+	font-size: 12px;
+	line-height: 24px;
+	font-weight: normal;
+	color: #FF0000;
+}
+.message_zhuanti{
+	font-size: 12px;
+	font-weight: normal;
+	color: #C60000;
+}
+.function_title{
+	font-size: 12px;
+	line-height: 24px;
+	font-weight: normal;
+	color: #C60000;
+}
+.title_light{
+	font-size: 12px;
+	font-weight: normal;
+	color: #AE3F0F;
+	line-height: 24px;
+}
+.content{
+	font-size: 12px;
+	line-height: 22px;
+	font-weight: normal;
+	color: #ADADAD;
+}
+.biankuang{
+	border: 1px solid #B9DAF9;
+}
+.foot_message{
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	line-height: 24px;
+}
+.second_title{
+	font-size: 12px;
+	font-weight: normal;
+	color: #004466;
+	line-height: 24px;
+}
+.top_back{
+	background-image:url('images/lake/top_back.gif');
+}
+.top_logo{
+	background-image:url('images/lake/top_logo.gif');
+}
+.top_function{
+	background-image:url('images/lake/top_backleft.jpg');
+}
+.top_left{
+	background-image:url('images/lake/top_left.gif');
+}
+.top_left_buttom{
+	background-image:url('images/lake/top_left_buttom.gif');
+	background-repeat:no-repeat;
+}
+.top_back_buttom{
+	background-image:url('images/lake/top_back_buttom.gif');
+}
+.top_back_buttom_right{
+	background-image:url('images/lake/top_back_buttom_right.gif');
+	background-repeat:no-repeat;
+}

@@ -1,0 +1,308 @@
+<html>
+<head>
+<title>全文检索</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<SCRIPT language=JavaScript src="../include/formverify/extendString.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../include/formverify/formVerify.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../include/formverify/runFormVerify.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../include/js/common.js"></SCRIPT>
+<!--<link rel="stylesheet" href="../include/style.css">-->
+<link href="/OA/Style/css.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.STYLE1 {
+	color: RED;
+	font-weight: bold;
+	font-size: 14;
+}
+
+body {
+	background-image: 
+}
+
+.style2 {
+	color: #FFFFFF
+}
+-->
+</style>
+
+<script language="javascript">
+function _chooseP(){}
+function fPopUpCalendarDlg(ctrlobj){
+	showx = event.screenX - event.offsetX +4 ; // + deltaX;
+	showy = event.screenY - event.offsetY + 18; // + deltaY;
+	newWINwidth = 210 + 4 + 18;
+	retval = window.showModalDialog("../include/date.htm", "", "dialogWidth:197px; dialogHeight:210px; dialogLeft:"+showx+"px; dialogTop:"+showy+"px; status:no; directories:yes;scrollbars:no;Resizable=no; "  );
+	if( retval != null ){
+		ctrlobj.value = retval;
+	}
+  }
+function _search(){
+	window.open("../zbs_duty/dutySearchList.html");
+}  
+function _return(){
+	document.form1.action="dutyList.html";
+	document.form1.submit();
+}
+/*function _search(){
+	if(document.all.searchname.value=="张三"){
+		//alert("ok!张三");
+		document.getElementById("jieguo1").style.display="block";
+		document.getElementById("jieguo11").style.display="block";
+		document.getElementById("jieguo3").style.display="block";
+		document.getElementById("jieguo31").style.display="block";
+		document.getElementById("jieguo5").style.display="block";
+		document.getElementById("jieguo51").style.display="block";
+		document.getElementById("kong").style.display="none";
+		document.getElementById("jieguo2").style.display="none";
+		document.getElementById("jieguo21").style.display="none";
+		document.getElementById("jieguo4").style.display="none";
+		document.getElementById("jieguo41").style.display="none";
+		document.getElementById("jieguo6").style.display="none";
+		document.getElementById("jieguo61").style.display="none";
+	}else if(document.all.searchname.value=="李四"){
+		//alert("ok!李四");
+		document.getElementById("jieguo1").style.display="none";
+		document.getElementById("jieguo11").style.display="none";
+		document.getElementById("jieguo3").style.display="none";
+		document.getElementById("jieguo31").style.display="none";
+		document.getElementById("jieguo11").style.display="none";
+		document.getElementById("jieguo51").style.display="none";
+		document.getElementById("jieguo5").style.display="none";
+		document.getElementById("kong").style.display="none";
+		document.getElementById("jieguo2").style.display="block";
+		document.getElementById("jieguo21").style.display="block";
+		document.getElementById("jieguo4").style.display="block";
+		document.getElementById("jieguo41").style.display="block";
+		document.getElementById("jieguo6").style.display="block";
+		document.getElementById("jieguo61").style.display="block";
+	}else{
+		document.getElementById("jieguo1").style.display="none";
+		document.getElementById("jieguo11").style.display="none";
+		document.getElementById("jieguo3").style.display="none";
+		document.getElementById("jieguo31").style.display="none";
+		document.getElementById("jieguo5").style.display="none";
+		document.getElementById("jieguo51").style.display="none";
+		document.getElementById("kong").style.display="block";
+		document.getElementById("jieguo2").style.display="none";
+		document.getElementById("jieguo21").style.display="none";
+		document.getElementById("jieguo4").style.display="none";
+		document.getElementById("jieguo41").style.display="none";
+		document.getElementById("jieguo6").style.display="none";
+		document.getElementById("jieguo61").style.display="none";
+	}
+}*/
+
+function _HightLight(nWord)
+{
+var oRange = document.body.createTextRange();
+while(oRange.findText(nWord))
+{
+oRange.pasteHTML("<span style='color:red;font-size:13;font-weight: bold;'>" + oRange.text + "</span>");
+oRange.moveStart('character',1);
+}
+}
+</script>
+
+</head>
+
+<BODY text="#000000" leftMargin="0" topMargin="10"
+	onload="javascript:_HightLight('文档')">
+<form action="" name="form1">
+<table width="1003" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td width="11" bgcolor="#FFFFFF"><img src="images/kongbai.jpg"
+			width="11" height="11" /></td>
+		<td valign="top">
+		<table width="90%" border="0" align="center" cellpadding="0"
+			cellspacing="0">
+			<tr>
+				<td colspan="2">&nbsp;</td>
+			</tr>
+
+			<tr>
+				<td width="37" rowspan="2">
+				<div align="right"><img src="/OA/images/zoom.jpg" width="26"
+					height="25" hspace="5" /></div>
+				</td>
+				<td></td>
+				<!--<td width="737" class="black-12">
+				<table border="0" align="left" cellpadding="0" cellspacing="3">
+					<tr>
+						<td class="black-12">
+						<div align="right" class="grap2-12">值班时间(可不填)</div>
+						</td>
+						<td colspan="5">
+						<table border="0" cellspacing="2" cellpadding="0">
+							<tr>
+								<td class="grap2-12">从</td>
+								<td><input name="fromdate" type="text" class="biankuang-blue"
+									value="" onClick="fPopUpCalendarDlg(fromdate)" size="12"
+									readonly /></td>
+								<td><img src="/OA/images/calendar_view_day.gif" width="16"
+									height="16" alt="点击弹出日历" onClick="fPopUpCalendarDlg(fromdate)" /></td>
+								<td class="grap2-12">&nbsp;到</td>
+								<td><input name="todate" type="text" class="biankuang-blue"
+									value="" onClick="fPopUpCalendarDlg(todate)" size="12" readonly /></td>
+								<td><img src="/OA/images/calendar_view_day.gif" width="16"
+									height="16" alt="点击弹出日历" onClick="fPopUpCalendarDlg(todate)" /></td>
+							</tr>
+
+							
+						</table>
+						</td>
+					</tr>
+				</table>
+				</td>-->
+			</tr>
+			<tr>
+				<!--<td>&nbsp;</td>-->
+				<td class="black-12">
+				<table border="0" align="left" cellpadding="0" cellspacing="3">
+					<tr>
+						<td class="black-12">
+						<div align="right" class="grap2-12">&nbsp;</div>
+						</td>
+						<!--<td><select name="select">
+							<option>白班</option>
+							<option>夜班</option>
+						</select></td>-->
+						<td class="grap2-12">
+						<div align="right">&nbsp;&nbsp;文件名</div>
+						</td>
+						<td><input name="textfield2222" type="text" class="biankuang-blue"
+							size="22" /></td>
+						<td>
+						<div align="right" class="grap2-12">&nbsp;&nbsp;内容关键字</div>
+						</td>
+						<td>&nbsp;&nbsp;<input name="textfield2222" type="text"
+							class="biankuang-blue" size="42" /></td>
+						<td><img src="/OA/images/search.jpg" width="59" height="19"
+							hspace="10" onclick="javascript:_search()" /></td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			</div>
+
+			<tr>
+				<td height="1" colspan="4">
+				<hr />
+				</td>
+			</tr>
+			<tr>
+				<td align="center" class="black-12" colspan="4">
+				<div align="left"><b><a href="Document.doc" target="_blank"
+					class="blue3-12-b">新建Word文档.doc</a></b></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" align="left">
+				<div align="left" class="black-12">...
+				***此前内容已摘近期情况通报（0929版）<br>
+				◆夜班老总休息室（306）的床单被罩换洗由夜班公寓负责，电话：4174。请周日值班同志注意联系更换。<br>
+				*张三同志：12月10日至12月15日出访<br>
+				...<br>
+				</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="green-12" colspan="4" height="10">日常值班与业务交流&gt;&gt;总编室值班日志
+				</td>
+			</tr>
+			<tr>
+				<td class="black-14" colspan="4" height="10"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="4">
+				<div align="left"><b><a href="Document.doc" target="_blank"
+					class="blue3-12-b">新建text文档.txt</a></b></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" align="left">
+				<div align="left" class="black-12">... 
+				1、张三在英文非洲专线工作简报上的批示，秘书处说不要了，存。<br>
+				2、鲁炜同志带回的“全国发展和改革工作会议”材料，周六白天交夏总看。<br>
+				3、摄影部就媒体报道比较研究反映的少量内参照片违反程序进入待编稿库的说明，请交秘书处（周锡生）。<br>
+				...
+				</td>
+			</tr>
+			<tr>
+				<td class="green-12" colspan="4" height="10">日常值班与业务交流&gt;&gt;总编室值班日志
+				</td>
+			</tr>
+			<!-- <tr>
+				<td class="green-12" colspan="4" height="10">内设机构&gt;&gt;新华社总编室&gt;&gt;总编室值班日志
+				2007-09-28</td>
+			</tr> -->
+			<tr>
+				<td class="black-14" colspan="4" height="10"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="4">
+				<div align="left"><b><a href="Document.doc" target="_blank"
+					class="blue3-12-b">新建Word文档12.doc</b></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" align="left">
+				<div align="left" class="black-12">...
+				1、中国社科院要报（北京2008奥运会风险分析）彭批争取本周领导小组开会（11月21日白天留）<br>
+				2、12月10日提醒刘江：国际部关于“时代中国”吹风会的报告（11月13日已提醒过张三开会事，未答复）<br>
+				4、请12月17日主班要车并提醒张三：12月18日国务院新闻办公室新年招待会，已报名，车证请柬随后发来。<br>
+				...
+				</td>
+			</tr>
+			<tr>
+				<td class="green-12" colspan="4" height="10">日常值班与业务交流&gt;&gt;总编室值班日志
+				</td>
+			</tr>
+			<!-- <tr>
+				<td class="green-12" colspan="4" height="10">内设机构&gt;&gt;新华社总编室&gt;&gt;总编室值班日志
+				2007-09-27</td>
+			</tr> -->
+			<tr>
+				<td class="black-14" colspan="4" height="10"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="4">
+				<div align="left"><b><a href="Document.doc" target="_blank"
+					class="blue3-12-b">值班日志.doc</a></b></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" align="left">
+				<div align="left" class="black-12">...
+				1、海外市场对奥运报道需求分析和营销建议，已交相关部门待近期开会研究。（摄影已反馈）<br>
+				2、《新华社关于提高中央外事活动新闻报道时效的措施》已交央采，待反馈。（张三答复近期与中办协调后再报）<br>
+				3、12月17日反馈：外宣办关于向全国外宣工作会议提供书面发言材料的通知（12月5日交对外部）（12月14日报张三）<br>
+				...
+				</td>
+			</tr>
+			<tr>
+				<td class="green-12" colspan="4" height="10">日常值班与业务交流&gt;&gt;总编室值班日志
+				</td>
+			</tr>
+			<!-- <tr>
+				<td class="green-12" colspan="4" height="10">内设机构&gt;&gt;新华社总编室&gt;&gt;总编室值班日志
+				2007-09-26</td>
+			</tr> -->
+			<tr>
+				<td class="black-14" colspan="4" height="10"></td>
+			</tr>
+			<tr>
+				<td class="black-14" colspan="4" height="10"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="blue3-12-b" height="30">
+				<div align="center">[1] [2] [3] [4] 下一页</div>
+				</td>
+			</tr></table>
+		</td>
+		<td width="11"><img src="images/kongbai.jpg" width="11" height="11" /></td>
+	</tr>
+</table>
+</form>
+</BODY>
+</HTML>
