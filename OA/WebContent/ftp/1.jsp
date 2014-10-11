@@ -3,7 +3,7 @@
 	String path = request.getContextPath();
 %>
 
-<html>
+<html> 
 <head>
 <title>apptest</title>
 <meta name="GENERATOR" content="Rational Software Architect">
