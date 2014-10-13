@@ -14,7 +14,7 @@ body {
 </style>
 <body>
 <form name="frm" target="_blank">
-<table width="1003" border="0" cellpadding="0" cellspacing="0">
+<table width="1003" border="0" cellpadding="0" align="center" cellspacing="0">
 	<tr>
     	<td align="center">
 			<jsp:include page="/include/top.jsp"></jsp:include>

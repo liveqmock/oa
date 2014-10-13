@@ -213,7 +213,7 @@ function _hiderec(){
 <input type="hidden" name="type" value="<%=type%>">
  <div id="movediv"  style="left:150px;top:20px;display:none" onmousedown="moveInit('movediv',event);" onmousemove="Move('movediv',event)" onmouseup="stopMove()" onmouseout="stopMove()"><ifream></div>
 
-<table width="760" border="0" cellspacing="0" cellpadding="0">
+<table width="788" border="0" cellspacing="0" cellpadding="0">
 
     <tr>
       <td height="30" colspan="3" valign="top"></td>
@@ -247,26 +247,38 @@ function _hiderec(){
                       </tr>
                   </table></td>      </tr>
 
-				 <tr style="display:none" id="rectr">
-                    <td height="26" align="right" bgcolor="#FFFFFF" class="message_title"><a href="#" onClick="javascript:_hiderec()" alt="隐藏收件人" >收件人</a>：</td>
-                    <td colspan="3" bgcolor="#FFFFFF" class="message_title">
-					 <%
-                            if(tolist!=null||tolist.size()!=0){
-                            	for(int i = 0; i < tolist.size(); i ++){
-                            		if(i!=0) out.print(",");
-	                            	out.print(tolist.get(i));
-                            	}
-                            }
-                     %>					</td>
-                 </tr>
+				 <tr>
+					<td height="26" style="display:none" id="rectr" colspan="4">
+				        <table width="100%" border="0" cellpadding="0" cellspacing="0" >
+				            <tr>
+				                <td height="26" width="12%" align="right" bgcolor="#FFFFFF" class="message_title"><a href="#" onClick="javascript:_hiderec()" alt="隐藏收件人" >收件人</a>：</td>
+				                <td bgcolor="#FFFFFF" class="message_title">
+				                 <%
+				                        if(tolist!=null||tolist.size()!=0){
+				                            for(int i = 0; i < tolist.size(); i ++){
+				                                if(i!=0) out.print(",");
+				                                out.print(tolist.get(i));
+				                            }
+				                        }
+				                 %>	
+				                 </td>
+				             </tr>
+				         </table>			
+				    </td>
+				 </tr>
 
           
-                  <tr  id="reclink"> 
-                    <td height="26" align="right" bgcolor="#FFFFFF" class="message_title">&nbsp;</td>
-                    <td width="3%" bgcolor="#FFFFFF" class="message_title"><img src="<%=path%>/images/mail_show.jpg" /></td>
-                    <td width="77%" bgcolor="#FFFFFF" class="message_title"><span><a href="#" onClick="javascript:_showrec()" alt="显示收件人" >显示收件人</a></span></td>
-                    <td width="8%" bgcolor="#FFFFFF" class="message_title">&nbsp;</td>
-                  </tr>
+                  <tr> 
+					    <td height="26" id="reclink" colspan="4">
+					        <table width="100%" border="0" cellpadding="0" cellspacing="0" >
+					            <tr>
+					                <td height="26" width="12%" align="right" bgcolor="#FFFFFF" class="message_title"><img src="<%=path%>/images/mail_show.jpg" /></td>
+					                <td bgcolor="#FFFFFF" class="message_title"><span><a href="#" onClick="javascript:_showrec()" alt="显示收件人" >显示收件人</a></span>
+					                 </td>
+					             </tr>
+					         </table>			
+					    </td> 
+					</tr>
                   <tr>
                     <td height="26" align="right" bgcolor="#FFFFFF" class="message_title">文件标题：</td>
                     <%String mailSubject = fileMessage.getSubject().substring(0,fileMessage.getSubject().length()-13);

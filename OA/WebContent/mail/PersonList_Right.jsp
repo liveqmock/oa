@@ -174,8 +174,8 @@ initstyle();
                                 <td class="message_title_bold"><a class="message_title_bold" style="text-decoration:none" href="javascript:_updown('contactImg','persentcontact')">最近联系人</a></td>
                             </tr>
 
-							<tr style="display:none" id="persentcontact">
-							<td colspan="2">
+							<tr>
+							<td colspan="2" style="display:none" id="persentcontact">
 							<table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
 							<%
 					
@@ -201,8 +201,8 @@ initstyle();
                                 <td class="table_title"><a href="javascript:_updown('kaoheImg<%=i%>','grouptr<%=i%>')" style="text-decoration:none" class="message_title_bold"><%=ag.getGroupname()%></a></td>
                             </tr>
 
-							<tr style="display:none" id="grouptr<%=i%>">
-							<td colspan="2">
+							<tr>
+							<td colspan="2" style="display:none" id="grouptr<%=i%>">
 							<table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
 							<%
 								   List tempusers = (List)useringrouplist.get(i);

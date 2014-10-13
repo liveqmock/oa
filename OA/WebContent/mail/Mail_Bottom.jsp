@@ -3,7 +3,7 @@
  String path = request.getContextPath();
 %>
 
-<table width="990" border="0" cellspacing="0" cellpadding="0">
+<table width="990" border="0" cellspacing="0" align="center" cellpadding="0">
   
   <tr>
     <td height="48" bgcolor="#EFEFEF"><div align="center" class="content">Tel:010-63072715 Copyright (C) 2008 ∞Ê»®À˘”–°°°°<br />

@@ -129,7 +129,7 @@ function _logout(){
                   <td width="60%" class="top_back_buttom">
                	  <table width="100%" border="0" cellpadding="0" cellspacing="0" height="29">
                         <tr>
-                           <td width="35%" height="29" align="left" valign="middle" class="message_zhuanti">欢迎<span style="font-size:12;color:#000000" id="personInfo"></span></td>
+                           <td width="38%" height="29" align="left" valign="middle" class="message_zhuanti">欢迎<span style="font-size:12;color:#000000" id="personInfo"></span></td>
                           <td width="35%" align="center" class="content" valign="middle"><span class="message_zhuanti">信息检索:</span>
 													<input name="keyword" type="text" id="keyword" class="biankuang" size="16" value="请输入检索关键字" style="color:#888;" title="如果您有多个关键字，请键入空格分割。" onfocus="if(this.value!='请输入检索关键字'){this.style.color='#000'}else{this.value='';this.style.color='#888'}" 
 													onblur="if(this.value==''){this.value='请输入检索关键字';this.style.color='#888'}" 

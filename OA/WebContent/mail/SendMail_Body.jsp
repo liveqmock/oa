@@ -585,7 +585,7 @@ initstyle();
 			<input type="hidden" name="donext" value="" />
 
 			<table border="0" align="left" cellpadding="0" cellspacing="0"
-				width="782">
+				width="788">
 				<tr>
 					<td width="578" valign="top">
 						<table width="100%" border="0" align="center" cellpadding="2"
@@ -927,9 +927,9 @@ initstyle();
 						</table>
 
 					</td>
-					<td width="200" valign="top">
+					<td width="220" valign="top">
 						<iframe name="userlistfrm"
-							src="<%=path%>/servlet/MailGroupListServlet" width="200"
+							src="<%=path%>/servlet/MailGroupListServlet" width="220"
 							height="530" scrolling="auto" frameborder="0" framespacing="0"></iframe>
 					</td>
 				</tr>
