@@ -9,26 +9,22 @@ try{
 	//System.out.println("++++++ tiao is "+tiao);
 %>
 	<tr>
-		<td width="11" height="34" bgcolor="#FFFFFF" ><img
-			src="../images/kongbai.jpg" width="11" height="11" /></td>
 		<td valign="middle" width="117">
-		<table width="100%" cellspacing="1" class="table_bgcolor">
-			<tr>
-				<td width="50" align="center" bgcolor="#FFFFFF"><span class="message_title"><%=tiao%></span></td>
-				<td width="58" align="center" bgcolor="#FFFFFF" class="message_title"><%=curPageNum%>/<%=pageCount%></td>
-			</tr>
-		</table>
+            <table width="100%" cellspacing="1" class="table_bgcolor">
+                <tr>
+                    <td width="50" style="width:50px;" align="center" bgcolor="#FFFFFF"><span class="message_title">22<%=tiao%></span></td>
+                    <td width="58" style="width:58px;" align="center" bgcolor="#FFFFFF" class="message_title">33<%=curPageNum%>/<%=pageCount%></td>
+                </tr>
+            </table>
 		</td>
 		<td width="5" valign="middle" >&nbsp;</td>
-        
 		<%
-				int i = curPageNum;
-				int j = pageCount;
-				int k = pageCount/7;
-				int l = pageCount%7;
-				
+            int i = curPageNum;
+            int j = pageCount;
+            int k = pageCount/7;
+            int l = pageCount%7;
 		%>
-		<td  valign="middle" width='220'>
+		<td  valign="middle"colspan="7">
 		<table cellspacing="1" class="table_bgcolor" >
 			<tr align='left'>
 				<td width="20" align="center" valign="bottom" bgcolor="#FFFFFF"
@@ -61,10 +57,10 @@ try{
 			</tr>			
 		</table>
 		</td>
-		<td width="80" valign="middle" align='left'><input type="text" size="5" name="page" id="page"
+		<td width="110" valign="middle" align='left'><input type="text" size="5" name="page" id="page"
 			style="height: 18"><a href="javascript:_toPage2()" class="message_title"
 			style="text-decoration: none">&nbsp;GO</a></td>
-		<td width='800'>&nbsp;</td>
+		
 
 <SCRIPT language=JavaScript>
 function _toPage(pageno){

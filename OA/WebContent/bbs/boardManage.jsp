@@ -86,28 +86,33 @@ body {
 <body>
 <form name="form1" method="post" action="">
 <jsp:include page= "/include/top.jsp" />
-<table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="983" border="0" cellspacing="0" cellpadding="0" align="center">
 	<tr><td height="5"></td></tr>
 </table>
-<table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="983" border="0" cellspacing="0" cellpadding="0" align="center">
 	<tr>
 		<td bgcolor="#FFFFFF">&nbsp;</td>
-		<td colspan="5" valign="top"></td>
+		<td colspan="4" valign="top"></td>
 	</tr>
-	<%@ include file= "/include/defaultPageScrollBar2.jsp" %>
-	<td width="175" align="right" valign="bottom"><!--<a
-		href="<%=request.getContextPath()%>/bbs/newArticle.jsp?boardId=<%=boardVO.getBoardid().toString()%>&boardName=<%=boardVO.getBoardname()%>&auditFlag=0"><img
-		src="../images/newtopic.gif" border="0"></a><img
-		src="../images/newspecial.gif">--></td>
-	<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+    
+    <tr>
+		<td colspan="5">
+			<table>
+				<tr> 
+					
+				<%@ include file= "/include/defaultPageScrollBar2.jsp" %>
+				
+				<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+				</tr>
+			</table>
+		</td>
 	</tr>
+
 	<tr>
-		<td width="11" bgcolor="#FFFFFF"><img src="../images/kongbai.jpg"
-			width="11" height="11" /></td>
+		
 		<td colspan="5" valign="top">
 		<div align="left">
-		<TABLE cellSpacing=1 cellPadding=1 width="100%" bgColor=#FFFFFF
-			border=0>
+		<TABLE cellSpacing=1 cellPadding=1 width="100%" bgColor=#FFFFFF border=0>
 			<tr>
 				<td width="75%" bgColor=#FFFFFF class="blue3-12-b"><IMG title=到论坛首页
 					style="CURSOR: hand"
@@ -118,14 +123,14 @@ body {
 					class="STYLE4" style="text-decoration: none"><%=boardVO.getBoardname()%></a>
 					  ==&gt; 管理页面
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<!--<A  class="blue2-12"
-      href="<%=request.getContextPath()%>/bbs/batchDelete.jsp?boardId=<%=boardId%>&boardName=<%=boardVO.getBoardname()%>">批量删除</a> &nbsp; &nbsp;</font></a>
-      --><A class="blue2-12"
-           href="#"onClick="javascript:_topic('<%=request.getContextPath()%>','<%=boardId%>')">退出管理</A>
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <A class="blue3-12-b"
-           href="<%=request.getContextPath()%>/servlet/ShowUnauditServlet">帖子审核</A>
-					</td>
+					<!--<A  class="blue2-12" href="<%=request.getContextPath()%>/bbs/batchDelete.jsp?boardId=<%=boardId%>&boardName=<%=boardVO.getBoardname()%>">批量删除</a> &nbsp; &nbsp;</font></a>
+			      -->
+			      <A class="blue2-12"
+		           href="#"onClick="javascript:_topic('<%=request.getContextPath()%>','<%=boardId%>')">退出管理</A>
+		           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		           <A class="blue3-12-b"
+		           href="<%=request.getContextPath()%>/servlet/ShowUnauditServlet">帖子审核</A>
+				</td>
 				<td width="25%" align="right" nowrap bgColor=#FFFFFF class="blue2-12">
 				本版版主:
             <%
@@ -138,7 +143,7 @@ body {
 	{
 		boardManageFlag = 1;
 		%>	  
-					  <A title=查看版主“<%=managerVO.getTruename()%>”的资料 
+					  <A title=查看版主"<%=managerVO.getTruename()%>"的资料 
       href="#"onClick="javascript:_openUserMsg('<%=request.getContextPath()%>/servlet/ShowUserMsgServlet?userId=<%=managerVO.getUserid().toString()%>&currUserId=<%=userVO.getUserid()%>')"  class="text-01"><%=managerVO.getTruename()%></a>
 							<%}
 							}%>
@@ -153,14 +158,12 @@ body {
 		</TABLE>
 		</div>
 		</td>
-		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+		
 	</tr>
 	<tr>
-		<td width="11" bgcolor="#FFFFFF"><img src="../images/kongbai.jpg"
-			width="11" height="11" /></td>
+		
 		<td colspan="5" valign="top">
-		<table width="100%" border="0" cellpadding="2" cellspacing="1"
-			bgcolor="#B9DAF9">
+		<table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#B9DAF9">
 			<tr>
 				<td width="5%" align="center" background="../images/2-title-05.jpg"
 					bgcolor="#E0EDF8" class="white2-12-b" nowrap>状态</td>
@@ -251,16 +254,33 @@ body {
 %>
 		</table>
 		</td>
-		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
 	</tr>
-	<%@ include file= "/include/defaultPageScrollBar2.jsp" %>
-	<td width="175" align="right" valign="bottom"><!--<a
-		href="<%=request.getContextPath()%>/bbs/newArticle.jsp?boardId=<%=boardVO.getBoardid().toString()%>&boardName=<%=boardVO.getBoardname()%>&auditFlag=0"><img
+	
+	<tr>
+	<td colspan="5">
+        <table>
+            <tr> 
+                
+            <%@ include file= "/include/defaultPageScrollBar2.jsp" %>
+            
+            <td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+            </tr>
+        </table>
+	</td>
+	</tr>
+	
+	
+	
+	<!--修改<//%@ include file= "/include/defaultPageScrollBar2.jsp" %>
+	<td width="175" align="right" valign="bottom"-->
+	<!--<a
+		href="<//%=request.getContextPath()%>/bbs/newArticle.jsp?boardId=<//%=boardVO.getBoardid().toString()%>&boardName=<//%=boardVO.getBoardname()%>&auditFlag=0"><img
 		src="../images/newtopic.gif" border="0"></a><img
-		src="../images/newspecial.gif">--></td>
+		src="../images/newspecial.gif">-->
+	<!--/td>
 	<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
 	</tr>
-
+	-->
 
 
 

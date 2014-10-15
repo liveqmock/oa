@@ -63,40 +63,38 @@ body {
 </head>
 
 <body>
-<form name="form1" method="post" action="">
+<form name="form1" method="post" action=""> 
 <%@ include file= "/include/top.jsp" %>
 
-<table width="1003" border="0" cellspacing="0" cellpadding="0"
-	align="center">
+<table width="983" border="0" cellspacing="0" cellpadding="0" align="center">
 
 	<tr>
-		<td bgcolor="#FFFFFF" height="5"></td>
-		<td colspan="5" valign="top"></td>
+		<td colspan="5" bgcolor="#FFFFFF" height="5"></td>
 	</tr>
 	<tr>
-		<td bgcolor="#FFFFFF">&nbsp;</td>
-		<td colspan="5" valign="top">
-		<table width="983" border="0" cellpadding="2" cellspacing="1" class="table_bgcolor">
-	  <tr>
-				<td width="4%" background="../images/2-title-05.jpg"
-					bgcolor="#E0EDF8" class="block_title">&nbsp;</td>
-				<td width="38%" background="../images/2-title-05.jpg"
-					bgcolor="#E0EDF8" class="block_title">
-				<div align="center">
-				<div align="center" class="white2-12-b">讨论区</div>
-				</div>
-				</td>
-			  <td width="6%" align="center" background="../images/2-title-05.jpg"
-					bgcolor="#E0EDF8" class="block_title">主题</td>
-			  <td width="7%" align="center" background="../images/2-title-05.jpg"
-					bgcolor="#E0EDF8" class="block_title">总贴数</td>
-			  <td width="13%" align="center" background="../images/2-title-05.jpg"
-					bgcolor="#E0EDF8" class="block_title">最后发表</td>
-			  <td width="32%" background="../images/2-title-05.jpg"
-					bgcolor="#E0EDF8" class="block_title">
-				<div align="center">版主</div>
-				</td>
-		  </tr>
+
+		<td colspan="5" valign="top" style="padding-left:0px;">
+			<table width="983" border="0" align="center" cellpadding="2" cellspacing="1" class="table_bgcolor">
+          <tr>
+                    <td width="4%" background="../images/2-title-05.jpg"
+                        bgcolor="#E0EDF8" class="block_title">&nbsp;</td>
+                    <td width="38%" background="../images/2-title-05.jpg"
+                        bgcolor="#E0EDF8" class="block_title">
+                    <div align="center">
+                    <div align="center" class="white2-12-b">讨论区</div>
+                    </div>
+                    </td>
+                  <td width="6%" align="center" background="../images/2-title-05.jpg"
+                        bgcolor="#E0EDF8" class="block_title">主题</td>
+                  <td width="7%" align="center" background="../images/2-title-05.jpg"
+                        bgcolor="#E0EDF8" class="block_title">总贴数</td>
+                  <td width="13%" align="center" background="../images/2-title-05.jpg"
+                        bgcolor="#E0EDF8" class="block_title">最后发表</td>
+                  <td width="32%" colspan="2" background="../images/2-title-05.jpg"
+                        bgcolor="#E0EDF8" class="block_title">
+                    <div align="center">版主</div>
+                    </td>
+              </tr>
 			<%
             
             boolean areaf=true;
@@ -112,6 +110,7 @@ while (AreaIterator.hasNext()) {
 			BbsAreaccVO areaccvo = (BbsAreaccVO)areaRightList.get(n);
 			areaRightString += areaccvo.getUserid()+"||";
 		}		
+
         }
 
         Iterator BoardIterator = bcollection.iterator();
@@ -174,24 +173,24 @@ while (BoardIterator.hasNext()) {
         <%if (rightflag.equals("1")) {%>
         <%if(areaf){ areaf=false;%>
         	<tr>
-				<td colspan="6" class="message_title_bold" height="20">&nbsp;&nbsp;&nbsp;<%=areaVO.getAreaname()%></td>
+				<td colspan="7" class="message_title_bold" height="20">&nbsp;&nbsp;&nbsp;<%=areaVO.getAreaname()%></td>
             </tr>
             <%}%>   
 
 			<tr>
-				<td width="40" height="20" align="center" nowrap bgcolor="#FFFFFF">
+				<td width="4%" height="20" align="center" nowrap bgcolor="#FFFFFF">
 				<img src="<%=request.getContextPath()%>/images/bbs/forumnew.gif"
 					border=0>  </td>
 				<td bgcolor="#FFFFFF" align="center" height="20">
 				<table width="98%">
 					<tr>
-						<td bgcolor="#FFFFFF" class="message_title_bold"><%if (rightflag.equals("1")) {%>
+						<td width="52%" bgcolor="#FFFFFF" class="message_title_bold"><%if (rightflag.equals("1")) {%>
 						<A class="message_title_bold" style="text-decoration: none"
 							title="进入<%=vo.getBoardname()%>板块" href="#"
 							onClick="javascript:_topic('<%=request.getContextPath()%>','<%=vo.getBoardid().toString()%>')"><%=vo.getBoardname()%></A>
 						<%} %> </td>
 						<%if (rightflag.equals("1")) {%>
-						<td align="right" bgcolor="#FFFFFF" class="message_title"><A
+						<td width="48%" align="right" bgcolor="#FFFFFF" class="message_title"><A
 							title="在『<%=vo.getBoardname()%>』论坛内发新主题 "
 							href="<%=request.getContextPath()%>/bbs/newArticle.jsp?boardId=<%=vo.getBoardid().toString()%>&boardName=<%=vo.getBoardname()%>&auditFlag=0"><IMG
 							src="<%=request.getContextPath()%>/images/bbs/quickpost.gif"
@@ -203,11 +202,11 @@ while (BoardIterator.hasNext()) {
 						<%} %>
 					</tr>
 					<tr>
-						<td bgcolor="#FFFFFF" class="message_title"> <%if (vo.getBoarddes() != null) {%>
+						<td colspan="2" bgcolor="#FFFFFF" class="message_title"> <%if (vo.getBoarddes() != null) {%>
 						<%=vo.getBoarddes()%> <%}%></td>
-					</tr>
+                    </tr>
 				</table>
-				</td>
+		    </td>
 				<td bgcolor="#FFFFFF" class="message_title" align="center"><span
 					class="STYLE3"><%=vo.getTopicnum()%></span></td>
 				<td bgcolor="#FFFFFF" class="message_title" align="center"><span
@@ -224,7 +223,7 @@ while (BoardIterator.hasNext()) {
 				<td align="center" bgcolor="#FFFFFF" class="message_title"><span
 					class="STYLE3"><%=CommUtil.getTime(vo.getLasttime().longValue())%><BR>
 				by 
-					<!-- <span onClick="window.open('<%=request.getContextPath()%>/servlet/UserInfoServlet?personuuid=<%=vo.getLastid()%>','个人信息','width=620,height=240,status=no,toolbar=no,menubar=no,scrollbars=no,location=no,status=no')" title="查看用户“<%=vo.getLastusername()%>”的资料" style="cursor:hand;" class="message_title">
+					<!-- <span onClick="window.open('<%=request.getContextPath()%>/servlet/UserInfoServlet?personuuid=<%=vo.getLastid()%>','个人信息','width=620,height=240,status=no,toolbar=no,menubar=no,scrollbars=no,location=no,status=no')" title="查看用户"<%=vo.getLastusername()%>"的资料" style="cursor:hand;" class="message_title">
 					 -->
 					 <span>
 					<%=vo.getLastusername()%>
@@ -276,93 +275,100 @@ while (managerIterator.hasNext()) {
 
 	<%if ("yes".equals(dpt)) {%>
 	<tr>
-		<td  colspan="10" height="20" align="left" class="message_title">
+		<td height="20" align="left" class="message_title">
 		&nbsp;&nbsp;<img src="../images/users.png" border=0/>
-		<a href='<%=request.getContextPath()%>/servlet/ShowDeptBBSServlet' ><B>进入『<%=orgname%>』部门论坛</B></a>
 	</td>
-	</tr>
+		<td height="20"  colspan="6" align="left" class="message_title">
+		<a href='<%=request.getContextPath()%>/servlet/ShowDeptBBSServlet' ><B>进入『<%=orgname%>』部门论坛</B></a></td>
+		</tr>
 	<%}%>
 		</table>
-	  </td>
-		<td>&nbsp;</td>
+	  	</td>
+
 	</tr>
 	
 	<tr>
-		<td width="11" bgcolor="#FFFFFF"><img src="../images/kongbai.jpg"
-			width="11" height="11" /></td>
-		<td colspan="5" valign="top">
-		<div align="left"></div>
+
+		<td colspan="5" align="center" valign="top">
+			<div align="left"></div>
 		</td>
-		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
-	</tr>
-<%@ include file= "/include/defaultPageScrollBar2.jsp" %>
-		<td width="175" align="right" valign="bottom"></td>
-		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+
 	</tr>
 	<tr>
-		<td width="11" bgcolor="#FFFFFF"><img src="../images/kongbai.jpg"
-			width="11" height="11" /></td>
-		<td colspan="5" valign="top">
-		<div align="left">
-		<TABLE cellSpacing=1 cellPadding=1 width="100%" bgColor=#ffffff
-			border=0>
-			<tr>
-				<td width="100%" bgColor=#ffffff class="message_title-b">
-				<TABLE cellSpacing=1 cellPadding=1 width="100%" bgColor=#fffff border=0>
-				   <tr>
-             <td width="50%" align="left">
-							<IMG title=到论坛首页
-							style="CURSOR: hand" src="../images/bbshome.gif"> <a
-							href="<%=request.getContextPath()%>/servlet/ShowIndexServlet"
-							title="到论坛首页" class="message_title_bold"
-							style="text-decoration: none">论坛首页</a>
-					   </td>
-					   <td width="50%" align="right">
-							<input name="namesearch" type="text" style="width:100px"/>&nbsp;&nbsp;<a onclick="javascript:_search('<%=request.getContextPath()%>')" style="CURSOR: hand;text-decoration: none;font-size:10pt">标题搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;
-					   </td>
-				   </tr>
-				<TABLE>
-			    </td>
-		  </tr>
-		</TABLE>
-		</div>
-		</td>
+	<td colspan="7">
+	<table>
+		<tr> 
+			
+		<%@ include file= "/include/defaultPageScrollBar2.jsp" %>
+		
 		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+		</tr>
+	</table>
+	</td>
+	</tr>
+    
+    
+	<tr>
+
+        <td colspan="5" valign="top">
+            <div align="left">
+                <TABLE width="983" border=0 align="center" cellPadding=1 cellSpacing=1 bgColor=#ffffff>
+                    <tr>
+                        <td bgColor=#ffffff class="message_title-b">
+                            <TABLE cellSpacing=1 cellPadding=1 width="100%" bgColor=#fffff border=0>
+                               <tr>
+                                 <td width="50%" align="left">
+                                        <IMG title=到论坛首页
+                                        style="CURSOR: hand" src="../images/bbshome.gif"> <a
+                                        href="<%=request.getContextPath()%>/servlet/ShowIndexServlet"
+                                        title="到论坛首页" class="message_title_bold"
+                                        style="text-decoration: none">论坛首页</a>
+                                   </td>
+                                   <td width="50%" align="right">
+                                        <input name="namesearch" type="text" style="width:100px"/>&nbsp;&nbsp;<a onclick="javascript:_search('<%=request.getContextPath()%>')" style="CURSOR: hand;text-decoration: none;font-size:10pt">标题搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                   </td>
+                               </tr>
+                            </TABLE>
+                        </td>
+                    </tr>
+                </TABLE>
+			</div>
+		</td>
 	</tr>
 
 	<tr>
-		<td colspan="5" valign="top">
-		<table width="983" border="0" cellpadding="2" cellspacing="1" class="table_bgcolor">
-		</td>
-	  <tr>
-				<td width="5%" align="center" background="../images/2-title-05.jpg"
-					bgcolor="#E0EDF8" class="block_title" nowrap>状态</td>
-			  <td width="5%" align="center" background="../images/2-title-05.jpg"
-					bgcolor="#E0EDF8" class="block_title" nowrap>图标</td>
-			  <td width="39%" height="24" background="../images/2-title-05.jpg"
-					bgcolor="#E0EDF8" class="block_title">
-				<div align="center" class="white2-12-b">主题</div>
-				</td>
-		    <!--<td width="5%" background="/OA/images/2-title-05.jpg" bgcolor="#E0EDF8">&nbsp;</td>-->
-				<td width="12%" background="../images/2-title-05.jpg"
-					bgcolor="#E0EDF8" class="block_title">
-				<div align="center">
-				<div align="center" class="white2-12-b">话题发起人</div>
-				</div>
-				</td>
-			  <td width="9%" background="../images/2-title-05.jpg"
-					bgcolor="#E0EDF8" class="block_title">
-				<div align="center">点击</div>
-				</td>
-			  <td width="9%" background="../images/2-title-05.jpg"
-					bgcolor="#E0EDF8" class="block_title">
-				<div align="center">回复</div>
-				</td>
-			  <td width="21%" background="../images/2-title-05.jpg"
-					bgcolor="#E0EDF8" class="block_title">
-				<div align="center">最后发表</div>
-				</td>
-		  </tr>
+
+        <td colspan="5" >
+		<table width="983" border="0" align="center" cellpadding="2" cellspacing="1" class="table_bgcolor">
+          <tr>
+                    <td width="5%" align="center" background="../images/2-title-05.jpg"
+                        bgcolor="#E0EDF8" class="block_title" nowrap>状态</td>
+                  <td width="5%" align="center" background="../images/2-title-05.jpg"
+                        bgcolor="#E0EDF8" class="block_title" nowrap>图标</td>
+                  <td width="39%" height="24" background="../images/2-title-05.jpg"
+                        bgcolor="#E0EDF8" class="block_title">
+                    <div align="center" class="white2-12-b">主题</div>
+                    </td>
+                <!--<td width="5%" background="/OA/images/2-title-05.jpg" bgcolor="#E0EDF8">&nbsp;</td>-->
+                    <td width="12%" background="../images/2-title-05.jpg"
+                        bgcolor="#E0EDF8" class="block_title">
+                    <div align="center">
+                    <div align="center" class="white2-12-b">话题发起人</div>
+                    </div>
+                    </td>
+                  <td width="9%" background="../images/2-title-05.jpg"
+                        bgcolor="#E0EDF8" class="block_title">
+                    <div align="center">点击</div>
+                    </td>
+                  <td width="9%" background="../images/2-title-05.jpg"
+                        bgcolor="#E0EDF8" class="block_title">
+                    <div align="center">回复</div>
+                    </td>
+                  <td width="21%" background="../images/2-title-05.jpg"
+                        bgcolor="#E0EDF8" class="block_title">
+                    <div align="center">最后发表</div>
+                    </td>
+              </tr>
 			<%
 			
 			
@@ -437,7 +443,7 @@ while(Iterator.hasNext()){
 %>
 		</table>
 	  </td>
-		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+
 	</tr>
 </table>
 

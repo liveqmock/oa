@@ -66,9 +66,9 @@ function _logout(){
 </style>
 <SCRIPT LANGUAGE="JavaScript" src="<%=request.getContextPath()%>/include/cookie.js"></SCRIPT>
 
-<table width="1003" border="0" align="center" cellpadding="0" cellspacing="0">
+<table width="988" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-  	<td width="10">&nbsp;</td>
+
     <td width="983">
     <table border="0" cellpadding="0" cellspacing="0" class="top_back">
     <tr>
@@ -115,15 +115,15 @@ function _logout(){
     </tr>
     </table>
     </td>
-    <td width="10" >&nbsp;</td>
+
   </tr>
 </table>
 
-<table width="1003" height="29" border="0" cellpadding="0" align="center" cellspacing="0">
+<table width="988" height="29" border="0" cellpadding="0" align="center" cellspacing="0">
 	<tr>
-    	<td width="10"></td>
+
         <td>
-        	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="top_back">
+        	<table border="0" cellpadding="0" cellspacing="0" width="983" class="top_back">
             	<tr>
                 	<td width="134" class="top_left_buttom" height="29"><span class="message_zhuanti" id="showdate"></span></td>
                   <td width="60%" class="top_back_buttom">
@@ -190,7 +190,6 @@ function _logout(){
                 </tr>
           </table>
         </td>
-        <td width="10"></td>
     </tr>
 </table>
 

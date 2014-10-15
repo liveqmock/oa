@@ -60,7 +60,7 @@
         <td>
         	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="top_back">
             	<tr>
-                	<td width="134" class="top_left_buttom" height="29"><span class="message_zhuanti"><%=btime%></span></td>
+                	<td width="120" class="top_left_buttom" height="29"><span class="message_zhuanti"><%=btime%></span></td>
                   <td width="60%" class="top_back_buttom">
                   
                   <script language="javascript">
@@ -71,7 +71,7 @@
 					</script>
                	  <table width="98%">
                         <tr>
-                            <td width="34%" height="20" align="left" class="message_zhuanti">&nbsp;»¶Ó­<span style="font-size:12;color:#000000"> <%=username%> </span></td>
+                            <td width="36%" height="20" align="left" class="message_zhuanti">»¶Ó­<span style="font-size:12;color:#000000"> <%=username%> </span></td>
                           <td width="42%" align="right" class="content"><input name="keyword" type="text" class="biankuang" size="26" value="ÇëÊäÈë¼ìË÷¹Ø¼ü×Ö" onmousedown="_clearinfo();"/><input type="hidden" name="forwardUrl" value="/search.jsp" /></td>
                           <script language="javascript">
 						  	function _clearinfo(){

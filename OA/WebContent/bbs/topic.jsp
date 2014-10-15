@@ -108,7 +108,7 @@ window.open(url,"","");
 	
 %>
 
-<table width="1003" border="0" cellspacing="0" cellpadding="0"
+<table width="983" border="0" cellspacing="0" cellpadding="0"
 	align="center">
 
   <tr>
@@ -116,7 +116,7 @@ window.open(url,"","");
   <table><tr>
 		<td height="5" colspan="5" valign="top"></td>
 	<%@ include file= "/include/defaultPageScrollBar2.jsp" %>
-	<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+	<td width="3"></td>
 	</tr>
 	</table>
 	</td>
@@ -134,14 +134,14 @@ window.open(url,"","");
 					href="<%=request.getContextPath()%>/servlet/ShowIndexServlet"
 					title="到论坛首页">论坛首页</a> ==&gt; <%=area_name%> ==&gt; <a href="#"
 					class="message_title_bold" style="text-decoration: none"><%=boardVO.getBoardname()%></a></td>
-				<td width="25%" align="right" nowrap bgColor=#f7f7f7><!--<a href="#"
+				<td align="right" nowrap><!--<a href="#"
 					class="blue3-12" style="cursor: hand; text-decoration: none">全部</a>
 				<a href="#" class="blue3-12"
 					style="cursor: hand; text-decoration: none">精华</a>&nbsp;&nbsp;--></td>
 			</tr>
 		</TABLE>
 		</div>		</td>
-		<td width="21"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+		<td width="5"></td>
 	</tr>
 
 	<tr>
@@ -229,24 +229,28 @@ window.open(url,"","");
 //while		
 } //if
 %>
-		</table>	  </td>
-		<td width="21"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+		</table>	  
+	</td>
+	<td width="5"></td>
 	</tr>
 	
 	 <tr>
-	<td cosplan='10'>
-	<table><tr>
-		<td height="5" colspan="5" valign="top"></td>
-	<%@ include file= "/include/defaultPageScrollBar2.jsp" %>
-	<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
-	</tr>
+	<td cosplan='10'> 
+	<table>
+		<tr>
+			<td height="5" colspan="5" valign="top"></td>
+			
+		<%@ include file= "/include/defaultPageScrollBar2.jsp" %>
+		
+		<td width="3"></td>
+		</tr>
 	</table>
-	</td>
+	</td> 
 	</tr>
 </table>
 </form>
 <form name="form2" action="" enctype="multipart/form-data" method=post>
-<table width="1003" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
 	<tr>
 		<td colspan="2" valign="top">
 		<table width="983" border="0" cellpadding="2" cellspacing="1" class="table_bgcolor">

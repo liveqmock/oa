@@ -54,18 +54,32 @@ body {
 <body>
 <form name="form1" method="post" action="">
 <jsp:include page= "/include/top.jsp" />
-<table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="983" border="0" cellspacing="0" cellpadding="0" align="center">
 	<tr><td height="5"></td></tr>
 </table>
-<table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="983" border="0" cellspacing="0" cellpadding="0" align="center">
+<!-- 添加 -->
 	<tr>
+		<td colspan="5">
+			<table>
+				<tr> 
+					
+				<%@ include file= "/include/defaultPageScrollBar2.jsp" %>
+				
+				<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+<!-- 添加 -->
+	<!-- 修改 tr>
 		<td bgcolor="#FFFFFF">&nbsp;</td>
 		<td colspan="5" valign="top"></td>
-	<%@ include file= "/include/defaultPageScrollBar2.jsp" %>
+	<//%@ include file= "/include/defaultPageScrollBar2.jsp" %>
 	<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
-	</tr>
+	</tr-->
 	<tr>
-		<td bgcolor="#FFFFFF">&nbsp;</td>
+		
 				<td td colspan="5" bgColor=#FFFFFF class="blue3-12-b"><IMG title=到论坛首页
 					style="CURSOR: hand"
 					onClick="javascript:_gohome('/oabase');"
@@ -79,11 +93,10 @@ body {
 					title="删除帖子列表"><b>删除帖子列表</b></a>
 
 					</td>
-			<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+			
 			</tr>
 	<tr>
-		<td width="11" bgcolor="#FFFFFF"><img src="../images/kongbai.jpg"
-			width="11" height="11" /></td>
+		
 		<td colspan="5" valign="top">
 		<table width="100%" border="0" cellpadding="2" cellspacing="1"
 			bgcolor="#B9DAF9">
@@ -177,12 +190,30 @@ body {
 %>
 		</table>
 		</td>
-		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+		
 		</tr>
-		<tr>
-		<%@ include file= "/include/defaultPageScrollBar2.jsp" %>
+		
+		<!-- 添加 -->
+			<tr>
+				<td colspan="5">
+					<table>
+						<tr> 
+							
+						<%@ include file= "/include/defaultPageScrollBar2.jsp" %>
+						
+						<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		<!-- 添加 -->
+		
+		<!--  修改tr>
+		</table>/%@ include file= "/include/defaultPageScrollBar2.jsp" %>
 		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
-		</tr>
+		</tr-->
+		
+		
 		<tr>
 		<td height='20'>
 		</td>
