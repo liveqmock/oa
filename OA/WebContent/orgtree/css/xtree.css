@@ -5,6 +5,7 @@
 	color: WindowText;
 	white-space: nowrap;
 	height: 16px;
+	text-align:left;
 }
 .webfx-tree-container {
 	margin: 0px;
