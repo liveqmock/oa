@@ -62,13 +62,13 @@ if (!personlist.isEmpty()){
 				  <table  width="100%"  border="0" cellspacing="0" cellpadding="0">
 					  <tr  bgcolor="#FFFBEF">
                         <td width="10%" ><div align="center" class="title-04">选择</div></td>
-                        <td width="0" rowspan="100"   valign="top" background="<%=request.getContextPath()%>/images/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bg-24.gif" width="2" height="2"></td>
+                        <td width="0" rowspan="1000"   valign="top" background="<%=request.getContextPath()%>/images/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bg-24.gif" width="2" height="2"></td>
                         <td width="20%" ><div align="center" class="title-04">姓名</div></td>
-                        <td width="0"  rowspan="100"  valign="top" background="<%=request.getContextPath()%>/images/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bg-24.gif" width="2" height="2"></td>
+                        <td width="0"  rowspan="1000"  valign="top" background="<%=request.getContextPath()%>/images/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bg-24.gif" width="2" height="2"></td>
                         <td width="20%" ><div align="center" class="title-04">用户类型</div></td>
-                        <td width="0"  rowspan="100"  valign="top" background="<%=request.getContextPath()%>/images/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bg-24.gif" width="2" height="2"></td>
+                        <td width="0"  rowspan="1000"  valign="top" background="<%=request.getContextPath()%>/images/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bg-24.gif" width="2" height="2"></td>
                         <td width="20%" height="22"><div align="center" class="title-04">所属组织</div></td>
-                        <td width="0"  rowspan="100"  valign="top" background="<%=request.getContextPath()%>/images/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bg-24.gif" width="2" height="2"></td>
+                        <td width="0"  rowspan="1000"  valign="top" background="<%=request.getContextPath()%>/images/bg-24.gif"><img src="<%=request.getContextPath()%>/images/bg-24.gif" width="2" height="2"></td>
                         <td width="30%" ><div align="center" class="title-04">电话</div></td>
 
 					</tr>

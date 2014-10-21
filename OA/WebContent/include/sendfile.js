@@ -136,11 +136,11 @@ function setSelectUserByOrg() {
 	var alluserObj = document.getElementsByName("selectedperson")[0];
 	for (var i=0;i<alluserObj.length;i++) {
 		var reUserArray = new Array();
-		reUserArray["value"] = alluserObj.options(i).value;
-		reUserArray["name"] = alluserObj.options(i).text;
-		reUserArray["department"] = alluserObj.options(i).getAttribute("department");
-		reUserArray["uuid"] = alluserObj.options(i).getAttribute("uuid");
-		reUserArray["type"] = alluserObj.options(i).getAttribute("personType");
+		reUserArray["value"] = alluserObj.options[i].value;
+		reUserArray["name"] = alluserObj.options[i].text;
+		reUserArray["department"] = alluserObj.options[i].getAttribute("department");
+		reUserArray["uuid"] = alluserObj.options[i].getAttribute("uuid");
+		reUserArray["type"] = alluserObj.options[i].getAttribute("personType");
 		reArray[reArray.length] = reUserArray;
 	}
 	setAllData(reArray);
@@ -413,11 +413,11 @@ function setAllData(persons){
 	 */
 	function getAllPerson(select){
 		var perList = new Array();
-		var personList = document.getElementsByName("personList");
-		if (personList == null || personList.length==0){
+		var personList = document.getElementById("personList");
+		if (!personList){
 			return perList ;
 		}
-		var personValues = personList[0].getElementsByTagName("td");
+		var personValues = personList.getElementsByTagName("td");
 		for (var i=0;i<personValues.length;i++){
 			if (select != null && select == true ){
 				var personData = new Array();

@@ -22,6 +22,39 @@ String loadShow = (String)request.getAttribute("loadShow");
 </HEAD>
 <SCRIPT language=JavaScript>
 <!--
+var xmlhttp;
+function loadXMLDoc(url)
+{
+	xmlhttp = null;
+	if (window.XMLHttpRequest) {// code for all new browsers
+		xmlhttp = new XMLHttpRequest();
+	} 
+
+	if (xmlhttp != null) {
+		xmlhttp.onreadystatechange = state_Change;
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+	}
+}
+
+function state_Change() {
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		var xmlDoc = xmlhttp.responseXML;
+		if(xmlDoc.childNodes[0] != null){
+			var list = xmlDoc.childNodes[0].getElementsByTagName("UserList");
+			for(i=0;i<list.length;i++){
+				var oOption = document.createElement('OPTION');
+				oOption.text = list[i].getElementsByTagName("truename")[0].childNodes[0].nodeValue;
+				oOption.value = list[i].getElementsByTagName("UserName")[0].childNodes[0].nodeValue;
+				//将部门和UUID加上
+				oOption.setAttribute("department",form1.org.options[form1.org.selectedIndex].text);
+				oOption.setAttribute("uuid",list[i].getElementsByTagName("PersonUuid")[0].childNodes[0].nodeValue);
+				oOption.setAttribute("personType","0");
+				form1.orgperson.options.add(oOption);
+			}
+		}
+	}
+}
 
 function changeOffice2() {
 	var i;
@@ -30,31 +63,35 @@ function changeOffice2() {
 		form1.orgperson.options.remove(i);
 	}
 	//如果选择项为空，则不做任何变化
-	if(form1.org.options(form1.org.selectedIndex).text==""){
+	if(form1.org.options[form1.org.selectedIndex].text==""){
 		return true;
 	}
 	//得到XML文档
-	var oXMLDoc = new ActiveXObject("MSXML");
-	var sURL = "../address/pubaddress/newxml.jsp?orguuid=" + form1.org.options(form1.org.selectedIndex).value;
-	//设置XML文档
-	oXMLDoc.url = sURL;
-	var oRoot=oXMLDoc.root;
-	//如果节点不为空，则用户列表中插入用户
-	if(oRoot.children != null){
-		for(i=0;i<oRoot.children.length;i++){
-			oOption = document.createElement('OPTION');
-			oOption.text = oRoot.children.item(i).children.item("Truename").text;
-			oOption.value = oRoot.children.item(i).children.item("Username").text;
-			//将部门和UUID加上
-			oOption.setAttribute("department",form1.org.options(form1.org.selectedIndex).text);
-			oOption.setAttribute("uuid",oRoot.children.item(i).children.item("PersonUuid").text);
-			oOption.setAttribute("personType","0");
-			form1.orgperson.options.add(oOption);
+	var sURL = "../address/pubaddress/newxml.jsp?orguuid=" + form1.org.options[form1.org.selectedIndex].value;
+	if (window.ActiveXObject){
+		var oXMLDoc = new ActiveXObject("MSXML");
+		//设置XML文档
+		oXMLDoc.url = sURL;
+		var oRoot=oXMLDoc.root;
+		//如果节点不为空，则用户列表中插入用户
+		if(oRoot.children != null){
+			for(i=0;i<oRoot.children.length;i++){
+				oOption = document.createElement('OPTION');
+				oOption.text = oRoot.children.item(i).children.item("Truename").text;
+				oOption.value = oRoot.children.item(i).children.item("Username").text;
+				//将部门和UUID加上
+				oOption.setAttribute("department",form1.org.options[form1.org.selectedIndex].text);
+				oOption.setAttribute("uuid",oRoot.children.item(i).children.item("PersonUuid").text);
+				oOption.setAttribute("personType","0");
+				form1.orgperson.options.add(oOption);
+			}
 		}
+	}else{
+		loadXMLDoc(sURL);
 	}
 }
 function changeOffice() {
-		document.form1.action="<%=request.getContextPath()%>/servlet/OrgServlet?orguuid="+form1.org.options(form1.org.selectedIndex).value;
+		document.form1.action="<%=request.getContextPath()%>/servlet/OrgServlet?orguuid="+form1.org.options[form1.org.selectedIndex].value;
 		document.form1.submit();
 }
 function B_user_addall_onclick() {
@@ -68,25 +105,25 @@ function B_user_addall_onclick() {
 		//判断是否有重名
 		flag=true;		//设置标志
 		for (var j=0; j<form1.selectedperson.options.length; j++) {
-			if (form1.selectedperson.options(j).value == form1.orgperson.options(i).value) 
+			if (form1.selectedperson.options[j].value == form1.orgperson.options[i].value) 
 				flag=false
 		}	
 		
 		if (flag){
 				selected_option = document.createElement("OPTION");
-				selected_option.value = form1.orgperson.options(i).value;
-				selected_option.text = form1.orgperson.options(i).text;
+				selected_option.value = form1.orgperson.options[i].value;
+				selected_option.text = form1.orgperson.options[i].text;
 				//将部门加上
-				selected_option.setAttribute("department",form1.orgperson.options(i).getAttribute("department"));
-				selected_option.setAttribute("uuid",form1.orgperson.options(i).getAttribute("uuid"));
-				selected_option.setAttribute("personType",form1.orgperson.options(i).getAttribute("personType"));
+				selected_option.setAttribute("department",form1.orgperson.options[i].getAttribute("department"));
+				selected_option.setAttribute("uuid",form1.orgperson.options[i].getAttribute("uuid"));
+				selected_option.setAttribute("personType",form1.orgperson.options[i].getAttribute("personType"));
 				form1.selectedperson.add(selected_option);
 				var onePerson = new Array();
-				onePerson["name"] = form1.orgperson.options(i).text;
-				onePerson["value"] = form1.orgperson.options(i).value;
-				onePerson["department"] = form1.orgperson.options(i).getAttribute("department");
-				onePerson["uuid"] = form1.orgperson.options(i).getAttribute("uuid");
-				onePerson["type"] = form1.orgperson.options(i).getAttribute("personType");
+				onePerson["name"] = form1.orgperson.options[i].text;
+				onePerson["value"] = form1.orgperson.options[i].value;
+				onePerson["department"] = form1.orgperson.options[i].getAttribute("department");
+				onePerson["uuid"] = form1.orgperson.options[i].getAttribute("uuid");
+				onePerson["type"] = form1.orgperson.options[i].getAttribute("personType");
 				persons[persons.length] = onePerson;
 			}
 	}
@@ -122,29 +159,29 @@ function B_user_add_onclick() {
 		return false;
 	}
 	for (var i=0; i<form1.selectedperson.options.length; i++) {
-		if (form1.selectedperson.options(i).value == form1.orgperson.options(index).value) {
+		if (form1.selectedperson.options[i].value == form1.orgperson.options[index].value) {
 			alert("添加的人员已经存在，不能重复添加");
 			return false;
 		}
 	}
 	selected_option = document.createElement("OPTION");
-	selected_option.value = form1.orgperson.options(index).value;
-	selected_option.text = form1.orgperson.options(index).text;
+	selected_option.value = form1.orgperson.options[index].value;
+	selected_option.text = form1.orgperson.options[index].text;
 	//将部门加上
-	selected_option.setAttribute("department",form1.orgperson.options(index).getAttribute("department"));
-	selected_option.setAttribute("uuid",form1.orgperson.options(index).getAttribute("uuid"));
-	selected_option.setAttribute("personType",form1.orgperson.options(index).getAttribute("personType"));
+	selected_option.setAttribute("department",form1.orgperson.options[index].getAttribute("department"));
+	selected_option.setAttribute("uuid",form1.orgperson.options[index].getAttribute("uuid"));
+	selected_option.setAttribute("personType",form1.orgperson.options[index].getAttribute("personType"));
 	
 	form1.selectedperson.add(selected_option);		
 	
 	//将数据放到select.jsp里面
 	var persons = new Array();
 	var onePerson = new Array();
-	onePerson["name"] = form1.orgperson.options(index).text;
-	onePerson["value"] = form1.orgperson.options(index).value;
-	onePerson["department"] = form1.orgperson.options(index).getAttribute("department");
-	onePerson["uuid"] = form1.orgperson.options(index).getAttribute("uuid");
-	onePerson["type"] = form1.orgperson.options(index).getAttribute("personType");
+	onePerson["name"] = form1.orgperson.options[index].text;
+	onePerson["value"] = form1.orgperson.options[index].value;
+	onePerson["department"] = form1.orgperson.options[index].getAttribute("department");
+	onePerson["uuid"] = form1.orgperson.options[index].getAttribute("uuid");
+	onePerson["type"] = form1.orgperson.options[index].getAttribute("personType");
 	persons[0] = onePerson;
 	window.top.setPersons(persons);
 	form1.orgperson.remove(index);
@@ -160,15 +197,15 @@ function B_user_del_onclick() {
 		return false;
 	}
 	selected_option = document.createElement("OPTION");
-	selected_option.value = form1.selectedperson.options(index).value;
-	selected_option.text = form1.selectedperson.options(index).text;
-	selected_option.setAttribute("department",form1.selectedperson.options(index).getAttribute("department"));
-	selected_option.setAttribute("uuid",form1.selectedperson.options(index).getAttribute("uuid"));
-	selected_option.setAttribute("personType",form1.selectedperson.options(index).getAttribute("personType"));
+	selected_option.value = form1.selectedperson.options[index].value;
+	selected_option.text = form1.selectedperson.options[index].text;
+	selected_option.setAttribute("department",form1.selectedperson.options[index].getAttribute("department"));
+	selected_option.setAttribute("uuid",form1.selectedperson.options[index].getAttribute("uuid"));
+	selected_option.setAttribute("personType",form1.selectedperson.options[index].getAttribute("personType"));
 	
 	
 	//与select.jsp同步删除的值
-	var delStr = "ш" + form1.selectedperson.options(index).value + "ш";
+	var delStr = "ш" + form1.selectedperson.options[index].value + "ш";
 	window.top.delPersons(delStr);
 	form1.orgperson.add(selected_option);
 	form1.selectedperson.remove(index);
@@ -180,12 +217,12 @@ function B_user_delall_onclick() {
 	var delStr = "ш";
 	for (i=0;i<form1.selectedperson.length;i++) {
 		selected_option = document.createElement("OPTION");
-		selected_option.value = form1.selectedperson.options(i).value;
-		selected_option.text = form1.selectedperson.options(i).text;
-		selected_option.setAttribute("department",form1.selectedperson.options(i).getAttribute("department"));
-		selected_option.setAttribute("uuid",form1.selectedperson.options(i).getAttribute("uuid"));
-		selected_option.setAttribute("personType",form1.selectedperson.options(i).getAttribute("personType"));
-		delStr += form1.selectedperson.options(i).value + "ш";
+		selected_option.value = form1.selectedperson.options[i].value;
+		selected_option.text = form1.selectedperson.options[i].text;
+		selected_option.setAttribute("department",form1.selectedperson.options[i].getAttribute("department"));
+		selected_option.setAttribute("uuid",form1.selectedperson.options[i].getAttribute("uuid"));
+		selected_option.setAttribute("personType",form1.selectedperson.options[i].getAttribute("personType"));
+		delStr += form1.selectedperson.options[i].value + "ш";
 		form1.orgperson.add(selected_option);
 	}
 	//与select.jsp同步删除的值

@@ -42,13 +42,15 @@ function selectName(obj,type){
 function removeSel(obj,type){
 	var selIndex = getArray(obj,type);
 	if (selIndex != -1){
-		getSelObj(type)[selIndex] = "";
+		getSelObj(type).splice(selIndex, 1);
+		//getSelObj(type)[selIndex] = "";
 	}
 }
 //选中
 function addSel(obj,type){
 	if (getArray(obj,type) == -1){
-		getSelObj(type)[getSelObj(type).length] = obj;
+		getSelObj(type).push(obj);
+		//getSelObj(type)[getSelObj(type).length] = obj;
 	}
 }
 //删除选择的一个人
@@ -60,6 +62,7 @@ function delSel(type){
 			isDelete = true;
 		}
 	}
+	getSelObj(type).splice(0, getSelObj(type).length);
 	changepnum();
 	if (isDelete){
 		getAllPerson(type);
@@ -69,13 +72,6 @@ function delSel(type){
 		}else if (type == 2){
 			sendId = sendbccId;
 		}
-		//if (document.getElementById(sendId).innerHTML == ""){
-		//	document.getElementById(sendId).style.height = "22px";
-	//	}
-		//var tempArray = getOurPerson(type);
-		//if (tempArray.length<50){
-		//	reloadPerson(type,tempArray);
-		//}
 	}
 
 }
@@ -190,17 +186,17 @@ function checksame(uuid){
 	var cc = obj1.getElementsByTagName("span");
 	var bcc = obj2.getElementsByTagName("span");
 	for(var i=0;i<send.length;i++){
-		if(uuid == send[i].uuid){
+		if(uuid == send[i].getAttribute('uuid')){
 			return false;
 		}
 	}
 	for(var i=0;i<cc.length;i++){
-		if(uuid == cc[i].uuid){
+		if(uuid == cc[i].getAttribute('uuid')){
 			return false;
 		}
 	}
 	for(var i=0;i<bcc.length;i++){
-		if(uuid == bcc[i].uuid){
+		if(uuid == bcc[i].getAttribute('uuid')){
 			return false;
 		}
 	}
@@ -311,9 +307,9 @@ function getSendHtml(){
 	for(var i = 0 ;i<spans.length;i++){
 		spans[i].className ="send";
 	}
-	document.sendForm.sendHtml.value = document.getElementById(sendToId).innerHTML;
-	document.sendForm.ccHtml.value = document.getElementById(sendccId).innerHTML;
-	document.sendForm.bccHtml.value = document.getElementById(sendbccId).innerHTML;
+	document.all("sendHtml").value = document.getElementById(sendToId).innerHTML;
+	document.all("ccHtml").value = document.getElementById(sendccId).innerHTML;
+	document.all("bccHtml").value = document.getElementById(sendbccId).innerHTML;
 }
 
 /**
