@@ -40,7 +40,7 @@ public class LoadShareRootXmlServlet extends ServletBase {
 
 		StringBuffer outSB = new StringBuffer();
 
-		outSB.append("<?xml version=\"1.0\" encoding=\"GBK\"?>");
+		outSB.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 		outSB.append("<tree>");
 		Connection conn = null;
 		List shareList = null;
@@ -90,9 +90,7 @@ public class LoadShareRootXmlServlet extends ServletBase {
 					continue;
 				}
 
-				outSB.append("<tree text=\"").append(
-						new String((isName.substring(0, nPosition))
-								.getBytes("GBK"), "ISO8859_1")).append("\"");
+				outSB.append("<tree text=\"").append(isName.substring(0, nPosition)).append("\"");
 
 				outSB.append(
 						" src=\"../servlet/LoadShareXmlServlet.xml?folderId=")
@@ -100,9 +98,7 @@ public class LoadShareRootXmlServlet extends ServletBase {
 						.append(vo.getFscAccessright()).append(
 								"&amp;shareFlag=1").append("&amp;shareName=")
 						// .append(isName.substring(nPosition+1))
-						.append(
-								new String((isName.substring(0, nPosition))
-										.getBytes("GBK"), "ISO8859_1")).append(
+						.append(isName.substring(0, nPosition)).append(
 								"\"");
 				outSB.append(
 						" action=\"ShowShareRootFileServlet?folderId="
@@ -112,8 +108,7 @@ public class LoadShareRootXmlServlet extends ServletBase {
 								+ "&amp;shareFlag=1"
 								+ "&amp;entrance=kk"
 								+ "&amp;shareName="
-								+ new String((isName.substring(0, nPosition))
-										.getBytes("GBK"), "ISO8859_1") + "\"")
+								+ isName.substring(0, nPosition) + "\"")
 						.append("/>");
 				// bw.write("e:"+outSB.toString()+"\n");
 				// bw.flush();
@@ -122,7 +117,7 @@ public class LoadShareRootXmlServlet extends ServletBase {
 			}
 			outSB.append("</tree>");
 
-			response.setContentType("text/xml");
+			response.setContentType("text/xml;charset=UTF-8");
 			response.getWriter().write(outSB.toString());
 			response.getWriter().flush();
 			response.getWriter().close();

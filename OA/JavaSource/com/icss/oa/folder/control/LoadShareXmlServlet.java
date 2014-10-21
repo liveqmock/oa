@@ -41,7 +41,7 @@ public class LoadShareXmlServlet extends ServletBase {
 		String entrance = request.getParameter("entrance");
 
 		StringBuffer outSB = new StringBuffer();
-		outSB.append("<?xml version=\"1.0\" encoding=\"gb2312\"?>");
+		outSB.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 		outSB.append("<tree>");
 		Connection conn = null;
 
@@ -82,13 +82,7 @@ public class LoadShareXmlServlet extends ServletBase {
 
 					outSB
 						.append("<tree text=\"")
-						.append(
-							new String(
-								(
-									isShareName.substring(
-										nPosition + 1)).getBytes(
-									"GB2312"),
-								"ISO8859_1"))
+						.append(isShareName.substring(nPosition + 1))
 						.append("\"");
 
 					if (handler.hasChild(folderVO.getFpId())) {
@@ -118,7 +112,7 @@ public class LoadShareXmlServlet extends ServletBase {
 			}
 			outSB.append("</tree>");
 			
-			response.setContentType("text/xml");
+			response.setContentType("text/xml;charset=UTF-8");
 			response.getWriter().write(outSB.toString());
 			
 

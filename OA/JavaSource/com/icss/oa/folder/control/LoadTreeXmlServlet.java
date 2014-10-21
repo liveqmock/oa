@@ -38,7 +38,7 @@ public class LoadTreeXmlServlet extends ServletBase {
 		throws IOException {
 		StringBuffer outSB = new StringBuffer();
 
-		outSB.append("<?xml version=\"1.0\" encoding=\"gb2312\"?>");
+		outSB.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 		outSB.append("<tree>");
 		Connection conn = null;
 		List list = null;
@@ -85,8 +85,7 @@ public class LoadTreeXmlServlet extends ServletBase {
 					String isName = vo.getFolderPackageVO().getFpName();
 					outSB
 						.append("<tree text=\"")
-						.append(
-							new String(isName.getBytes("GB2312"), "ISO8859_1"))
+						.append(isName)
 						.append("\"");
 					
 					if (vo.getHasChild()) {
@@ -120,7 +119,7 @@ public class LoadTreeXmlServlet extends ServletBase {
 			}
 			outSB.append("</tree>");
 			System.out.println("outSB=========>" + outSB);
-			response.setContentType("text/xml");
+			response.setContentType("text/xml;charset=UTF-8");
 			response.getWriter().write(outSB.toString());
 
 		} catch (Exception e) {
