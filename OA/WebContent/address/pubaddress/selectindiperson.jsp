@@ -127,12 +127,10 @@ EntityManager entityManager = EntityManager.getInstance();
 			if(i % 2 == 1)
 				color = "#D8EAF8";
 			String sex = "";
-			if (person.getSex().equals(new Integer(0)))
-				sex = "保密";
-			if (person.getSex().equals(new Integer(1)))
-				sex = "男";
-			if (person.getSex().equals(new Integer(2)))
-				sex = "女";
+			if (person.getSex() == null);
+			else if (person.getSex().equals(new Integer(0))) sex = "保密";
+			else if (person.getSex().equals(new Integer(1))) sex = "男";
+			else if (person.getSex().equals(new Integer(2))) sex = "女";
 			
 			
 			
