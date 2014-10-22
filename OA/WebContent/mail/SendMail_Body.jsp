@@ -614,7 +614,7 @@ initstyle();
 													style="text-decoration: none; cursor: hand"><img
 														src="<%=path%>/images/mail_selectreceiver.jpg" width="67"
 														height="22" border="0">&nbsp;</span><span
-													style="text-decoration: none; cursor: hand" id="totitle"
+													style="text-decoration: none; cursor: pointer" id="totitle"
 													class="message_title"></span>
 											</td>
 											<td width="86%" colspan="3" bgcolor="#FFFFFF"
@@ -800,14 +800,14 @@ initstyle();
 												<INPUT TYPE="hidden" NAME="filenum">
 												<INPUT TYPE="hidden" NAME="realnum">
 												<div align="right">
-													<a id="container1" class="addfile"> <input id="File1"
+													<a id="container1" class="addfile" href="#" onclick="document.getElementById('file_0').click();"><input id="file_0"
 															name="file_0" type="file" class="addfile"
-															onchange="createnew();" /> </a>
+															onchange="createnew();" /></a>
 												</div>
 											</td>
 											<td colspan="3" bgcolor="#FFFFFF">
 												<div id="container2"
-													style="width: 460px; background: #CCFFFF"></div>
+													style="width: 460px; height:21px; background: #CCFFFF"></div>
 											</td>
 										</tr>
 
@@ -851,7 +851,7 @@ initstyle();
 										<tr>
 											<td colspan="2" align="center" valign="top"
 												class="message_title">
-												<textarea name="content"  cols="70" rows="10" maxlength="500"
+												<textarea name="content" id="content" cols="70" rows="10" maxlength="500"
 													class="biankuang-blue"><%=sendFileBean.getContent()%></textarea>
 											</td>
 										</tr>

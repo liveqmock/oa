@@ -12,15 +12,19 @@ function createnew()
     var fileCtr = c_a.firstChild;// 上传控件
     var subDiv = document.createElement("span");// 将放置到c_div中的容器
     var span1 = document.createElement("span");// 上传的文件
-	var showsize = "";
+    var size;
 	if(fso != null){
 		var size = filesize(fileCtr.value);
-		if(totalsize + size/(1024*1024) > 20){
-			alert("上传附件不能超过20MB！");
-			return;
-		}
-		showsize = parsesize(size)
+	}else if (fileCtr.files.length >= 1){
+		var size = fileCtr.files[0].size;
+	}else{
+		return;
 	}
+	if(totalsize + size/(1024*1024) > 20){
+		alert("上传附件不能超过20MB！");
+		return;
+	}
+	var showsize = parsesize(size);
 	
     span1.innerText = getfilename(fileCtr.value)+showsize+";";
 	span1.className = "class_1";
@@ -28,20 +32,21 @@ function createnew()
 		return;
 	}
     var img2 = document.createElement("img");// 删除图片按钮
-    //img2.className = "addfile";
 	img2.src = "/oabase/mail/css/del.gif";  
 	img2.width="11";
 	img2.height="15";
 	img2.title = "删除";
+	img2.style.cursor = 'pointer';
     img2.onclick = function(){
 		this.parentNode.parentNode.removeChild(this.parentNode);
 		realnum = realnum - 1;
 		document.sendForm.realnum.value = realnum + existnum;
 	}
     subDiv.appendChild(span1);
-    subDiv.appendChild(img2);    
+    subDiv.appendChild(img2); 
     subDiv.appendChild(fileCtr);    
-    c_div.appendChild(subDiv); 
+    c_div.appendChild(subDiv);
+    c_div.style.height = c_div.scrollHeight;
     fileNumber++;
 	realnum++;
 	
@@ -51,7 +56,9 @@ function createnew()
     newFileCtr.type = "file";
     newFileCtr.className = "addfile";
     newFileCtr.name = "file_"+fileNumber;
+    newFileCtr.id = newFileCtr.name;
     newFileCtr.onchange = createnew;
+    c_a.onclick = clickFileInput;
     while(c_a.firstChild)
     {
         c_a.removeChild(c_a.firstChild);
@@ -59,19 +66,20 @@ function createnew()
     c_a.appendChild(newFileCtr);
 }  
 
+function clickFileInput()
+{
+	document.getElementById("file_"+fileNumber).click();
+}
 
 function existfilenode(name,path,size){ 
 	var c_div = document.getElementById('container2');
 	var subDiv = document.createElement("span");
 	var span1 = document.createElement("span");
-	var showsize = "";
-	if(fso!=null){
-		if(totalsize + size/(1024*1024) > 20){
-			alert("上传附件不能超过20MB！");
-			return;
-		}
-		showsize = parsesize(size);
+	if(totalsize + size/(1024*1024) > 20){
+		alert("上传附件不能超过20MB！");
+		return;
 	}
+	var showsize = parsesize(size);
 
     span1.innerText = name+showsize+";";
 	span1.className = "class_1";
