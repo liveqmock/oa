@@ -86,8 +86,8 @@ body {
 							}else{
 							%>
 							<tr bgcolor="#FFFFFF">     
-                  				<td width="100%"  class="text-01" align="center">
-                                <marquee direction="up" height="160" width="98%" scrollamount="1" scrolldelay="1" onMouseOver=stop() onMouseOut=start() style="cursor:hand" align="center">
+                  				<td width="100%"  class="text-01" align="left">
+                                <marquee direction="up" height="160" width="98%" scrollamount="1" scrolldelay="1" onMouseOver=stop() onMouseOut=start() style="cursor:hand" align="left">
 							<%	
 							int index = 0;
 							while(workListGroupIterator.hasNext()){
@@ -100,8 +100,8 @@ body {
 									color = "#D8EAF8";
 							%>
 							<a href="#" onClick="javascript:_dowork('<%=officePendingVO.getOpId()%>','<%=java.net.URLEncoder.encode(officePendingVO.getOpUrl())%>','<%=officePendingVO.getOpNavigate()%>','<%=officePendingVO.getOpType()%>')" style="text-decoration:none" > 
-								<span class="table_title">+[<%=officePendingVO.getOpSource()%>]</span>
-								<span class="message_title"><%=officePendingVO.getOpTopic()%></span></a><br>
+								<font class="message_title"><strong>+[<%=officePendingVO.getOpSource()%>]</strong> 
+								<%=officePendingVO.getOpTopic()%></font></a><br>
                                 
                             <%
 							}

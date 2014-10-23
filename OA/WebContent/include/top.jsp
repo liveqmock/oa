@@ -69,8 +69,8 @@ function _logout(){
 <table width="988" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
 
-    <td width="983">
-    <table border="0" cellpadding="0" cellspacing="0" class="top_back">
+    <td>
+    <table width="983" border="0" cellpadding="0" cellspacing="0" class="top_back">
     <tr>
     <td width="536" class="top_logo" height="84"></td>
     <td class="top_back" height="84" width="137">&nbsp;</td>
