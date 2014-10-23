@@ -41,7 +41,7 @@ public class TwoGuoupXmlServlet extends ServletBase {
 			Integer parentID = new Integer(request.getParameter("ParentID"));
 			String sessionname = request.getParameter("sessionname");
 			String doFunction = request.getParameter("doFunction");
-			outSB.append("<?xml version=\"1.0\" encoding=\"GBK\"?>");
+			outSB.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 			outSB.append("<tree>");
 			Connection conn=null;
 			
@@ -68,7 +68,7 @@ public class TwoGuoupXmlServlet extends ServletBase {
 			    AddressCommongroupVO vo=(AddressCommongroupVO)it.next();
 				String isName = vo.getGroupname();
 				Integer int_no = vo.getId();
-				String text=new String(isName.getBytes("GBK"),"ISO8859_1");
+				String text=isName;
 				outSB.append("<tree text=\"").append(text).append("\"");
 				outSB.append(" action=\"");
                 outSB.append("SelectCommonPersonServlet?doFunction="+doFunction+"&amp;groupid="+vo.getId()+"&amp;shouquan="+vo.getNeedaccredit()+"&amp;ParentID="+parentID+"&amp;doFunction="+sessionname+"&amp;groupid1="+parentID);
@@ -77,7 +77,7 @@ public class TwoGuoupXmlServlet extends ServletBase {
 			}
 			outSB.append("</tree>");
 			
-			response.setContentType("text/xml");
+			response.setContentType("text/xml;charset=UTF-8");
 			try {
 				if (conn != null) {
 					conn.close();

@@ -256,13 +256,13 @@ function _attachfile(){
 						<INPUT TYPE="hidden" NAME="filenum">
 						<INPUT TYPE="hidden" NAME="realnum">
 						<div>
-							<a id="container1" class="addfile">
-							<input id="File1" name="file_0" type="file" class="addfile" onchange="createnew();"  />
+							<a id="container1" class="addfile" href="#" onclick="document.getElementById('file_0').click();"><input id="file_0" 
+							name="file_0" type="file" class="addfile" onchange="createnew();"  />
 							</a>
 							</div>
 						</td>
                         <td colspan="3" bgcolor="#FFFFFF">
-                        <div id="container2" style=" width:460px;background:#CCFFFF"></div>
+                        <div id="container2" style=" width:460px;height:21px;background:#CCFFFF"></div>
 						</td>
                       </tr>
                   

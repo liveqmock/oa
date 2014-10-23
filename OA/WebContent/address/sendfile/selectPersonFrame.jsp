@@ -15,7 +15,7 @@ if(request.getParameter("isCms")!=null)
 <script language="JavaScript">
 	//-----------------得到所需要的参数---------------------//
 	var selectPersonsArray;
-	var sendType = window.opener.sendForm.sendType.value;
+	var sendType = window.opener.document.all("sendType").value;
 	var sendMail = window.opener.document.all("sendMail").value;
 	if (sendType == ""){
 		sendType = "0";
@@ -30,11 +30,11 @@ if(request.getParameter("isCms")!=null)
 	}
 	//删除指定的用户 persons格式 шaaшssш
 	function delPersons(persons){
-		document.frames.listFrame.getNoSelectPerson(persons);
+		window.frames['listFrame'].getNoSelectPerson(persons);
 	}
 	//设置用户
 	function setPersons(persons){
-		document.frames.listFrame.setPersons(persons);
+		window.frames['listFrame'].setPersons(persons);
 	}
 	//返回至发送邮件页面
 	function setSelect(personList){
@@ -54,9 +54,9 @@ if(request.getParameter("isCms")!=null)
 	//移动窗口的桢
 	function moveFrame(hidden){
 		if (hidden != null && hidden){
-			document.frames.allRight.rows = "*,0";
+			document.getElementById('allRight').rows = "*,0";
 		}else{
-			document.frames.allRight.rows = "400,*";
+			document.getElementById('allRight').rows = "400,*";
 		}
 	}
 	//得到所有选择页面的人
@@ -65,7 +65,7 @@ if(request.getParameter("isCms")!=null)
 			return selectPersonsArray;
 		}else{
 			try{
-				return document.frames.listFrame.getAllPerson();
+				return window.frames['listFrame'].getAllPerson();
 			}catch(e){
 				if (loadShow != "1"){
 					alert("对不起,由于页面加载的问题,系统将人员初始化至加载状态.");
@@ -81,7 +81,7 @@ if(request.getParameter("isCms")!=null)
   <frame src="<%=request.getContextPath()%>/servlet/SendFileOrgTree2Servlet?isCms=<%=isCms%>" name="leftFrame" scrolling="auto">
 	<frameset  id="allRight" rows="*,0" cols="*" frameborder=1 border="0" framespacing="3" bordercolor="#AED4EE">
 	 <frame src="<%=request.getContextPath()%>/servlet/SendFileOrgServlet?loadShow=1" name="mainFrame">
-	 <frame src="<%=request.getContextPath()%>/address/sendfile/selected.jsp" name="listFrame">
+	 <frame src="<%=request.getContextPath()%>/address/sendfile/selected.jsp" name="listFrame" id="listFrame">
 	</frameset>
 	<noframes>
 	<body>

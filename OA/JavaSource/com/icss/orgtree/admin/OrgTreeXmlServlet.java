@@ -40,7 +40,7 @@ public class OrgTreeXmlServlet extends ServletBase {
 		StringBuffer outSB = new StringBuffer();
 		String orgId = request.getParameter("orgId");
 		String nodeUrl = request.getParameter("nodeUrl");
-		outSB.append("<?xml version=\"1.0\" encoding=\"GBK\"?>");
+		outSB.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 		outSB.append("<tree>");
 		Connection conn = null;
 		List list = null;
@@ -69,7 +69,7 @@ public class OrgTreeXmlServlet extends ServletBase {
 				SysOrgTreeVO vo = (SysOrgTreeVO) it.next();
 				String corgId = vo.getVO().getOrguuid();
 				String corgName = vo.getVO().getCnname();
-				String text = new String(corgName.getBytes("GBK"), "ISO8859_1");
+				String text = corgName;
 				outSB.append("<tree text=\"").append(text).append("\"");
 				if (vo.getHasChild()) {
 					outSB.append(" src=\"../servlet/OrgTreeXmlServlet.xml?orgId=").append(corgId).append("&amp;nodeUrl=").append(nodeUrl).append("\"");
@@ -80,7 +80,7 @@ public class OrgTreeXmlServlet extends ServletBase {
 		}
 		outSB.append("</tree>");
 
-		response.setContentType("text/xml");
+		response.setContentType("text/xml;charset=UTF-8");
 		//lizb add write.close();
 		PrintWriter write = response.getWriter();
 		write.write(outSB.toString());

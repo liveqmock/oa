@@ -95,46 +95,46 @@ function _selectOpen(){
 	window.open('<%=request.getContextPath()%>/address/sendfile/selectPersonFrame.jsp','addressbook','width='+width+',height='+height+',left='+left+',top='+top+',scrollbars=yes,resizable=yes');
 }
 function _selectPerson(){
-	document.sendForm.sendType.value = "0";
+	document.all("sendType").value = "0";
 	_selectOpen();
 }
 function _selectcc(){
-	document.sendForm.sendType.value = "1";
+	document.all("sendType").value = "1";
 	_selectOpen();
 }
 
 function _selectbcc(){
-	document.sendForm.sendType.value = "2";
+	document.all("sendType").value = "2";
 	_selectOpen();
 }
 
 function _addPerson_hidden(usernamestring){
-	document.sendForm.sendto.value = usernamestring;
+	document.all("sendto").value = usernamestring;
 	changepnum();
 	return true;	
 }
 
 function _addcc(usernamestring){
-	document.sendForm.sendcc.value = usernamestring;
+	document.all("sendcc").value = usernamestring;
 	changepnum();
 	return true;	
 }
 
 function _addbcc(usernamestring){
-	document.sendForm.sendbcc.value = usernamestring;
+	document.all("sendbcc").value = usernamestring;
 	changepnum();
 	return true;
 }
 
 function _addPerson_hidden1(user_uuid){
-	document.sendForm.addPerson.value = user_uuid;
+	document.all("addPerson").value = user_uuid;
 }
 function _addcc1(user_uuid){
-	document.sendForm.addcc.value = user_uuid;
+	document.all("addcc").value = user_uuid;
 }
 
 function _addbcc1(user_uuid){
-	document.sendForm.addbcc.value = user_uuid;
+	document.all("addbcc").value = user_uuid;
 }
 
    
@@ -188,15 +188,15 @@ function check(){
 		return false;
 	}
 	
-	if(document.sendForm.topic.value == ""){
+	if(document.all("topic").value == ""){
 		if(confirm("你没有添加标题！请确认以‘无标题’作为您的标题吗？"))
 		{ 
-			document.sendForm.topic.value = "无主题";
+			document.all("topic").value = "无主题";
 		  	return true;
 		};
 		return false;
 	} 
-	if(document.sendForm.content.value.length>500){
+	if(document.all("content").value.length>500){
 		alert("内容限制在500字内");
 		return false;
 	}
@@ -239,9 +239,9 @@ function mailsend(){
 		_showAlertBox('alertbox1','','show');
 		var mail_title;
 		var mail_context;
-		mail_context=document.sendForm.content.value;
+		mail_context=document.all("content").value;
 		
-		mail_title=document.sendForm.topic.value;
+		mail_title=document.all("topic").value;
 		setCookie("mail_title",mail_title);
 		setCookie("mail_context",mail_context);
 
@@ -253,7 +253,7 @@ function mailsend(){
 function _attachfile(){
 	getSendHtml();
 	document.sendForm.action="<%=path%>/servlet/SendFileAttachFileServlet?"
-	document.sendForm.donext.value="1";
+	document.all("donext").value="1";
 	document.sendForm.submit();
 }
 
@@ -272,7 +272,7 @@ function _showccspan(){
 	var cctr =document.getElementById("cctr");
 	var cchref =document.getElementById("cchref");
 	var sendcc =document.getElementById("sendcc");
-	cctr.style.display = "block";
+	cctr.style.display = "";
 	cchref.style.display = "none";
 	bound();
 	_choosespan(sendcc);
@@ -291,7 +291,7 @@ function _showbccspan(){
 	var bcctr =document.getElementById("bcctr");
 	var bcchref =document.getElementById("bcchref");
 	var sendbcc =document.getElementById("sendbcc");
-	bcctr.style.display = "block";
+	bcctr.style.display = "";
 	bcchref.style.display = "none";
 	bound();
 	_choosespan(sendbcc);
@@ -438,7 +438,7 @@ function _load(){
 	document.getElementById(sendccId).innerHTML = document.all("SendFileCcHtml").value;
 	document.getElementById(sendbccId).innerHTML = document.all("SendFileBccHtml").value;
 	<%}%>
-	document.sendForm.topic.value = topic;
+	document.all("topic").value = topic;
 	<%
 	 if (sendFileBean.getisRe() == null){
 	%>
@@ -465,8 +465,8 @@ function _load(){
        var mail_title = getCookie("mail_title"); 
        //setCookie("mail_title","");  
        //setCookie("mail_context",""); 
-   	 document.sendForm.content.value=String(mail_context); 
-   	 document.sendForm.topic.value=String(mail_title); 	
+   	 document.all("content").value=String(mail_context);
+   	 document.all("topic").value=String(mail_title);
 
    	 <%}%>
 
@@ -608,16 +608,13 @@ initstyle();
 								<td colspan="2" bgcolor="#FFFFFF">
 
 									<table width="100%" border="0" cellpadding="0" cellspacing="0">
-										<input type="hidden" name="sendType" />
 										<tr>
-											<td width="14%" height="26" align="right" bgcolor="#FFFFFF"
-												nowrap>
+											<td width="14%" height="26" align="right" bgcolor="#FFFFFF" nowrap class="message_title">
 												<span onClick="javascript:_selectPerson()"
-													class="message_title"
 													style="text-decoration: none; cursor: hand"><img
 														src="<%=path%>/images/mail_selectreceiver.jpg" width="67"
 														height="22" border="0">&nbsp;</span><span
-													style="text-decoration: none; cursor: hand" id="totitle"
+													style="text-decoration: none; cursor: pointer" id="totitle"
 													class="message_title"></span>
 											</td>
 											<td width="86%" colspan="3" bgcolor="#FFFFFF"
@@ -626,9 +623,9 @@ initstyle();
 													width="100%">
 													<tr>
 														<td>
-															<span id="sendto" class="selectText"
+															<div id="sendto" class="selectText" style="width:450px"
 																onselectstart="return(false)" state="0"
-																onClick="_choosespan(this)"></span>
+																onClick="_choosespan(this)"></div>
 														</td>
 
 														<td>
@@ -654,7 +651,7 @@ initstyle();
 										</tr>
 
 
-										<tr id="cctr" style="display: none">
+										<tr id="cctr" style="display:none">
 											<td width="14%" height="26" align="right" bgcolor="#FFFFFF"
 												nowrap class="message_title">
 												<span onClick="javascript:_selectcc()"
@@ -671,9 +668,9 @@ initstyle();
 													width="100%">
 													<tr>
 														<td>
-															<span id="sendcc" class="sendToText"
+															<div id="sendcc" class="sendToText" style="width:450px"
 																onselectstart="return(false)" state="0"
-																onClick="_choosespan(this)"></span>
+																onClick="_choosespan(this)"></div>
 														</td>
 
 														<td>
@@ -696,7 +693,7 @@ initstyle();
 											</td>
 										</tr>
 
-										<tr id="bcctr" style="display: none">
+										<tr id="bcctr" style="display:none">
 											<td width="14%" height="26" align="right" bgcolor="#FFFFFF"
 												nowrap class="message_title">
 												<span onClick="javascript:_selectbcc()"
@@ -713,9 +710,9 @@ initstyle();
 													width="100%">
 													<tr>
 														<td>
-															<span id="sendbcc" class="sendToText"
+															<div id="sendbcc" class="sendToText" style="width:450px"
 																onselectstart="return(false)" state="0"
-																onClick="_choosespan(this)"></span>
+																onClick="_choosespan(this)"></div>
 														</td>
 
 														<td>
@@ -803,14 +800,14 @@ initstyle();
 												<INPUT TYPE="hidden" NAME="filenum">
 												<INPUT TYPE="hidden" NAME="realnum">
 												<div align="right">
-													<a id="container1" class="addfile"> <input id="File1"
+													<a id="container1" class="addfile" href="#" onclick="document.getElementById('file_0').click();"><input id="file_0"
 															name="file_0" type="file" class="addfile"
-															onchange="createnew();" /> </a>
+															onchange="createnew();" /></a>
 												</div>
 											</td>
 											<td colspan="3" bgcolor="#FFFFFF">
 												<div id="container2"
-													style="width: 460px; background: #CCFFFF"></div>
+													style="width: 460px; height:21px; background: #CCFFFF"></div>
 											</td>
 										</tr>
 
@@ -854,7 +851,7 @@ initstyle();
 										<tr>
 											<td colspan="2" align="center" valign="top"
 												class="message_title">
-												<textarea name="content"  cols="70" rows="10" maxlength="500"
+												<textarea name="content" id="content" cols="70" rows="10" maxlength="500"
 													class="biankuang-blue"><%=sendFileBean.getContent()%></textarea>
 											</td>
 										</tr>
@@ -978,13 +975,15 @@ return alert("没有匹配的人名!");
 //if( !!li.extra ) var sValue = li.extra[0];
 //else var sValue = li.selectValue;
 //alert("The value you selected was: " + sValue);
-var sendHtml = "<span class='send' onclick=selectName(this,0);  personType='0' department='"+li.extra[0]+"' personName='"+li.selectValue+"' uuid='"+li.extra[1]+"' person='"+li.extra[2]+"'  title='所属组织：&#13;&#10;"+li.extra[0]+"'><img src='/oabase/images/person.gif'>"+li.selectValue+",</span>";
+var type = 0;
+if (selectSpan == 'sendcc') type = 1;
+if (selectSpan == 'sendbcc') type = 2;
+var sendHtml = "<span class='send' onclick=selectName(this," + type + ");  personType='0' department='"+li.extra[0]+"' personName='"+li.selectValue+"' uuid='"+li.extra[1]+"' person='"+li.extra[2]+"'  title='所属组织：&#13;&#10;"+li.extra[0]+"'><img src='/oabase/images/person.gif'>"+li.selectValue+",</span>";
 
 var a = document.getElementById(selectSpan).innerHTML;
-document.getElementById(selectSpan).innerHTML = a + sendHtml;  
-//alert(document.getElementById(selectSpan).value);
+document.getElementById(selectSpan).innerHTML = a + sendHtml;
 document.getElementById('inputAddress').value="";
-document.sendForm.inputAddress.focus();
+document.getElementById("inputAddress").focus();
 changepnum();
 }
 }

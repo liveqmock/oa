@@ -73,6 +73,7 @@ String percent = Double.toString(mailnum);
 
 <link href="<%=path%>/Style/css_grey.css" rel="stylesheet" type="text/css" id="homepagestyle" />
 <script language="JavaScript" src="<%=path%>/include/common.js"></script>
+<script language="JavaScript" src="<%=path%>/include/DatePicker/WdatePicker.js"></script>
 
 <script>
 function fPopUpCalendarDlg(ctrlobj){
@@ -332,13 +333,15 @@ A:HOVER {COLOR:#FF0000; TEXT-DECORATION:UNDERLINE}
                 </tr>
                 <tr>
                   <td width="65" height="30" align="right" bgcolor="#FFFFFF" class="message_title" nowrap="nowrap">接收时间从</td>
-                  <td width="90" align="left" nowrap="nowrap" bgcolor="#FFFFFF" class="green-12" style="cursor:hand;"><input name="startTime" id="start" type="text" class="biankuang-blue" value="" size="10" /></td>
-                  <td width="16" align="left" nowrap="nowrap" bgcolor="#FFFFFF" class="green-12" style="cursor:hand;"><img src="<%=path%>/images/calendar_view_day.gif" width="16" height="16" style="cursor:hand;" border=0 align="absmiddle" alt="点击 弹出日历" onClick="fPopUpCalendarDlg(startTime)"/></td>
+                  
+                  <td width="15" align="left" nowrap="nowrap" bgcolor="#FFFFFF" class="" style="cursor:hand;">
+                  <input name="startTime" class="Wdate" type="text" onFocus="WdatePicker()" size="12" value="" /></td>
                 </tr>
                 <tr>
                   <td width="65" height="30" align="right" bgcolor="#FFFFFF" class="message_title" nowrap="nowrap">至</td>
-                  <td width="90" align="left" nowrap="nowrap" bgcolor="#FFFFFF" class="green-12" style="cursor:hand;"><input name="endTime" id="end" type="text" class="biankuang-blue" value="" size="10" /></td>
-                  <td width="16" align="left" nowrap="nowrap" bgcolor="#FFFFFF" class="green-12" style="cursor:hand;"><img src="<%=path%>/images/calendar_view_day.gif" width="16" height="16" style="cursor:hand;" border=0 align="absmiddle" alt="点击 弹出日历" onClick="fPopUpCalendarDlg(endTime)"/></td>
+                  
+                  <td width="15" align="left" nowrap="nowrap" bgcolor="#FFFFFF" class="" style="cursor:hand;">
+                  <input name="endTime" class="Wdate" type="text" onFocus="WdatePicker()" size="12" value=""/></td>
                 </tr>
             </table>            
             </td>
@@ -362,10 +365,10 @@ A:HOVER {COLOR:#FF0000; TEXT-DECORATION:UNDERLINE}
      
 
 <script language="javascript">
-
+function myonload(){
 
 var d = new Date();
-var year = d.getYear();
+var year = d.getFullYear();
 var month = d.getMonth();
 var day = d.getDate();
 month = month + 1;
@@ -378,8 +381,8 @@ if(month>1){
 	document.searchmail.startTime.value= syear+"-12-1";
 	document.searchmail.endTime.value= year+"-"+month+"-"+day;
 }
-
-
+}
+window.onload=myonload;
 
 function frameautoheight(){
 	parent.document.all("leftfrm").style.height=document.body.scrollHeight;
