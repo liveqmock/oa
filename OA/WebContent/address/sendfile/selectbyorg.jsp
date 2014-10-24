@@ -311,7 +311,7 @@ function _OnUpdateParameter(_orguuid){
 //-->
 </SCRIPT>
 
-<BODY bgcolor="#eff7ff" onload="window.top.moveFrame(true);_loadData();_OnUpdateParameter('<%=orguuid%>');">
+<BODY style="margin-top:0;margin-bottom:0" bgcolor="#eff7ff" onload="window.top.moveFrame(true);_loadData();_OnUpdateParameter('<%=orguuid%>');">
 <form name="form1">
 <table width="100%">
 	<tr>
@@ -379,7 +379,7 @@ try {
 	}
 
 }
-%> <SELECT style="FONT-SIZE: 9pt; WIDTH: 130px" name=org size="30"
+%> <SELECT style="FONT-SIZE: 9pt; WIDTH: 130px;height:470px" name=org size="30"
 						id="indexcontainer" tabindex="2"
 						ondblclick="javascript:return(true);"
 						onclick="javascript:changeOffice2();"
@@ -409,7 +409,7 @@ try {
 					<TD vAlign=top width="100%" height="399">
 
 					<DIV align=right>
-						<SELECT style="FONT-SIZE: 9pt; WIDTH: 130px"
+						<SELECT style="FONT-SIZE: 9pt; WIDTH: 130px;height:470px"
 							tabindex="4" name=orgperson size="30" language=javascript
 							id="indexcontainer1"
 							ondblclick="javascript:return adduser_ondblclick();"
@@ -439,7 +439,7 @@ try {
 					<p></p>
 					</td>
 					<TD vAlign=top width="100%" height="399">
-					<DIV align=right><SELECT style="FONT-SIZE: 9pt; WIDTH: 130px"
+					<DIV align=right><SELECT style="FONT-SIZE: 9pt; WIDTH: 130px;height:470px"
 						name=selectedperson size="30" LANGUAGE=javascript
 						ondblclick="return deluser_ondblclick()">
 
@@ -455,7 +455,7 @@ try {
 		</tr>
 		</table>
 		<table border="0" cellpadding="0" cellspacing="0" width="100%"
-			id="AutoNumber2" height="65" align="center" valign="bottom">
+			id="AutoNumber2" height="35" align="center" valign="bottom">
 			<tr>
 				<td align="center" class="text-01"><img
 					src="<%=request.getContextPath()%>/images/botton-ok.gif"
