@@ -99,15 +99,15 @@ function _logout(){
 initstyle();
 </SCRIPT>
 
-<table width="1003" border="0" align="center" cellpadding="0" cellspacing="0">
+<table width="988" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-  	<td width="10">&nbsp;</td>
-    <td width="983">
-    <table border="0" cellpadding="0" cellspacing="0" class="top_back">
+  	
+    <td>
+    <table width="983" border="0" cellpadding="0" cellspacing="0" class="top_back">
     <tr>
     <td width="536" class="top_logo" height="84"></td>
     <td class="top_back" height="84" width="115">&nbsp;</td>
-    <td width="332" class="top_back" height="84">
+    <td width="310" class="top_back" height="84">
     	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="84">
         	<tr>
               <td width="40" height="30">&nbsp;</td>
@@ -139,13 +139,13 @@ initstyle();
     </tr>
     </table>
     </td>
-    <td width="10" >&nbsp;</td>
+  
   </tr>
 </table>
 
-<table width="1003" height="29" border="0" cellpadding="0" align="center" cellspacing="0">
+<table width="988" height="29" border="0" cellpadding="0" align="center" cellspacing="0">
 	<tr>
-    	<td width="10"></td>
+    	
         <td>
         	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="top_back">
             	<tr>
@@ -237,7 +237,7 @@ initstyle();
                 </tr>
           </table>
         </td>
-        <td width="10"></td>
+        
     </tr>
 </table>
 
