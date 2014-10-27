@@ -81,6 +81,7 @@ if("0".equals(sortname)){
 <html>
 <head>
 <link href="<%=path%>/Style/css_grey.css" rel="stylesheet" type="text/css" id="homepagestyle" />
+<script language="JavaScript" src="<%=path%>/include/My97DatePicker/WdatePicker.js"></script>
 <script>
 function _sort(pageno,sortname,sorttype){
     if(pageno!='0'){

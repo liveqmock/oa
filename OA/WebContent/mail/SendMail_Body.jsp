@@ -48,7 +48,7 @@ body {
 		<SCRIPT language=JavaScript src="<%=path%>/include/AttachFile.js"></SCRIPT>
 		<script type="text/javascript" src="<%=path%>/mail/js/Attach.js"></script>
 		<script type="text/javascript" src="<%=path%>/mail/js/suggest.js"></script>
-
+		<script language="JavaScript" src="<%=path%>/include/My97DatePicker/WdatePicker.js"></script>
 		<script type="text/javascript"
 			src="<%=path%>/mail/js/jquery-1.2.6.pack.js"></script>
 		<script type="text/javascript"

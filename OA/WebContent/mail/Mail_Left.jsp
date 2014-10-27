@@ -73,21 +73,9 @@ String percent = Double.toString(mailnum);
 
 <link href="<%=path%>/Style/css_grey.css" rel="stylesheet" type="text/css" id="homepagestyle" />
 <script language="JavaScript" src="<%=path%>/include/common.js"></script>
-<script language="JavaScript" src="<%=path%>/include/DatePicker/WdatePicker.js"></script>
+<script language="JavaScript" src="<%=path%>/include/My97DatePicker/WdatePicker.js"></script>
 
 <script>
-function fPopUpCalendarDlg(ctrlobj){
-<!--
-	showx = event.screenX - event.offsetX +4 ; // + deltaX;
-	showy = event.screenY - event.offsetY + 18; // + deltaY;
-	newWINwidth = 210 + 4 + 18;
-	retval = window.showModalDialog("<%=path%>/include/date.htm", "", "dialogWidth:197px; dialogHeight:210px; dialogLeft:"+showx+"px; dialogTop:"+showy+"px; status:no; directories:yes;scrollbars:no;Resizable=no; "  );
-	if( retval != null ){
-		ctrlobj.value = retval;
-	}
-//-->
-}
-
 function search(path){
 
     if(document.getElementById('subject').value==""){alert('请输入标题！');return false;}
@@ -335,13 +323,13 @@ A:HOVER {COLOR:#FF0000; TEXT-DECORATION:UNDERLINE}
                   <td width="65" height="30" align="right" bgcolor="#FFFFFF" class="message_title" nowrap="nowrap">接收时间从</td>
                   
                   <td width="15" align="left" nowrap="nowrap" bgcolor="#FFFFFF" class="" style="cursor:hand;">
-                  <input name="startTime" class="Wdate" type="text" onFocus="WdatePicker()" size="12" value="" /></td>
+                  <input name="startTime" class="Wdate" type="text" onClick="WdatePicker()" size="12" value="" /></td>
                 </tr>
                 <tr>
                   <td width="65" height="30" align="right" bgcolor="#FFFFFF" class="message_title" nowrap="nowrap">至</td>
                   
                   <td width="15" align="left" nowrap="nowrap" bgcolor="#FFFFFF" class="" style="cursor:hand;">
-                  <input name="endTime" class="Wdate" type="text" onFocus="WdatePicker()" size="12" value=""/></td>
+                  <input name="endTime" class="Wdate" type="text" onClick="WdatePicker()" size="12" value=""/></td>
                 </tr>
             </table>            
             </td>
