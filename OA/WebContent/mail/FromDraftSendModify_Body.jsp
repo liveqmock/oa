@@ -84,43 +84,43 @@ function _selectOpen(){
 	window.open('<%=request.getContextPath()%>/address/sendfile/selectPersonFrame.jsp','addressbook','width='+width+',height='+height+',left='+left+',top='+top+',scrollbars=yes,resizable=yes');
 }
 function _selectPerson(){
-	document.sendForm.sendType.value = "0";
+	document.all("sendType").value = "0";
 	_selectOpen();
 }
 function _selectcc(){
-	document.sendForm.sendType.value = "1";
+	document.all("sendType").value = "1";
 	_selectOpen();
 }
 
 function _selectbcc(){
-	document.sendForm.sendType.value = "2";
+	document.all("sendType").value = "2";
 	_selectOpen();
 }
 
 function _addPerson_hidden(usernamestring){
-	document.sendForm.sendto.value = usernamestring;
+	document.all("sendto").value = usernamestring;
 	return true;	
 }
 
 function _addcc(usernamestring){
-	document.sendForm.sendcc.value = usernamestring;
+	document.all("sendcc").value = usernamestring;
 	return true;	
 }
 
 function _addbcc(usernamestring){
-	document.sendForm.sendbcc.value = usernamestring;
+	document.all("sendbcc").value = usernamestring;
 	return true;
 }
 
 function _addPerson_hidden1(user_uuid){
-	document.sendForm.addPerson.value = user_uuid;
+	document.all("addPerson").value = user_uuid;
 }
 function _addcc1(user_uuid){
-	document.sendForm.addcc.value = user_uuid;
+	document.all("addcc").value = user_uuid;
 }
 
 function _addbcc1(user_uuid){
-	document.sendForm.addbcc.value = user_uuid;
+	document.all("addbcc").value = user_uuid;
 }
 
 function changepnum(){
@@ -175,10 +175,10 @@ function check(){
 		alert("群发数量不能大于<%=broadcastnum%>");
 		return false;
 	}
-	if(document.sendForm.topic.value == ""){
+	if(document.all("topic").value == ""){
 		if(confirm("你没有添加标题！请确认以‘无标题’作为您的标题吗？"))
 		{ 
-			document.sendForm.topic.value = "无主题";
+			document.all("topic").value = "无主题";
 		  	return true;
 		};
 		return false;
@@ -225,8 +225,8 @@ function mailsend(){
 		//20110420 dyt
 		var mail_title;
 		var mail_context;
-		mail_context=document.sendForm.content.value;		
-		mail_title=document.sendForm.topic.value;
+		mail_context=document.all("content").value;		
+		mail_title=document.all("topic").value;
 		setCookie("mail_title",mail_title);
 		setCookie("mail_context",mail_context);		
 		
@@ -275,7 +275,7 @@ function getCookie(name){
 function _attachfile(){
 	getSendHtml();
 	document.sendForm.action="<%=path%>/servlet/SendFileAttachFileServlet?"
-	document.sendForm.donext.value="4";
+	document.all("donext").value="4";
 	document.sendForm.submit();
 }
 
@@ -296,7 +296,7 @@ function _showccspan(){
 	var cctr =document.getElementById("cctr");
 	var cchref =document.getElementById("cchref");
 	var sendcc =document.getElementById("sendcc");
-	cctr.style.display = "block";
+	cctr.style.display = "";
 	cchref.style.display = "none";
 	bound();
 	_choosespan(sendcc);
@@ -315,7 +315,7 @@ function _showbccspan(){
 	var bcctr =document.getElementById("bcctr");
 	var bcchref =document.getElementById("bcchref");
 	var sendbcc =document.getElementById("sendbcc");
-	bcctr.style.display = "block";
+	bcctr.style.display = "";
 	bcchref.style.display = "none";
 	bound();
 	_choosespan(sendbcc);
@@ -396,7 +396,7 @@ function _load(){
 	document.getElementById(sendccId).innerHTML = document.all("SendFileCcHtml").value;
 	document.getElementById(sendbccId).innerHTML = document.all("SendFileBccHtml").value;
 	<%}%>
-	document.sendForm.topic.value = topic;
+	document.all("topic").value = topic;
 	<%
 	 if (sendFileBean.getisRe() == null){
 	%>
@@ -497,17 +497,16 @@ function _load(){
           <tr>
           	<td colspan="2" bgcolor="#FFFFFF" valign="top">
             <table width="100%" border="0" cellpadding="0" cellspacing="0">
-			  <input type="hidden" name="sendType" />
       		  <tr>
-                    <td width="14%" height="26" align="right" bgcolor="#FFFFFF" nowrap class="message_title"><span onClick="javascript:_selectPerson()" class="message_title" style="text-decoration:none;cursor:hand" id="totitle">选择收件人：</span></td>
+                    <td width="14%" height="26" align="right" bgcolor="#FFFFFF" nowrap class="message_title"><span onClick="javascript:_selectPerson()" style="text-decoration:none;cursor:pointer" id="totitle">选择收件人：</span></td>
                   <td width="86%" colspan="3" bgcolor="#FFFFFF" class="blue3-12-b">
                   <table border="0" cellspacing="0" cellpadding="0" width="100%">
                         <tr>
-                          <td><span id="sendto" class="selectText" onselectstart="return(false)" state="0" onClick="_choosespan(this)"><%=sendHtml%></span></td>
+                          <td><div id="sendto" class="selectText" style="width:430px;overflow:hidden" onselectstart="return(false)" state="0" onClick="_choosespan(this)"><%=sendHtml%></div></td>
 						  
-						  <td><img src="<%=request.getContextPath()%>/images/delPerson.gif" onClick="javascript:delSel(0)" alt="删除" title="删除收件人中选择的人或组织" style="cursor: hand"></td>
+						  <td><img src="<%=request.getContextPath()%>/images/delPerson.gif" onClick="javascript:delSel(0)" alt="删除" title="删除收件人中选择的人或组织" style="cursor: pointer"></td>
 						  
-						  <td><img src="<%=request.getContextPath()%>/images/outspread.gif" onClick="javascript:listState(this,0,'')" alt="展开" title="展开收件人列表" style="cursor: hand"></td>
+						  <td><img src="<%=request.getContextPath()%>/images/outspread.gif" onClick="javascript:listState(this,0,'')" alt="展开" title="展开收件人列表" style="cursor: pointer"></td>
 						  
 						  <td><!--<input type="button" style="cursor:hand" class="message_title" value="选择收件人" onClick="javascript:_selectPerson()">--></td>
                         </tr>
@@ -520,11 +519,11 @@ function _load(){
                   <td width="86%" colspan="3" bgcolor="#FFFFFF" class="blue3-12-b">
                   <table border="0" cellspacing="0" cellpadding="0" width="100%">
                         <tr>
-                          <td><span id="sendcc" class="sendToText" onselectstart="return(false)" state="0" onClick="_choosespan(this)"><%=ccHtml%></span></td>
+                          <td><div id="sendcc" class="sendToText" style="width:430px;overflow:hidden" onselectstart="return(false)" state="0" onClick="_choosespan(this)"><%=ccHtml%></div></td>
 						  
-						  <td><img src="<%=request.getContextPath()%>/images/delPerson.gif" onClick="javascript:delSel(1)" alt="删除" title="删除收件人中选择的人或组织" style="cursor: hand"></td>
+						  <td><img src="<%=request.getContextPath()%>/images/delPerson.gif" onClick="javascript:delSel(1)" alt="删除" title="删除收件人中选择的人或组织" style="cursor: pointer"></td>
 						  
-						  <td><img src="<%=request.getContextPath()%>/images/outspread.gif" onClick="javascript:listState(this,1,'ccbook')" alt="展开" title="展开收件人列表" style="cursor: hand"></td>
+						  <td><img src="<%=request.getContextPath()%>/images/outspread.gif" onClick="javascript:listState(this,1,'ccbook')" alt="展开" title="展开收件人列表" style="cursor: pointer"></td>
 						  
 						  <td></td>
                       </tr>
@@ -536,11 +535,11 @@ function _load(){
                   <td width="86%" colspan="3" bgcolor="#FFFFFF" class="blue3-12-b">
                   <table border="0" cellspacing="0" cellpadding="0" width="100%">
                         <tr>
-                          <td><span id="sendbcc" class="sendToText" onselectstart="return(false)" state="0" onClick="_choosespan(this)"><%=bccHtml%></span></td>
+                          <td><div id="sendbcc" class="sendToText" style="width:430px;overflow:hidden"  onselectstart="return(false)" state="0" onClick="_choosespan(this)"><%=bccHtml%></div></td>
 						  
-						  <td><img src="<%=request.getContextPath()%>/images/delPerson.gif" onClick="javascript:delSel(2)" alt="删除" title="删除收件人中选择的人或组织" style="cursor: hand"></td>
+						  <td><img src="<%=request.getContextPath()%>/images/delPerson.gif" onClick="javascript:delSel(2)" alt="删除" title="删除收件人中选择的人或组织" style="cursor: pointer"></td>
 						  
-						  <td><img src="<%=request.getContextPath()%>/images/outspread.gif" onClick="javascript:listState(this,2,'bccbook')" alt="展开" title="展开收件人列表" style="cursor: hand"></td>
+						  <td><img src="<%=request.getContextPath()%>/images/outspread.gif" onClick="javascript:listState(this,2,'bccbook')" alt="展开" title="展开收件人列表" style="cursor: pointer"></td>
 						  
 						  <td></td>
                         </tr>
@@ -568,13 +567,12 @@ function _load(){
 						<INPUT TYPE="hidden" NAME="filenum">
 						<INPUT TYPE="hidden" NAME="realnum">
 						<div>
-							<a id="container1" class="addfile">
-							<input id="File1" name="file_0" type="file" class="addfile" onchange="createnew();"  />
-							</a>
+							<a id="container1" class="addfile" href="#" onclick="document.getElementById('file_0').click();"><input id="file_0" 
+							name="file_0" type="file" class="addfile" onchange="createnew();"  /></a>
 							</div>
 						</td>
                         <td colspan="3" bgcolor="#FFFFFF">
-                        <div id="container2" style=" width:460px;background:#CCFFFF"></div>
+                        <div id="container2" style=" width:460px;height:21px;background:#CCFFFF"></div>
 						</td>
                       </tr>
                   
@@ -598,7 +596,7 @@ function _load(){
                     </tr>
                     <tr>
                    	  <td colspan="2" align="center" valign="top" class="message_title">                   	    
-               	        <textarea name="content" cols="70" rows="10" class="biankuang-blue"><%=CommUtil.unformathtm(sendFileBean.getContent())%></textarea></td>
+               	        <textarea name="content" id="content" cols="70" rows="10" class="biankuang-blue"><%=CommUtil.unformathtm(sendFileBean.getContent())%></textarea></td>
                     </tr>
                     <tr>
                       <td width="78" height="33"></td>

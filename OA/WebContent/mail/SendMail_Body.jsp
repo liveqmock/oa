@@ -623,7 +623,7 @@ initstyle();
 													width="100%">
 													<tr>
 														<td>
-															<div id="sendto" class="selectText" style="width:450px;overflow:hidden"
+															<div id="sendto" class="selectText" style="width:430px;overflow:hidden"
 																onselectstart="return(false)" state="0"
 																onClick="_choosespan(this)"></div>
 														</td>
@@ -668,7 +668,7 @@ initstyle();
 													width="100%">
 													<tr>
 														<td>
-															<div id="sendcc" class="sendToText" style="width:450px;overflow:hidden"
+															<div id="sendcc" class="sendToText" style="width:430px;overflow:hidden"
 																onselectstart="return(false)" state="0"
 																onClick="_choosespan(this)"></div>
 														</td>
@@ -710,7 +710,7 @@ initstyle();
 													width="100%">
 													<tr>
 														<td>
-															<div id="sendbcc" class="sendToText" style="width:450px;overflow:hidden"
+															<div id="sendbcc" class="sendToText" style="width:430px;overflow:hidden"
 																onselectstart="return(false)" state="0"
 																onClick="_choosespan(this)"></div>
 														</td>

@@ -63,32 +63,11 @@ function _addgroupuser(uuid,cname){
 	}
 	if(parent.checkmax()){
 		if(parent.document.getElementById("sendto").className == "selectText"){
-			htmlstr="<span class=\"send\" personType=\"" + 
-		 		 "\" department=\"" + "\" personName=\"" + cname +
-		 		 "\"  person=\"" + "\" uuid=\""+  uuid  + "\" onclick=\"selectName(this," + '0' +
-		 		");\" title=\"个人分组成员" + 
-		 		"\"><img src=\"<%=path%>/images/person.gif\">"  + cname + ","
-		 		"</span>";
-			parent.document.getElementById("sendto").innerHTML = parent.document.getElementById("sendto").innerHTML + htmlstr;
-			parent.document.sendForm.sendType.value = "0";
+			parent.addPerson(cname, uuid, 'sendto', '0');
 		}else if(parent.document.getElementById("sendcc").className == "selectText"){
-			htmlstr="<span class=\"send\" personType=\"" + 
-		 		 "\" department=\"" + "\" personName=\"" + cname +
-		 		 "\"  person=\"" + "\" uuid=\""+  uuid  + "\" onclick=\"selectName(this," + '1' +
-		 		");\" title=\"个人分组成员" + 
-		 		"\"><img src=\"<%=path%>/images/person.gif\">"  + cname + ","
-		 		"</span>";
-			parent.document.getElementById("sendcc").innerHTML = parent.document.getElementById("sendcc").innerHTML + htmlstr;
-			parent.document.sendForm.sendType.value = "1";
+			parent.addPerson(cname, uuid, 'sendcc', '1');
 		}else if(parent.document.getElementById("sendbcc").className == "selectText"){
-			htmlstr="<span class=\"send\" personType=\"" + 
-		 		 "\" department=\"" + "\" personName=\"" + cname +
-		 		 "\"  person=\"" + "\" uuid=\""+  uuid  + "\" onclick=\"selectName(this," + '2' +
-		 		");\" title=\"个人分组成员" + 
-		 		"\"><img src=\"<%=path%>/images/person.gif\">"  + cname + ","
-		 		"</span>";
-			parent.document.getElementById("sendbcc").innerHTML = parent.document.getElementById("sendbcc").innerHTML + htmlstr;
-			parent.document.sendForm.sendType.value = "2";
+			parent.addPerson(cname, uuid, 'sendbcc', '2');
 		}
 	}
 	parent.changepnum();

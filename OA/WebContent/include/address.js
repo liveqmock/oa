@@ -12,6 +12,19 @@ var selSend = new Array();
 var selcc = new Array();
 var selbcc =new Array();
 
+function addPerson(cname, uuid, parentId, type){
+	var span = document.createElement("span");
+	htmlstr="<span class=\"send\" personType=\"" + 
+ 		 "\" department=\"" + "\" personName=\"" + cname +
+ 		 "\"  person=\"" + "\" uuid=\""+  uuid  + "\" onclick=\"selectName(this," + type +
+ 		");\" title=\"个人分组成员" + 
+ 		"\"><img src=\"../images/person.gif\">"  + cname + ","
+ 		"</span>";
+ 	document.getElementById(parentId).appendChild(span);
+ 	span.outerHTML = htmlstr;
+	document.all("sendType").value = type;
+}
+
 //得到所有选择信息
 function getSelect(type){
 	if (type == 1){
@@ -144,22 +157,22 @@ function loadPerson(sendType){
 	 		var char = "m";
 	 		if (type == "00"){
 				char = "B";
-				tempStr +="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"] + "\"><font face=\"Webdings\" color=\"#009900\">" + char + "</font>" + nameValue + "</span>";
+				tempStr ="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"] + "\"><font face=\"Webdings\" color=\"#009900\">" + char + "</font>" + nameValue + "</span>";
 			}else if (type == "01"){
 				char = "H";
-				tempStr +="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"] + "\"><font face=\"Webdings\" color=\"#009900\">" + char + "</font>" + nameValue + "</span>";
+				tempStr ="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"] + "\"><font face=\"Webdings\" color=\"#009900\">" + char + "</font>" + nameValue + "</span>";
 			}else{
-		 		tempStr +="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["uuid"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"] + "\"><font face=\"Webdings\" color=\"#009900\">" + char + "</font>" + nameValue + "</span>";
+		 		tempStr ="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["uuid"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"] + "\"><font face=\"Webdings\" color=\"#009900\">" + char + "</font>" + nameValue + "</span>";
 	 		}
 	 	}else{
 		 	if (type == "00"){
 				typeImg = "commongroup.gif";
-				tempStr +="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"公共分组\"><img src=\"" + urlPath + "/images/" + typeImg + "\">" + nameValue + "</span>";
+				tempStr ="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"公共分组\"><img src=\"" + urlPath + "/images/" + typeImg + "\">" + nameValue + "</span>";
 			}else if (type == "01"){
 				typeImg = "indigroup.gif";
-				tempStr +="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"个人分组\"><img src=\"" + urlPath + "/images/" + typeImg + "\">" + nameValue + "</span>";
+				tempStr ="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"个人分组\"><img src=\"" + urlPath + "/images/" + typeImg + "\">" + nameValue + "</span>";
 			}else{
-		 		tempStr +="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["uuid"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"] + "\"><img src=\"" + urlPath + "/images/" + typeImg + "\">" + nameValue + "</span>";
+		 		tempStr ="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["uuid"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"] + "\"><img src=\"" + urlPath + "/images/" + typeImg + "\">" + nameValue + "</span>";
 			}
 		}
 		//给显示的选择人准备数据
@@ -167,13 +180,17 @@ function loadPerson(sendType){
 			showName += ",";
 		}
 		showName += selValue[i]["name"];
+		
+		var span = document.createElement("span");
+		ele.appendChild(span);
+		span.outerHTML = tempStr;
 	}
 	//setShow(sendType,showName);
 
 	if(extstr != ""){
 		alert(extstr+"已经在发送列表中存在！");
 	}
-	ele.innerHTML = ele.innerHTML + tempStr;
+	
 	changepnum();
 }
 
