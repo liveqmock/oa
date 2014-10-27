@@ -30,6 +30,7 @@
 	<SCRIPT language=JavaScript
 			src="<%=request.getContextPath()%>/include/counter.js">
 	</SCRIPT>
+	<script language="JavaScript" src="<%=path%>/include/My97DatePicker/WdatePicker.js"></script>
 <style type="text/css">
 body {
 	margin-left: 0px;
