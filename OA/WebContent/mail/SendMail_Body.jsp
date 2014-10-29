@@ -980,8 +980,11 @@ if (selectSpan == 'sendcc') type = 1;
 if (selectSpan == 'sendbcc') type = 2;
 var sendHtml = "<span class='send' onclick=selectName(this," + type + ");  personType='0' department='"+li.extra[0]+"' personName='"+li.selectValue+"' uuid='"+li.extra[1]+"' person='"+li.extra[2]+"'  title='所属组织：&#13;&#10;"+li.extra[0]+"'><img src='/oabase/images/person.gif'>"+li.selectValue+",</span>";
 var span = document.createElement("span");
-var a = document.getElementById(selectSpan).appendChild(span);
+var div = document.getElementById(selectSpan);
+div.appendChild(span);
 span.outerHTML = sendHtml;
+if (_firstChild(_nextsibling(_nextsibling(div.parentNode))).alt === '收缩') 
+		div.style.height = div.scrollHeight;
 document.getElementById('inputAddress').value="";
 document.getElementById("inputAddress").focus();
 changepnum();
