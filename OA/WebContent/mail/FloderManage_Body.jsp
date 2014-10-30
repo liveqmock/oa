@@ -289,24 +289,24 @@ initstyle();
 
 
 <!--主要内容去区-->
-<table width="730" border="0" cellspacing="0" cellpadding="0">
+<table width="788" border="0" cellspacing="0" cellpadding="0">
     <tr>
-    	<td colspan="7" height="11"><img src="<%=path%>/images/kongbai.jpg" width="11" height="11" /></td>
+    	<td colspan="3" height="11"><img src="<%=path%>/images/kongbai.jpg" width="11" height="11" /></td>
     </tr>
     <tr>
-	  <td>&nbsp;&nbsp;</td>
+	  <!--td>&nbsp;&nbsp;</td-->
       <td width="96" height="30" valign="middle" class="message_title">邮件总数：<span class="message_title_bold"><%=totalNum%></span></td>
       <td width="166" height="30" align="left" valign="middle" class="message_title">未读邮件：<span class="message_title_bold"><%=noReadnum%></span></td>
 
-      <td width="448" height="30" align="center" valign="top" colspan="4">
+      <td width="448" height="30" align="center" valign="top">
 
       		 <iframe name="foldersizefrm" src="<%=path%>/servlet/FolderSizeServlet" width="100%" height="100%" scrolling="no" frameborder="0" framespacing="0"></iframe>
 	   </td>
     </tr>
 
    <tr> 
-      <td>&nbsp;&nbsp;</td>
-      <td colspan="6" valign="top">
+      <!--td>&nbsp;&nbsp;</td-->
+      <td colspan="3" valign="top">
       	<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF" class="table_bgcolor">
         <tr>
           <td width="32%" height="24" align="center" nowrap="nowrap" background="<%=path%>/images/2-title-05.jpg" bgcolor="#E0EDF8" class="block_title">文件夹</td>
@@ -416,7 +416,7 @@ initstyle();
     
     
     <tr>
-    	<td colspan="11" height="11"><img src="<%=path%>/images/kongbai.jpg" width="11" height="11" /></td>
+    	<td colspan="3" height="11"><img src="<%=path%>/images/kongbai.jpg" width="11" height="11" /></td>
     </tr>
 </table> 
 <script>

@@ -217,11 +217,11 @@ function _hiderec(){
 <table width="788" border="0" cellspacing="0" cellpadding="0">
 
     <tr>
-      <td height="30" colspan="3" valign="top"></td>
-      <td valign="top" width="760">
-      <table width="760" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF" class="table_bgcolor">
+      <td height="30" colspan="3"width="1" valign="top"></td>
+      <td valign="top">
+      <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF" class="table_bgcolor">
           <tr>
-            <td width="760" height="44" colspan="2" bgcolor="#FFFFFF">
+            <td height="44" colspan="2" bgcolor="#FFFFFF">
             	<table width="100%" border="0" cellpadding="0" cellspacing="0">
                 	<tr>
                    	  <td><img src="<%=path%>/images/mail_replybutton.JPG" width="59" height="25" onClick="javascript:reply()" style="cursor:hand"/>&nbsp;<img src="<%=path%>/images/mail_resendbutton.JPG" width="59" height="25" onClick="javascript:transmit()"  style="cursor:hand"/>&nbsp;<img src="<%=path%>/images/mail_deletebutton.JPG" width="59" height="25" onClick="javascript:_Delete()" style="cursor:hand"/>&nbsp;<img src="<%=path%>/images/mail_returnbutton.JPG" width="59" height="25" onClick="javascript:_goback('<%=type%>')" style="cursor:hand"/></td>

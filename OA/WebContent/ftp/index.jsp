@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=gb2312" pageEncoding="gb2312"%>
+<%@ page contentType="text/html; charset=GBK" pageEncoding="GBK"%>
 <%
 	String path = request.getContextPath();		
 	String ftpip = (String)request.getAttribute("ftpip");

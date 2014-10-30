@@ -102,8 +102,13 @@ function delSel(type){
 			sendId = sendbccId;
 		}
 		var div = document.getElementById(sendId);
-		if (_firstChild(_nextsibling(_nextsibling(div.parentNode))).alt === ' ’Àı') 
-	 		div.style.height = '100%';;
+		if (_firstChild(_nextsibling(_nextsibling(div.parentNode))).alt === ' ’Àı') {
+			if (div.innerHTML == ""){
+				div.style.height = "22px";
+			}else{
+				div.style.height = "100%";
+			}
+		}
 	}
 
 }

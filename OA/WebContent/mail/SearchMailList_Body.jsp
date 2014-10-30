@@ -98,16 +98,16 @@ initstyle();
 
 
 
-<table width="750" border="0" cellspacing="0" cellpadding="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
     <tr>
-    	<td colspan="11" height="11"><img src="<%=path%>/images/kongbai.jpg" width="11" height="11" /></td>
+    	<td colspan="5" height="11"><img src="<%=path%>/images/kongbai.jpg" width="11" height="11" /></td>
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <!--td>&nbsp;</td>
       <td colspan="3" rowspan="2" valign="top"></td>
       <td headers="11">&nbsp;</td>
-      <td width="91" height="30" valign="middle" class="message_title"></td>
+      <td width="91" height="30" valign="middle" class="message_title"></td-->
       <td width="27" height="30" align="right" valign="middle"><img src="<%=path%>/images/mail_delete.JPG" width="17" height="17" /></td>
       <td width="31" valign="middle" class="foot_message"><a href="javascript:_Delete()" style="text-decoration:none">É¾³ý</a></td>
       <td width="33" height="30" align="right" valign="middle"><img src="<%=path%>/images/mail_laji.JPG" width="16" height="19" /></td>
@@ -118,9 +118,9 @@ initstyle();
 	   </td>
     </tr>
     <tr>
-    	<td width="7">&nbsp;</td>
-      <td width="11" headers="11"><img src="<%=path%>/images/kongbai.jpg" width="11" height="11" /></td>
-      <td colspan="6" valign="top">
+    	<!-- td width="7">&nbsp;</td>
+      <td width="11" headers="11"><img src="<%=path%>/images/kongbai.jpg" width="11" height="11" /></td-->
+      <td colspan="5" valign="top">
       	<table width="100%" border="0" cellpadding="2" cellspacing="1" class="table_bgcolor">
         <tr>
           <td nowrap="nowrap" width="5%" height="26" class="block_title" align="center">

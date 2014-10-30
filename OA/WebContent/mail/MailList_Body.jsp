@@ -296,7 +296,7 @@ function _ForeverDelete(folder)
 
 
 
-<table width="750" border="0" cellspacing="0" cellpadding="0">
+<table width="788" border="0" cellspacing="0" cellpadding="0">
     
     <tr>
     <td>
