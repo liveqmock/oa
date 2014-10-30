@@ -77,7 +77,7 @@ initstyle();
 
 <input type="hidden" name="_page_num" value="<%=page_num%>">
 <!--主要内容去区-->
-<table width="750" border="0" cellspacing="0" cellpadding="0">
+<table width="788" border="0" cellspacing="0" cellpadding="0">
 
 
     <tr>

@@ -77,7 +77,7 @@ function _back(){
 <BODY leftmargin="10" onload="_onload()" >
 <div align="center" >
           
-          <table width="85%"  border="0" align="center" cellpadding="0" cellspacing="1" class="table_bgcolor">
+          <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="1" class="table_bgcolor">
           	<tr><td colspan="3" class="block_title"><%=title2%></td></tr>
             <tr>
 

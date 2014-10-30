@@ -90,7 +90,7 @@ function _back1(){
 
 
 <!--主要内容去区-->
-<table width="750" border="0" cellspacing="0" cellpadding="0">
+<table width="788" border="0" cellspacing="0" cellpadding="0">
 
 
     <tr>
@@ -185,7 +185,7 @@ while(groupinfoIterator.hasNext()){
         </tr>
 
 <%
-}}
+}} 
 %> 
 
 		<tr><td colspan="7"><%@ include file="../include/FolderPageScrollBar.jsp"%></td></tr>
