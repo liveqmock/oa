@@ -24,6 +24,7 @@ body {
 	margin-top: 0px;
 	margin-right: 0px;
 	margin-bottom: 0px;
+	background:#ffffff;
 }
 -->
 </style>
@@ -71,12 +72,12 @@ body {
 	<body>
 		<form name="workForm" method="post" action="">
 			
-			<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+			<table width="216" border="0" cellspacing="0" cellpadding="0" align="center">
 				<tr>
 					
 					
 					<td valign="top" align="center">
-						<table width="98%" border="0" cellpadding="2" cellspacing="0"
+						<table width="100%" border="0" cellpadding="2" cellspacing="0"
 							bgcolor="#B9DAF9">
                             <%
 							if(!workListGroupIterator.hasNext()){
@@ -87,7 +88,7 @@ body {
 							%>
 							<tr bgcolor="#FFFFFF">     
                   				<td width="100%"  class="text-01" align="left">
-                                <marquee direction="up" height="160" width="98%" scrollamount="1" scrolldelay="1" onMouseOver=stop() onMouseOut=start() style="cursor:hand" align="left">
+                                <marquee direction="up" height="160" width="100%" scrollamount="1" scrolldelay="1" onMouseOver=stop() onMouseOut=start() style="cursor:hand" align="left">
 							<%	
 							int index = 0;
 							while(workListGroupIterator.hasNext()){

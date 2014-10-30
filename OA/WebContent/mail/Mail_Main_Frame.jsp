@@ -73,6 +73,8 @@ body {
 		nextsrc = path+"/servlet/SendFileFileTransferServlet?sun_flag=shitang";	
 	}else if("zjkg".equals(next)){
 		nextsrc = path+"/servlet/SendFileFileTransferServlet?sun_flag=zjkg";
+	}else if("rfzx".equals(next)){
+		nextsrc = path+"/servlet/SendFileFileTransferServlet?sun_flag=rfzx";
 	}else if("folder".equals(next)){
 		nextsrc = path+"/servlet/ShowRootFolderServlet";
 		nexttree = path+"/servlet/ShowFolderListServlet";

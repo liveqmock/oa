@@ -412,7 +412,14 @@ function _load(){
     		sendHtml = "<span class=\"send\" personType=\"0\" department=\"机关管理服务中心\" personName=\"后勤服务信箱\" uuid=\"68d368d3-1302ee4c145-837f84975ee09664d890917866b9261b\" person=\"hqfwxx\"  title=\"所属组织：&#13;&#10;机关管理服务中心\"><img src=\"/oabase/images/person.gif\">后勤服务信箱,</span>";
 	}
 	document.getElementById(sendToId).innerHTML = sendHtml;  
-	
+<%}else if("rfzx".equals(sun_flag)){%>
+	var sendHtml;
+	if (showChar){
+		sendHtml = "<span class=\"send\" personType=\"0\" department=\"总编室->融合发展中心\" personName=\"融合发展中心\" uuid=\"a310a31-14781543da7-1a426a6cdb8e100f49f6a31924b1b927\" person=\"rfzx\"  title=\"所属组织：&#13;&#10;总编室->融合发展中心\"><font face=\"Webdings\" color=\"#009900\">m</font>融合发展中心,</span>";
+	}else{
+    		sendHtml = "<span class=\"send\" personType=\"0\" department=\"总编室->融合发展中心\" personName=\"融合发展中心\" uuid=\"a310a31-14781543da7-1a426a6cdb8e100f49f6a31924b1b927\" person=\"rfzx\"  title=\"所属组织：&#13;&#10;总编室->融合发展中心\"><img src=\"/oabase/images/person.gif\">融合发展中心,</span>";
+	}
+	document.getElementById(sendToId).innerHTML = sendHtml;  
 <%}else if("jsfs".equals(sun_flag)){%>
 	var sendHtml;
 	if (showChar){

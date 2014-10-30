@@ -51,7 +51,7 @@ if(curPageNum != pageCount && pageCount > 1){
 
 </td>
 <td align="right" width="50%">
-<select name ='ee' onChange="javaScript:_toPage(this.value)" style="width:50px;font-size:9.5px">
+<select name ='ee' onChange="javaScript:_toPage(this.value)" style="width:60px;font-size:9.5px">
     <option value='0'>าณ สý</option>
 <% for(int _fanyeNo=1;_fanyeNo<=pageCount;++_fanyeNo){%>
 	<option value='<%= _fanyeNo%>'><%= _fanyeNo%></option>

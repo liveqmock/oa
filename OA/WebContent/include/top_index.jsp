@@ -99,13 +99,13 @@ function _logout(){
 initstyle();
 </SCRIPT>
 
-<table width="988" border="0" align="center" cellpadding="0" cellspacing="0">
+<table width="983" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
   	
-    <td>
+    <td >
     <table width="983" border="0" cellpadding="0" cellspacing="0" class="top_back">
     <tr>
-    <td width="536" class="top_logo" height="84"></td>
+    <td width="510" class="top_logo" height="84"></td>
     <td class="top_back" height="84" width="115">&nbsp;</td>
     <td width="310" class="top_back" height="84">
     	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="84">
@@ -118,6 +118,7 @@ initstyle();
         	  
               <td width="32" align="right" valign="middle"><span onclick="window.open('/oabase/user/ModifyPassword.jsp','修改密码','width=640,height=200,toolbar=no,menubar=no,resizable=no,resizable=no,location=no,status=no')" style="text-decoration:none;cursor:hand;" target="_blank"><img src="/cms/images/top/top_alter.png" border="0"/></span></td>
         	  <td width="60" align="center" valign="middle"><span onclick="window.open('/oabase/user/ModifyPassword.jsp','修改密码','width=640,height=200,toolbar=no,menubar=no,resizable=no,resizable=no,location=no,status=no')" style="text-decoration:none;cursor:hand" target="_blank"><span class="TOPSTYLE">修改密码</span></span></td>
+		  	   
 		  <td width="32" align="right" valign="middle">
 			  <span onclick="_logout();" style="cursor:hand" class="TOPSTYLE"><img src="/cms/images/top/top_out.png" border="0" /></span></td>
 	      <td width="60" align="center" valign="middle" class="TOPSTYLE"><span onclick="_logout();" style="cursor:hand" class="TOPSTYLE">退出系统</span></td>
@@ -139,15 +140,15 @@ initstyle();
     </tr>
     </table>
     </td>
-  
+    
   </tr>
 </table>
 
-<table width="988" height="29" border="0" cellpadding="0" align="center" cellspacing="0">
+<table width="983" height="29" border="0" cellpadding="0" align="center" cellspacing="0">
 	<tr>
     	
         <td>
-        	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="top_back">
+        	<table border="0" cellpadding="0" cellspacing="0" width="983" class="top_back">
             	<tr>
                 	<td width="134" height="29" valign="middle" class="top_left_buttom"><span class="message_zhuanti" id="showdate"></span></td>
                   <td width="60%" class="top_back_buttom">
@@ -176,16 +177,16 @@ initstyle();
 					</script>
                	  <table width="100%" border="0" cellpadding="0" cellspacing="0" height="29">
                         <tr>
-                            <td width="35%" height="29" align="left" valign="middle" class="message_zhuanti">欢迎<span style="font-size:12;color:#000000" id="personInfo"></span></td>
-                          <td width="33%" align="center" class="content" valign="middle"><span class="message_zhuanti">信息检索:</span>
+                            <td width="38%" height="29" align="left" valign="middle" class="message_zhuanti">欢迎<span style="font-size:12;color:#000000" id="personInfo"></span></td>
+                          <td width="35%" align="center" class="content" valign="middle"><span class="message_zhuanti">信息检索:</span>
 							<input name="keyword" type="text" id="keyword" class="biankuang" size="16" value="请输入检索关键字" style="color:#888;" title="如果您有多个关键字，请键入空格分割。" onfocus="if(this.value!='请输入检索关键字'){this.style.color='#000'}else{this.value='';this.style.color='#888'}" 
 							onblur="if(this.value==''){this.value='请输入检索关键字';this.style.color='#888'}" 
 							onkeydown="this.style.color='#000'" onkeypress="_tosearch();"/>
                           <input type="hidden" name="forwardUrl" value="/search.jsp" />                          </td>
-                          <td width="22%" class="message_zhuanti" style="cursor:hand" align="left">
+                          <td width="25%" class="message_zhuanti" style="cursor:hand" align="left">
 						  <span onclick="_search();" style="cursor:hand">&nbsp;&gt;&gt;检索 </span>
 						  	<a href="/cms/advanceSearch.jsp" target="_blank" class="message_zhuanti" style="text-decoration:none">&gt;&gt;高级检索</a></td>
-						  <td width="11%" class='message_zhuanti' align='left'><%if(channelId!=null){ %><input type="checkbox" name="channelId" value="<%=channelId%>" checked/>本栏目<%}%></td>
+						  <td class='message_zhuanti' align='left'><%if(channelId!=null){ %><input type="checkbox" name="channelId" value="<%=channelId%>" checked/>本栏目<%}%></td>
                       </tr>
                     </table>
                     
@@ -237,7 +238,7 @@ initstyle();
                 </tr>
           </table>
         </td>
-        
+     
     </tr>
 </table>
 
