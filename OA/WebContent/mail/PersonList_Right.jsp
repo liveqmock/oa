@@ -34,6 +34,7 @@ A:HOVER {COLOR:#FF0000; TEXT-DECORATION:UNDERLINE}
 -->
 </style>
  <link href="<%=path%>/Style/css_grey.css" rel="stylesheet" type="text/css" id="homepagestyle" />
+ <script language="JavaScript" src="<%=path%>/include/My97DatePicker/WdatePicker.js"></script>
  <script language="javascript">
 function _updown(id,tr){
 	 var obj=document.getElementById(id);

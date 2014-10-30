@@ -86,6 +86,7 @@ body {
 </style>
 <link href="<%=path%>/Style/css_grey.css" rel="stylesheet" id="homepagestyle" type="text/css" />
 <script language="JavaScript" src="<%=path%>/include/common.js"></script>
+<script language="JavaScript" src="<%=path%>/include/My97DatePicker/WdatePicker.js"></script>
 <script language="javascript">
 
 function fPopUpCalendarDlg(ctrlobj){

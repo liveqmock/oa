@@ -75,6 +75,7 @@ A:ACTIVE{COLOR:#FF0000; TEXT-DECORATION:UNDERLINE}
 <link href="<%=path%>/Style/css_grey.css" rel="stylesheet" id="homepagestyle" type="text/css" />
 <SCRIPT language=JavaScript src="<%=request.getContextPath()%>/include/common.js"></SCRIPT>
 <SCRIPT type="text/javascript" src="<%=request.getContextPath()%>/include/xmlextras.js"></SCRIPT>
+<script language="JavaScript" src="<%=path%>/include/My97DatePicker/WdatePicker.js"></script>
 <script language="javascript">
 var _IsMousedown = 0;
    var _ClickLeft = 0;

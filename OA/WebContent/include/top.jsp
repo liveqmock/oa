@@ -89,10 +89,10 @@ function _logout(){
               
               
               <td width="32" align="right" valign="middle">
-              	<a href="/oabase/user/ModifyPassword.jsp" style="text-decoration:none" target="_blank"><img src="/cms/images/top/top_alter.png" border="0"/>
+              	<a href="http://10.99.20.12/xhweb/change_ssopasswd.jsp" style="text-decoration:none" target="_blank"><img src="/cms/images/top/top_alter.png" border="0"/>
               </td>
         	  <td width="60" align="center" valign="middle">
-        	  	<a href="/oabase/user/ModifyPassword.jsp" style="text-decoration:none" target="_blank"><span class="TOPSTYLE">ÐÞ¸ÄÃÜÂë</span></a>
+        	  	<a href="http://10.99.20.12/xhweb/change_ssopasswd.jsp" style="text-decoration:none" target="_blank"><span class="TOPSTYLE">ÐÞ¸ÄÃÜÂë</span></a>
         	  </td>
         	   
               <td width="32" align="right" valign="middle">  <span onclick="_logout();" style="cursor:hand" class="TOPSTYLE"><img src="/cms/images/top/top_out.png" border="0" /></span></td>

@@ -296,7 +296,7 @@ A:HOVER {COLOR:#FF0000; TEXT-DECORATION:UNDERLINE}
             <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr>
                   <td width="65" height="30" align="right" bgcolor="#FFFFFF" class="message_title">搜索文件夹</td>
-                  <td colspan="2" align="left" nowrap="nowrap" bgcolor="#FFFFFF" class="green-12" style="cursor:hand;"><select name="folder" >
+                  <td colspan="2" align="left" nowrap="nowrap" bgcolor="#FFFFFF" class="green-12" style="cursor:hand;"><select name="folder" style="width:94px;">
                   	  <option value="0" >所有文件夹</option>
                       <option value="Inbox" >收件箱</option>
                       <option value="Sent" >发件箱</option>
@@ -313,7 +313,7 @@ A:HOVER {COLOR:#FF0000; TEXT-DECORATION:UNDERLINE}
                 </tr>
                 <tr>
                   <td width="60" height="30" align="right" bgcolor="#FFFFFF" class="message_title">是否已读</td>
-                  <td colspan="2" align="left" nowrap="nowrap" bgcolor="#FFFFFF" class="green-12" style="cursor:hand;"><select name="isRead" style="width:90px;">
+                  <td colspan="2" align="left" nowrap="nowrap" bgcolor="#FFFFFF" class="green-12" style="cursor:hand;"><select name="isRead" style="width:94px;">
                     <option value="0">全部</option>
                     <option value="1">未读邮件</option>
                     <option value="2">已读邮件</option>
@@ -323,13 +323,13 @@ A:HOVER {COLOR:#FF0000; TEXT-DECORATION:UNDERLINE}
                   <td width="65" height="30" align="right" bgcolor="#FFFFFF" class="message_title" nowrap="nowrap">接收时间从</td>
                   
                   <td width="15" align="left" nowrap="nowrap" bgcolor="#FFFFFF" class="" style="cursor:hand;">
-                  <input name="startTime" class="Wdate" type="text" onClick="WdatePicker()" size="12" value="" /></td>
+                  <input name="startTime" class="Wdate" type="text" onClick="WdatePicker()" size="9" value="" style="width:94px;width:90px\9;_width:94px;"/></td>
                 </tr>
                 <tr>
                   <td width="65" height="30" align="right" bgcolor="#FFFFFF" class="message_title" nowrap="nowrap">至</td>
                   
                   <td width="15" align="left" nowrap="nowrap" bgcolor="#FFFFFF" class="" style="cursor:hand;">
-                  <input name="endTime" class="Wdate" type="text" onClick="WdatePicker()" size="12" value=""/></td>
+                  <input name="endTime" class="Wdate" type="text" onClick="WdatePicker()" size="9" value="" style="width:94px;width:90px\9;_width:94px;"/></td>
                 </tr>
             </table>            
             </td>
@@ -338,7 +338,7 @@ A:HOVER {COLOR:#FF0000; TEXT-DECORATION:UNDERLINE}
             <td bgcolor="#FFFFFF"  height="30">
             <table width="96%" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td width="100" align="right" bgcolor="#FFFFFF"><input id="subject" name="subject" type="text" class="biankuang-blue" size="10" value="" /></td>
+                  <td width="100" align="right" bgcolor="#FFFFFF"><input id="subject" name="subject" type="text" class="biankuang-blue" size="9" value="" /></td>
                   <td width="80" align="center" nowrap="nowrap" bgcolor="#E0EDF8" class="message_title_bold" style="cursor:hand;" onClick="javascript:search('<%=path%>')" >标题搜索</td>
                 </tr>
             </table>            
