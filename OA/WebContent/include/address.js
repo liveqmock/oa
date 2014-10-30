@@ -12,6 +12,19 @@ var selSend = new Array();
 var selcc = new Array();
 var selbcc =new Array();
 
+function _nextsibling(n){
+	var x=n.nextSibling;
+	while (x.nodeType!=1){
+		x=x.nextSibling;
+	}
+	return x;
+}
+
+function _firstChild(n){
+	if (n.firstElementChild) return n.firstElementChild; 
+	return n.firstChild;
+}
+
 function addPerson(cname, uuid, parentId, type){
 	var span = document.createElement("span");
 	htmlstr="<span class=\"send\" personType=\"" + 
@@ -20,8 +33,11 @@ function addPerson(cname, uuid, parentId, type){
  		");\" title=\"个人分组成员" + 
  		"\"><img src=\"../images/person.gif\">"  + cname + ","
  		"</span>";
- 	document.getElementById(parentId).appendChild(span);
+	var div = document.getElementById(parentId);
+ 	div.appendChild(span);
  	span.outerHTML = htmlstr;
+ 	if (_firstChild(_nextsibling(_nextsibling(div.parentNode))).alt === '收缩') 
+ 		div.style.height = div.scrollHeight;
 	document.all("sendType").value = type;
 }
 
@@ -85,6 +101,9 @@ function delSel(type){
 		}else if (type == 2){
 			sendId = sendbccId;
 		}
+		var div = document.getElementById(sendId);
+		if (_firstChild(_nextsibling(_nextsibling(div.parentNode))).alt === '收缩') 
+	 		div.style.height = '100%';;
 	}
 
 }
@@ -184,6 +203,9 @@ function loadPerson(sendType){
 		var span = document.createElement("span");
 		ele.appendChild(span);
 		span.outerHTML = tempStr;
+		
+		if (_firstChild(_nextsibling(_nextsibling(ele.parentNode))).alt === '收缩') 
+			ele.style.height = ele.scrollHeight;
 	}
 	//setShow(sendType,showName);
 
