@@ -136,7 +136,7 @@ if (!personlist.isEmpty()){
 								尾 页
 								</td>
 								<td align="right" width="50%">
-								<select name ='ee' onChange="javaScript:_toPage(this.value)" style="width:50px;font-size:9.5px">
+								<select name ='ee' onChange="javaScript:_toPage(this.value)" style="width:60px;font-size:12px">
 								    <option value='0'>页 数</option>
 								</select>
 								第&nbsp;1&nbsp;页&nbsp;共&nbsp;1&nbsp;页&nbsp;&nbsp;共有<%=i%>条记录
