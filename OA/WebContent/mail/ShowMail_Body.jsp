@@ -320,7 +320,7 @@ function _hiderec(){
 				 <tr>
 				 <td height="26" align="right" bgcolor="#FFFFFF" class="message_title">ÕıÎÄÄÚÈİ£º</td>
                     <td colspan="3"  bgcolor="#FFFFFF">
-					 <div  style=" width:600px;height:190px;border:1px solid #000" class="message_title" align="left">
+					 <div  style=" width:600px;height:190px;border:1px solid #000;overflow:auto" class="message_title" align="left">
 					<%=request.getAttribute("content")%>
 					</div>
 					</td>
