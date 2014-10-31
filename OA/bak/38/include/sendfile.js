@@ -1,0 +1,606 @@
+/**
+ *	人员查找页面的获得所选择的人或者组织
+ * findperson.jsp
+ */
+function getSearchPerson(){
+	var reSelectPersons = new Array();
+	var selectPerson = false;
+	//取道所有的选择框
+	var persons = document.getElementsByName("personid");
+	for(var i=0;i<persons.length;i++){
+		//判断是否是复选框
+		if (isCheckBox(persons[i])){
+			//判断是否是选中的
+			if (persons[i].checked){
+				//清除选择
+				persons[i].checked = false;
+				selectPerson = true;
+				//取出数据存放到返回的数组里面
+				try{
+					var userValue = persons[i].value;
+					var userValueArray = userValue.split("ш");
+					var reUsers = new Array();
+					reUsers["value"] = userValueArray[0];
+					reUsers["name"] = userValueArray[1];
+					reUsers["department"] = userValueArray[2];
+					reUsers["uuid"] = userValueArray[3];
+					reUsers["type"] = "0";
+					reSelectPersons[reSelectPersons.length] = reUsers;
+				}catch(e){
+				//选择的数据有问题，这里给忽略掉
+					alert("出现异常：" + e);
+				}
+			}
+		}
+	}
+	//如果没有选中给出提示
+	if (!selectPerson){
+		alert("请选择人员！");
+		return;
+	}
+	//这里将数据传给选择人员列表的方法
+	window.top.setPersons(reSelectPersons);
+}
+
+function getSelectOrg(){
+	var reSelectOrgs = new Array();
+	var selectOrg = false;
+	//取道所有的选择框
+	var orgs = document.getElementsByName("orgid");
+	for(var i=0;i<orgs.length;i++){
+		//判断是否是复选框
+		if (isCheckBox(orgs[i])){
+			//判断是否是选中的
+			if (orgs[i].checked){
+				//清除选择
+				orgs[i].checked = false;
+				selectOrg = true;
+				//取出数据存放到返回的数组里面
+				try{
+					var userValue = orgs[i].value;
+					var userValueArray = userValue.split("ш");
+					var reUsers = new Array();
+					reUsers["value"] = userValueArray[3];
+					reUsers["name"] = userValueArray[1];
+					reUsers["department"] = userValueArray[1];
+					reUsers["uuid"] = userValueArray[3];
+					reUsers["type"] = "1";
+					reSelectOrgs[reSelectOrgs.length] = reUsers;
+				}catch(e){
+				//选择的数据有问题，这里给忽略掉
+					alert("出现异常：" + e);
+				}
+			}
+		}
+	}
+	//如果没有选中给出提示
+	if (!selectOrg){
+		alert("请选择组织！");
+		return;
+	}
+	//这里将数据传给选择人员列表的方法
+	window.top.setPersons(reSelectOrgs);
+}
+
+function getSearchOrg(){
+	var reSelectPersons = new Array();
+	var selectPerson = false;
+	//取道所有的选择框
+	var persons = document.getElementsByName("personid");
+	for(var i=0;i<persons.length;i++){
+		//判断是否是复选框
+		if (isCheckBox(persons[i])){
+			//判断是否是选中的
+			if (persons[i].checked){
+				//清除选择
+				persons[i].checked = false;
+				selectPerson = true;
+				//取出数据存放到返回的数组里面
+				try{
+					var userValue = persons[i].value;
+					var userValueArray = userValue.split("ш");
+					var reUsers = new Array();
+					reUsers["value"] = userValueArray[0];
+					reUsers["name"] = userValueArray[1];
+					reUsers["department"] = userValueArray[1];
+					reUsers["uuid"] = userValueArray[0];
+					reUsers["type"] = document.all("isperson").value;
+					reSelectPersons[reSelectPersons.length] = reUsers;
+				}catch(e){
+				//选择的数据有问题，这里给忽略掉
+					alert("出现异常：" + e);
+				}
+			}
+		}
+	}
+	//如果没有选中给出提示
+	if (!selectPerson){
+		if (document.all("isperson").value == "00"){
+			alert("请选择公共分组！");
+		}else if (document.all("isperson").value == "01"){
+			alert("请选择个人分组！");
+		}else{
+			alert("请选择分组！");
+		}
+		return;
+	}
+	//这里将数据传给选择人员列表的方法
+	window.top.setPersons(reSelectPersons);
+}
+/**
+ * 将选择的所有用户发送至文件传递页面
+ * selectbyorg.jsp
+ */
+function setSelectUserByOrg() {
+	var reArray = new Array();
+	var alluserObj = document.getElementsByName("selectedperson")[0];
+	for (var i=0;i<alluserObj.length;i++) {
+		var reUserArray = new Array();
+		reUserArray["value"] = alluserObj.options(i).value;
+		reUserArray["name"] = alluserObj.options(i).text;
+		reUserArray["department"] = alluserObj.options(i).getAttribute("department");
+		reUserArray["uuid"] = alluserObj.options(i).getAttribute("uuid");
+		reUserArray["type"] = alluserObj.options(i).getAttribute("personType");
+		reArray[reArray.length] = reUserArray;
+	}
+	setAllData(reArray);
+	return true;
+}
+
+/**
+ * 判断制定的Element是否是复选框
+ */
+function isCheckBox(ele){
+	if (ele.tagName.toLowerCase() == "input" && ele.type.toLowerCase() == "checkbox"){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**
+ * 将所有数据返回至文件传递页面
+ */
+function setAllData(persons){
+	window.top.setSelect(persons);
+	closeMe();
+}
+
+ /**
+  * 关闭自己
+  */
+ function closeMe(){
+ 	window.top.close();
+ }
+//selected.jsp//
+
+	/**
+	 * 得到table的标题部分
+	 */
+	function getTableHead(row){
+		var tableHtml = "<table id=\"personList\" width=\"100%\"  border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n";
+		tableHtml += "	<tr bgcolor=\"#FFFBEF\">\n"; 
+        tableHtml += "		<td width=\"13%\"  height=\"22\"><div align=\"center\" class=\"title-04\">选择</div></td>\n";
+       // tableHtml +="	<td background=\"" + urlPath + "/images/bg-13.gif\"></td>\n";
+        tableHtml += "		<td width=\"0\" rowspan=\"" + row + "\" valign=\"top\" background=\"" + urlPath + "/images/bg-24.gif\"><img src=\"" + urlPath + "/images/bg-24.gif\" width=\"2\" height=\"2\"></td>\n";
+        tableHtml += "		<td width=\"12%\" ><div align=\"center\" class=\"title-04\">类型</div></td>\n";
+        tableHtml += "		<td width=\"0\" rowspan=\"" + row + "\" valign=\"top\" background=\"" + urlPath + "/images/bg-24.gif\"><img src=\"" + urlPath + "/images/bg-24.gif\" width=\"2\" height=\"2\"></td>\n";
+        tableHtml += "		<td width=\"25%\" ><div align=\"center\" class=\"title-04\">组名</div></td>\n";
+        tableHtml += "		<td width=\"0\" rowspan=\"" + row + "\" valign=\"top\" background=\"" + urlPath + "/images/bg-24.gif\"><img src=\"" + urlPath + "/images/bg-24.gif\" width=\"2\" height=\"2\"></td>\n";
+        tableHtml += "		<td width=\"13%\" ><div align=\"center\" class=\"title-04\">选择</div></td>\n";
+        tableHtml += "		<td width=\"0\" rowspan=\"" + row + "\" valign=\"top\" background=\"" + urlPath + "/images/bg-24.gif\"><img src=\"" + urlPath + "/images/bg-24.gif\" width=\"2\" height=\"2\"></td>\n";
+        tableHtml += "		<td width=\"12%\" ><div align=\"center\" class=\"title-04\">类型</div></td>\n";
+       	tableHtml += "		<td width=\"0\" rowspan=\"" + row + "\" valign=\"top\" background=\"" + urlPath + "/images/bg-24.gif\"><img src=\"" + urlPath + "/images/bg-24.gif\" width=\"2\" height=\"2\"></td>\n";
+        tableHtml += "		<td width=\"25%\" ><div align=\"center\" class=\"title-04\">组名</div></td>\n";
+		tableHtml += "	</tr>\n";
+		return tableHtml;
+	}
+	/**
+	 * 得到Table中的一根线
+	 */
+	function getLine(max){
+		var tableHtml = "<tr>\n";
+		if (max != null){
+	        tableHtml +="	<td background=\"" + urlPath + "/images/bg-13.gif\"></td>\n";
+	        tableHtml +="	<td background=\"" + urlPath + "/images/bg-13.gif\"></td>\n";
+	        tableHtml +="	<td background=\"" + urlPath + "/images/bg-13.gif\"></td>\n";
+	        tableHtml +="	<td background=\"" + urlPath + "/images/bg-13.gif\"></td>\n";
+	        tableHtml +="	<td background=\"" + urlPath + "/images/bg-13.gif\"></td>\n";
+		}
+        tableHtml +="	<td background=\"" + urlPath + "/images/bg-13.gif\"></td>\n";
+        tableHtml +="	<td background=\"" + urlPath + "/images/bg-13.gif\"></td>\n";
+        tableHtml +="	<td background=\"" + urlPath + "/images/bg-13.gif\"></td>\n";
+        tableHtml +="	<td background=\"" + urlPath + "/images/bg-13.gif\"></td>\n";
+        tableHtml +="	<td background=\"" + urlPath + "/images/bg-13.gif\"></td>\n";
+        tableHtml +="	<td background=\"" + urlPath + "/images/bg-13.gif\"></td>\n";
+        tableHtml += "</tr>\n";                
+        return tableHtml;
+
+        return "";
+	}
+	/**
+	 * 将用户放进table
+	 */
+	function setPersons(persons,select){
+		var perList = getAllPerson(select);
+
+		var row = persons.length + perList.length;
+		var pan1 = (row/2);
+		var pan2 = (row%2);
+		if (pan2 != 0){
+			pan1 += 0.5;
+		}
+		row = (pan1+1)*2;
+		var tableHtml = getTableHead(row);
+		tableHtml += getLine();
+		if (pan1==0){
+			setNonePerson();
+			return;
+		}
+
+		var linObj = document.getElementsByName("rowLine");
+		for (var i=0;i<linObj.length;i++){
+			linObj.rowspan = row;
+		}
+		//取得所有的人的id，为了判重
+		var allDataId = ",";
+		for(var ii=0;ii<perList.length;ii++){
+			allDataId += perList[ii]["value"] + ",";
+		}
+		var j = 0;
+		for(var i=0;i<perList.length;i++){
+			var name = perList[i]["name"];
+			var value = perList[i]["value"];
+			var department = perList[i]["department"];
+			var uuid = perList[i]["uuid"];
+			var type = perList[i]["type"];
+			i++;
+			var name1 = null;
+			var value1 = null;
+			var department1 = null;
+			var uuid1 = null;
+			var type1 = null;
+			if (i<perList.length){
+				name1 = perList[i]["name"];
+				value1 = perList[i]["value"];
+				department1 = perList[i]["department"];
+				uuid1 = perList[i]["uuid"];
+				type1 = perList[i]["type"];
+			}else{
+				
+				while(true){
+					if (persons.length>j){
+						if (allDataId.indexOf("," + persons[j]["value"] + ",") == -1){
+							name1 = persons[j]["name"];
+							value1 = persons[j]["value"];
+							department1 = persons[j]["department"];
+							uuid1 = persons[j]["uuid"];
+							type1 = persons[j]["type"];
+							j++;
+							break;
+						}else{
+							j++;
+						}
+					}else{
+						break;
+					}
+				}
+			}
+			tableHtml += getTwoPerson(name,value,department,uuid,type,name1,value1,department1,uuid1,type1);
+			if (color == color0){
+				color = color1;
+			}else{
+				color = color0;
+			}
+			tableHtml += getLine();
+		}
+		for (;j<persons.length;j++){
+				var name = null;
+				var value = null;
+				var department = null;
+				var type = null;
+			while(true){
+				if (allDataId.indexOf("," + persons[j]["value"] + ",") == -1){	
+					var name = persons[j]["name"];
+					var value = persons[j]["value"];
+					var department = persons[j]["department"];
+					var uuid = persons[j]["uuid"];
+					var type = persons[j]["type"];
+					j++;
+					break;
+				}else{
+					j++;
+					if (j>=persons.length){
+						break;
+					}
+				}
+				
+			}
+			var name1 = null;
+			var value1 = null;
+			var department1 = null;
+			var uuid1 = null;
+			var type1 = null;
+			if (j<persons.length){
+				while(true){
+					if (allDataId.indexOf("," + persons[j]["value"] + ",") == -1){	
+						name1 = persons[j]["name"];
+						value1 = persons[j]["value"];
+						department1 = persons[j]["department"];
+						uuid1 = persons[j]["uuid"];
+						type1 = persons[j]["type"];
+						break;
+					}else{
+						j++;
+						if (j>=persons.length){
+						break;
+						}
+					}
+				}
+			}
+			if (value != null){
+				tableHtml += getTwoPerson(name,value,department,uuid,type,name1,value1,department1,uuid1,type1);
+				if (color == color0){
+					color = color1;
+				}else{
+					color = color0;
+				}
+				tableHtml += getLine();
+			}
+		}
+		tableHtml += getTableEnd();
+		data.innerHTML = tableHtml;
+		
+	}
+	/**
+	 * 得到一行tr
+	 */
+	function getTwoPerson(name,value,department,uuid,type,name1,value1,department1,uuid1,type1){
+		var tableHtml = "<tr bgcolor=\"" + color + "\" onMouseOut=\"this.bgColor='" + color + "';\" onMouseOver=\"this.bgColor='" + color2 + "';\">\n";
+		tableHtml +="	<td align=\"center\" ><input type=\"checkbox\" name=\"personid\" value=\"" + value + "\"><input type=\"hidden\" name=\"cnname\" value=\"" + name + "\"><input type=\"hidden\" name=\"department\" value=\"" + department + "\"><input type=\"hidden\" name=\"uuid\" value=\"" + uuid + "\"><input type=\"hidden\" name=\"perType\" value=\"" + type + "\"></td>\n";
+			//var typeImg = "person.gif";
+		if (type == "00"){
+			//typeImg = "commongroup.gif";
+			tableHtml +="	<td align=\"center\" >人事分组</td>\n";
+		}else if (type == "01"){
+			//typeImg = "indigroup.gif";
+			tableHtml +="	<td align=\"center\" >个人分组</td>\n";
+		}else if (type == "02"){
+			//typeImg = "commongroup.gif";
+			tableHtml +="	<td align=\"center\" >公共分组</td>\n";
+
+			}else if (type == "1"){
+				tableHtml +="	<td align=\"center\" >组织</td>\n";
+		}else{
+			tableHtml +="	<td align=\"center\" ><div title=\"所属组织：&#13;&#10;" + department + "\">人员</div></td>\n";
+    	}
+        tableHtml +="	<td height=\"22\" class=\"text-01\" align=\"center\">" + name + "</td>\n";
+		if (value1 == null || value1 == ""){
+			tableHtml +="<td></td>\n";
+			tableHtml +="<td></td>\n";
+			tableHtml +="<td class=\"text-01\"></td>\n";
+		}else{
+			tableHtml +="	<td align=\"center\" ><input type=\"checkbox\" name=\"personid\" value=\"" + value1 + "\"><input type=\"hidden\" name=\"cnname\" value=\"" + name1 + "\"><input type=\"hidden\" name=\"department\" value=\"" + department1 + "\"><input type=\"hidden\" name=\"uuid\" value=\"" + uuid1 + "\"><input type=\"hidden\" name=\"perType\" value=\"" + type1 + "\"></td>\n";
+				//var typeImg1 = "person.gif";
+			if (type1 == "00"){
+				//typeImg1 = "commongroup.gif";
+				tableHtml +="	<td align=\"center\" >公共分组</td>\n";
+			}else if (type1 == "01"){
+				//typeImg1 = "indigroup.gif";		
+				tableHtml +="	<td align=\"center\" >个人分组</td>\n";
+			}else if (type == "02"){
+			//typeImg = "commongroup.gif";
+			tableHtml +="	<td align=\"center\" >公共分组</td>\n";
+
+			}else if (type1 == "1"){
+				tableHtml +="	<td align=\"center\" >组织</td>\n";
+			}else{
+				tableHtml +="	<td align=\"center\" ><div title=\"所属组织：&#13;&#10;" + department1 + "\">人员</div></td>\n";
+			}
+	        tableHtml +="	<td height=\"22\" class=\"text-01\" align=\"center\">" + name1 + "</td>\n";
+		}
+        tableHtml +="</tr>\n";
+        return tableHtml;
+	}
+	/**
+	 * 得到Table的结束
+	 */
+	function getTableEnd(){
+		return "</table>\n";
+	}
+	/**
+	 * 得到页面上所有已经选择的人
+	 */
+	function getAllPerson(select){
+		var perList = new Array();
+		var personList = document.getElementsByName("personList");
+		if (personList == null || personList.length==0){
+			return perList ;
+		}
+		var personValues = personList[0].getElementsByTagName("td");
+		for (var i=0;i<personValues.length;i++){
+			if (select != null && select == true ){
+				var personData = new Array();
+				var isData = false;
+				perOneObj = personValues[i].getElementsByTagName("input");
+				for(var mm=0;mm<perOneObj.length;mm++){
+					if (perOneObj[mm].name == "cnname"){
+						personData["name"] = perOneObj[mm].value;
+					}
+					if (perOneObj[mm].name == "personid"){
+						personData["value"] = perOneObj[mm].value;
+						if (!perOneObj[mm].checked){
+							isData = true;
+						}
+					}
+					if (perOneObj[mm].name == "department"){
+						personData["department"] = perOneObj[mm].value;
+					}
+					if (perOneObj[mm].name == "perType"){
+						personData["type"] = perOneObj[mm].value;
+					}
+					if (perOneObj[mm].name == "uuid"){
+						personData["uuid"] = perOneObj[mm].value;
+					}
+				}
+				if (isData){
+					perList[perList.length] = personData;
+				}
+
+			}else{
+			
+				var personData = new Array();
+				var isData = false;
+				perOneObj = personValues[i].getElementsByTagName("input");
+				for(var mm=0;mm<perOneObj.length;mm++){
+					
+					if (perOneObj[mm].name == "cnname"){
+						personData["name"] = perOneObj[mm].value;
+					}
+					if (perOneObj[mm].name == "personid"){
+						personData["value"] = perOneObj[mm].value;
+						isData = true;
+					}
+					if (perOneObj[mm].name == "department"){
+						personData["department"] = perOneObj[mm].value;
+					}
+					if (perOneObj[mm].name == "uuid"){
+						personData["uuid"] = perOneObj[mm].value;
+					}
+					if (perOneObj[mm].name == "perType"){
+						personData["type"] = perOneObj[mm].value;
+					}
+				}
+				if (isData){
+					perList[perList.length] = personData;
+				}
+			}
+		}
+		return perList;
+	}
+	/**
+	 * 没有选择人员的显示
+	 */
+	function setNonePerson(){
+		var tableHtml = getTableHead(2);
+		tableHtml += getLine();
+		tableHtml +="<tr><td align=\"center\" height=\"22\" colspan=\"12\"><p  class=\"title-04\">没有选中人员或组</p></td></tr>\n";
+		tableHtml += getLine(true);
+		tableHtml += getTableEnd();
+		data.innerHTML = tableHtml;
+	}
+	/**
+	 * 删除选择的人
+	 */
+	 function removeSelect(){
+		setPersons(new Array(),true);
+	 }
+
+	 /**
+	  * 提交选择的人
+	  */
+	 function selectToCommit(){
+	 	window.top.setSelect(getAllPerson());
+	 	closeMe();
+	 }
+	 /**
+	  * 得到不包含给出列表的所有人并更新列表
+	  * param persons 列表字符串 шaaшssш
+	  */
+	 function getNoSelectPerson(persons){
+		var perList = new Array();
+		var personList = document.getElementsByName("personList");
+		if (personList == null || personList.length==0){
+			return perList ;
+		}
+		var personValues = personList[0].getElementsByTagName("td");
+		for (var i=0;i<personValues.length;i++){
+			var personData = new Array();
+			var isData = false;
+			perOneObj = personValues[i].getElementsByTagName("input");
+			for(var mm=0;mm<perOneObj.length;mm++){
+				
+				if (perOneObj[mm].name == "cnname"){
+					personData["name"] = perOneObj[mm].value;
+				}
+				if (perOneObj[mm].name == "personid"){
+					var oneId = perOneObj[mm].value;
+					personData["value"] = oneId;
+					if (persons.indexOf("ш" + oneId + "ш") == -1){
+						isData = true;
+					}
+				}
+				if (perOneObj[mm].name == "department"){
+					personData["department"] = perOneObj[mm].value;
+				}
+				if (perOneObj[mm].name == "uuid"){
+					personData["uuid"] = perOneObj[mm].value;
+				}
+				if (perOneObj[mm].name == "perType"){
+					personData["type"] = perOneObj[mm].value;
+				}
+			}
+			if (isData){
+				perList[perList.length] = personData;
+			}
+		}
+		clearAndSetPersons(perList);
+	}
+	/**
+	 * 清除以前的数据然后将用户放进table
+	 */
+	function clearAndSetPersons(perList){
+		var row = perList.length;
+		var pan1 = (row/2);
+		var pan2 = (row%2);
+		if (pan2 != 0){
+			pan1 += 0.5;
+		}
+		row = (pan1+1)*2;
+		var tableHtml = getTableHead(row);
+		tableHtml += getLine();
+		if (pan1==0){
+			setNonePerson();
+			return;
+		}
+
+		var linObj = document.getElementsByName("rowLine");
+		for (var i=0;i<linObj.length;i++){
+			linObj.rowspan = row;
+		}
+		//取得所有的人的id，为了判重
+		var allDataId = ",";
+		for(var ii=0;ii<perList.length;ii++){
+			allDataId += perList[ii]["value"] + ",";
+		}
+		for(var i=0;i<perList.length;i++){
+			var name = perList[i]["name"];
+			var value = perList[i]["value"];
+			var department = perList[i]["department"];
+			var uuid = perList[i]["uuid"];
+			var type = perList[i]["type"];
+			i++;
+			var name1 = null;
+			var value1 = null;
+			var department1 = null;
+			var type1 = null;
+			var uuid1 = null;
+			if (i<perList.length){
+				name1 = perList[i]["name"];
+				value1 = perList[i]["value"];
+				uuid1 = perList[i]["uuid"];
+				department1 = perList[i]["department"];
+				type1 = perList[i]["type"];
+			}
+			tableHtml += getTwoPerson(name,value,department,type,name1,value1,department1,type1);
+			if (color == color0){
+				color = color1;
+			}else{
+				color = color0;
+			}
+			tableHtml += getLine();
+		}
+		tableHtml += getTableEnd();
+		data.innerHTML = tableHtml;
+		
+	}
