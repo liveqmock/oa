@@ -12,6 +12,19 @@ var selSend = new Array();
 var selcc = new Array();
 var selbcc =new Array();
 
+function _nextsibling(n){
+	var x=n.nextSibling;
+	while (x.nodeType!=1){
+		x=x.nextSibling;
+	}
+	return x;
+}
+
+function _firstChild(n){
+	if (n.firstElementChild) return n.firstElementChild; 
+	return n.firstChild;
+}
+
 //得到所有选择信息
 function getSelect(type){
 	if (type == 1){
@@ -42,13 +55,15 @@ function selectName(obj,type){
 function removeSel(obj,type){
 	var selIndex = getArray(obj,type);
 	if (selIndex != -1){
-		getSelObj(type)[selIndex] = "";
+		getSelObj(type).splice(selIndex, 1);
+		//getSelObj(type)[selIndex] = "";
 	}
 }
 //选中
 function addSel(obj,type){
 	if (getArray(obj,type) == -1){
-		getSelObj(type)[getSelObj(type).length] = obj;
+		getSelObj(type).push(obj);
+		//getSelObj(type)[getSelObj(type).length] = obj;
 	}
 }
 //删除选择的一个人
@@ -60,6 +75,7 @@ function delSel(type){
 			isDelete = true;
 		}
 	}
+	getSelObj(type).splice(0, getSelObj(type).length);
 	if (isDelete){
 		getAllPerson(type);
 		var sendId = sendToId;
@@ -68,14 +84,16 @@ function delSel(type){
 		}else if (type == 2){
 			sendId = sendbccId;
 		}
-		if (document.getElementById(sendId).innerHTML == ""){
-			document.getElementById(sendId).style.height = "22px";
+		var div = document.getElementById(sendId);
+		if (_nextsibling(_firstChild(_firstChild(_nextsibling(div.parentNode.parentNode)))).alt === '收缩') {
+			if (div.innerHTML == ""){
+				div.style.height = "22px";
+			}else{
+				div.style.height = "100%";
+			}
 		}
-		//var tempArray = getOurPerson(type);
-		//if (tempArray.length<50){
-		//	reloadPerson(type,tempArray);
-		//}
 	}
+
 }
 //得到选择类型的对象（发送，抄送，密送）
 function getSelObj(type){
@@ -110,6 +128,7 @@ function loadPerson(sendType){
 	var selValue = getSelect(sendType);
 	//var allName = "";
 	var showName = "";
+	if (selValue.length > 0) ele.innerHTML = '';
 	for(var i=0;i<selValue.length;i++){
 		var typeImg = "person.gif";
 		var type = selValue[i]["type"];
@@ -123,24 +142,24 @@ function loadPerson(sendType){
 			var char = "m";
 	 		if (type == "00"){
 				char = "B";
-				tempStr +="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"] + "\"><font face=\"Webdings\" color=\"#009900\">" + char + "</font>" + nameValue + "</span>";
+				tempStr ="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"] + "\"><font face=\"Webdings\" color=\"#009900\">" + char + "</font>" + nameValue + "</span>";
 			}else if (type == "01"){
 				char = "H";
-				tempStr +="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"] + "\"><font face=\"Webdings\" color=\"#009900\">" + char + "</font>" + nameValue + "</span>";
+				tempStr ="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"] + "\"><font face=\"Webdings\" color=\"#009900\">" + char + "</font>" + nameValue + "</span>";
 			}else{
-		 		tempStr +="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["uuid"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"] + "\"><font face=\"Webdings\" color=\"#009900\">" + char + "</font>" + nameValue + "</span>";
+		 		tempStr ="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["uuid"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"] + "\"><font face=\"Webdings\" color=\"#009900\">" + char + "</font>" + nameValue + "</span>";
 	 		}
 	 	}else{
 			var tuuid= selValue[i]["uuid"];
 			if (type == "00"){
 				typeImg = "commongroup.gif";
-				tempStr +="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"公共分组\"><img src=\"" + urlPath + "/images/" + typeImg + "\">" + nameValue + "</span>";
+				tempStr ="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"公共分组\"><img src=\"" + urlPath + "/images/" + typeImg + "\">" + nameValue + "</span>";
 			}else if (type == "01"){
 				typeImg = "indigroup.gif";
-				tempStr +="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"个人分组\"><img src=\"" + urlPath + "/images/" + typeImg + "\">" + nameValue + "</span>";
+				tempStr ="<span class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["value"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"个人分组\"><img src=\"" + urlPath + "/images/" + typeImg + "\">" + nameValue + "</span>";
 			}else{
-		 		tempStr +="<span id=\""+ tuuid +"\" class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["uuid"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"]+ _phone(tuuid) + "\"><img src=\"" + urlPath + "/images/" + typeImg + "\">" + nameValue + "</span>";
-			}
+		 		tempStr ="<span id=\""+ tuuid +"\" class=\"send\" personType=\"" + selValue[i]["type"] + "\" department=\"" + selValue[i]["department"] + "\" personName=\"" + selValue[i]["name"] + "\"  person=\"" + selValue[i]["value"] + "\" uuid=\"" + selValue[i]["uuid"] + "\" onclick=\"selectName(this," + sendType + ");\" title=\"所属组织：&#13;&#10;" + selValue[i]["department"]+ _phone(tuuid) + "\"><img src=\"" + urlPath + "/images/" + typeImg + "\">" + nameValue + "</span>";
+		}
 		
 			
 		}
@@ -149,10 +168,13 @@ function loadPerson(sendType){
 			showName += ",";
 		}
 		showName += selValue[i]["name"];
+
+		var span = document.createElement("span");
+		ele.appendChild(span);
+		span.outerHTML = tempStr;
+		if (_nextsibling(_firstChild(_firstChild(_nextsibling(ele.parentNode.parentNode)))).alt === '收缩') 
+			ele.style.height = ele.scrollHeight;
 	}
-	//document.all("sendtoperson").value = tempStr;
-	//setShow(sendType,showName);
-	ele.innerHTML = tempStr;
 }
 //重新加载数据
 function reloadPerson(sendType,selValue){
@@ -249,7 +271,7 @@ function getSendHtml(){
 		spans[i].className ="send";
 	}
 	
-	document.sendForm.sendHtml.value = document.getElementById(sendToId).innerHTML;
+	document.all("sendHtml").value = document.getElementById(sendToId).innerHTML;
 	
 }
 

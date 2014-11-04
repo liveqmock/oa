@@ -198,13 +198,13 @@ body {
 
 						<td width="50%" bgcolor="#FFFFFF">
 							<div>
-								<span id="sendto" class="sendToText"
+								<div id="sendto" class="sendToText" style="width:400px;overflow:hidden"
 									onselectstart="return(false)" state="0"> <%
  	if (userlist != null) {
  %>
 									<%=userlist%> <%
  	}
- %> </span>
+ %> </div>
 							</div>
 						</td>
 
