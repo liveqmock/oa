@@ -2,9 +2,9 @@
 
 <%@ page import="java.util.*"%>
 <%@ page import="java.sql.Timestamp"%>
-<%@ page import="com.icss.oa.zbs.duty.vo.TbZbsWorkinfomainVO"%>
-<%@ page import="com.icss.oa.zbs.duty.vo.TbZbsWorkinfoVO"%>
-<%@ page import="com.icss.oa.zbs.duty.vo.TbZbsWorkinfotypeVO"%>
+<%@ page import="com.icss.oa.zbs.rhduty.vo.TbRhWorkinfomainVO"%>
+<%@ page import="com.icss.oa.zbs.rhduty.vo.TbRhWorkinfoVO"%>
+<%@ page import="com.icss.oa.zbs.rhduty.vo.TbRhWorkinfotypeVO"%>
 <%
 	List typeList = new ArrayList();
 	//System.err.println("typeList1="+typeList.size());
@@ -14,7 +14,7 @@
 	List list = new ArrayList();
 	Map map1 = new HashMap();
 	for (int k = 0; k < typeList.size(); k++) {
-		TbZbsWorkinfotypeVO vo2 = (TbZbsWorkinfotypeVO) typeList.get(k);
+		TbRhWorkinfotypeVO vo2 = (TbRhWorkinfotypeVO) typeList.get(k);
 		list.add(vo2.getWitId().toString());
 		map1.put(vo2.getWitId(), vo2.getWitName());
 	}
@@ -22,15 +22,19 @@
 			: (List) request.getAttribute("dutyInfoList");
 	Map map = (Map) request.getAttribute("map") == null ? new HashMap()
 			: (Map) request.getAttribute("map");
-	TbZbsWorkinfomainVO mainvo = (TbZbsWorkinfomainVO) request
-			.getAttribute("vo") == null ? new TbZbsWorkinfomainVO()
-			: (TbZbsWorkinfomainVO) request.getAttribute("vo");
+	TbRhWorkinfomainVO mainvo = (TbRhWorkinfomainVO) request
+			.getAttribute("vo") == null ? new TbRhWorkinfomainVO()
+			: (TbRhWorkinfomainVO) request.getAttribute("vo");
 
+	String flag= mainvo.getFlag() == null ? "0" : (String)mainvo.getFlag();
+	String lastEditer=mainvo.getLastEditer() == null ? "" : (String)mainvo.getLastEditer();
+	String lastIP=mainvo.getLastIP() == null ? "" : (String)mainvo.getLastIP();
+	System.out.println("在dutyview中，wim_id="+mainvo.getWimId()+",该日志的flag="+flag);
 	
 %>
 <html>
 	<head>
-		<title>值班信息查看</title>
+		<title>工作日志信息查看</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 		<SCRIPT language=JavaScript
 			src="/oabase/zbs/include/formverify/extendString.js"></SCRIPT>
@@ -90,22 +94,17 @@ body {
 }
 </style>
 <script language="javascript">
-window.onload = _hideSaveWord;
-function _hideSaveWord(){
-	if (!window.ActiveXObject){
-		document.getElementById('input_saveword').style.display = 'none';
-		document.getElementById('td_saveword').style.width = '20%';
-	}
-}
+
+
 
 function _return(){
-	document.form1.action="/oabase/servlet/MainDutyListServlet";
+	document.form1.action="/oabase/servlet/RhMainDutyListServlet";
 	document.form1.submit();
 }
 
 function sel(actindex){
 	<%for (int k = 0; k < typeList.size(); k++) {
-	TbZbsWorkinfotypeVO vo = (TbZbsWorkinfotypeVO) typeList.get(k);
+	TbRhWorkinfotypeVO vo = (TbRhWorkinfotypeVO) typeList.get(k);
 	Integer id = vo.getWitId();
 	String ids = id.toString();%>
 	if(actindex==<%=ids%>){				
@@ -179,18 +178,32 @@ document.body.innerHTML = oldstr;
 return false;
 } 
 
-function _opentb(){
-	window.open("/cms/cms/website/XHSZBS/znbm/layout2/layout2_1.jsp?channelId=499&siteId=3");
+
+
+function _warn(name,ip){
+
+alert(name +" 正在 "+ip+" 上编辑此日志，为保证日志内容的一致性，您只能浏览该日志！");
 }
 
-function _edittb(){
-	window.open("/cms/servlet/cms/manage/info/collect/infonew?SITE_ID=3&new_COLLECT_TYPE_CODE=1&CHANNEL_ID=499");
+function _hideSaveWord(){
+	if (!window.ActiveXObject){
+		document.getElementById('input_saveword').style.display = 'none';
+		document.getElementById('td_saveword').style.width = '20%';
+	}
+}
+
+window.onload=function(){
+sel('0');
+<%if("1".equals(flag)){%>
+		_warn('<%=lastEditer%>','<%=lastIP%>');
+	<%}%>
+	_hideSaveWord();
 }
 
 </script>
 	</head>
 
-<BODY text="#000000" leftMargin="0" topMargin="10" onLoad="sel('0')">
+<BODY text="#000000" leftMargin="0" topMargin="10" >
 
 		<form action="" name="form1">
 			<jsp:include page="/include/top.jsp" />
@@ -210,7 +223,7 @@ function _edittb(){
 							<TR>
 								<td height="30" colspan="2" class="block_title">
 									<div align="center">
-											值班信息登记
+											工作日志信息登记
 									</div>
 								</td>
 							</TR>
@@ -223,9 +236,9 @@ function _edittb(){
 								<td width="92%" bgcolor="#FFFFFF" class="message_title" valign="top">
 									<table border="0" cellspacing="0" cellpadding="0">
 										<tr>
-											<td>
-												<div align="right" class="message_title">
-													<div align="right">
+											<td valign="bottom" >
+												<div class="message_title" >
+													<div align="left">
 														<%
 															Timestamp time = (Timestamp) mainvo.getWitDate();
 															//System.err.println("Timestamp=" + time);
@@ -234,37 +247,26 @@ function _edittb(){
 																timestr = time.toString().substring(0, 10);
 															}
 														%>
-														<%=timestr%>
-														值班日志
-														<select name="dutytype" disabled>
-															<option value="1"
-																<%if ("1".equals(mainvo.getWitClass())) {%> selected
-																<%}%>>
-																白班
-															</option>
-															<option value="2"
-																<%if ("2".equals(mainvo.getWitClass())) {%> selected
-																<%}%>>
-																夜班
-															</option>
-														</select>
+														<%=timestr%> 工作日志
+														
+														
 													</div>
 												</div>
 											</td>
 											<td>
-												<div align="right" class="message_title">
-													<div align="right">
-														值班领导:
+												<div  class="message_title">
+													<div align="left">
+														白班领导:
 														<input name="leader" type="text" size="10" notnull="必须填写"
 															title="值班领导" value="<%=mainvo.getWitLeader()%>" readonly>
-														值班秘书:
+														夜班领导:
 														<input name="secret" type="text" size="10"
 															value="<%=mainvo.getWitSecret()%>" readonly>
 													</div>
 												</div>
 											</td>
 											
-											<td id="td_saveword" width="30%">
+											<td id="td_saveword" width="35%">
 											<div align="center">
 												<input id="input_saveword" type=button onClick="OpenWord(quanbu)" value="保存为WORD">&nbsp;
 												<input type=button onClick="printdiv('quanbu')" value=" 打印 ">&nbsp;
@@ -293,7 +295,7 @@ function _edittb(){
 														style="text-decoration: none"><font id="font_0">全部</font>
 													</a> <%
 														 	for (int i = 0; i < typeList.size(); i++) {
-														 		TbZbsWorkinfotypeVO vo3 = (TbZbsWorkinfotypeVO) typeList.get(i);
+														 		TbRhWorkinfotypeVO vo3 = (TbRhWorkinfotypeVO) typeList.get(i);
 														 		Integer id1 = vo3.getWitId();
 														 %> |<a href="#"
 														style="text-decoration: none"
@@ -301,10 +303,8 @@ function _edittb(){
 															id="font_<%=id1.toString()%>"><%=vo3.getWitName()%></font>
 													</a> <%
 														 	}
-														 %> |<a href="#"
-														style="text-decoration: none"
-														onClick="_opentb()">近期情况通报 </a>
-														|<a href="#" style="text-decoration:none"	onClick="_edittb()">近期情况通报上载</a></span>
+														 %> 
+														</span>
 														 <HR>
 												</div>
 											</td>
@@ -316,7 +316,7 @@ function _edittb(){
 														String ids = "";
 														String contents111 = "";
 														for (int a = 0; a < dutyInfoList.size(); a++) {
-															TbZbsWorkinfoVO infovo1 = (TbZbsWorkinfoVO) dutyInfoList.get(a);
+															TbRhWorkinfoVO infovo1 = (TbRhWorkinfoVO) dutyInfoList.get(a);
 															ids += infovo1.getWitId() + "||";
 															contents111 = infovo1.getWitContent();
 															if (contents111 == null)
@@ -330,13 +330,14 @@ function _edittb(){
 												<%
 													for (int j = 0; j < typeList.size(); j++) {
 														//System.err.println("你好2");
-														TbZbsWorkinfotypeVO vo4 = (TbZbsWorkinfotypeVO) typeList.get(j);
+														TbRhWorkinfotypeVO vo4 = (TbRhWorkinfotypeVO) typeList.get(j);
 														Integer id = vo4.getWitId();
 													
 														//String info = "<b>"+vo4.getWitName()+"</b><br>";
 														String info = " ";
 														if (ids.indexOf(id.toString()) >= 0) {
-															TbZbsWorkinfoVO infovo = (TbZbsWorkinfoVO) map.get(id);
+														System.out.println(map.toString());
+															TbRhWorkinfoVO infovo = (TbRhWorkinfoVO) map.get(id);
 															
 															if (infovo.getWitContent() != null) {
 																info = infovo.getWitContent();
@@ -363,21 +364,24 @@ function _edittb(){
 
 			
 		</form>
+		
+		
 	</BODY>
 	<script type="text/javascript">
 			function OpenWord(){   
 			ExcelSheet = new ActiveXObject('Word.Application');   
-			ExcelSheet.Application.Visible = true;
+			ExcelSheet.Application.Visible = true;   
 			var mydoc=ExcelSheet.Documents.Add('',0,1);   
-			myRange =mydoc.Range(0,1);
-			var sel=document.body.createTextRange();
+			myRange =mydoc.Range(0,1);   
+			var sel=document.body.createTextRange(); 
 			sel.moveToElementText(quanbu);
-			sel.select();
-			document.execCommand('Copy'); 
-			sel.moveEnd('character');
+			sel.select();   
+			document.execCommand('Copy');   
+			sel.moveEnd('character');   
 			myRange.Paste();   
-			location.reload();
-			//ExcelSheet.ActiveWindow.ActivePane.View.Type=9;
+			location.reload();   
+			//ExcelSheet.ActiveWindow.ActivePane.View.Type=9;  
 			}   
 </script>
+
 </HTML>

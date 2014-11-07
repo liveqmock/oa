@@ -58,6 +58,12 @@
 				<param-value>GBK</param-value>
 			</init-param>
 		</filter>
+		<filter>
+	 		<filter-name>MailNeedFlushFilter</filter-name>
+	 		<display-name>MailNeedFlushFilter</display-name>
+	 		<description></description>
+	 		<filter-class>com.icss.oa.filetransfer.util.MailNeedFlushFilter</filter-class>
+	 	</filter>
 	
 		<filter-mapping>
 			<filter-name>ChangeReqEncoding</filter-name>
@@ -74,6 +80,14 @@
 		<filter-mapping>
 			<filter-name>RightFilter</filter-name>
 			<url-pattern>/*</url-pattern>
+		</filter-mapping>
+		<filter-mapping>
+			<filter-name>MailNeedFlushFilter</filter-name>
+			<url-pattern>/servlet/*</url-pattern>
+		</filter-mapping>
+		<filter-mapping>
+			<filter-name>MailNeedFlushFilter</filter-name>
+			<url-pattern>/mail/*</url-pattern>
 		</filter-mapping>
 		
 		<!-- add by zhouyi -->
@@ -4432,6 +4446,13 @@
 		</servlet>
 
 		<servlet>
+			<servlet-name>SMSTaskServlet</servlet-name>
+			<display-name>SMSTaskServlet</display-name>
+			<servlet-class>com.icss.oa.sms.admin.SMSTaskServlet</servlet-class>
+			<load-on-startup>0</load-on-startup>
+		</servlet>
+
+		<servlet>
 			<servlet-name>ViewRecieveServlet</servlet-name>
 			<display-name>ViewRecieveServlet</display-name>
 			<servlet-class>com.icss.oa.sms.admin.ViewRecieveServlet</servlet-class>
@@ -4556,6 +4577,261 @@
 		</servlet>
 
 	<!-- end -->
+
+
+
+
+
+
+
+<!--add by liupei 融合与集成部值班日志功能 -->
+		
+		<servlet>
+		<servlet-name>RhMainDutyListServlet</servlet-name>
+		<display-name>RhMainDutyListServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.rhduty.admin.RhMainDutyListServlet</servlet-class>
+		<init-param>
+			<param-name>_pagescroll_methods</param-name>
+			<param-value>TbRhWorkinfomainDAO.find</param-value>
+		</init-param>
+		<init-param>
+			<param-name>_rowcount_per_page</param-name>
+			<param-value>15</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>RhMainDutyAddServlet</servlet-name>
+		<display-name>RhMainDutyAddServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.rhduty.admin.RhMainDutyAddServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RhDutyWholeAddServlet</servlet-name>
+		<display-name>RhDutyWholeAddServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.rhduty.admin.RhDutyWholeAddServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RhMainDutyViewServlet</servlet-name>
+		<display-name>RhMainDutyViewServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.rhduty.admin.RhMainDutyViewServlet</servlet-class>
+	</servlet>
+	<servlet>
+			<servlet-name>RhDutyEditAjaxServlet</servlet-name>
+			<display-name>RhDutyEditAjaxServlet</display-name>
+			<servlet-class>com.icss.oa.zbs.rhduty.admin.RhDutyEditAjaxServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RhDutySearchServlet</servlet-name>
+		<display-name>RhDutySearchServlet</display-name>		
+		<servlet-class>com.icss.oa.zbs.rhduty.admin.RhDutySearchServlet</servlet-class>
+		<init-param>
+			<param-name>_pagescroll_methods</param-name>
+			<param-value>TbRhWorkinfomainDAO.find</param-value>
+		</init-param>
+		<init-param>
+			<param-name>_rowcount_per_page</param-name>
+			<param-value>5</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>RhDutySearchViewServlet</servlet-name>
+		<display-name>RhDutySearchViewServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.rhduty.admin.RhDutySearchViewServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RhDutyViewServlet</servlet-name>
+		<display-name>RhDutyViewServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.rhduty.admin.RhDutyViewServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RhMainDutyManageListServlet</servlet-name>
+		<display-name>RhMainDutyManageListServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.rhduty.admin.RhMainDutyManageListServlet</servlet-class>
+		<init-param>
+			<param-name>_pagescroll_methods</param-name>
+			<param-value>TbRhWorkinfomainDAO.find</param-value>
+		</init-param>
+		<init-param>
+			<param-name>_rowcount_per_page</param-name>
+			<param-value>15</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>RhDutyInfoDeleteServlet</servlet-name>
+		<display-name>RhDutyInfoDeleteServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.rhduty.admin.RhDutyInfoDeleteServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RhEditFCKReturnServlet</servlet-name>
+		<display-name>RhEditFCKReturnServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.rhduty.admin.RhEditFCKReturnServlet</servlet-class>
+	</servlet>
+	
+	
+	<!-- end -->
+	<!--liupei1 融合与集成部类型管理-->
+   
+    <servlet>
+		<servlet-name>RhDutyTypeManageListServlet</servlet-name>
+		<display-name>RhDutyTypeManageListServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.rhduty.admin.RhDutyTypeManageListServlet</servlet-class>
+		<init-param>
+			<param-name>_pagescroll_methods</param-name>
+			<param-value>TbRhWorkinfotypeDAO.find</param-value>
+		</init-param>
+		<init-param>
+			<param-name>_rowcount_per_page</param-name>
+			<param-value>10</param-value>
+		</init-param>
+	</servlet>
+
+<servlet>
+		<servlet-name>RhDutyTypeDeleteServlet</servlet-name>
+		<display-name>RhDutyTypeDeleteServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.rhduty.admin.RhDutyTypeDeleteServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>RhDutyTypeSaveServlet</servlet-name>
+		<display-name>RhDutyTypeSaveServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.rhduty.admin.RhDutyTypeSaveServlet</servlet-class>
+	</servlet>
+        <!--end-->
+
+
+
+
+
+
+
+
+
+
+<!--add by liupei 创意策划中心值班日志功能 -->
+		
+		<servlet>
+		<servlet-name>CyMainDutyListServlet</servlet-name>
+		<display-name>CyMainDutyListServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.cyduty.admin.CyMainDutyListServlet</servlet-class>
+		<init-param>
+			<param-name>_pagescroll_methods</param-name>
+			<param-value>TbCyWorkinfomainDAO.find</param-value>
+		</init-param>
+		<init-param>
+			<param-name>_rowcount_per_page</param-name>
+			<param-value>15</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>CyMainDutyAddServlet</servlet-name>
+		<display-name>CyMainDutyAddServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.cyduty.admin.CyMainDutyAddServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CyDutyWholeAddServlet</servlet-name>
+		<display-name>CyDutyWholeAddServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.cyduty.admin.CyDutyWholeAddServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CyMainDutyViewServlet</servlet-name>
+		<display-name>CyMainDutyViewServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.cyduty.admin.CyMainDutyViewServlet</servlet-class>
+	</servlet>
+	<servlet>
+			<servlet-name>CyDutyEditAjaxServlet</servlet-name>
+			<display-name>CyDutyEditAjaxServlet</display-name>
+			<servlet-class>com.icss.oa.zbs.cyduty.admin.CyDutyEditAjaxServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CyDutySearchServlet</servlet-name>
+		<display-name>CyDutySearchServlet</display-name>		
+		<servlet-class>com.icss.oa.zbs.cyduty.admin.CyDutySearchServlet</servlet-class>
+		<init-param>
+			<param-name>_pagescroll_methods</param-name>
+			<param-value>TbCyWorkinfomainDAO.find</param-value>
+		</init-param>
+		<init-param>
+			<param-name>_rowcount_per_page</param-name>
+			<param-value>5</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>CyDutySearchViewServlet</servlet-name>
+		<display-name>CyDutySearchViewServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.cyduty.admin.CyDutySearchViewServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CyDutyViewServlet</servlet-name>
+		<display-name>CyDutyViewServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.cyduty.admin.CyDutyViewServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CyMainDutyManageListServlet</servlet-name>
+		<display-name>CyMainDutyManageListServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.cyduty.admin.CyMainDutyManageListServlet</servlet-class>
+		<init-param>
+			<param-name>_pagescroll_methods</param-name>
+			<param-value>TbCyWorkinfomainDAO.find</param-value>
+		</init-param>
+		<init-param>
+			<param-name>_rowcount_per_page</param-name>
+			<param-value>15</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>CyDutyInfoDeleteServlet</servlet-name>
+		<display-name>CyDutyInfoDeleteServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.cyduty.admin.CyDutyInfoDeleteServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CyEditFCKReturnServlet</servlet-name>
+		<display-name>CyEditFCKReturnServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.cyduty.admin.CyEditFCKReturnServlet</servlet-class>
+	</servlet>
+	
+	
+	<!-- end -->
+	<!--liupei1 创意策划中心类型管理-->
+   
+    <servlet>
+		<servlet-name>CyDutyTypeManageListServlet</servlet-name>
+		<display-name>CyDutyTypeManageListServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.cyduty.admin.CyDutyTypeManageListServlet</servlet-class>
+		<init-param>
+			<param-name>_pagescroll_methods</param-name>
+			<param-value>TbCyWorkinfotypeDAO.find</param-value>
+		</init-param>
+		<init-param>
+			<param-name>_rowcount_per_page</param-name>
+			<param-value>10</param-value>
+		</init-param>
+	</servlet>
+
+<servlet>
+		<servlet-name>CyDutyTypeDeleteServlet</servlet-name>
+		<display-name>CyDutyTypeDeleteServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.cyduty.admin.CyDutyTypeDeleteServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>CyDutyTypeSaveServlet</servlet-name>
+		<display-name>CyDutyTypeSaveServlet</display-name>
+		<servlet-class>com.icss.oa.zbs.cyduty.admin.CyDutyTypeSaveServlet</servlet-class>
+	</servlet>
+        <!--end-->
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7691,6 +7967,11 @@
 	 </servlet-mapping>
 
 	  <servlet-mapping>
+		<servlet-name>SMSTaskServlet</servlet-name>
+		<url-pattern>/servlet/SMSTaskServlet</url-pattern>
+	 </servlet-mapping>
+
+	  <servlet-mapping>
 		<servlet-name>DeleteRecieveServlet</servlet-name>
 		<url-pattern>/servlet/DeleteRecieveServlet</url-pattern>
 	 </servlet-mapping>
@@ -7853,6 +8134,74 @@
 
 
 
+<!-- add by liupei创意策划中心 -->	<servlet-mapping>
+		<servlet-name>CyMainDutyListServlet</servlet-name>
+		<url-pattern>/servlet/CyMainDutyListServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CyMainDutyAddServlet</servlet-name>
+		<url-pattern>/servlet/CyMainDutyAddServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CyDutyWholeAddServlet</servlet-name>
+		<url-pattern>/servlet/CyDutyWholeAddServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CyMainDutyViewServlet</servlet-name>
+		<url-pattern>/servlet/CyMainDutyViewServlet</url-pattern>
+	</servlet-mapping>
+ 	<servlet-mapping>
+		<servlet-name>CyDutyEditAjaxServlet</servlet-name>
+		<url-pattern>/servlet/CyDutyEditAjaxServlet</url-pattern>
+	 </servlet-mapping>
+	 <servlet-mapping>
+		<servlet-name>CyDutySearchServlet</servlet-name>
+		<url-pattern>/servlet/CyDutySearchServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CyDutySearchViewServlet</servlet-name>
+		<url-pattern>/servlet/CyDutySearchViewServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CyDutyViewServlet</servlet-name>
+		<url-pattern>/servlet/CyDutyViewServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CyMainDutyManageListServlet</servlet-name>
+		<url-pattern>/servlet/CyMainDutyManageListServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CyDutyInfoDeleteServlet</servlet-name>
+		<url-pattern>/servlet/CyDutyInfoDeleteServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CyEditFCKReturnServlet</servlet-name>
+		<url-pattern>/servlet/CyEditFCKReturnServlet</url-pattern>
+	</servlet-mapping>
+<!-- end -->
+<!--add liupei1创意策划中心 mapping -->
+
+<servlet-mapping>
+		<servlet-name>CyDutyTypeManageListServlet</servlet-name>
+		<url-pattern>/servlet/CyDutyTypeManageListServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	<servlet-name>CyDutyTypeDeleteServlet</servlet-name>
+	<url-pattern>/servlet/CyDutyTypeDeleteServlet</url-pattern>
+</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>CyDutyTypeSaveServlet</servlet-name>
+		<url-pattern>/servlet/CyDutyTypeSaveServlet</url-pattern>
+	</servlet-mapping>
+<!-- end -->
+
+
+
+
+
+
 
 
 
@@ -7993,6 +8342,76 @@
 		<servlet-name>YjsDutyTypeSaveServlet</servlet-name>
 		<url-pattern>/servlet/YjsDutyTypeSaveServlet</url-pattern>
 	</servlet-mapping>
+	
+<servlet-mapping>
+	<servlet-name>RhDutyTypeManageListServlet</servlet-name>
+	<url-pattern>/servlet/RhDutyTypeManageListServlet</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+	<servlet-name>RhMainDutyListServlet</servlet-name>
+	<url-pattern>/servlet/RhMainDutyListServlet</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+	<servlet-name>RhMainDutyAddServlet</servlet-name>
+	<url-pattern>/servlet/RhMainDutyAddServlet</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+	<servlet-name>RhDutyWholeAddServlet</servlet-name>
+	<url-pattern>/servlet/RhDutyWholeAddServlet</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+	<servlet-name>RhMainDutyViewServlet</servlet-name>
+	<url-pattern>/servlet/RhMainDutyViewServlet</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+	<servlet-name>RhDutyEditAjaxServlet</servlet-name>
+	<url-pattern>/servlet/RhDutyEditAjaxServlet</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+	<servlet-name>RhDutySearchServlet</servlet-name>
+	<url-pattern>/servlet/RhDutySearchServlet</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+	<servlet-name>RhDutySearchViewServlet</servlet-name>
+	<url-pattern>/servlet/RhDutySearchViewServlet</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+	<servlet-name>RhDutyViewServlet</servlet-name>
+	<url-pattern>/servlet/RhDutyViewServlet</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+	<servlet-name>RhMainDutyManageListServlet</servlet-name>
+	<url-pattern>/servlet/RhMainDutyManageListServlet</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+	<servlet-name>RhDutyInfoDeleteServlet</servlet-name>
+	<url-pattern>/servlet/RhDutyInfoDeleteServlet</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+	<servlet-name>RhEditFCKReturnServlet</servlet-name>
+	<url-pattern>/servlet/RhEditFCKReturnServlet</url-pattern>
+</servlet-mapping> 
+
+<servlet-mapping>
+	<servlet-name>RhDutyTypeDeleteServlet</servlet-name>
+	<url-pattern>/servlet/RhDutyTypeDeleteServlet</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+	<servlet-name>RhDutyTypeSaveServlet</servlet-name>
+	<url-pattern>/servlet/RhDutyTypeSaveServlet</url-pattern>
+</servlet-mapping>
 <!-- end -->
 
 

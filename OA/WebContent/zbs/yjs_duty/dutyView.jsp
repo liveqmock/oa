@@ -94,7 +94,12 @@ body {
 }
 </style>
 <script language="javascript">
-
+function _hideSaveWord(){
+	if (!window.ActiveXObject){
+		document.getElementById('input_saveword').style.display = 'none';
+		document.getElementById('td_saveword').style.width = '20%';
+	}
+}
 
 
 function _return(){
@@ -190,6 +195,7 @@ sel('0');
 <%if("1".equals(flag)){%>
 		_warn('<%=lastEditer%>','<%=lastIP%>');
 	<%}%>
+	_hideSaveWord();
 }
 
 </script>
@@ -258,9 +264,9 @@ sel('0');
 												</div>
 											</td>
 											
-											<td width="30%">
+											<td id="td_saveword" width="35%">
 											<div align="center">
-												<input type=button onClick="OpenWord(quanbu)" value="保存为WORD">&nbsp;
+												<input id="input_saveword" type=button onClick="OpenWord(quanbu)" value="保存为WORD">&nbsp;
 												<input type=button onClick="printdiv('quanbu')" value=" 打印 ">&nbsp;
 												<input type="button" value=" 返回 " onClick="javascript:_return()" >
 											</div>
@@ -364,15 +370,15 @@ sel('0');
 			ExcelSheet = new ActiveXObject('Word.Application');   
 			ExcelSheet.Application.Visible = true;   
 			var mydoc=ExcelSheet.Documents.Add('',0,1);   
-			myRange =mydoc.Range(0,1)   
-			var sel=document.body.createTextRange() 
+			myRange =mydoc.Range(0,1);   
+			var sel=document.body.createTextRange(); 
 			sel.moveToElementText(quanbu);
-			sel.select()   
-			document.execCommand('Copy')   
-			sel.moveEnd('character')   
+			sel.select();   
+			document.execCommand('Copy');   
+			sel.moveEnd('character');   
 			myRange.Paste();   
-			location.reload()   
-			ExcelSheet.ActiveWindow.ActivePane.View.Type=9  
+			location.reload();   
+			//ExcelSheet.ActiveWindow.ActivePane.View.Type=9;  
 			}   
 </script>
 
