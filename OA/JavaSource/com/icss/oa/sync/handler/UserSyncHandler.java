@@ -537,7 +537,7 @@ public class UserSyncHandler {
 			}
 			
 			//创建网络文件夹 
-			FolderHandler fhandler = new FolderHandler(conn);
+			FolderHandler fhandler = new FolderHandler(oaconn);
 			FolderManagementVO vo = new FolderManagementVO();
 			vo.setFmPersonid(uuid);
 			vo.setFmStoretype("1");
@@ -1978,7 +1978,7 @@ public class UserSyncHandler {
 		Element user = root.addElement("USER");
 		user.addElement("TYPE").setText(type);
 		user.addElement("SORT").setText("personal");
-		user.addElement("HRID").setText(hrid);
+		if (hrid != null) user.addElement("HRID").setText(hrid);
 		user.addElement("USERNAME").setText(username);
 		user.addElement("ORGID").setText(orgid);
 		user.addElement("DEPTID").setText(deptid);
