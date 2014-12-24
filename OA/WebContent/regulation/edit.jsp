@@ -59,6 +59,7 @@
 BODY {
 	font-family: ËÎÌå;
 	font-size: 14px;
+	text-align:center;
 	}
 .panel {
 	PADDING-RIGHT: 10px;
@@ -121,7 +122,7 @@ BODY {
 
 </STYLE>
 
-		<script type="text/javascript">
+<script type="text/javascript">
 	function _check(){
 		
 		if(document.form1.title.value==""){
@@ -164,7 +165,8 @@ BODY {
 		<jsp:include page="/include/top.jsp" />
 			<input type=hidden name='id'
 				value=<%=vo.getId() == null ? "" : vo.getId().toString()%>>
-			<div class=panel id=top>
+				<div style="margin:0 auto; width:988px;">
+			<div class="panel" id="top">
 				<ul>
 					<li>
 						<label for=title>
@@ -217,7 +219,6 @@ BODY {
 						<input type='text' name='recordNo' id='recordNo' style="width:500px"
 							value=<%=StringUtil.escapeNull(vo.getRecordNo())%>>
 					</li>
-					
 					<li>
 						<label for=memo>
 							±¸×¢£º
@@ -246,7 +247,7 @@ BODY {
 			oFCKeditor.ToolbarSet = "Regulation"; 
 			oFCKeditor.ReplaceTextarea();
 			</script>
-			</div>
+			</div></div>
 		</form>
 	</BODY>
 </HTML>

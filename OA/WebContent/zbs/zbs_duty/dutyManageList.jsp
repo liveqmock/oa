@@ -45,6 +45,7 @@ body {
 	src="<%=request.getContextPath()%>/zbs/include/extendString.js"></script>
 <script language="JavaScript"
 	src="<%=request.getContextPath()%>/zbs/include/js/calendar.js"></script>
+		<script src="<%=request.getContextPath()%>/include/DatePicker/WdatePicker.js"></script>
 <script language="javascript">
    function newDuty(){
    		//window.open("<%=request.getContextPath()%>//servlet/GoJspUrlServlet");
@@ -107,20 +108,14 @@ body {
 						<table border="0" cellspacing="2" cellpadding="0">
 							<tr>
 								<td class="grap2-12">从</td>
-								<td><input name="fromdate" type="text" class="biankuang-blue"
-									value="" onClick="fPopUpCalendarDlg(fromdate)" size="12"
+								<td><input name="fromdate" type="text" class="biankuang-blue Wdate" onFocus="WdatePicker()"
+									value=""  size="14"
 									readonly /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/images/calendar_view_day.gif"
-									width="16" height="16" alt="点击弹出日历"
-									onClick="fPopUpCalendarDlg(fromdate)" /></td>
+						
 								<td class="grap2-12">&nbsp;到</td>
-								<td><input name="todate" type="text" class="biankuang-blue"
-									value="" onClick="fPopUpCalendarDlg(todate)" size="12" readonly /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/images/calendar_view_day.gif"
-									width="16" height="16" alt="点击弹出日历"
-									onClick="fPopUpCalendarDlg(todate)" /></td>
+								<td><input name="todate" type="text" class="biankuang-blue Wdate" onFocus="WdatePicker()"
+									value=""  size="14" readonly /></td>
+							
 							</tr>
 						</table>
 						</td>
