@@ -1700,6 +1700,7 @@ public class UserSyncHandler {
 		SysOrgDAO dao = new SysOrgDAO(conn);
 		factory.setDAO(dao);
 		dao.setOrgcode(orgcode);
+		dao.setDeltag("0");
 		List orgList = null;
 		try {
 			orgList = factory.find(new SysOrgVO());
