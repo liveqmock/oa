@@ -51,7 +51,7 @@ BODY {	font-family: 宋体;
 line-height: 20px;
 }
 .AdvSearchArea {margin: 0 0 0 10px;	padding: 0;}
-.AdvElement {color: #444444;display: block;height: 30px;line-height: 30px;}
+.AdvElement {color: #444444;display: block;min-height: 30px;line-height: 30px;}
 .Text {float: left;text-align: right;width: 85px;}
 .Text1 {float: left;text-align: right;width: 60px;}
 .Display {float: left;	text-align: center;	width: 25px;}
@@ -217,9 +217,9 @@ $("#dbutton").click(function(){
 <div style='text-align: left; width: 120px;margin-left:40px'><INPUT type=radio
 	name="time" value='from' /> 时&nbsp;间&nbsp;段</div>
 <div style='float: left; text-align: right; width: 80px;'>从</div>
-<input type="text" class="Wdate" id="timef" name="timef" size='10'
+<input type="text" class="Wdate" id="timef" name="timef" size='12'
 	onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'timee\',{d:-1});}'})" /> 到
-<input type="text" class="Wdate" id="timee" name="timee" size='10'
+<input type="text" class="Wdate" id="timee" name="timee" size='12'
 	onFocus="WdatePicker({minDate:'#F{$dp.$D(\'timef\',{d:1});}'})" />
 </div>
 </div>
