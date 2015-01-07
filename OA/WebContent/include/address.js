@@ -145,7 +145,7 @@ function loadPerson(sendType){
 	//var allName = "";
 	var showName = "";
 	var length = "";
-		var obj = document.getElementById("sendto");
+	var obj = document.getElementById("sendto");
 	var obj1 = document.getElementById("sendcc");
 	var obj2 = document.getElementById("sendbcc");
 	var allnum = obj.getElementsByTagName("span").length + obj1.getElementsByTagName("span").length + obj2.getElementsByTagName("span").length;

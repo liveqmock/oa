@@ -43,6 +43,10 @@ body {
 
 
 <script language="javascript">
+var broadcastnum = 10000;
+function changepnum(){
+	
+}
 
 function checkAll(e, itemName)
 {
@@ -217,15 +221,15 @@ function _showAlertBox() { //v6.0
 
 
 function showprivtr(){
-	document.getElementById("privtr1").style.display="block";
-	document.getElementById("privtr2").style.display="block";
+	document.getElementById("privtr1").style.display="";
+	document.getElementById("privtr2").style.display="";
 	document.getElementById("privtr3").style.display="none";
 	
 }
 function hideprivtr(){
 	document.getElementById("privtr1").style.display="none";
 	document.getElementById("privtr2").style.display="none";
-	document.getElementById("privtr3").style.display="block";
+	document.getElementById("privtr3").style.display="";
 }
 </script>
 
@@ -573,11 +577,11 @@ function delperson(ppid,personuuid)
 %>
 
 <!--检索条件区-->
-<table width="100%">
+<table width="983" style="margin:0 auto;">
 	<tr>
     	<td width="10"></td>
-  		<td width="90%">
-        	<table border="0" cellpadding="0" cellspacing="1" width="100%" class="table_bgcolor">
+  		<td width="963">
+        	<table border="0" cellpadding="0" cellspacing="1" width="963" class="table_bgcolor">
             	<tr class="block_title">
                 	<td colspan="10">按职级进行权限设置</td>
                 </tr>
@@ -639,7 +643,7 @@ function delperson(ppid,personuuid)
               
               
                <tr id=privtr2>
-                		<td bgcolor="#FFFFFF" class="table_title">查看职级</td>
+                	<td bgcolor="#FFFFFF" class="table_title">查看职级</td>
                     <td colspan="3" bgcolor="#FFFFFF" class="message_title">
                         <%it=alljob.iterator();
 				         while(it.hasNext())
@@ -659,19 +663,38 @@ function delperson(ppid,personuuid)
                	
                  <td colspan="3" bgcolor="#FFFFFF" class="message_title">
                      <a style="cursor:hand" onClick="javascript:_selectPerson()"></a>  
-
-                     <table width="750" border="0" cellspacing="0" cellpadding="0">
+                     <table width="800" border="0" cellspacing="0" cellpadding="0">
                      			<tr>
-          	                     <td colspan="2" bgcolor="#FFFFFF">
+          	                     <td bgcolor="#FFFFFF">
                                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
       		                       <tr>
-                                         <td colspan="4" align="left" bgcolor="#FFFFFF" class="message_title"> 
-                                           <table border="0" cellspacing="0" cellpadding="0" width="53%">
+                                         <td align="left" bgcolor="#FFFFFF" class="message_title"> 
+                                           <table border="0" cellspacing="0" cellpadding="0" >
                                              <tr>
-                                               <td width="490" height="40" style="width:500px"><span id="sendto" class="sendToText" onselectstart="return(false)" state="0"></span><img src="<%=request.getContextPath()%>/images/delPerson.gif" onClick="javascript:delSel(0)" alt="删除" title="删除" style="cursor: hand">
-                                               <input type="button" style="cursor:hand" class="message_title" value="选择权限人员" onClick="javascript:_selectPerson()"></td>
+                                               <td height="40">
+                                               <table border="0" cellspacing="0" cellpadding="0"
+													width="100%">
+													<tr>
+														<td>
+														<span id="sendto" class="sendToText" onselectstart="return(false)" state="0"></span>
+														<input type="hidden" id="sendcc" />
+                                               			<input type="hidden" id="sendbcc" />
+														</td>
+														<td>
+														<img src="<%=request.getContextPath()%>/images/delPerson.gif" onClick="javascript:delSel(0)" alt="删除" title="删除" style="cursor: hand" />
+														</td>
+														<td>
+														<img src="<%=request.getContextPath()%>/images/outspread.gif" onClick="javascript:listState(this,0,'')" alt="展开" title="展开收件人列表" style="cursor: hand" />
+														</td>
+														<td>
+														<input type="button" style="cursor:hand" class="message_title" value="选择权限人员" onClick="javascript:_selectPerson()" />                                 
+														</td>
+														</tr>
+												</table>
+                                               </td>
                                              </tr>
-                                           </table></td>
+                                           </table>
+                                           </td>
                                    </tr>
                                   </table>
                                  </td>
@@ -687,7 +710,7 @@ function delperson(ppid,personuuid)
             <table border="0" cellpadding="0" cellspacing="0">
             	<tr><td height="5"></td></tr>
             </table>
-            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <table border="0" cellpadding="0" cellspacing="0" width="963">
             	<tr><td height="30">
             	  <input type="button" name="Submit2" onclick="addpriv()" value="添加">
             	  <input type="button" name="Submit3" onclick="delpriv()" value="删除">
@@ -701,7 +724,7 @@ function delperson(ppid,personuuid)
             </table>
             
             <!--电话簿展示区-->
-            <table border="0" cellpadding="0" cellspacing="1" class="table_bgcolor" width="100%">
+            <table border="0" cellpadding="0" cellspacing="1" class="table_bgcolor" width="963">
                <tr>
 			   
 			        <td width="5%" height="25" align="center" class="block_title">
