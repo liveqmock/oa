@@ -78,7 +78,7 @@ body {
 <jsp:include page= "/include/top.jsp" />
 <table width="983" style="margin:0 auto;" border="0" cellspacing="0" cellpadding="0">
 	<tr>
-		<td width="11" bgcolor="#FFFFFF"></td>
+		
 		<td valign="top">
 		<table width="90%" border="0" align="center" cellpadding="0"
 			cellspacing="0">
@@ -116,7 +116,7 @@ body {
 				</td>
 			</tr>
 			<tr>
-				<td>&nbsp;</td>
+				
 				<td class="black-12">
 				<table border="0" align="left" cellpadding="0" cellspacing="3">
 					<tr>
@@ -191,7 +191,8 @@ body {
 				</div>
 				</td>
 			</tr>
-			<tr><td width="11"><img src="<%=request.getContextPath()%>/images/kongbai.jpg" width="11" height="11" /></td></tr>
+			<tr>
+			</tr>
 			<%}%>
 			<tr>
 				<td colspan="2" class="blue3-12-b" height="30">
@@ -200,7 +201,7 @@ body {
 			</tr>
 		</table>
 		</td>
-		<td width="11"><img src="<%=request.getContextPath()%>/images/kongbai.jpg" width="11" height="11" /></td>
+		
 	</tr>
 </table>
 </form>

@@ -64,14 +64,14 @@ body {
 	align="center">
 
 	<tr>
-		<td bgcolor="#FFFFFF" height="5"></td>
+		
 		<td colspan="5" valign="top"></td>
 	</tr>
 	<tr>
-		<td bgcolor="#FFFFFF">&nbsp;</td>
+		
 		<td colspan="5" valign="top">
 		<table width="983" border="0" cellpadding="2" cellspacing="1" class="table_bgcolor">
-	  <tr>
+	 		<tr>
 				<td width="4%" background="../images/2-title-05.jpg"
 					bgcolor="#E0EDF8" class="block_title">&nbsp;</td>
 				<td width="38%" background="../images/2-title-05.jpg"
@@ -259,27 +259,27 @@ while (managerIterator.hasNext()) {
 %>
 		</table>
 	  </td>
-		<td>&nbsp;</td>
+		
 	</tr>
 	<tr>
-		<td width="11" bgcolor="#FFFFFF"><img src="../images/kongbai.jpg"
-			width="11" height="11" /></td>
+		<!--td width="11" bgcolor="#FFFFFF"><img src="../images/kongbai.jpg"
+			width="11" height="11" /></td-->
 		<td colspan="5" valign="top">
 		<div align="left"></div>
 		</td>
-		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+		<!--td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td-->
 	</tr>
 <%@ include file= "/include/defaultPageScrollBar2.jsp" %>
-		<td width="175" align="right" valign="bottom"><!--<a href="Page.htm"><img
+		<!--td width="175" align="right" valign="bottom"><<a href="Page.htm"><img
 			src="../images/newtopic.gif" border="0"></a><img
 			src="../images/newspecial.gif">--></td>
-		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+		<!-- td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td-->
 	</tr>
 	
 
 	<tr>
-		<td width="11" bgcolor="#FFFFFF"><img src="../images/kongbai.jpg"
-			width="11" height="11" /></td>
+		<!--td width="11" bgcolor="#FFFFFF"><img src="../images/kongbai.jpg"
+			width="11" height="11" /></td-->
 		<td colspan="5" valign="top">
 		<table width="983" border="0" cellpadding="2" cellspacing="1" class="table_bgcolor">
 	  <tr>
@@ -376,14 +376,14 @@ while (managerIterator.hasNext()) {
 %>
 		</table>
 	  </td>
-		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+		<!--td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td-->
 	</tr>
     
 <%//@ include file= "/include/defaultPageScrollBar2.jsp" %>
 		<td width="175" align="right" valign="bottom"><!--<a href="Page.htm"><img
 			src="../images/newtopic.gif" border="0"></a><img
 			src="../images/newspecial.gif">--></td>
-		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+		<!--td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td-->
 	</tr>
 </table>
 </body>

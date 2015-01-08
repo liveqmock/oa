@@ -15,7 +15,7 @@ response.setDateHeader("Expires", 0);
 <%@ page import="com.icss.common.log.ConnLog" %>
 <%
 
-List list = (List) request.getAttribute("topicList");
+List list = (List) request.getAttribute("topicList"); 
 int curPageNum1 = com.icss.j2ee.util.PageScrollUtil.getPageNum();
 int pageCount1 = com.icss.j2ee.util.PageScrollUtil.getPageCount();
 int tiao1  = com.icss.j2ee.util.PageScrollUtil.getRowCount();
@@ -66,7 +66,7 @@ body {
 <form name="form1" method="post" action=""> 
 <%@ include file= "/include/top.jsp" %>
 
-<table width="983" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="1003" border="0" cellspacing="0" cellpadding="0" align="center">
 
 	<tr>
 		<td colspan="5" bgcolor="#FFFFFF" height="5"></td>
@@ -173,7 +173,7 @@ while (BoardIterator.hasNext()) {
         <%if (rightflag.equals("1")) {%>
         <%if(areaf){ areaf=false;%>
         	<tr>
-				<td colspan="7" class="message_title_bold" height="20">&nbsp;&nbsp;&nbsp;<%=areaVO.getAreaname()%></td>
+				<td colspan="6" class="message_title_bold" height="20">&nbsp;&nbsp;&nbsp;<%=areaVO.getAreaname()%></td>
             </tr>
             <%}%>   
 
@@ -295,13 +295,13 @@ while (managerIterator.hasNext()) {
 
 	</tr>
 	<tr>
-	<td colspan="7">
+	<td colspan="6">
 	<table>
 		<tr> 
 			
 		<%@ include file= "/include/defaultPageScrollBar2.jsp" %>
 		
-		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+		<!--td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td-->
 		</tr>
 	</table>
 	</td>

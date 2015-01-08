@@ -86,7 +86,7 @@ body {
 <table width="983" style="margin:0 auto;" border="0" cellspacing="0" cellpadding="0">
 
 	<tr>
-		<td bgcolor="#FFFFFF">&nbsp;</td>
+		
 		<td valign="top">
 		<table border="0" align="left" cellpadding="0" cellspacing="0">
 
@@ -116,6 +116,7 @@ body {
 					</tr>
 				</table>
 				</td>
+				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
@@ -142,12 +143,12 @@ body {
 			</tr>
 		</table>
 		</td>
-		<td>&nbsp;</td>
+		
 	</tr>
 
 	
 	<tr>
-		<td bgcolor="#FFFFFF">&nbsp;</td>
+		
 		<td valign="top">
 		<table width="100%" border="0" cellpadding="2" cellspacing="1" class="table_bgcolor">
 			<tr>
@@ -241,15 +242,11 @@ body {
 		<td>&nbsp;</td>
 	</tr>
 	<tr>
-		<td width="11" bgcolor="#FFFFFF"><img
-			src="<%=request.getContextPath()%>/images/kongbai.jpg" width="11"
-			height="11" /></td>
+
 		<td valign="top">
 		<div align="left"></div>
 		</td>
-		<td width="11"><img
-			src="<%=request.getContextPath()%>/images/kongbai.jpg" width="11"
-			height="11" /></td>
+
 	</tr>
 </table>
 </form>

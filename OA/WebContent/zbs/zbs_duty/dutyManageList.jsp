@@ -87,10 +87,10 @@ body {
 <BODY text="#000000" leftMargin="0" topMargin="10">
 <form name="form1" method="post" action="">
 <jsp:include page= "/include/top.jsp" />
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<table width="983" align="center" border="0" cellspacing="0" cellpadding="0">
 
 	<tr>
-		<td bgcolor="#FFFFFF">&nbsp;</td>
+		
 		<td valign="top">
 		<table border="0" align="left" cellpadding="0" cellspacing="0">
 
@@ -124,7 +124,7 @@ body {
 				</td>
 			</tr>
 			<tr>
-				<td>&nbsp;</td>
+				
 				<td class="black-12">
 				<table border="0" align="left" cellpadding="0" cellspacing="3">
 					<tr>
@@ -154,12 +154,12 @@ body {
 			</tr>
 		</table>
 		</td>
-		<td>&nbsp;</td>
+	
 	</tr>
 
 	
 	<tr>
-		<td bgcolor="#FFFFFF">&nbsp;</td>
+	
 		<td valign="top">
 		<table width="100%" border="0" cellpadding="2" cellspacing="1" class="table_bgcolor">
 			<tr>
@@ -253,18 +253,14 @@ body {
 		<p>&nbsp;</p>
 		<p>&nbsp;</p>
 		</td>
-		<td>&nbsp;</td>
+		
 	</tr>
 	<tr>
-		<td width="11" bgcolor="#FFFFFF"><img
-			src="<%=request.getContextPath()%>/images/kongbai.jpg" width="11"
-			height="11" /></td>
+		
 		<td valign="top">
 		<div align="left"></div>
 		</td>
-		<td width="11"><img
-			src="<%=request.getContextPath()%>/images/kongbai.jpg" width="11"
-			height="11" /></td>
+		
 	</tr>
 </table>
 </form>

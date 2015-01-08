@@ -59,7 +59,7 @@ body {
 <jsp:include page= "/include/top.jsp" />
 <br>
 <br>
-<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+<table width="983" border="0" align="center" cellpadding="0" cellspacing="0">
 <tr><td width="100%"><font color =#0080FF><b><%=title%></b></font></td></tr>
 <tr><td width="100%">&nbsp;</td></tr>
 <%for(int i=0;i<list.size();i++){

@@ -86,60 +86,59 @@ body {
 <table width="983" style="margin:0 auto;" border="0" cellspacing="0" cellpadding="0">
 
 	<tr>
-		<td bgcolor="#FFFFFF">&nbsp;</td>
+		
 		<td valign="top">
 		<table border="0" align="left" cellpadding="0" cellspacing="0">
 
 			<tr>
 				<td width="37">
 				<div align="right"></div>
-			  </td>
+			 	</td>
 				<td width="750" class="black-12">
-				<table border="0" align="left" cellpadding="0" cellspacing="3">
-					<tr>
-						<td class="black-12">
-						<div align="right" class="grap2-12">值班时间(可不填)</div>
-						</td>
-						<td colspan="5">
-						<table border="0" cellspacing="2" cellpadding="0">
-							<tr>
-								<td class="grap2-12">从</td>
-								<td><input name="fromdate" type="text" class="biankuang-blue Wdate"  onFocus="WdatePicker()"
-									value="" size="12"
-									readonly /></td>
-								<td class="grap2-12">&nbsp;到</td>
-								<td><input name="todate" type="text" class="biankuang-blue Wdate"  onFocus="WdatePicker()"
-									value="" size="12" readonly /></td>
-							</tr>
-						</table>
-						</td>
-					</tr>
-				</table>
+					<table border="0" align="left" cellpadding="0" cellspacing="3">
+						<tr>
+							<td class="black-12">
+							<div align="right" class="grap2-12">值班时间(可不填)</div>
+							</td>
+							<td colspan="5">
+								<table border="0" cellspacing="2" cellpadding="0">
+									<tr>
+										<td class="grap2-12">从</td>
+										<td><input name="fromdate" type="text" class="biankuang-blue Wdate"  onFocus="WdatePicker()"
+											value="" size="12"
+											readonly /></td>
+										<td class="grap2-12">&nbsp;到</td>
+										<td><input name="todate" type="text" class="biankuang-blue Wdate"  onFocus="WdatePicker()"
+											value="" size="12" readonly /></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
 				</td>
+				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td class="black-12">
-				<table border="0" align="left" cellpadding="0" cellspacing="3">
-					<tr>
-						
-						<td class="grap2-12">
-						<div align="right">值班领导</div>
-						</td>
-						<td><input name="dutyName" type="text" class="biankuang-blue"
-							size="22" /></td>
-						<td>
-						<div align="right" class="grap2-12">&nbsp;&nbsp;</div>
-						</td>
-						<td>&nbsp;<img
-							src="<%=request.getContextPath()%>/images/search.jpg" width="59"
-							height="19" hspace="10" onClick="javascript:_dutysearch()" />&nbsp;</td>
-						<td><a href="#" onClick="_search2()" style="text-decoration: none"><span
-							class="green-12-b">&gt;&gt;&nbsp;高级检索</span></a></td>
+					<table border="0" align="left" cellpadding="0" cellspacing="3">
+						<tr>
 							
-						
-					</tr>
-				</table>
+							<td class="grap2-12">
+							<div align="right">值班领导</div>
+							</td>
+							<td><input name="dutyName" type="text" class="biankuang-blue"
+								size="22" /></td>
+							<td>
+							<div align="right" class="grap2-12">&nbsp;&nbsp;</div>
+							</td>
+							<td>&nbsp;<img
+								src="<%=request.getContextPath()%>/images/search.jpg" width="59"
+								height="19" hspace="10" onClick="javascript:_dutysearch()" />&nbsp;</td>
+							<td><a href="#" onClick="_search2()" style="text-decoration: none"><span
+								class="green-12-b">&gt;&gt;&nbsp;高级检索</span></a></td>
+						</tr>
+					</table>
 				</td>
 				<td align="center">
 						<img src='<%=request.getContextPath()%>/images/newduty.gif' alt="新建值班记录" onClick="javascrpit:newDuty()" style="cursor:hand"/>
@@ -147,10 +146,10 @@ body {
 			</tr>
 		</table>
 		</td>
-		<td>&nbsp;</td>
+		
 	</tr>
 	<tr>
-		<td bgcolor="#FFFFFF">&nbsp;</td>
+		
 		<td valign="top">
 		<table width="100%" border="0" cellpadding="0" cellspacing="1" class="table_bgcolor">
 			<tr>
@@ -237,15 +236,11 @@ body {
 		<td>&nbsp;</td>
 	</tr>
 	<tr>
-		<td width="11" bgcolor="#FFFFFF"><img
-			src="<%=request.getContextPath()%>/images/kongbai.jpg" width="11"
-			height="11" /></td>
+		
 		<td valign="top">
 		<div align="left"></div>
 		</td>
-		<td width="11"><img
-			src="<%=request.getContextPath()%>/images/kongbai.jpg" width="11"
-			height="11" /></td>
+		
 	</tr>
 </table>
 </form>

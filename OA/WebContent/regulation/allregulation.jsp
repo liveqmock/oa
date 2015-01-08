@@ -75,7 +75,7 @@ body {
 			<input type=hidden name='orguuid' id='orguuid' value=<%=orguuid%> />
 		
 			<jsp:include page="/include/top.jsp" />
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<table width="1003" align="center" border="0" cellspacing="0" cellpadding="0">
 
 				<tr>
 					<td  height='40px' bgcolor="#FFFFFF">

@@ -73,7 +73,7 @@ body {
 	</head>
 	<body>
 	<jsp:include page= "/include/top.jsp" />
-		<div align="center">
+		<div style="width:1003px; margin:0 auto; text-align:center;" align="center">
 			<br>
 			<form name="historyForm" method="post" action="">
 

@@ -186,12 +186,12 @@ body {
 <BODY text="#000000" leftMargin="0" topMargin="10">
 <form action="" name="form1" method="post">
 <jsp:include page= "/include/top.jsp" />
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<table width="983" align="center" border="0" cellpadding="0" cellspacing="0">
   <tr>
   	<td height="5" colspan="2"></td>
   </tr>
   <tr>
-  	<td bgcolor="#FFFFFF">&nbsp;</td>
+  	
     <td valign="top">
       	<TABLE  cellpadding="2" cellspacing="1" width="100%" align=center border=0 class="table_bgcolor">
           	<TR>
