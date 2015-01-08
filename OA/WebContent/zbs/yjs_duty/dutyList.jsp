@@ -80,7 +80,7 @@ body {
 <BODY text="#000000" leftMargin="0" topMargin="10">
 <form name=form1 method="post">
 <jsp:include page= "/include/top.jsp" />
-<table width="983" style="margin:0 auto;" border="0" cellspacing="0" cellpadding="0">
+<table width="983" style="margin:0 auto;" align="center" border="0" cellspacing="0" cellpadding="0">
 
 	<tr>
 		

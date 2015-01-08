@@ -60,12 +60,12 @@ body {
 <form name="form1" method="post" action="">
 <%@ include file= "/include/top.jsp" %>
 
-<table width="1003" border="0" cellspacing="0" cellpadding="0"
+<table width="983" border="0" cellspacing="0" cellpadding="0"
 	align="center">
 
 	<tr>
 		
-		<td colspan="5" valign="top"></td>
+		<td colspan="5" valign="top">&nbsp;</td>
 	</tr>
 	<tr>
 		
@@ -376,14 +376,14 @@ while (managerIterator.hasNext()) {
 %>
 		</table>
 	  </td>
-		<!--td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td-->
+		
 	</tr>
     
-<%//@ include file= "/include/defaultPageScrollBar2.jsp" %>
+<%@ include file= "/include/defaultPageScrollBar2.jsp" %>
 		<td width="175" align="right" valign="bottom"><!--<a href="Page.htm"><img
 			src="../images/newtopic.gif" border="0"></a><img
 			src="../images/newspecial.gif">--></td>
-		<!--td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td-->
+		
 	</tr>
 </table>
 </body>

@@ -24,7 +24,7 @@ try{
             int k = pageCount/7;
             int l = pageCount%7;
 		%>
-		<td  valign="middle"colspan="7">
+		<td  valign="middle">
 		<table cellspacing="1" class="table_bgcolor" >
 			<tr align='left'>
 				<td width="20" align="center" valign="bottom" bgcolor="#FFFFFF"

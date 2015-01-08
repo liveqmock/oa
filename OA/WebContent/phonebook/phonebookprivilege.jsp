@@ -577,11 +577,11 @@ function delperson(ppid,personuuid)
 %>
 
 <!--检索条件区-->
-<table width="983" style="margin:0 auto;">
+<table width="983" style="margin:0 auto;" align="center">
 	<tr>
-    	<td width="10"></td>
-  		<td width="963">
-        	<table border="0" cellpadding="0" cellspacing="1" width="963" class="table_bgcolor">
+    	
+  		<td width="983">
+        	<table border="0" cellpadding="0" cellspacing="1" width="983" class="table_bgcolor">
             	<tr class="block_title">
                 	<td colspan="10">按职级进行权限设置</td>
                 </tr>
@@ -724,7 +724,7 @@ function delperson(ppid,personuuid)
             </table>
             
             <!--电话簿展示区-->
-            <table border="0" cellpadding="0" cellspacing="1" class="table_bgcolor" width="963">
+            <table border="0" cellpadding="0" cellspacing="1" class="table_bgcolor" width="983">
                <tr>
 			   
 			        <td width="5%" height="25" align="center" class="block_title">
@@ -971,7 +971,7 @@ function delperson(ppid,personuuid)
           </table>
             <!--电话簿展示区-->
       </td>
-        <td width="10"></td>
+       
     </tr>
 </table>
 

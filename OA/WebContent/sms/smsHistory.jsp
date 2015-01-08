@@ -77,16 +77,13 @@ function CheckAll()
 	<body>
 	<jsp:include page= "/include/top.jsp" />
 
-		<div align="center">
 			<br>
 			<form name="historyForm" method="post" action="">
 
-				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table width="983" align="center" border="0" cellspacing="0" cellpadding="0">
 
 					<tr>
-						<td bgcolor="#FFFFFF">
-							&nbsp;
-						</td>
+						
 						<td valign="top">
 							<table width="100%" border="0" cellpadding="2" cellspacing="1"
 								bgcolor="#B9DAF9">
@@ -198,23 +195,15 @@ function CheckAll()
 							</table>
 							
 						</td>
-						<td>
-							&nbsp;
-						</td>
+						
 					</tr>
 					
 					<tr>
-						<td width="11" bgcolor="#FFFFFF">
-							<img src="<%=request.getContextPath()%>/images/kongbai.gif"
-								width="11" height="11" />
-						</td>
+						
 						<td valign="top">
 							<div align="left"></div>
 						</td>
-						<td width="11">
-							<img src="<%=request.getContextPath()%>/images/kongbai.gif"
-								width="11" height="11" />
-						</td>
+						
 					</tr>
 				</table>
 

@@ -239,11 +239,11 @@ function  _del(){
 %>
 </table>
 
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<table border="0" cellpadding="0" cellspacing="0" width="983" align="center">
 	<tr><td height="15"></td></tr>
 </table>
 
- 	<table  border="0" cellpadding="0" cellspacing="0" width="983">
+ 	<table  border="0" cellpadding="0" cellspacing="0" width="983" align="center">
 		<tr><td>&nbsp;&nbsp;</td><td height="30" class="message_title_bold">目录名</td><td><input type="text" name="name" value=""/></td></tr>
 		<tr><td>&nbsp;&nbsp;</td><td height="30" class="message_title_bold">所属组织</td>
 		<td><select name="org" onChange="_clearpeople()">
@@ -268,7 +268,7 @@ function  _del(){
 	</table>
 </form>
 
-<table width="1003" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="983" border="0" cellspacing="0" cellpadding="0" align="center">
   
   <tr>
   	<td width="10" bgcolor="#FFFFFF"></td>
