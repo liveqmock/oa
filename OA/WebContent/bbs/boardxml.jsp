@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=GBK" %>
+<?xml version="1.0" encoding="gb2312" ?>
+<%@ page contentType="text/xml; charset=GBK" %>
 <%@ page import="com.icss.oa.bbs.vo.*" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="com.icss.j2ee.services.DBConnectionLocator" %>
@@ -14,7 +15,7 @@ Integer areaid = new Integer(request.getParameter("areaid"));
 		conn = DBConnectionLocator.getInstance().getConnection(Globals.DATASOURCEJNDI);
 		ConnLog.open("boardxml.jsp");
 %>
-<?xml version="1.0" encoding="gb2312" ?>
+
 <Board_List>
 <%
 		BBSHandler handler = new BBSHandler(conn);
