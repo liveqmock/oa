@@ -246,7 +246,7 @@ function  _del(){
  	<table  border="0" cellpadding="0" cellspacing="0" width="983" align="center">
 		<tr><td>&nbsp;&nbsp;</td><td height="30" class="message_title_bold">目录名</td><td><input type="text" name="name" value=""/></td></tr>
 		<tr><td>&nbsp;&nbsp;</td><td height="30" class="message_title_bold">所属组织</td>
-		<td><select name="org" onChange="_clearpeople()">
+		<td><select id="org" name="org" onChange="_clearpeople()">
 		<%
 			for(int i=0;i<orglist.size();i++){
 				SysOrgVO ovo = (SysOrgVO)orglist.get(i);

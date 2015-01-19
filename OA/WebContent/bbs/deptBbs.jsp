@@ -237,7 +237,7 @@ while (managerIterator.hasNext()) {
 	<div align="center" class="message_title_bold" >
 	<span >
 		<a style="text-decoration: none" title=帖子管理 href="#"
-		onClick="javascript:window.location.href('<%=request.getContextPath()%>/servlet/ShowTopicServlet?boardId=<%=vo.getBoardid().toString()%>&primeFlag=0&manageFlag=1')">
+		onClick="javascript:window.location.href='<%=request.getContextPath()%>/servlet/ShowTopicServlet?boardId=<%=vo.getBoardid().toString()%>&primeFlag=0&manageFlag=1'">
 				帖子管理
 		</a>
 	</span>
