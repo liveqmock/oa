@@ -676,7 +676,7 @@ function delperson(ppid,personuuid)
 													width="100%">
 													<tr>
 														<td>
-														<span id="sendto" class="sendToText" onselectstart="return(false)" state="0"></span>
+														<div id="sendto" class="sendToText" onselectstart="return(false)" state="0"></div>
 														<input type="hidden" id="sendcc" />
                                                			<input type="hidden" id="sendbcc" />
 														</td>
