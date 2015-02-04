@@ -948,22 +948,27 @@ public class PhoneHandler {
 	public List HrPhoneInfoList(String username, String functionname,
 			String phonenum, String orgname, String deptname, String detail,
 			String hrid) {
+		if ("".equals(username) && "".equals(functionname) && "".equals(phonenum) && "".equals(orgname) && "".equals(deptname) && "".equals(detail) && "".equals(hrid)){
+			detail = "1";
+			orgname = "内设机构";
+		}
+		
 		List searchList = new ArrayList();
 		StringBuffer searchsql = new StringBuffer();
 		searchsql.append("SELECT ");
 		searchsql
-				.append("HR_PHONE_INFO.PINOTEID,HR_PHONE_INFO.PIORGUUID,HR_PHONE_INFO.PIUSERUUID,HR_PHONE_INFO.PIUSERNAME,HR_PHONE_INFO.PIOFFICEPHONE,HR_PHONE_INFO.PIHOMEPHONE,HR_PHONE_INFO.PINETPHONE,HR_PHONE_INFO.PIMOBILEPHONE,HR_PHONE_INFO.PIFAXPHONE,HR_PHONE_INFO.PIOFFICEADDRESS,HR_PHONE_INFO.PIFUNCTION,HR_PHONE_INFO.PIISPERMISSION,HR_PHONE_INFO.PIMAINTANPERSON,HR_PHONE_INFO.PILASTMAINTANTIME,HR_PHONE_INFO.PINAMEIDS,HR_PHONE_INFO.PIISPARTTIME,HR_PHONE_INFO.PINOTEORDER,HR_PHONE_INFO.PIORGNAME,HR_PHONE_INFO.PIDEPTNAME,HRPERSON.OFFICEPHONE,"
+				.append("HRPERSON.USERNAME,HRPERSON.OFFICEPHONE,"
 						+ "HRPERSON.HOMEPHONE,HRPERSON.NETPHONE,HRPERSON.MOBILEPHONE,HRPERSON.FAXPHONE,HRPERSON.VPN,HRPERSON.ORGCODE,HRPERSON.ORGNAME,HRPERSON.DEPTCODE,HRPERSON.DEPTNAME,HRPERSON.JOBCODE,HRPERSON.JOB,HRPERSON.HOMEADDRESS,HRPERSON.EMAIL");
 		searchsql
-				.append(" FROM HR_PHONE_INFO LEFT JOIN HRPERSON ON HR_PHONE_INFO.PIHRID=HRPERSON.HRID LEFT JOIN SYS_PERSON ON SYS_PERSON.PERSONUUID=HR_PHONE_INFO.piuseruuid ");
-		searchsql.append("WHERE HR_PHONE_INFO.PIORGUUID IS NOT NULL");
-		// 根据电话分类查找
-		if (!("".equals(functionname))) {
-			searchsql.append(" AND HR_PHONE_INFO.PIFUNCTION='" + functionname
-					+ "'");
-		}
+				.append(" FROM gmis2002.hrperson2 HRPERSON left join gmis2002.hrorg org1 on HRPERSON.orgcode=org1.orgcode left join gmis2002.hrorg org2 on HRPERSON.deptcode=org2.orgcode ");
+		searchsql.append("WHERE 1=1 ");
+//		// 根据电话分类查找
+//		if (!("".equals(functionname))) {
+//			searchsql.append(" AND HR_PHONE_INFO.PIFUNCTION='" + functionname
+//					+ "'");
+//		}
 		if (!("".equals(hrid))) {
-			searchsql.append(" AND HR_PHONE_INFO.PIHRID='" + hrid + "'");
+			searchsql.append(" AND HRPERSON.HRID='" + hrid + "'");
 		}
 
 		// 根据人员名字查找
@@ -976,8 +981,7 @@ public class PhoneHandler {
 					searchsql.append(" OR");
 				}
 				String aname = namelist.nextToken().trim();
-				searchsql.append(" HR_PHONE_INFO.PIUSERNAME LIKE '%" + aname
-						+ "%' OR HRPERSON.USERNAME LIKE '%" + aname + "%'");
+				searchsql.append(" HRPERSON.USERNAME LIKE '%" + aname + "%'");
 				y++;
 			}
 			searchsql.append(")");
@@ -986,56 +990,39 @@ public class PhoneHandler {
 		// 根据所属部门
 		// 如果是社领导，不判断所属部门信息，把所有社领导放在一起
 //		if (!("".equals(orgname)) && !"社领导".equals(deptname)) {
-			if (!("".equals(orgname)) && !"社领导".equals(deptname)) {
-
+		if (!"".equals(orgname)) {
 			if ("1".equals(detail)) {
 				// 精确查找
-				searchsql.append(" AND ( HR_PHONE_INFO.PIORGNAME = '" + orgname
-						+ "' OR HRPERSON.ORGNAME = '" + orgname + "' )");
+				if ("".equals(deptname))
+					searchsql.append(" AND ( HRPERSON.ORGCODE like ((select orgcode from gmis2002.hrorg where orgname='" + orgname + "' and length(orgcode) <=5 and ROWNUM=1) || '%') )");
 			} else {
-				searchsql.append(" AND ( HR_PHONE_INFO.PIORGNAME LIKE '%"
-						+ orgname + "%' OR HRPERSON.ORGNAME LIKE '%" + orgname
+				searchsql.append(" AND (HRPERSON.ORGNAME LIKE '%" + orgname
 						+ "%' )");
 			}
 		}
 
 
 		// 根据所属处室
-		if (!("".equals(deptname))) {
+		if (!"".equals(deptname)) {
 			if ("1".equals(detail)) {
 				// 精确查找
-				searchsql.append(" AND ( HR_PHONE_INFO.PIDEPTNAME = '"
-						+ deptname + "' OR HRPERSON.DEPTNAME = '" + deptname
-						+ "' )");
+				searchsql.append(" AND (HRPERSON.DEPTCODE like ((select orgcode from gmis2002.hrorg where orgname='" + deptname + "' and orgcode like ((select orgcode from gmis2002.hrorg where orgname='" + orgname + "' and length(orgcode) <=5 and ROWNUM=1) || '%') and ROWNUM=1) || '%'))");
 			} else {
-				searchsql.append(" AND ( HR_PHONE_INFO.PIDEPTNAME LIKE '%"
-						+ deptname + "%' OR HRPERSON.DEPTNAME LIKE '%"
+				searchsql.append(" AND (HRPERSON.DEPTNAME LIKE '%"
 						+ deptname + "%' )");
 			}
 		}
 
 		// 电话号
 		if (!("".equals(phonenum))) {
-			searchsql.append(" AND ( HR_PHONE_INFO.PIOFFICEPHONE LIKE '%"
-					+ phonenum + "%' OR HR_PHONE_INFO.PIHOMEPHONE LIKE '%"
-					+ phonenum + "%' OR HR_PHONE_INFO.PINETPHONE LIKE '%"
-					+ phonenum + "%' OR HR_PHONE_INFO.PIMOBILEPHONE LIKE '%"
-					+ phonenum + "%' OR HR_PHONE_INFO.PIFAXPHONE LIKE '%"
-					+ phonenum + "%' " + " OR HRPERSON.OFFICEPHONE LIKE '%"
+			searchsql.append(" AND (HRPERSON.OFFICEPHONE LIKE '%"
 					+ phonenum + "%' OR HRPERSON.HOMEPHONE LIKE '%" + phonenum
 					+ "%' OR HRPERSON.NETPHONE LIKE '%" + phonenum
 					+ "%' OR HRPERSON.MOBILEPHONE LIKE '%" + phonenum
 					+ "%' OR HRPERSON.FAXPHONE LIKE '%" + phonenum + "%')");
 		}
-		if ("1".equals(detail)) {
-			// 精确查找,按人员级别排序
-			searchsql
-					.append("  AND SYS_PERSON.DELTAG='0' ORDER BY SYS_PERSON.SEQUENCENO,HRPERSON.DEPTCODE,HRPERSON.SEQUENCE,HR_PHONE_INFO.PINOTEORDER ");
-		} else {
-			// 按人员姓名拼音排序
-			searchsql
-					.append(" AND SYS_PERSON.DELTAG='0' ORDER BY HR_PHONE_INFO.PIUSERNAME ");
-		}
+
+		searchsql.append(" AND HRPERSON.PERSONSORT='在职人员' ORDER BY org1.seq,length(org2.orgcode),org2.seq,HRPERSON.DEPTCODE,HRPERSON.SEQUENCE ");
 		PhoneInfoHrPersonSearchDAO dao = new PhoneInfoHrPersonSearchDAO();
 		dao.setSearchSQL(searchsql.toString());
 		DAOFactory factory = new DAOFactory(conn);
@@ -1046,8 +1033,7 @@ public class PhoneHandler {
 			ex.printStackTrace();
 
 		}
-		// System.out.println("str777"+searchsql.toString());
-		// System.out.println("str777size:"+searchList.size());
+
 		return searchList;
 	}
 

@@ -222,31 +222,25 @@ initstyle();
                   <td width="23%" bgcolor="#FFFFFF"><input name="deptname" type="text" id="deptname" size="12" /></td>
               </tr>
                 <tr>
-				    <td align="right" bgcolor="#FFFFFF" class="table_title">电话类型：</td>
+				    <td align="right" bgcolor="#FFFFFF" class="table_title">电话号码：</td>
 				    <%
                      if("dev".equals(user.getUserID()))
                      {
                    %>
-				    <td colspan="3" bgcolor="#FFFFFF">
+				    <td colspan="7" bgcolor="#FFFFFF">
 				      <% 
                      }
                      else
                      {
                   %>
-                  <td bgcolor="#FFFFFF">
+                  <td colspan="6" bgcolor="#FFFFFF">
                   <%
                      }
-                  %>
-				      <select name="functionname" id="functionname">
-                      <option value="0">所有</option>
-                      <option value="1">个人工作电话</option>
-                      <option value="2">值班电话</option>
-                      </select>                    </td>
+                  %><label>
+				      <input name="phonenum" type="text" id="phonenum" value="" size="12" /><span class="content">(支持模糊查询，并检索所有类型电话)</span>
+                    </label>                    </td>
 				
-                	<td align="right" bgcolor="#FFFFFF" class="table_title">电话号码：</td>
-                    <td colspan="3" bgcolor="#FFFFFF" class="message_title_bold"><label>
-                      <input name="phonenum" type="text" id="phonenum" value="" size="12" /><span class="content">(支持模糊查询，并检索所有类型电话)</span>
-                    </label></td>
+                	
                 </tr>
 				<tr>
 				    <td colspan="10" bgcolor="#FFFFFF" class="table_title" align="center">

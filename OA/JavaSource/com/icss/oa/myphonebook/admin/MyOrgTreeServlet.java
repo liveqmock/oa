@@ -22,7 +22,7 @@ import com.icss.j2ee.services.ServiceLocatorException;
 import com.icss.j2ee.servlet.ServletBase;
 import com.icss.j2ee.util.Globals;
 import com.icss.orgtree.handler.HandlerException;
-import com.icss.orgtree.handler.OrgHandler;
+import com.icss.orgtree.handler.PhoneOrgHandler;
 import com.icss.orgtree.vo.SysOrgVO;
 
 /**
@@ -50,8 +50,8 @@ public class MyOrgTreeServlet extends ServletBase {
 		try{
 			conn=this.getConnection(Globals.DATASOURCEJNDI);
 			ConnLog.open("OrgTreeServlet");
-			OrgHandler handler=new OrgHandler(conn);
-			SysOrgVO topOrgVO=handler.getTopOrg();
+			PhoneOrgHandler handler=new PhoneOrgHandler(conn);
+			SysOrgVO topOrgVO=handler.getOrg("0");
 	
 			List list=handler.getOrgTreeList(topOrgVO.getOrguuid());
 			request.setAttribute("list",list);
