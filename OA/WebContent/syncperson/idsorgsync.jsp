@@ -558,9 +558,10 @@ $(function(){
 
 	
 	<form id="form1" name="form1" method="post" action="">
-		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+		<table width="983" align="center" cellpadding="0" cellspacing="0" border="0">
+			<tr><td></td></tr>
 			<tr>
-				<td width="5%"></td>
+				
 				<td width="90%">
 	
 					<!--检索条件区-->
@@ -850,28 +851,28 @@ $(function(){
 					</table>
 					<!--审批用户列表-->
 				</td>
-				<td width="5%"></td>
+				
 			</tr>
 		</table>
 	</form>
 
 
-	<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<table width="983" align="center" cellpadding="0" cellspacing="0" border="0">
 		<tr>
-	    	<td width="5%"></td>
+	    	
 	    	<td width="90%" class="table_bgcolor" align="right" style="font-size:12px;">
 	    		<jsp:include flush="true" page="/include/paging.jsp"></jsp:include>
 	    	</td>
-	    	<td width="5%"></td>
+	    	
 	    </tr>
 	    <tr>
-	    	<td></td>
+	    	
 	    	<td width="90%" class="table_bgcolor" align="center">
     			<input type="button" value="审批通过" onclick="prePass();" />
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="button" value="审批不通过" onclick="goAudit('no');" />
 	    	</td>
-	    	<td></td>
+	    	
 	    </tr>
 	</table>
 	

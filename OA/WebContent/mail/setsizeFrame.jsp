@@ -5,7 +5,7 @@
 
 <HTML>
 <HEAD>
-<TITLE>油箱大小设置</TITLE>
+<TITLE>邮箱大小设置</TITLE>
 <SCRIPT language=JavaScript src="<%=request.getContextPath()%>/include/common.js"></SCRIPT>
 <LINK href="<%=request.getContextPath()%>/include/style.css" rel=stylesheet />
 <link href="<%=request.getContextPath()%>/Style/css_grey.css" rel="stylesheet" type="text/css" id="homepagestyle" />

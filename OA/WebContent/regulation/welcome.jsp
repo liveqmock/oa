@@ -37,7 +37,7 @@ function _admin(){
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <!-- ImageReady Slices (welcome£¨¶¨£©.gif) -->
 <form method="POST" name="myForm">
-<table id="__01" width="1024" height="768" border="0" cellpadding="0" cellspacing="0">
+<table id="__01" width="1024" height="768" border="0" align="center" cellpadding="0" cellspacing="0">
 	<tr>
 		<td colspan="3">
 			<img src="<%=request.getContextPath()%>/regulation/include/welcome_01.png" width="1024" height="601" alt=""></td>

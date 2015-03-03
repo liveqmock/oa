@@ -80,7 +80,7 @@ body {
 <table width="983" border="0" align="center" cellpadding="0"
 	cellspacing="0" class="text">
 	<tr>
-		<td bgcolor="#FFFFFF">&nbsp;</td>
+		
 		<td valign="top">
 		<table width="100%" border="0" cellpadding="2" cellspacing="1" class="table_bgcolor">
 			<tr>
@@ -156,7 +156,7 @@ body {
   	<td height="10" colspan="2">&nbsp;</td>
   </tr>
   <tr>
-  	<td bgcolor="#FFFFFF">&nbsp;</td>
+  	
     <td valign="top">
       	<TABLE  cellpadding="2" cellspacing="1" width="983" align=center border=0 class="table_bgcolor">
           	<TR>

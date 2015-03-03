@@ -60,18 +60,18 @@ body {
 <form name="form1" method="post" action="">
 <%@ include file= "/include/top.jsp" %>
 
-<table width="1003" border="0" cellspacing="0" cellpadding="0"
+<table width="983" border="0" cellspacing="0" cellpadding="0"
 	align="center">
 
 	<tr>
-		<td bgcolor="#FFFFFF" height="5"></td>
-		<td colspan="5" valign="top"></td>
+		
+		<td colspan="5" valign="top">&nbsp;</td>
 	</tr>
 	<tr>
-		<td bgcolor="#FFFFFF">&nbsp;</td>
+		
 		<td colspan="5" valign="top">
 		<table width="983" border="0" cellpadding="2" cellspacing="1" class="table_bgcolor">
-	  <tr>
+	 		<tr>
 				<td width="4%" background="../images/2-title-05.jpg"
 					bgcolor="#E0EDF8" class="block_title">&nbsp;</td>
 				<td width="38%" background="../images/2-title-05.jpg"
@@ -237,7 +237,7 @@ while (managerIterator.hasNext()) {
 	<div align="center" class="message_title_bold" >
 	<span >
 		<a style="text-decoration: none" title=帖子管理 href="#"
-		onClick="javascript:window.location.href('<%=request.getContextPath()%>/servlet/ShowTopicServlet?boardId=<%=vo.getBoardid().toString()%>&primeFlag=0&manageFlag=1')">
+		onClick="javascript:window.location.href='<%=request.getContextPath()%>/servlet/ShowTopicServlet?boardId=<%=vo.getBoardid().toString()%>&primeFlag=0&manageFlag=1'">
 				帖子管理
 		</a>
 	</span>
@@ -259,27 +259,27 @@ while (managerIterator.hasNext()) {
 %>
 		</table>
 	  </td>
-		<td>&nbsp;</td>
+		
 	</tr>
 	<tr>
-		<td width="11" bgcolor="#FFFFFF"><img src="../images/kongbai.jpg"
-			width="11" height="11" /></td>
+		<!--td width="11" bgcolor="#FFFFFF"><img src="../images/kongbai.jpg"
+			width="11" height="11" /></td-->
 		<td colspan="5" valign="top">
 		<div align="left"></div>
 		</td>
-		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+		<!--td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td-->
 	</tr>
 <%@ include file= "/include/defaultPageScrollBar2.jsp" %>
-		<td width="175" align="right" valign="bottom"><!--<a href="Page.htm"><img
+		<!--td width="175" align="right" valign="bottom"><<a href="Page.htm"><img
 			src="../images/newtopic.gif" border="0"></a><img
 			src="../images/newspecial.gif">--></td>
-		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+		<!-- td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td-->
 	</tr>
 	
 
 	<tr>
-		<td width="11" bgcolor="#FFFFFF"><img src="../images/kongbai.jpg"
-			width="11" height="11" /></td>
+		<!--td width="11" bgcolor="#FFFFFF"><img src="../images/kongbai.jpg"
+			width="11" height="11" /></td-->
 		<td colspan="5" valign="top">
 		<table width="983" border="0" cellpadding="2" cellspacing="1" class="table_bgcolor">
 	  <tr>
@@ -376,14 +376,14 @@ while (managerIterator.hasNext()) {
 %>
 		</table>
 	  </td>
-		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+		
 	</tr>
     
-<%//@ include file= "/include/defaultPageScrollBar2.jsp" %>
+<%@ include file= "/include/defaultPageScrollBar2.jsp" %>
 		<td width="175" align="right" valign="bottom"><!--<a href="Page.htm"><img
 			src="../images/newtopic.gif" border="0"></a><img
 			src="../images/newspecial.gif">--></td>
-		<td width="11"><img src="../images/kongbai.jpg" width="11" height="11" /></td>
+		
 	</tr>
 </table>
 </body>

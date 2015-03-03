@@ -196,14 +196,12 @@ function _edittb(){
 			<jsp:include page="/include/top.jsp" />
 			<input type="hidden" name="mainId" value="<%=mainvo.getWimId()%>">
 			<input type="hidden" name="addnot" value="1">
-			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<table width="983" border="0" cellpadding="0" cellspacing="0" align="center">
 				<tr>
                     <td height="5" colspan="2"></td>
                 </tr>
 				<tr>
-					<td bgcolor="#FFFFFF">&nbsp;
-						
-					</td>
+					
 					<td valign="top">
 						<TABLE cellpadding="0" cellspacing="1" width="100%" align=center
 							border=0 class="table_bgcolor">

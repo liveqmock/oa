@@ -96,11 +96,41 @@ try {
 </html>
 
 <SCRIPT LANGUAGE="JavaScript">
+var xmlhttp;
+function loadXMLDoc(url)
+{
+	xmlhttp = null;
+	if (window.XMLHttpRequest) {// code for all new browsers
+		xmlhttp = new XMLHttpRequest();
+	} 
+
+	if (xmlhttp != null) {
+		xmlhttp.onreadystatechange = state_Change;
+		xmlhttp.open("GET", url, false); //false为同步，否则取两个专区的模块会有问题。
+		xmlhttp.send();
+	}
+}
+
+function state_Change() {
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		var xmlDoc = xmlhttp.responseXML;
+		//if(xmlDoc.childNodes[0] != null){
+			var elements = xmlDoc.getElementsByTagName("Oneboard");
+			for(i=0;i<elements.length;i++){
+				var oOption = document.createElement('OPTION');
+				oOption.text = elements[i].getElementsByTagName("boardname")[0].firstChild.nodeValue;
+				oOption.value = elements[i].getElementsByTagName("boardid")[0].firstChild.nodeValue;
+				listboard.options.add(oOption);
+			}
+		//}
+	}
+}
+
 function _getBoard(num) {
 	var list;
 	if(num=='1'){
 		listarea = document.form1.areaA;
-		listboard = document.form1.boardA;	
+		listboard = document.form1.boardA;
 	}else if(num=='2'){
 		listarea = document.form1.areaB;
 		listboard = document.form1.boardB;	
@@ -119,23 +149,26 @@ function _getBoard(num) {
 
 	
 	//得到XML文档
-	var XMLDoc = new ActiveXObject("MSXML");
-	var sURL;
-	sURL="./boardxml.jsp?areaid=" + listarea.options(listarea.selectedIndex).value;
-
-	//设置XML文档
-	XMLDoc.url = sURL;
-	var boardRoot = XMLDoc.root;
-	//如果节点不为空，则用户列表中插入用户
-	if(boardRoot.children != null)
-	{
-		for(i=0;i<boardRoot.children.length;i++)
+	var sURL ="./boardxml.jsp?areaid=" + listarea.options[listarea.selectedIndex].value;
+	if (window.ActiveXObject){
+		var XMLDoc = new ActiveXObject("MSXML");
+		//设置XML文档
+		XMLDoc.url = sURL;
+		var boardRoot = XMLDoc.root;
+		//如果节点不为空，则用户列表中插入用户
+		if(boardRoot.children != null)
 		{
-			bOption = document.createElement('OPTION');
-			bOption.value = boardRoot.children.item(i).children.item("BoardId").text;
-			bOption.text = boardRoot.children.item(i).children.item("BoardName").text;
-			listboard.options.add(bOption);
+			for(i=0;i<boardRoot.children.length;i++)
+			{
+				bOption = document.createElement('OPTION');
+				bOption.value = boardRoot.children.item(i).children.item("BoardId").text;
+				bOption.text = boardRoot.children.item(i).children.item("BoardName").text;
+				listboard.options.add(bOption);
+			}
 		}
+	}
+	else{
+			loadXMLDoc(sURL);
 	}
 }
 

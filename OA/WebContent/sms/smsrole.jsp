@@ -123,19 +123,16 @@ function _Add(){
 	<body>
 		<jsp:include page= "/include/top.jsp" />
 
-		<div align="center">
 			<br>
 			<form name="roleForm" method="post" action="">
 				<input type="hidden" name="id" id="id">
 				<input type="hidden" name="sendType">
 
 
-				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table width="983" align="center" border="0" cellspacing="0" cellpadding="0">
 
 					<tr>
-						<td bgcolor="#FFFFFF">
-							&nbsp;
-						</td>
+						
 						<td valign="top">
 							<%
 					if(exist != null && exist.equals("true")){
@@ -237,31 +234,21 @@ function _Add(){
 							</table>
 
 						</td>
-						<td>
-							&nbsp;
-						</td>
+						
 					</tr>
 					<tr>
-						<td width="11" bgcolor="#FFFFFF">
-							<img src="<%=request.getContextPath()%>/images/kongbai.gif"
-								width="11" height="11" />
-						</td>
+						
 						<td valign="top">
 							<div align="left"></div>
 						</td>
-						<td width="11">
-							<img src="<%=request.getContextPath()%>/images/kongbai.gif"
-								width="11" height="11" />
-						</td>
+						
 					</tr>
 				</table>
 			
 
-				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table width="983" align="center" border="0" cellspacing="0" cellpadding="0">
 					<tr>
-						<td bgcolor="#FFFFFF">
-							&nbsp;
-						</td>
+						
 						<td valign="top">
 							<table width="100%" border="0" cellpadding="2" cellspacing="1"
 								bgcolor="#B9DAF9">
@@ -345,25 +332,18 @@ function _Add(){
 								</tr>
 							</table>
 						</td>
-						<td>
-							&nbsp;
-						</td>
+						
 					</tr>
 					<tr>
-						<td width="11" bgcolor="#FFFFFF">
-							<img src="<%=request.getContextPath()%>/images/kongbai.gif"
-								width="11" height="11" />
-						</td>
+						
 						<td valign="top">
 							<div align="left"></div>
 						</td>
-						<td width="11">
-							<img src="<%=request.getContextPath()%>/images/kongbai.gif"
-								width="11" height="11" />
-						</td>
+						
 					</tr>
 				</table>
-
+				<table align="center" style="width:983px; margin:0 auto;">
+				<tr><td height="40">
 				<img src="<%=request.getContextPath()%>/images/bt_new.gif" border=0
 					style="cursor: hand" onclick="javascript:_Add()" />
 				&nbsp;&nbsp;
@@ -372,7 +352,8 @@ function _Add(){
 				&nbsp;&nbsp;
 				<img src="<%=request.getContextPath()%>/images/bt_del.gif" border=0
 					style="cursor: hand" onclick="javascript:_Delete()" />
+				</td></tr></table>
 			</form>
-		</div>
+
 	</body>
 </html>

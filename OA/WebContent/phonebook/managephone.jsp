@@ -225,12 +225,12 @@ function submi(str)
 
 
 
-<table height="5" width="100%">
+<table height="5" width="983" align="center">
 	<tr><td height="5"><img src="../images/kongbai.jpg" height="5"/></td></tr>
 </table>
 
 <!--    -->
-<table border="0" cellpadding="0" cellspacing="1" width="99%" class="table_bgcolor" align="center">
+<table border="0" cellpadding="0" cellspacing="1" width="983" class="table_bgcolor" align="center">
   <tr class="block_title">
   
     <td colspan="6">&nbsp;</td>
@@ -297,7 +297,7 @@ function submi(str)
   
 </table>
 
-<table border="0"  cellpadding="0" cellspacing="0" class="table_bgcolor" width="99%" align="center">
+<table border="0"  cellpadding="0" cellspacing="0" class="table_bgcolor" width="983" align="center">
     <tr>
      <td align="center" bgcolor="#FFFFFF" class="table_title">
        <input type="button"  name="submit1" onclick="addcheck()" value="添加" />&nbsp;&nbsp;
@@ -311,7 +311,7 @@ function submi(str)
 
 
  <!--电话簿展示区-->
-            <table border="0" cellpadding="0" cellspacing="1" class="table_bgcolor" width="99%" align="center">
+            <table border="0" cellpadding="0" cellspacing="1" class="table_bgcolor" width="983" align="center">
               <tr>
                     <td width="5%" height="25" align="center" class="block_title">
                     <input type=checkbox name=mmAll onclick="checkAll(this, 'mm')">全选

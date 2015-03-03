@@ -137,14 +137,15 @@ body {
     <td height="10" colspan="2">
 	<table>
 	   	<tr>
-    	<td class="message_title" align='right'>禁用人员:</td>
+    	<td class="message_title" align='right' width="100">禁用人员:</td>
     	<td width="60%" bgcolor="#FFFFFF">
-			<div>
-			<span id="sendto" class="sendToText"
-									onselectstart="return(false)" state="0">  </span>
-			</div>
+    	<div>
+			<div id="sendto" class="sendToText" onselectstart="return(false)" state="0"></div>
+			<input type="hidden" id="ssendtoendcc" />
+            <input type="hidden" id="sendbcc" />
+        </div>
 		</td>
-			<td width="25%" nowrap bgcolor="#FFFFFF">
+		<td width="25%" nowrap bgcolor="#FFFFFF">
 				<div align="left">
 					<img src="/oabase/images/delPerson.gif"
 						onclick="javascript:delSel(0)" alt="删除" title="删除选择的人或组织"
@@ -159,7 +160,6 @@ body {
 		</td>
 	</tr>
     </table>
-
 	</td>
     <td width="116" valign="middle">
     	<table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -170,7 +170,7 @@ body {
     <td width="21" height="10"></td>
   </tr>
   <tr>
-  <td colspan="2" align="center"><input type="button" value="提交" onClick="javascript:setright()"/>
+  <td colspan="3" align="center"><input type="button" value="提交" onClick="javascript:setright()"/>
   <input type="button" value="关闭" onClick="javascript:cancel()"/></td></tr>
 </table>
 </form>
